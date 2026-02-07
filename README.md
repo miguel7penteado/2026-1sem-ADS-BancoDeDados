@@ -19,7 +19,7 @@ layout:
     visible: true
 ---
 
-# Disciplina de Banco de Dados - 2025 - Professor Miguél Suares
+# Disciplina de Banco de Dados - 2026 - Professor Miguél Suares
 
 ## Pacotes JAVA para instalar
 

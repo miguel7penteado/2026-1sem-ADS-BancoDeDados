@@ -1,5 +1,5 @@
 ---
-title: "GTI - Banco de dados - 2025 - Anotações de aula"
+title: "GTI - Banco de dados - 2026 - Anotações de aula"
 author: "Professor Miguél Suares"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
