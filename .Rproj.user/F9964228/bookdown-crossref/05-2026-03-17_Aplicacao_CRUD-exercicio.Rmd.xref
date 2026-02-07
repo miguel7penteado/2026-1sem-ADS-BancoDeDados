@@ -1,0 +1,17 @@
+h2:exercícios Exercícios
+h4:section 01/09/2025
+h4:professor-miguél-suares Professor Miguél Suares
+h3:banco-de-dados-utilizado-nos-exemplos-de-aplicações-abaixo Banco de Dados utilizado nos exemplos de aplicações abaixo
+h2:exemplo-01 Exemplo 01
+h2:exemplo-02---servidor-de-aplicação-python Exemplo 02 - SERVIDOR DE APLICAÇÃO PYTHON
+h3:servidor-python Servidor python
+h3:cliente-html-conexão-restful Cliente HTML (conexão Restful)
+h2:exemplo-03---servidor-de-aplicação-perl Exemplo 03 - SERVIDOR DE APLICAÇÃO PERL
+h3:servidor-perl Servidor Perl
+h3:cliente-html-conexão-restful-1 Cliente HTML (conexão Restful)
+h2:exemplo-04---servidor-de-aplicação-java Exemplo 04 - SERVIDOR DE APLICAÇÃO JAVA
+h2:exemplo-05---servidor-de-aplicação-c Exemplo 05 - SERVIDOR DE APLICAÇÃO C++
+h3:criando-o-arquivo-c-do-servidor Criando o arquivo C++ do servidor
+h3:ferramenta-de-compilação-cmake Ferramenta de compilação CMAKE
+h3:cliente-html-conexão-restful-2 Cliente HTML (conexão Restful)
+

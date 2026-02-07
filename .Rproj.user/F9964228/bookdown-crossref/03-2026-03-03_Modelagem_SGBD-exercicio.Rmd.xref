@@ -1,0 +1,49 @@
+h2:exercícios-resolvidos Exercícios RESOLVIDOS
+h4:passo-1-- Passo #1 -
+h4:passo-2 Passo #2
+h4:passo-3 Passo #3
+h4:passo-4 Passo #4
+h4:passo-5---crie-o-código-sql-referente-ao-diagrama-que-você-desenhou Passo #5 - Crie o código SQL referente ao diagrama que você desenhou:
+h4:passo-1---1 Passo #1 -
+h4:passo-2-1 Passo #2
+h4:passo-3-1 Passo #3
+h4:passo-5---crie-o-código-sql-referente-ao-diagrama-que-você-desenhou-1 Passo #5 - Crie o código SQL referente ao diagrama que você desenhou:
+h4:passo-1---2 Passo #1 -
+h4:passo-2-2 Passo #2
+h4:passo-3-2 Passo #3
+h4:passo-5---faça-o-código-sql-do-diagrama-acima Passo #5 - Faça o código SQL do diagrama acima
+h3:exercícios Exercícios
+h3:lista-de-exercícios-modelo-entidade-relacionamento-mer 📝 Lista de Exercícios – Modelo Entidade-Relacionamento (MER)
+h4:exercício-1-cliente-e-cpf-11 Exercício 1 – Cliente e CPF (1:1)
+h4:exercício-2-cliente-e-pedidos-1n Exercício 2 – Cliente e Pedidos (1:N)
+h4:exercício-3-alunos-e-disciplinas-nn Exercício 3 – Alunos e Disciplinas (N:N)
+h4:exercício-4-funcionário-e-dependentes-entidade-fraca Exercício 4 – Funcionário e Dependentes (Entidade Fraca)
+h4:exercício-5-pedido-e-itens-de-pedido-entidade-associativa-fraca Exercício 5 – Pedido e Itens de Pedido (Entidade Associativa + Fraca)
+h4:exercício-6-médicos-e-consultas-1n Exercício 6 – Médicos e Consultas (1:N)
+h4:exercício-7-professor-e-departamento-11 Exercício 7 – Professor e Departamento (1:1)
+h4:exercício-8-livros-e-autores-nn Exercício 8 – Livros e Autores (N:N)
+h4:exercício-9-biblioteca-entidades-fortes-e-fracas Exercício 9 – Biblioteca (Entidades Fortes e Fracas)
+h4:exercício-10-empresa-funcionário-e-projeto-misto-1n-e-nn Exercício 10 – Empresa, Funcionário e Projeto (Misto 1:N e N:N)
+h4:tarefas-propostas-para-cada-exercício Tarefas propostas para cada exercício:
+h3:respostas-dos-exercícios Respostas dos Exercícios:
+h4:exercício-1 Exercício #1
+h5:exercício-1---sql-referênte-ao-diagrama-anterior Exercício 1 - SQL referênte ao diagrama anterior
+h4:exercício-2 Exercício #2
+h5:exercício-2---sql-referênte-ao-diagrama-anterior Exercício 2 - SQL referênte ao diagrama anterior
+h4:exercício-3 Exercício #3
+h5:exercício-3---sql-referênte-ao-diagrama-anterior Exercício 3 - SQL referênte ao diagrama anterior
+h4:exercício-4 Exercício #4
+h5:exercício-4---sql-referênte-ao-diagrama-anterior Exercício 4 - SQL referênte ao diagrama anterior
+h4:exercício-5 Exercício #5
+h5:exercício-5---sql-referênte-ao-diagrama-anterior Exercício 5 - SQL referênte ao diagrama anterior
+h4:exercício-6 Exercício #6
+h5:exercício-6---sql-referênte-ao-diagrama-anterior Exercício 6 - SQL referênte ao diagrama anterior
+h4:exercício-7 Exercício #7
+h5:exercício-7---sql-referênte-ao-diagrama-anterior Exercício 7 - SQL referênte ao diagrama anterior
+h4:exercício-8 Exercício #8
+h5:exercício-8---sql-referênte-ao-diagrama-anterior Exercício 8 - SQL referênte ao diagrama anterior
+h4:exercício-9 Exercício #9
+h5:exercício-9---sql-referênte-ao-diagrama-anterior Exercício 9 - SQL referênte ao diagrama anterior
+h4:exercício-10 Exercício #10
+h5:exercício-10---sql-referênte-ao-diagrama-anterior Exercício 10 - SQL referênte ao diagrama anterior
+

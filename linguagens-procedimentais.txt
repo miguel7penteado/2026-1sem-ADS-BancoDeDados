@@ -1,0 +1,17 @@
+
+# Linguagens Procedimentais no Banco de Dados
+
+## Instalando pacotes Linux família Debian
+
+```bash
+sudo apt install postgresql-pltcl postgresql-plperl-15 postgresql-plpython3-15
+```
+
+## Criando as extensões
+
+```sql
+CREATE EXTENSION pltcl;
+CREATE EXTENSION plperl;
+CREATE EXTENSION plpython3u;
+```
+

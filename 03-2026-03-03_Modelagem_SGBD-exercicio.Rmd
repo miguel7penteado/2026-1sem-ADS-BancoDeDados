@@ -1,0 +1,1878 @@
+---
+output: 
+  html_document: 
+    highlight: tango
+    theme: cerulean
+    toc_depth: 4
+    number_sections: true
+  pdf_document: 
+    toc: true
+    toc_depth: 4
+  word_document: 
+    toc: true
+    toc_depth: 4
+---
+
+## Exercícios RESOLVIDOS
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Exercício 1 — Universidade                                                                                                                                                                                                                                                                 |
++============================================================================================================================================================================================================================================================================================+
+| Considere uma Universidade que possui vários Cursos. Cada curso tem um nome, uma duração em semestres e um coordenador. A universidade possui Professores, cada um com um nome, título e CPF. Um professor pode ministrar várias disciplinas, e cada disciplina pertence a um único curso. |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Identifique as entidades                                                                                                                                                                                                                                                               |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| b)  Identifique os atributos de cada Entidade                                                                                                                                                                                                                                              |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| c)  Identifique os relacionamentos entre as Entidades                                                                                                                                                                                                                                      |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| e)  Faça o diagrama DEM (Diagrama Entidade Relacionamento) contendo as entidades, atributos e relacionamentos que você mapeou.                                                                                                                                                             |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+#### Passo #1 -
+
+Identificar **SUBSTANTIVOS** no contexto; identificar os **ADJETIVOS** pertinentes a cada SUBSTANTIVO; identificar os **VERBOS** de relação entre os substantivos.
+
++---------------------------------------------------+----------------------------------------------+----------------------------------------------------+
+| `Substantivos` **do contexto**: leve-os ao plural | `Adjetivos`                                  | `Verbos`                                           |
++:==================================================+==============================================+====================================================+
+| UNIVERSIDADE -\> **`UNIVERSIDADES`**              | `NOME` (implícito no enunciado)              | universidade `POSSUI` (vários) cursos              |
+|                                                   |                                              |                                                    |
+|                                                   | `CNPJ` (implícito no enunciado)              |                                                    |
++---------------------------------------------------+----------------------------------------------+----------------------------------------------------+
+| CURSO -\> **`CURSOS`**                            | `NOME` (explícito no enunciado)              | cursos são `POSSUÍDOS` por (vários) universidades  |
+|                                                   |                                              |                                                    |
+|                                                   | `DURAÇÃO` (explícito no enunciado)           |                                                    |
+|                                                   |                                              |                                                    |
+|                                                   | `COORDENADOR` (explícito no enunciado)       |                                                    |
+|                                                   |                                              |                                                    |
+|                                                   | `CODIGO_CURSO` (implícito no enunciado)      |                                                    |
++---------------------------------------------------+----------------------------------------------+----------------------------------------------------+
+| PROFESSOR -\> **`PROFESSORES`**                   | `CPF` (explícito no enunciado)               | universidade `POSSUI` (vários) professores         |
+|                                                   |                                              |                                                    |
+|                                                   | `NOME` (explícito no enunciado)              | professor `MINISTRA` (várias) disciplinas          |
+|                                                   |                                              |                                                    |
+|                                                   | `TÍTULO` (explícito no enunciado)            |                                                    |
++---------------------------------------------------+----------------------------------------------+----------------------------------------------------+
+| DISCIPLINA -\> **`DISCIPLINAS`**                  | `NOME` (implícito no enunciado)              | disciplina `É MINISTRADA` por (vários) professores |
+|                                                   |                                              |                                                    |
+|                                                   | `CODIGO_DISCIPLINA` (implícito no enunciado) | disciplina `PERTENCE` a (um único) curso           |
++---------------------------------------------------+----------------------------------------------+----------------------------------------------------+
+
+: Identificando SUBSTANTIVOS, ADJETIVOS referentes e VERBOS de relação
+
+#### Passo #2
+
+Criar o **`MODELO ENTIDADE RELACIONAMENTO (M.E.R.)`** - Converter SUBSTANTIVO em **`ENTIDADES`**; converter ADJETIVOS em **`ATRIBUTOS`** e converter VERBOS em **`RELACIONAMENTOS`**.
+
+-   ENTIDADES identificadas: **`UNIVERSIDADES`**, **`CURSOS`**, **`PROFESSORES`** e **`DISCIPLINAS`**
+
+-   ATRIBUTOS identificados: UNIVERSIDADES [ nome,cnpj ] ; CURSOS [ nome, duração, coordenador, codigo_curso] ; PROFESSORES [ cpf, nome e título] ; DISCIPLINAS [nome e codigo_disciplina]
+
+-   RELACIONAMENTOS: [universidade-`POSSUI`-curso] ; [universidade-`POSSUI`-professores]; [professor-`MINISTRA`-disciplina] ; [disciplina-`PERTENCE`-curso]
+
+#### Passo #3
+
+Criar um DIAGRAMA ENTIDADE-RELACIONAMENTO (D.E.R.) com as informações levantadas:
+
+```{plantuml exercicio01-01, plantuml.path="images"}
+@startchen
+
+entity UNIVERSIDADES {
+  nome
+  CNPJ <<KEY>>
+}
+@endchen
+```
+
+```{plantuml exercicio01-02, plantuml.path="images"}
+@startchen
+entity CURSOS {
+  nome
+  duracao
+  coordenador
+  codigo_curso <<KEY>>
+}
+@endchen
+```
+
+```{plantuml exercicio01-03, plantuml.path="images"}
+@startchen
+entity PROFESSORES {
+  cpf <<KEY>>
+  nome
+  titulo
+}
+@endchen
+```
+
+```{plantuml exercicio01-04, plantuml.path="images"}
+@startchen
+entity DISCIPLINAS {
+  nome
+  codigo_disciplina <<KEY>>
+}
+
+@endchen
+```
+
+#### Passo #4
+
+Identificar os Relacionamentos:
+
+-   [universidade-`POSSUI`-curso] ; [universidade-`POSSUI`-professores]; [professor-`MINISTRA`-disciplina] ; [disciplina-`PERTENCE`-curso]
+
+```{plantuml exercicio01-05, plantuml.path="images"}
+@startchen
+
+
+entity UNIVERSIDADES {
+  nome
+  CNPJ <<KEY>>
+}
+
+entity CURSOS {
+  nome
+  duracao
+  coordenador
+  codigo_curso <<KEY>>
+}
+
+
+entity PROFESSORES {
+  cpf <<key>>
+  nome
+  titulo
+}
+
+entity DISCIPLINAS {
+  nome
+  codigo_disciplina <<KEY>>
+}
+
+relationship OFERECE {
+  
+}
+
+
+relationship POSSUI {
+  
+}
+
+
+
+relationship MINISTRA {
+  
+}
+
+UNIVERSIDADES -1- OFERECE
+OFERECE       -N- CURSOS
+
+UNIVERSIDADES -1- POSSUI
+POSSUI        -N- PROFESSORES
+
+
+PROFESSORES -1- MINISTRA
+MINISTRA    -N- DISCIPLINAS
+
+
+
+@endchen
+```
+
+
+#### Passo  #5 - Crie o código SQL referente ao diagrama que você desenhou:
+
+```SQL
+/* =========================================================
+   Passo 1️- CRIAR TABELAS (somente colunas, sem PK nem FK)
+   ========================================================= */
+CREATE TABLE UNIVERSIDADES 
+(
+    nome            VARCHAR(255),
+    CNPJ            VARCHAR(14)
+);
+
+CREATE TABLE CURSOS 
+(
+    nome            VARCHAR(255),
+    duracao         INT,
+    coordenador     VARCHAR(255),
+    codigo_curso    INTEGER
+);
+
+CREATE TABLE PROFESSORES 
+(
+    cpf             VARCHAR(11),
+    nome            VARCHAR(255),
+    titulo          VARCHAR(255)
+);
+
+CREATE TABLE DISCIPLINAS 
+(
+    nome                VARCHAR(255),
+    codigo_disciplina   INTEGER
+);
+
+/* =========================================================
+   Passo 2- ADICIONAR CHAVES PRIMÁRIAS
+   ========================================================= */
+ALTER TABLE UNIVERSIDADES ADD PRIMARY KEY (CNPJ);
+
+ALTER TABLE CURSOS        ADD PRIMARY KEY (codigo_curso);
+
+ALTER TABLE PROFESSORES   ADD PRIMARY KEY (cpf);
+
+ALTER TABLE DISCIPLINAS   ADD PRIMARY KEY (codigo_disciplina);
+
+/* =========================================================
+   Passo 3- CRIAR COLUNAS PARA FUTURAS CHAVES ESTRANGEIRAS
+   -- Sempre no lado N de cada relacionamento
+   ========================================================= */
+-- UNIVERSIDADES (1) —— (N) CURSOS  → CURSOS precisa de CNPJ
+ALTER TABLE CURSOS   ADD COLUMN CNPJ VARCHAR(14);
+
+-- UNIVERSIDADES (1) —— (N) PROFESSORES → PROFESSORES precisa de CNPJ
+ALTER TABLE PROFESSORES  ADD COLUMN CNPJ VARCHAR(14);
+
+-- PROFESSORES (1) —— (N) DISCIPLINAS → DISCIPLINAS precisa de cpf
+ALTER TABLE DISCIPLINAS ADD COLUMN cpf VARCHAR(11);
+
+/* =========================================================
+   Passo 4- CRIAR AS CHAVES ESTRANGEIRAS
+   ========================================================= */
+ALTER TABLE CURSOS      ADD CONSTRAINT fk_cursos_universidade      FOREIGN KEY (CNPJ) REFERENCES UNIVERSIDADES (CNPJ);
+
+ALTER TABLE PROFESSORES ADD CONSTRAINT fk_professores_universidade FOREIGN KEY (CNPJ) REFERENCES UNIVERSIDADES (CNPJ);
+
+ALTER TABLE DISCIPLINAS ADD CONSTRAINT fk_disciplinas_professor    FOREIGN KEY (cpf)  REFERENCES PROFESSORES (cpf);
+
+```
+
+------------------------------------------------------------------------
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Exercício 2 — Um Projeto de e-commerce                                                                                                                                                                                             |
++====================================================================================================================================================================================================================================+
+| Um Cliente faz Pedidos em um sistema de e-commerce. Cada cliente tem um nome, endereço e telefone. Os pedidos possuem uma data, um valor total e podem conter vários Produtos. Cada produto tem um nome, uma descrição e um preço. |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Identifique as **entidades**                                                                                                                                                                                                   |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| b)  Identifique os **atributos** de cada Entidade                                                                                                                                                                                  |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| c)  Identifique os **relacionamentos** entre as Entidades                                                                                                                                                                          |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| e)  Faça o **diagrama DEM (Diagrama Entidade Relacionamento)** contendo as entidades, atributos e relacionamentos que você mapeou.                                                                                                 |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+#### Passo #1 -
+
+Identificar **SUBSTANTIVOS** no contexto; identificar os **ADJETIVOS** pertinentes a cada SUBSTANTIVO; identificar os **VERBOS** de relação entre os substantivos.
+
++-------------------------------------------------------------------------+----------------------------------------+-------------------------------------------------------+
+| `Substantivos` **do contexto**: leve-os ao plural                       | `Adjetivos`                            | `Verbos`                                              |
++:========================================================================+========================================+=======================================================+
+| CLIENTE -\> **`CLIENTES`**                                              | `NOME` (explícito no enunciado)        | (vários) clientes `PEDEM` (vários) produtos           |
+|                                                                         |                                        |                                                       |
+|                                                                         | `ENDERECO` (explícito no enunciado)    |                                                       |
+|                                                                         |                                        |                                                       |
+|                                                                         | `TELEFONE` (explícito no enunciado)    |                                                       |
+|                                                                         |                                        |                                                       |
+|                                                                         | `CPF` (implícito no enunciado)         |                                                       |
++-------------------------------------------------------------------------+----------------------------------------+-------------------------------------------------------+
+| PEDIDO -\> **`PEDIDOS ????`**                                           | `DATA` (explícito no enunciado)        | (vários) clientes `PEDEM` (vários) produtos           |
+|                                                                         |                                        |                                                       |
+| PEDIDO NÃO É SUBSTABNTIVO, MAS SIM O PARTICÍPIO PASSADO DO VERBO PEDIR. | `VALOR_TOTAL` (explícito no enunciado) |                                                       |
+|                                                                         |                                        |                                                       |
+| (PEDIR É VERBO !!!)                                                     |                                        |                                                       |
++-------------------------------------------------------------------------+----------------------------------------+-------------------------------------------------------+
+| PRODUTO -\> **`PRODUTOS`**                                              | `NOME` (implícito no enunciado)        | (vários) produtos são `PEDidos` por (vários) clientes |
+|                                                                         |                                        |                                                       |
+|                                                                         | `DESCRICAO` (explícito no enunciado)   |                                                       |
+|                                                                         |                                        |                                                       |
+|                                                                         | `PRECO` (explícito no enunciado)       |                                                       |
+|                                                                         |                                        |                                                       |
+|                                                                         | `COD_PRODUTO` (implícito no enunciado) |                                                       |
++-------------------------------------------------------------------------+----------------------------------------+-------------------------------------------------------+
+
+: Identificando SUBSTANTIVOS, ADJETIVOS referentes e VERBOS de relação
+
+#### Passo #2
+
+Criar o **`MODELO ENTIDADE RELACIONAMENTO (M.E.R.)`** - Converter SUBSTANTIVO em **`ENTIDADES`**; converter ADJETIVOS em **`ATRIBUTOS`** e converter VERBOS em **`RELACIONAMENTOS`**.
+
+Normalmente apenas as ENTIDADES levam atributos. Quando aparece um relacionamento N-N entre duas entidades, também podem aparecer atributos atrelados aos relacionamentos (como é o caso de PEDIDO aqui).
+
+-   ENTIDADES identificadas: **`CLIENTES`**, **`PRODUTOS`**
+
+-   ATRIBUTOS identificados: CLIENTES [ nome, endereco, telefone, cpf] ; PRODUTOS [ nome, descricao, preco, cod_produto] ; PEDIDO[data, valor_total]
+
+-   RELACIONAMENTOS: [cliente-`PEDE`-produto] ; [produto-`PEDIDO`-cliente];
+
+#### Passo #3
+
+Criar um DIAGRAMA ENTIDADE-RELACIONAMENTO (D.E.R.) com as informações levantadas:
+
+```{plantuml exercicio02-01, plantuml.path="images"}
+@startchen
+
+
+entity CLIENTES {
+  nome
+  endereco
+  telefone
+  cpf <<key>>
+}
+
+
+
+entity PRODUTOS {
+  nome
+  descricao
+  preco
+  cod_produto <<key>>
+}
+
+relationship PEDIDOS {
+  data << key >>
+  valor_total
+}
+
+
+
+PRODUTOS -N- PEDIDOS
+PEDIDOS  -N- CLIENTES
+
+
+
+@endchen
+```
+
+#### Passo  #5 - Crie o código SQL referente ao diagrama que você desenhou:
+
+```SQL
+
+-- CRIAR AS TABELAS
+
+CREATE TABLE Cliente 
+(
+    id_cliente INT,
+    nome VARCHAR(255)
+);
+
+CREATE TABLE CPF 
+(
+    numero_cpf CHAR(11)
+);
+
+-- ADICIONAR AS CHAVES PRIMÁRIAS
+
+ALTER TABLE Cliente ADD PRIMARY KEY (id_cliente);
+
+ALTER TABLE CPF ADD PRIMARY KEY (numero_cpf);
+
+
+-- O relacionamento é 1:1. Podemos escolher um dos lados para armazenar a chave.
+-- Aqui vamos seguir o diagrama, colocando a chave estrangeira de CPF em Cliente.
+
+ALTER TABLE Cliente ADD COLUMN numero_cpf CHAR(11);
+
+-- CRIAR AS CHAVES ESTRANGEIRAS
+
+ALTER TABLE Cliente ADD CONSTRAINT fk_cliente_cpf FOREIGN KEY (numero_cpf) REFERENCES CPF (numero_cpf);
+
+```
+
+------------------------------------------------------------------------
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Exercício 3 — Hospital                                                                                                                                                                                                                                                                  |
++=========================================================================================================================================================================================================================================================================================+
+| Um Hospital registra Pacientes, cada um com nome, idade, endereço e telefone. Os pacientes podem realizar várias Consultas com Médicos. Cada médico possui um CRM, um nome e uma especialidade. Durante a consulta, o médico pode prescrever Receitas, que possuem medicação e dosagem. |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Identifique as **entidades**                                                                                                                                                                                                                                                        |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| b)  Identifique os **atributos** de cada Entidade                                                                                                                                                                                                                                       |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| c)  Identifique os **relacionamentos** entre as Entidades                                                                                                                                                                                                                               |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| e)  Faça o **diagrama DEM (Diagrama Entidade Relacionamento) contendo as entidades, atributos e relacionamentos** que você mapeou.                                                                                                                                                      |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+#### Passo #1 -
+
+Identificar **SUBSTANTIVOS** no contexto; identificar os **ADJETIVOS** pertinentes a cada SUBSTANTIVO; identificar os **VERBOS** de relação entre os substantivos.
+
++---------------------------------------------------+------------------------------------------+-------------------------------------------------------------------+
+| `Substantivos` **do contexto**: leve-os ao plural | `Adjetivos`                              | `Verbos`                                                          |
++:==================================================+==========================================+===================================================================+
+| HOSPITAL -\> **`HOSPITAIS`**                      | `NOME` (implícito no enunciado)          | (explícito) hospital `REGISTRA` (vários) pacientes                |
+|                                                   |                                          |                                                                   |
+|                                                   | `CNPJ` (implícito no enunciado)          | (implícito) hospital `POSSUI` medicos                             |
++---------------------------------------------------+------------------------------------------+-------------------------------------------------------------------+
+| PACIENTE -\> **`PACIENTES`**                      | `NOME` (explícito no enunciado)          | pacientes são `REGISTRADOS` em (um) hospital                      |
+|                                                   |                                          |                                                                   |
+|                                                   | `IDADE` (explícito no enunciado)         | (vários) pacientes `CONSULTAM` (vários) médicos                   |
+|                                                   |                                          |                                                                   |
+|                                                   | `ENDERECO` (explícito no enunciado)      | (vários) pacientes `SÃO RECEITADOS` por (vários) médicos          |
+|                                                   |                                          |                                                                   |
+|                                                   | `TELEFONE` (explícito no enunciado)      |                                                                   |
+|                                                   |                                          |                                                                   |
+|                                                   | `CPF` (implícito no enunciado)           |                                                                   |
++---------------------------------------------------+------------------------------------------+-------------------------------------------------------------------+
+| MÉDICO -\> **`MEDICOS`**                          | `CRM` (explícito no enunciado)           | (vários) médico(s) `CONSULTA` (vários) pacientes                  |
+|                                                   |                                          |                                                                   |
+|                                                   | `NOME` (explícito no enunciado)          | (vários) médico(s) `RECEITAM` (vários) pacientes                  |
+|                                                   |                                          |                                                                   |
+|                                                   | `ESPECIALIDADE` (explícito no enunciado) |                                                                   |
++---------------------------------------------------+------------------------------------------+-------------------------------------------------------------------+
+| RECEITA ?? -\> **`RECEITAR`** é VERBO             | `MEDICACAO` (explícito no enunciado)     | médico `RECEITA` ao paciente                                      |
+|                                                   |                                          |                                                                   |
+|                                                   | `DOSAGEM`(explícito no enunciado)        | (vários) paciente(s) `É(SÃO) RECEITADO(s)` por (vários) médico(s) |
++---------------------------------------------------+------------------------------------------+-------------------------------------------------------------------+
+| CONSULTA ?? -\> **`CONSULTAR`** é VERBO           | `DATA` (implícito no enunciado)          | (vários) pacientes(s) `CONSULTA(M)` (vários) médico(s)            |
+|                                                   |                                          |                                                                   |
+|                                                   | `HORA`(implícito no enunciado)           |                                                                   |
+|                                                   |                                          |                                                                   |
+|                                                   | `sala`(implícito no enunciado)           |                                                                   |
++---------------------------------------------------+------------------------------------------+-------------------------------------------------------------------+
+
+: Identificando SUBSTANTIVOS, ADJETIVOS referentes e VERBOS de relação
+
+#### Passo #2
+
+Criar o **`MODELO ENTIDADE RELACIONAMENTO (M.E.R.)`** - Converter SUBSTANTIVO em **`ENTIDADES`**; converter ADJETIVOS em **`ATRIBUTOS`** e converter VERBOS em **`RELACIONAMENTOS`**.
+
+-   ENTIDADES identificadas: **`HOSPITAIS`**, **`PACIENTES`**, **`MEDICOS`**
+
+-   ATRIBUTOS identificados: HOSPITAIS [ nome,cnpj ] ; PACIENTES [ nome, idade, endereco, telefone, cpf] ; MEDICOS [ crm, nome e especialidade] ;
+
+-   RELACIONAMENTOS: [medico-`consulta`-paciente] ; [medico-`receita`-paciente]; [hospital-registra-paciente] ; [hospital-`POSSUI`-medicos]
+
+#### Passo #3
+
+Criar um DIAGRAMA ENTIDADE-RELACIONAMENTO (D.E.R.) com as informações levantadas:
+
+```{plantuml exercicio03-01, plantuml.path="images"}
+@startchen
+
+
+entity HOSPITAIS {
+  nome
+  cnpj <<key>>
+}
+
+entity PACIENTES {
+  nome
+  idade
+  endereco
+  telefone
+  cpf <<key>>
+}
+
+
+entity MEDICOS {
+  nome
+  especialidade
+  crm <<key>>
+}
+
+relationship REGISTRAM {
+  
+}
+
+relationship CONSULTAM {
+  data
+  hora
+  sala
+}
+
+relationship RECEITAM {
+  medicacao
+  dosagem
+}
+
+HOSPITAIS -1- REGISTRAM
+REGISTRAM -N- PACIENTES
+
+MEDICOS   -N- CONSULTAM
+CONSULTAM -N- PACIENTES
+
+MEDICOS   -N- RECEITAM
+RECEITAM  -N- PACIENTES
+
+@endchen
+```
+
+#### Passo #5 - Faça o código SQL do diagrama acima
+
+```SQL
+
+/* =========================================================
+   Passo 1- TABELAS (apenas colunas, sem PK ou FK)
+   ========================================================= */
+CREATE TABLE HOSPITAIS 
+(
+    nome    VARCHAR(255),
+    cnpj    CHAR(14)
+);
+
+CREATE TABLE PACIENTES 
+(
+    nome        VARCHAR(255),
+    idade       INT,
+    endereco    VARCHAR(255),
+    telefone    VARCHAR(20),
+    cpf         CHAR(11)
+);
+
+CREATE TABLE MEDICOS 
+(
+    nome            VARCHAR(255),
+    especialidade   VARCHAR(255),
+    crm             CHAR(15)
+);
+
+/* As próximas tabelas representam os relacionamentos N:N
+   com atributos próprios (tabelas de junção) */
+CREATE TABLE REGISTRAM 
+(
+    -- sem colunas de FK por enquanto
+);
+
+CREATE TABLE CONSULTAM 
+(
+    data_consulta   DATE,
+    hora            TIME,
+    sala            VARCHAR(50)
+);
+
+CREATE TABLE RECEITAM 
+(
+    medicacao       VARCHAR(255),
+    dosagem         VARCHAR(100)
+);
+
+/* =========================================================
+   Passo 2- ADICIONAR CHAVES PRIMÁRIAS
+   ========================================================= */
+ALTER TABLE HOSPITAIS  ADD PRIMARY KEY (cnpj);
+
+ALTER TABLE PACIENTES  ADD PRIMARY KEY (cpf);
+
+ALTER TABLE MEDICOS    ADD PRIMARY KEY (crm);
+
+/* Para tabelas de relacionamento com atributos, a PK será composta
+   (as FKs a serem criadas formarão a chave primária). Faremos isso depois
+   de adicionar as colunas de FK. */
+
+/* =========================================================
+   Passo 3- CRIAR COLUNAS PARA FUTURAS CHAVES ESTRANGEIRAS
+   ========================================================= */
+-- REGISTRAM: HOSPITAIS (1) —— (N) PACIENTES
+ALTER TABLE REGISTRAM ADD COLUMN cnpj CHAR(14), ADD COLUMN cpf  CHAR(11);
+
+-- CONSULTAM: MEDICOS (N) —— (N) PACIENTES
+ALTER TABLE CONSULTAM ADD COLUMN crm  CHAR(15), ADD COLUMN cpf  CHAR(11);
+
+-- RECEITAM: MEDICOS (N) —— (N) PACIENTES
+ALTER TABLE RECEITAM  ADD COLUMN crm  CHAR(15), ADD COLUMN cpf  CHAR(11);
+
+/* =========================================================
+   Passo 4- CRIAR CHAVES ESTRANGEIRAS
+   ========================================================= */
+ALTER TABLE REGISTRAM
+    ADD CONSTRAINT fk_registram_hospitais
+        FOREIGN KEY (cnpj)
+        REFERENCES HOSPITAIS (cnpj),
+    ADD CONSTRAINT fk_registram_pacientes
+        FOREIGN KEY (cpf)
+        REFERENCES PACIENTES (cpf);
+
+ALTER TABLE CONSULTAM
+    ADD CONSTRAINT fk_consultam_medicos
+        FOREIGN KEY (crm)
+        REFERENCES MEDICOS (crm),
+    ADD CONSTRAINT fk_consultam_pacientes
+        FOREIGN KEY (cpf)
+        REFERENCES PACIENTES (cpf);
+
+ALTER TABLE RECEITAM
+    ADD CONSTRAINT fk_receitam_medicos
+        FOREIGN KEY (crm)
+        REFERENCES MEDICOS (crm),
+    ADD CONSTRAINT fk_receitam_pacientes
+        FOREIGN KEY (cpf)
+        REFERENCES PACIENTES (cpf);
+
+/* Definir chaves primárias compostas para tabelas de relacionamento */
+ALTER TABLE REGISTRAM ADD PRIMARY KEY (cnpj, cpf);
+
+ALTER TABLE CONSULTAM ADD PRIMARY KEY (crm, cpf, data_consulta, hora);
+
+ALTER TABLE RECEITAM  ADD PRIMARY KEY (crm, cpf, medicacao);
+
+```
+
+------------------------------------------------------------------------
+
+### Exercícios
+
+### 📝 Lista de Exercícios – Modelo Entidade-Relacionamento (MER)
+
+#### Exercício 1 – Cliente e CPF (1:1)
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+Cada **Cliente** possui exatamente **um CPF**, e cada CPF só pode estar associado a um único Cliente.\
+- Identifique entidades, atributos e relacionamento.\
+- Represente o MER com cardinalidade 1:1.
+
+```{plantuml exercicio-01, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity "________________________________________________________" as entidade1 {
+  "_________________________" as atributo1 << key >>
+  "_________________________" as atributo2
+}
+
+entity "________________________________________________________" as entidade2 {
+  "_________________________" as atributo3 << key >>
+  "_________________________" as atributo4
+}
+
+relationship "_________________________" as relacionamento1 {
+
+}
+
+entidade1       -0- relacionamento1
+relacionamento1 -0- entidade2
+
+@endchen
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 2 – Cliente e Pedidos (1:N)
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+Um **Cliente** pode fazer **vários Pedidos**, mas cada Pedido pertence a apenas um Cliente.\
+- Liste as entidades e atributos.\
+- Defina o relacionamento e a cardinalidade.\
+- Monte o DER.
+
+```{plantuml exercicio-02, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity "________________________________________________________" as entidade1 {
+  "_________________________" as atributo1 << key >>
+  "_________________________" as atributo2
+}
+
+entity "________________________________________________________" as entidade2 {
+  "_________________________" as atributo3 << key >>
+  "_________________________" as atributo4
+}
+
+relationship "_________________________" as relacionamento1 {
+
+}
+
+entidade1       -0- relacionamento1
+relacionamento1 -0- entidade2
+
+@endchen
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 3 – Alunos e Disciplinas (N:N)
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+Um **Aluno** pode se matricular em várias **Disciplinas**, e cada Disciplina pode ter vários Alunos.\
+- Identifique entidades e atributos. - Qual entidade associativa deve ser criada? - Desenhe o DER com a entidade associativa.
+
+```{plantuml exercicio-03, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity "________________________________________________________" as entidade1 {
+  "_________________________" as atributo1 << key >>
+  "_________________________" as atributo2
+}
+
+entity "________________________________________________________" as entidade2 {
+  "_________________________" as atributo3 << key >>
+  "_________________________" as atributo4
+}
+
+relationship "_________________________" as relacionamento1 {
+
+}
+
+entidade1       -0- relacionamento1
+relacionamento1 -0- entidade2
+
+@endchen
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 4 – Funcionário e Dependentes (Entidade Fraca)
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+Cada **Funcionário** pode ter **vários Dependentes**. Um Dependente não existe sem um Funcionário.\
+- Identifique a entidade forte e a entidade fraca.\
+- Defina atributos e chaves.\
+- Monte o DER indicando a dependência existencial.
+
+```{plantuml exercicio-04, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity "________________________________________________________" as entidade1 {
+  "_________________________" as atributo1 << key >>
+  "_________________________" as atributo2
+}
+
+entity "________________________________________________________" as entidade2 {
+  "_________________________" as atributo3 << key >>
+  "_________________________" as atributo4
+}
+
+relationship "_________________________" as relacionamento1 {
+
+}
+
+entidade1       -0- relacionamento1
+relacionamento1 -0- entidade2
+
+
+@endchen
+```
+
+```SQL
+-- Coloque aqui o código SQL criar as tabelas:
+
+
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 5 – Pedido e Itens de Pedido (Entidade Associativa + Fraca)
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+Um **Pedido** contém vários **Itens**, mas cada Item está sempre vinculado a apenas um Pedido.\
+- Qual entidade é dominante e qual é subordinada?\
+- Identifique atributos das duas entidades.\
+- Represente o DER com cardinalidade 1:N.
+
+```{plantuml exercicio-05, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity "________________________________________________________" as entidade1 {
+  "_________________________" as atributo1 << key >>
+  "_________________________" as atributo2
+}
+
+entity "________________________________________________________" as entidade2 {
+  "_________________________" as atributo3 << key >>
+  "_________________________" as atributo4
+}
+
+relationship "_________________________" as relacionamento1 {
+
+}
+
+entidade1       -0- relacionamento1
+relacionamento1 -0- entidade2
+
+
+@endchen
+```
+
+```SQL
+-- Coloque aqui o código SQL criar as tabelas:
+
+
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 6 – Médicos e Consultas (1:N)
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+Um **Médico** pode realizar várias **Consultas**, mas cada Consulta está associada a apenas um Médico.\
+- Identifique entidades e atributos.\
+- Desenhe o DER.\
+- Indique as cardinalidades.
+
+```{plantuml exercicio-06, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity "________________________________________________________" as entidade1 {
+  "_________________________" as atributo1 << key >>
+  "_________________________" as atributo2
+}
+
+entity "________________________________________________________" as entidade2 {
+  "_________________________" as atributo3 << key >>
+  "_________________________" as atributo4
+}
+
+relationship "_________________________" as relacionamento1 {
+
+}
+
+entidade1       -0- relacionamento1
+relacionamento1 -0- entidade2
+
+
+@endchen
+```
+
+```SQL
+-- Coloque aqui o código SQL criar as tabelas:
+
+
+
+```
+
+
+------------------------------------------------------------------------
+
+#### Exercício 7 – Professor e Departamento (1:1)
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+Cada **Professor** dirige apenas **um Departamento**, e cada Departamento tem apenas um Professor responsável.\
+- Identifique entidades, atributos e relacionamento.\
+- Defina cardinalidade 1:1 no DER.
+
+```{plantuml exercicio-07, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity "________________________________________________________" as entidade1 {
+  "_________________________" as atributo1 << key >>
+  "_________________________" as atributo2
+}
+
+entity "________________________________________________________" as entidade2 {
+  "_________________________" as atributo3 << key >>
+  "_________________________" as atributo4
+}
+
+relationship "_________________________" as relacionamento1 {
+
+}
+
+entidade1       -0- relacionamento1
+relacionamento1 -0- entidade2
+
+
+@endchen
+```
+
+```SQL
+-- Coloque aqui o código SQL criar as tabelas:
+
+
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 8 – Livros e Autores (N:N)
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+Um **Livro** pode ter vários **Autores**, e cada Autor pode escrever vários Livros.\
+- Identifique as entidades e atributos.\
+- Qual entidade associativa deve ser criada?\
+- Monte o DER em notação conceitual.
+
+```{plantuml exercicio-08, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity "________________________________________________________" as entidade1 {
+  "_________________________" as atributo1 << key >>
+  "_________________________" as atributo2
+}
+
+entity "________________________________________________________" as entidade2 {
+  "_________________________" as atributo3 << key >>
+  "_________________________" as atributo4
+}
+
+relationship "_________________________" as relacionamento1 {
+
+}
+
+entidade1       -0- relacionamento1
+relacionamento1 -0- entidade2
+
+
+@endchen
+```
+
+```SQL
+-- Coloque aqui o código SQL criar as tabelas:
+
+
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 9 – Biblioteca (Entidades Fortes e Fracas)
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+Um **Livro** pode ter vários **Exemplares**. Um Exemplar só existe se estiver associado a um Livro.\
+- Identifique entidades fortes e fracas.\
+- Defina atributos (Livro: título, ano; Exemplar: código_exemplar, status).\
+- Monte o DER com a dependência existencial.
+
+
+```{plantuml exercicio-09, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity "________________________________________________________" as entidade1 {
+  "_________________________" as atributo1 << key >>
+  "_________________________" as atributo2
+}
+
+entity "________________________________________________________" as entidade2 {
+  "_________________________" as atributo3 << key >>
+  "_________________________" as atributo4
+}
+
+relationship "_________________________" as relacionamento1 {
+
+}
+
+entidade1       -0- relacionamento1
+relacionamento1 -0- entidade2
+
+
+@endchen
+```
+
+```SQL
+-- Coloque aqui o código SQL criar as tabelas:
+
+
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 10 – Empresa, Funcionário e Projeto (Misto 1:N e N:N)
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+-   Uma **Empresa** possui vários **Funcionários**.\
+-   Cada **Funcionário** pode participar de vários **Projetos**, e cada Projeto pode ter vários Funcionários.\
+-   Identifique todas as entidades, atributos e relacionamentos.\
+-   Determine cardinalidades corretas (Empresa–Funcionário 1:N, Funcionário–Projeto N:N).\
+-   Crie o DER completo.
+
+```{plantuml exercicio-10, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity "________________________________________________________" as entidade1 {
+  "_________________________" as atributo1 << key >>
+  "_________________________" as atributo2
+}
+
+entity "________________________________________________________" as entidade2 {
+  "_________________________" as atributo3 << key >>
+  "_________________________" as atributo4
+}
+
+entity "________________________________________________________" as entidade3 {
+  "_________________________" as atributo5 << key >>
+  "_________________________" as atributo6
+}
+
+relationship "_________________________" as relacionamento1 {
+
+}
+
+relationship "_________________________" as relacionamento2 {
+
+}
+
+entidade1       -0- relacionamento1
+relacionamento1 -0- entidade2
+
+
+entidade2       -0- relacionamento2
+relacionamento2 -0- entidade3
+
+
+@endchen
+```
+
+```SQL
+-- Coloque aqui o código SQL criar as tabelas:
+
+
+
+```
+
+------------------------------------------------------------------------
+
+#### Tarefas propostas para cada exercício:
+
+1.  Identificar entidades e atributos.\
+2.  Definir relacionamentos.\
+3.  Especificar cardinalidades.\
+4.  Indicar entidades fortes e fracas (quando houver).\
+5.  Representar graficamente o DER.
+
+------------------------------------------------------------------------
+
+### Respostas dos Exercícios:
+
+#### Exercício #1
+
+```{plantuml exercicio-01-resposta, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity CLIENTES {
+  id_cliente <<key>>
+  nome
+}
+
+entity CPFS {
+  numero_cpf
+}
+
+relationship POSSUI {
+
+}
+
+CLIENTES -1- POSSUI
+POSSUI   -1- CPFS
+
+@endchen
+```
+
+##### Exercício 1 - SQL referênte ao diagrama anterior
+
+```SQL
+/* =========================================================
+   TRANSFORMA AS ENTIDADES EM TABELAS E ATRIBUTOS EM COLUNAS
+   ========================================================= */
+CREATE TABLE CLIENTES 
+(
+    id_cliente INTEGER,
+    nome VARCHAR(255)
+);
+
+CREATE TABLE CPFS
+(
+    numero_cpf CHAR(11)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+ALTER TABLE CLIENTES ADD PRIMARY KEY (id_cliente);
+
+ALTER TABLE CPFS ADD PRIMARY KEY (numero_cpf);
+
+/* =========================================================
+    Criar coluna para futura chave estrangeira
+   ========================================================= */
+-- Relacionamento 1:1 (um cliente possui um CPF)
+-- Vamos colocar a FK na tabela CLIENTES
+
+ALTER TABLE CLIENTES   ADD COLUMN numero_cpf CHAR(11);
+
+/* =========================================================
+    Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE CLIENTES ADD CONSTRAINT fk_clientes_cpfs FOREIGN KEY (numero_cpf) EFERENCES CPFS (numero_cpf);
+
+```
+
+
+------------------------------------------------------------------------
+
+#### Exercício #2
+
+```{plantuml exercicio-02-resposta, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity CLIENTES {
+  cpf << key >>
+  nome
+}
+
+entity PEDIDOS {
+  cod_pedido << key >>
+  data
+  valor_total
+}
+
+relationship FAZEM {
+
+}
+
+CLIENTES -1- FAZEM
+FAZEM    -N- PEDIDOS
+
+@endchen
+```
+
+##### Exercício 2 - SQL referênte ao diagrama anterior
+
+```SQL
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE CLIENTES 
+(
+    cpf CHAR(11),
+    nome VARCHAR(255)
+);
+
+CREATE TABLE PEDIDOS 
+(
+    cod_pedido INT,
+    data DATE,
+    valor_total DECIMAL(10,2)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+
+ALTER TABLE CLIENTES  ADD PRIMARY KEY (cpf);
+
+ALTER TABLE PEDIDOS   ADD PRIMARY KEY (cod_pedido);
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+-- Relacionamento CLIENTES 1:N PEDIDOS 
+
+ALTER TABLE PEDIDOS ADD COLUMN cpf_cliente CHAR(11);
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE PEDIDOS ADD CONSTRAINT fk_pedidos_clientes  FOREIGN KEY (cpf_cliente) REFERENCES CLIENTES (cpf);
+
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #3
+
+```{plantuml exercicio-03-resposta, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity ALUNOS {
+  id_aluno << key >>
+  nome
+}
+
+entity DISCIPLINAS {
+  id_disciplina << key >>
+  nome
+}
+
+relationship MATRICULA {
+  semestre
+}
+
+ALUNOS -N- MATRICULA
+MATRICULA -N- DISCIPLINAS
+
+@endchen
+```
+
+##### Exercício 3 - SQL referênte ao diagrama anterior
+
+```SQL
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+
+CREATE TABLE ALUNOS 
+(
+    id_aluno INT,
+    nome VARCHAR(255)
+);
+
+CREATE TABLE DISCIPLINAS 
+(
+    id_disciplina INT,
+    nome VARCHAR(255)
+);
+
+/* Tabela para o relacionamento N:N */
+
+CREATE TABLE MATRICULA 
+(
+    semestre VARCHAR(10)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+
+ALTER TABLE ALUNOS  ADD PRIMARY KEY (id_aluno);
+
+ALTER TABLE DISCIPLINAS ADD PRIMARY KEY (id_disciplina);
+
+/* A PK da tabela MATRICULA será composta pelas FKs */
+-- Definiremos depois de criar as colunas de FK
+
+/* =========================================================
+   Criar colunas para futuras chaves estrangeiras (lado N)
+   ========================================================= */
+
+ALTER TABLE MATRICULA ADD COLUMN id_aluno INT, ADD COLUMN id_disciplina INT;
+
+/* =========================================================
+   Criar chaves estrangeiras
+   ========================================================= */
+
+ALTER TABLE MATRICULA ADD CONSTRAINT fk_matricula_aluno FOREIGN KEY (id_aluno) REFERENCES ALUNOS (id_aluno);
+
+ALTER TABLE MATRICULA ADD CONSTRAINT fk_matricula_disciplina FOREIGN KEY (id_disciplina) REFERENCES DISCIPLINAS (id_disciplina);
+
+/* =========================================================
+   Definir chave primária composta da tabela MATRICULA
+   ========================================================= */
+
+ALTER TABLE MATRICULA ADD PRIMARY KEY (id_aluno, id_disciplina);
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #4
+
+```{plantuml exercicio-04-resposta, plantuml.path="images"}
+@startchen
+
+entity FUNCIONARIOS {
+  id_funcionario <<key>>
+  nome
+  cargo
+  salario
+}
+
+entity DEPENDENTES {
+  id_dependente <<key>>
+  nome
+  parentesco
+  data_nascimento
+}
+
+relationship POSSUI {
+}
+
+FUNCIONARIOS -1- POSSUI
+POSSUI      -N- DEPENDENTES
+
+@endchen
+```
+
+##### Exercício 4 - SQL referênte ao diagrama anterior
+
+```SQL
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE FUNCIONARIOS 
+(
+    id_funcionario INT,
+    nome VARCHAR(255),
+    cargo VARCHAR(100),
+    salario DECIMAL(10,2)
+);
+
+CREATE TABLE DEPENDENTES 
+(
+    id_dependente INT,
+    nome VARCHAR(255),
+    parentesco VARCHAR(50),
+    data_nascimento DATE
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+
+ALTER TABLE FUNCIONARIOS ADD PRIMARY KEY (id_funcionario);
+
+ALTER TABLE DEPENDENTES ADD PRIMARY KEY (id_dependente);
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+
+-- Relacionamento FUNCIONARIOS 1:N DEPENDENTES
+
+ALTER TABLE DEPENDENTES ADD COLUMN id_funcionario INT;
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE DEPENDENTES ADD CONSTRAINT fk_dependentes_funcionarios FOREIGN KEY (id_funcionario) REFERENCES FUNCIONARIOS  (id_funcionario);
+
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #5
+
+```{plantuml exercicio-05-resposta, plantuml.path="images"}
+@startchen
+
+entity PEDIDOS {
+  id_pedido <<key>>
+  data_pedido
+  valor_total
+  status
+}
+
+entity ITENS {
+  id_item <<key>>
+  descricao
+  quantidade
+  preco_unitario
+}
+
+relationship CONTEM {
+}
+
+PEDIDOS -1- CONTEM
+CONTEM  -N- ITENS
+
+@endchen
+```
+
+##### Exercício 5 - SQL referênte ao diagrama anterior
+
+```SQL
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE PEDIDOS 
+(
+    id_pedido INT,
+    data_pedido DATE,
+    valor_total DECIMAL(10,2),
+    status VARCHAR(50)
+);
+
+CREATE TABLE ITENS 
+(
+    id_item INT,
+    descricao VARCHAR(255),
+    quantidade INT,
+    preco_unitario DECIMAL(10,2)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+ALTER TABLE PEDIDOS ADD PRIMARY KEY (id_pedido);
+
+ALTER TABLE ITENS ADD PRIMARY KEY (id_item);
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+
+-- Relacionamento PEDIDOS 1:N ITENS
+
+ALTER TABLE ITENS ADD COLUMN id_pedido INT;
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE ITENS ADD CONSTRAINT fk_itens_pedidos FOREIGN KEY (id_pedido) REFERENCES PEDIDOS (id_pedido);
+
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #6
+
+```{plantuml exercicio-06-resposta, plantuml.path="images"}
+@startchen
+
+entity MEDICOS {
+  id_medico <<key>>
+  nome
+  especialidade
+  crm
+}
+
+entity CONSULTAS {
+  id_consulta <<key>>
+  data_consulta
+  hora
+  observacoes
+}
+
+relationship REALIZA {
+}
+
+MEDICOS  -1- REALIZA
+REALIZA  -N- CONSULTAS
+
+@endchen
+```
+
+##### Exercício 6 - SQL referênte ao diagrama anterior
+
+```SQL
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE MEDICOS 
+(
+    id_medico INT,
+    nome VARCHAR(255),
+    especialidade VARCHAR(100),
+    crm VARCHAR(20)
+);
+
+CREATE TABLE CONSULTAS 
+(
+    id_consulta INT,
+    data_consulta DATE,
+    hora TIME,
+    observacoes VARCHAR(255)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+
+ALTER TABLE MEDICOS ADD PRIMARY KEY (id_medico);
+
+ALTER TABLE CONSULTAS ADD PRIMARY KEY (id_consulta);
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+-- Relacionamento MEDICOS 1:N CONSULTAS
+
+ALTER TABLE CONSULTAS ADD COLUMN id_medico INT;
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE CONSULTAS ADD CONSTRAINT fk_consultas_medicos FOREIGN KEY (id_medico) REFERENCES MEDICOS (id_medico);
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #7
+
+```{plantuml exercicio-07-resposta, plantuml.path="images"}
+@startchen
+
+entity PROFESSORES {
+  id_professor <<key>>
+  nome
+  titulacao
+  email
+}
+
+entity DEPARTAMENTOS {
+  id_departamento <<key>>
+  nome
+  localizacao
+  telefone
+}
+
+relationship DIRIGE {
+}
+
+PROFESSORES  -1- DIRIGE
+DIRIGE       -1- DEPARTAMENTOS
+
+@endchen
+```
+
+##### Exercício 7 - SQL referênte ao diagrama anterior
+
+```SQL
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE PROFESSORES 
+(
+    id_professor INT,
+    nome VARCHAR(255),
+    titulacao VARCHAR(100),
+    email VARCHAR(255)
+);
+
+CREATE TABLE DEPARTAMENTOS 
+(
+    id_departamento INT,
+    nome VARCHAR(255),
+    localizacao VARCHAR(255),
+    telefone VARCHAR(20)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+ALTER TABLE PROFESSORES ADD PRIMARY KEY (id_professor);
+
+ALTER TABLE DEPARTAMENTOS ADD PRIMARY KEY (id_departamento);
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+-- Relacionamento 1:1 entre PROFESSORES e DEPARTAMENTOS
+-- Aqui vamos colocar a FK em DEPARTAMENTOS, vinculando ao professor responsável
+
+ALTER TABLE DEPARTAMENTOS ADD COLUMN id_professor INT;
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE DEPARTAMENTOS ADD CONSTRAINT fk_departamentos_professores FOREIGN KEY (id_professor) REFERENCES PROFESSORES (id_professor);
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #8
+
+```{plantuml exercicio-08-resposta, plantuml.path="images"}
+@startchen
+
+entity LIVROS {
+  id_livro <<key>>
+  titulo
+  ano_publicacao
+  editora
+}
+
+entity AUTORES {
+  id_autor <<key>>
+  nome
+  nacionalidade
+}
+
+' Entidade associativa para o relacionamento N:N '
+
+entity ESCREVEM {
+  data_participacao
+  ordem_autoria
+}
+
+relationship ESCREVE {
+}
+
+LIVROS  -N- ESCREVE
+ESCREVE -N- AUTORES
+
+@endchen
+```
+
+##### Exercício 8 - SQL referênte ao diagrama anterior
+
+```SQL
+
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE LIVROS 
+(
+    id_livro INT,
+    titulo VARCHAR(255),
+    ano_publicacao INT,
+    editora VARCHAR(255)
+);
+
+CREATE TABLE AUTORES 
+(
+    id_autor INT,
+    nome VARCHAR(255),
+    nacionalidade VARCHAR(100)
+);
+
+/* Tabela para relacionamento N:N com atributos */
+
+CREATE TABLE ESCREVEM 
+(
+    data_participacao DATE,
+    ordem_autoria INT
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+ALTER TABLE LIVROS ADD PRIMARY KEY (id_livro);
+
+ALTER TABLE AUTORES ADD PRIMARY KEY (id_autor);
+
+/* =========================================================
+   Criar colunas para futuras chaves estrangeiras
+   ========================================================= */
+
+ALTER TABLE ESCREVEM ADD COLUMN id_livro INT, ADD COLUMN id_autor INT;
+
+/* =========================================================
+   Criar chaves estrangeiras
+   =====================================
+
+ALTER TABLE ESCREVEM ADD CONSTRAINT fk_escrevem_livros   FOREIGN KEY (id_livro) REFERENCES LIVROS (id_livro);
+
+ALTER TABLE ESCREVEM ADD CONSTRAINT fk_escrevem_autores  FOREIGN KEY (id_autor) REFERENCES AUTORES (id_autor);
+
+/* =========================================================
+   Definir chave primária composta da tabela ESCREVEM
+   ========================================================= */
+
+ALTER TABLE ESCREVEM  ADD PRIMARY KEY (id_livro, id_autor);
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #9
+
+```{plantuml exercicio-09-resposta, plantuml.path="images"}
+@startchen
+
+entity LIVROS {
+  id_livro <<key>>
+  titulo
+  ano
+}
+
+' Entidade fraca: depende de LIVROS '
+
+entity EXEMPLARES {
+  codigo_exemplar <<partial key>>
+  status
+}
+
+relationship POSSUI {
+}
+
+LIVROS    -1- POSSUI
+POSSUI    -N- EXEMPLARES
+
+@endchen
+```
+
+##### Exercício 9 - SQL referênte ao diagrama anterior
+
+```SQL
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+
+CREATE TABLE LIVROS 
+(
+    id_livro INT,
+    titulo VARCHAR(255),
+    ano INT
+);
+
+CREATE TABLE EXEMPLARES 
+(
+    codigo_exemplar INT,
+    status VARCHAR(50)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+
+ALTER TABLE LIVROS ADD PRIMARY KEY (id_livro);
+
+/* A chave primária de EXEMPLARES será composta depois, usando FK + codigo_exemplar */
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+-- Relacionamento LIVROS 1:N EXEMPLARES
+
+ALTER TABLE EXEMPLARES ADD COLUMN id_livro INT;
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE EXEMPLARES ADD CONSTRAINT fk_exemplares_livros FOREIGN KEY (id_livro) REFERENCES LIVROS (id_livro);
+
+/* =========================================================
+   Definir chave primária composta da tabela EXEMPLARES
+   ========================================================= */
+
+ALTER TABLE EXEMPLARES ADD PRIMARY KEY (id_livro, codigo_exemplar);
+
+
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #10
+
+```{plantuml exercicio-10-resposta, plantuml.path="images"}
+@startchen
+
+' ========================= '
+' Entidades                 '
+' ========================= '
+
+entity EMPRESAS {
+  id_empresa <<key>>
+  nome
+  cnpj
+  endereco
+}
+
+entity FUNCIONARIOS {
+  id_funcionario <<key>>
+  nome
+  cargo
+  salario
+}
+
+entity PROJETOS {
+  id_projeto <<key>>
+  nome
+  data_inicio
+  data_fim
+  descricao
+}
+
+' =========================                            '
+' Entidade associativa para Funcionário–Projeto (N:N)  '
+' =========================                            '
+
+entity PARTICIPAM {
+  data_inicio
+  data_fim
+  papel
+}
+
+' ========================= '
+' Relacionamentos           '
+' ========================= '
+
+relationship POSSUI {
+}
+
+relationship TRABALHA_EM {
+}
+
+' ========================= '
+' Cardinalidades            '
+' ========================= '
+
+EMPRESAS    -1- POSSUI
+POSSUI      -N- FUNCIONARIOS
+
+FUNCIONARIOS -N- TRABALHA_EM
+TRABALHA_EM  -N- PROJETOS
+
+@endchen
+```
+
+##### Exercício 10 - SQL referênte ao diagrama anterior
+
+```SQL
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE EMPRESAS (
+    id_empresa INT,
+    nome VARCHAR(255),
+    cnpj CHAR(14),
+    endereco VARCHAR(255)
+);
+
+CREATE TABLE FUNCIONARIOS (
+    id_funcionario INT,
+    nome VARCHAR(255),
+    cargo VARCHAR(100),
+    salario DECIMAL(10,2)
+);
+
+CREATE TABLE PROJETOS (
+    id_projeto INT,
+    nome VARCHAR(255),
+    data_inicio DATE,
+    data_fim DATE,
+    descricao VARCHAR(255)
+);
+
+CREATE TABLE PARTICIPAM (
+    data_inicio DATE,
+    data_fim DATE,
+    papel VARCHAR(100)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+ALTER TABLE EMPRESAS ADD PRIMARY KEY (id_empresa);
+
+ALTER TABLE FUNCIONARIOS ADD PRIMARY KEY (id_funcionario);
+
+ALTER TABLE PROJETOS ADD PRIMARY KEY (id_projeto);
+
+/* A tabela PARTICIPAM terá PK composta, definida depois */
+
+/* =========================================================
+   Criar colunas para futuras chaves estrangeiras
+   ========================================================= */
+-- Relacionamento EMPRESAS 1:N FUNCIONARIOS
+
+ALTER TABLE FUNCIONARIOS  ADD COLUMN id_empresa INT;
+
+-- Relacionamento FUNCIONARIOS N:N PROJETOS
+ALTER TABLE PARTICIPAM ADD COLUMN id_funcionario INT, ADD COLUMN id_projeto INT;
+
+/* =========================================================
+   Criar chaves estrangeiras
+   ========================================================= */
+ALTER TABLE FUNCIONARIOS ADD CONSTRAINT fk_funcionarios_empresas FOREIGN KEY (id_empresa) REFERENCES EMPRESAS (id_empresa);
+
+ALTER TABLE PARTICIPAM ADD CONSTRAINT fk_participam_funcionarios FOREIGN KEY (id_funcionario) REFERENCES FUNCIONARIOS (id_funcionario);
+
+ALTER TABLE PARTICIPAM ADD CONSTRAINT fk_participam_projetos FOREIGN KEY (id_projeto) REFERENCES PROJETOS (id_projeto);
+
+/* =========================================================
+   Definir chave primária composta da tabela PARTICIPAM
+   ========================================================= */
+
+ALTER TABLE PARTICIPAM ADD PRIMARY KEY (id_funcionario, id_projeto);
+
+
+```
+
+------------------------------------------------------------------------
+
+
+
+

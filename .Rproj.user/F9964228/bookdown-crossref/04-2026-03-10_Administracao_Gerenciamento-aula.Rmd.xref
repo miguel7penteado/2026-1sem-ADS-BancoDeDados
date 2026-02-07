@@ -1,0 +1,41 @@
+h1:administração-e-gerenciamento-de-bancos-de-dados Administração e Gerenciamento de Bancos de Dados
+h4:section 25/08/2025
+h4:professor-miguél-suares Professor Miguél Suares
+h2:administração-e-gerenciamento-de-banco-de-dados Administração e Gerenciamento de Banco de Dados:
+h2:papel-do-dba-database-administrator Papel do DBA (Database Administrator)
+h2:usuários-grupos-e-esquemas-de-bancos-de-dados Usuários, Grupos e Esquemas de Bancos de Dados
+h3:usuários Usuários
+h4:funções-principal Funções principal
+h4:privilégios Privilégios:
+h3:esquemas Esquemas
+h4:por-que-usar Por que usar
+h3:grupos-ou-roles Grupos ou Roles
+h4:vantagens Vantagens
+h3:sistema-de-gerenciamento-de-banco-de-dados-s.g.b.d. Sistema de Gerenciamento de Banco de Dados (S.G.B.D.)
+h3:criação-de-usuários-no-mysql Criação de usuários no MySQL
+h3:criação-de-esquemas-de-banco-de-dados-no-mysql Criação de Esquemas de Banco de Dados no MySQL
+h3:criando-de-grupos-de-permissões-no-mysql Criando de Grupos de Permissões no MySQL:
+h2:fazendo-tudo-funcionar-colocando-usuários-em-grupos-e-concedendo-a-estes-acesso-a-esquemas-de-banco-de-dados Fazendo tudo funcionar: Colocando usuários em grupos e concedendo a estes acesso a Esquemas de Banco de Dados:
+h3:associando-os-esquemas-que-representam-cada-estado-a-cada-grupo-que-representa-cada-regição Associando os esquemas que representam cada estado a cada grupo (que representa cada regição):
+h3:associando-associando-alunos-a-cada-grupo-região Associando associando alunos a cada grupo (região):
+h4:região-norte Região Norte
+h4:região-nordeste Região Nordeste
+h4:região-centro-oeste Região Centro-Oeste
+h4:região-sudeste Região Sudeste
+h4:região-sul Região Sul
+h3:associando-usuários-aos-grupos Associando usuários aos grupos
+h3:concedendo-privilégios-aos-grupos Concedendo privilégios aos grupos:
+h3:exemplo-no-mysql Exemplo no MySQL
+h4:passo-1---criar-o-esquema-de-banco-de-dados-compras Passo 1 - Criar o esquema de Banco de Dados 
+h4:passo-2---criar-o-usuário-aluno Passo 2 - Criar o usuário 
+h4:passo-2---conceder-ao-usuário-aluno-privilégios-sobre-todas-os-objetos-tabelas-views-gatilhos-índices-do-esquema-compras Passo 2 - Conceder ao usuário  privilégios sobre todas os objetos (tabelas, views, gatilhos, índices) do esquema 
+h4:passo-3---criar-a-tabela-clientes-dentro-do-esquema-compras Passo 3 - Criar a tabela  dentro do esquema 
+h3:exemplo-no-postgresql Exemplo no PostGreSQL
+h4:passo-0---crie-um-banco-de-dados-sistema_compras Passo 0 - Crie um Banco de Dados 
+h4:passo-1---criar-o-esquema-de-banco-de-dados-compras-1 Passo 1 - Criar o esquema de Banco de Dados 
+h4:passo-2---criar-o-usuário-aluno-1 Passo 2 - Criar o usuário 
+h4:passo-3---conceder-ao-usuário-aluno-privilégios-sobre-todas-os-objetos-tabelas-views-gatilhos-índices-do-esquema-compras Passo 3 - Conceder ao usuário  privilégios sobre todas os objetos (tabelas, views, gatilhos, índices) do esquema 
+h4:passo-4---criar-a-tabela-clientes-dentro-do-esquema-compras Passo 4 - Criar a tabela  dentro do esquema 
+h4:passo-5---conceder-privilégios-da-tabela-clientes-do-esquema-compras-para-o-usuário-aluno Passo 5 - Conceder privilégios da tabela  do esquema  para o usuário 
+h2:feito Feito
+

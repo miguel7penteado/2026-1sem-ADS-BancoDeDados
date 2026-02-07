@@ -1,0 +1,42 @@
+h1:modelagem-de-bancos-de-dados Modelagem de Bancos de Dados
+h4:section 18/08/2025
+h4:professor-miguél-suares Professor Miguél Suares
+h2:introdução-visitando-a-teoria-de-bancos-de-dados Introdução: Visitando a teoria de Bancos de Dados
+h2:modelo-matemático-de-um-banco-de-dados Modelo Matemático de um Banco de Dados
+h3:podemos-representa-lo-matemáticamente-utilizando-a-teoria-dos-conjuntos Podemos representa-lo matemáticamente utilizando a teoria dos conjuntos
+fig:tikz-diagrama0 Diagrama de Montadoras, Veículos e Proprietários
+h4:edgard-f-cood-explica-em-sua-obra-a-relational-model-of-data-for-large-shared-data-banks-como-definir-uma-banco-de-dados-compartilhado-matemáticamente Edgard F Cood explica em sua obra  como definir uma Banco de Dados compartilhado 
+h3:então-para-podemos-relacionar-estes-dois-conjuntos-funcionários-e-departamentos-utilizando-a-teoria-das-funções Então para podemos relacionar estes dois conjuntos (Funcionários e Departamentos) utilizando a Teoria das Funções
+fig:tikz-diagrama10 Diagrama de Montadoras, Veículos e Proprietários
+h2:modelo-lógico-de-banco-de-dados Modelo Lógico de Banco de Dados
+h3:modelo-conceitual-entidade-relacionamento-de-banco-de-dados Modelo Conceitual  de Banco de Dados
+h3:composição-e-significado-do-diagrama-entidade-relacionamento-der Composição e Significado do Diagrama Entidade Relacionamento (DER)
+fig:tikz-diagrama-DER-00 Diagrama de Montadoras, Veículos e Proprietários
+h2:modelo-físico-de-banco-de-dados Modelo Físico de Banco de Dados
+h3:geração-do-modelo-físico-para-aplica-lo-ao-sgbd-sistema-de-gerenciamento-de-banco-de-dados Geração do modelo Físico para aplica-lo ao SGBD (Sistema de Gerenciamento de Banco de Dados):
+h3:interagindo-com-o-modelo-físico---a-linguagem-sql-structured-query-language Interagindo com o Modelo Físico - A linguagem SQL (Structured Query Language)
+h2:exemplo-revenda-de-veículos-multi-marcas EXEMPLO: REVENDA DE VEÍCULOS MULTI-MARCAS
+h3:passo-1---visualizando-matemáticamente-os-dados Passo 1 - Visualizando matemáticamente os dados:
+h4:representação-matemática-em-conjuntos-e-seus-elementos Representação Matemática em Conjuntos e seus Elementos :
+fig:tikz-diagrama1 Diagrama de Montadoras, Veículos e Proprietários
+h4:gerando-os-relacionamentos-matemáticamente---teoria-das-funções-domínios-e-imagens Gerando os Relacionamentos  - (Teoria das Funções, Domínios e Imagens):
+fig:tikz-diagrama2 Diagrama de Montadoras, Veículos e Proprietários
+h3:modelo-lógico-modelo-entidade-relacionamento Modelo Lógico: Modelo Entidade Relacionamento
+h4:modelo-entidade-relacionamento Modelo Entidade Relacionamento
+h4:modelo-entidade-relacionamento---representação-gráfica Modelo Entidade Relacionamento - representação gráfica
+h2:verbos-relacionamentos-e-cardinalidade VERBOS: Relacionamentos e Cardinalidade
+h3:tipos-principais-de-cardinalidade 🔹 Tipos principais de cardinalidade
+h3:relacionamento-11-um-para-um 1. Relacionamento 
+h4:representação-no-der Representação no DER:
+h3:relacionamento-1n-um-para-muitos Relacionamento 
+h4:representação-no-der-1 Representação no DER:
+h3:relacionamento-nn-muitos-para-muitos Relacionamento N:N (Muitos para Muitos)
+h4:representação-no-der-2 Representação no DER:
+h2:entidade-dominante-e-entidade-subordinada Entidade Dominante e Entidade Subordinada
+h3:definições Definições:
+h2:cardinalidade-do-modelo-lógico-e-a-criação-de-chaves-estrangeiras-no-modelo-físico-relacional CARDINALIDADE DO MODELO LÓGICO E A CRIAÇÃO DE CHAVES ESTRANGEIRAS NO MODELO FÍSICO-RELACIONAL
+h2:normalização-em-bancos-de-dados-relaionais Normalização em Bancos de Dados Relaionais
+h3:tabela-desnormalizada Tabela Desnormalizada
+h3:tabela-normalizada Tabela Normalizada
+h2:referências Referências
+

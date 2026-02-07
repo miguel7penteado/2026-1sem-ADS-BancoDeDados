@@ -1,0 +1,128 @@
+---
+output: 
+  html_document: 
+    highlight: tango
+    theme: cerulean
+---
+
+# Fundamentos de Sistemas de Bancos de Dados
+
+#### 11/08/2025 {.unnumbered}
+
+#### Professor Miguél Suares {.unnumbered}
+
+------------------------------------------------------------------------
+
+## O início : Edgar Frank "Ted" Codd (19/08/1923 – 18/04/2003)
+
+-   Nome: Professor Codd - Matemático da IBM
+
+    ![](images/2025-08-11/01-codd.jpg){width="134"}
+
+-   1965: Cria modelo relacional nos tempos da IBM/NASA/Projeto Apolo
+
+![](images/2025-08-11/modelagem.jpg){width="334"}
+
+-   1969: Codd não é levado a sério
+
+-   1970: Publica a teoria relacional nas universidades (Berkley, Califórnia)
+
+------------------------------------------------------------------------
+
+## Anos 1970: IBM entra no Modelo relacional: SystemR e SEQUEL/SQL
+
+-   1970: IBM entende a importância do modelo de Codd
+
+-   1971: Como Codd publica o conhecimento, o projeto vai para *Raymond Francis Boyce*
+
+    ![](images/2025-08-11/05-Boyce.png){width="138"}
+
+-   1974: Donald D. Chamberlin e *Raymond Francis Boyce* criam a SQL na IBM
+
+-   1973: *Raymond Francis Boyce* criam o SystemR (Banco Relacional da IBM)
+
+-   Codd continua publicando artigos sobre modelo relacional
+
+-   1977: Ex-alunos prof Michael StoneBraker fundam a (Relational Inc) ORACLE "copiando" o SystemR da IBM.
+
+    ![](images/2025-08-11/06-oracle.png){width="132"}
+
+------------------------------------------------------------------------
+
+## Anos 1970: Prof Codd inspira Prof StoneBraker: BANCO INGRES
+
+-   1974: Michael StoneBraker começa projeto INGRES na Universidade de Berkley
+
+    ![](images/2025-08-11/07-Michael_StoneBraker.png){width="202"}
+
+-   1976: Nasce o INGRES, pai de muitos Bancos de Dados Modernos.
+
+    ![](images/2025-08-11/03-ingress-1.0.jpg){width="173"}
+
+-   1976: INGRES nasce com linguagem prórpia, o QUEL, ao invés do SQL
+
+-   INGRESS cria a empresa Relational INC
+
+-   Ex-funcionários (alunos) da Relational Inc fundam a SYBASE.
+
+------------------------------------------------------------------------
+
+## Anos 1980: INGRES (SEMI-LIVRE) vs IBM System R ( pago ) vs ORACLE
+
+-   1982 IBM transforma SystemR em IBM DB2.
+
+-   1984 Ex-funcionários (alunos) da Relational Inc fundam a SYBASE.
+
+    ![](images/2025-08-11/08-sybase.png){width="257"}
+
+-   1985: SoneBraker cria o PostGRES (Banco de Dados Objeto-Relacional)
+
+-   1986: INGRES perde para a ORACLE no mercado de SGBDs
+
+-   1989: SQL vira padrão ANSI e padrão ISO
+
+------------------------------------------------------------------------
+
+## Anos 1990: MySQL e POSTGRES que vira POSTGRESQL
+
+-   1993: O SYBASE SQL Server é portado para o Windows NT 4.0
+
+-   1994: Fim do relacionamento entre Microsoft e SYBASE: nasce o MS-SQL Server
+
+-   1994: **Andrew Yu** e **Jolly Chen** Adicionam SQL ao POSTGRES: nasce o **PostgreSQL**
+
+    ![](images/2025-08-11/10-postgresql.png){width="141"}
+
+-   1994: David Axmark, Allan Larsson e Michael "Monty" Widenius criam o MySQL.
+
+    ![](images/2025-08-11/09-mysql.png){width="131"}
+
+-   1997: Nasce o postgreSQL 6.0
+
+-   1998: Carlo Strozzi - Modelo Não-SQL (conceito de SGBDs que não usam interface SQL)
+
+------------------------------------------------------------------------
+
+## Anos 2000: Sybase eo No-SQL
+
+-   2003 - Doug Cutting e Mike Cafarella, projeto *Hadoop* baeado no documento *Google File System*
+
+-   2007 - 10gen (MongoDB Inc) inicia o projeto MongoDB (Não SQL)
+
+    ![](images/2025-08-11/11-mongodb.png){width="260"}
+
+-   2007 - Avinash Lakshman do facebook disponibiliza o Apache Cassandra (Não SQL)
+
+    ![](images/2025-08-11/12-cassandra.png){width="126"}
+
+-   2008 - BIG DATA Lançado o Apache HADOOP e o Apache Hive (emulador SQL)
+
+    ![](images/2025-08-11/13-hadoop.png){width="441"}BIG
+
+    ![](images/2025-08-11/14-Apache_Hive.png){width="139"}
+
+------------------------------------------------------------------------
+
+```{r imprimir-01, eval=FALSE, include=FALSE}
+rmarkdown::render("03-2025-08-19_20_.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
+```

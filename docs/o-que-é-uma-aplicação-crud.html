@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Slide 7 O que é uma Aplicação CRUD? | GTI - Banco de dados - 2025 - Anotações de aula</title>
+  <meta name="description" content="Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas." />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Slide 7 O que é uma Aplicação CRUD? | GTI - Banco de dados - 2025 - Anotações de aula" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="your book url like https://bookdown.org/yihui/bookdown/images/cover.jpg" />
+  <meta property="og:description" content="Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas." />
+  <meta name="github-repo" content="miguel7penteado/2025-2sem-GTI-BancoDeDados" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Slide 7 O que é uma Aplicação CRUD? | GTI - Banco de dados - 2025 - Anotações de aula" />
+  
+  <meta name="twitter:description" content="Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas." />
+  <meta name="twitter:image" content="your book url like https://bookdown.org/yihui/bookdown/images/cover.jpg" />
+
+<meta name="author" content="Professor Miguél Suares" />
+
+
+<meta name="date" content="2025-10-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="banco-de-dados-uma-aplicação-crud.html"/>
+<link rel="next" href="banco-de-dados-uma-aplicação-crud-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">2025-GTI- Disciplina de Banco de Dados - Anotações de Aula</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sobre estas anotações</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#acesso-ao-gitbook-celular"><i class="fa fa-check"></i><b>0.1</b> ACESSO AO GITBOOK CELULAR</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#leitores-de-formato-de-arquivo-epub-para-smartphone"><i class="fa fa-check"></i><b>0.2</b> Leitores de formato de arquivo EPUB para SmartPhone</a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#android"><i class="fa fa-check"></i><b>0.2.1</b> ANDROID</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#livros-texto-da-disciplina"><i class="fa fa-check"></i><b>0.3</b> Livros Texto da Disciplina</a>
+<ul>
+<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#introdução-a-sistemas-de-bancos-de-dados-do-autor-christopher-john-date"><i class="fa fa-check"></i><b>0.3.1</b> “Introdução a sistemas de bancos de dados” do autor “<strong>Christopher John Date</strong>”</a></li>
+<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#projeto-de-bancos-de-dados-do-autor-carlos-alberto-heuser"><i class="fa fa-check"></i><b>0.3.2</b> “<strong>Projeto de bancos de dados</strong>” do autor “Carlos Alberto HEUSER”</a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#calendário-das-aulas"><i class="fa fa-check"></i><b>0.4</b> Calendário das aulas</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#alunos-2025---2o-semestre"><i class="fa fa-check"></i><b>0.5</b> Alunos 2025 - 2o Semestre</a>
+<ul>
+<li class="chapter" data-level="0.5.1" data-path="index.html"><a href="index.html#campus-chácara-santo-antônio"><i class="fa fa-check"></i><b>0.5.1</b> Campus Chácara Santo Antônio</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="aula-inaugural.html"><a href="aula-inaugural.html"><i class="fa fa-check"></i><b>1</b> Aula Inaugural</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="aula-inaugural.html"><a href="aula-inaugural.html#disciplina-banco-de-dados"><i class="fa fa-check"></i><b>1.1</b> Disciplina: <strong>Banco de Dados</strong></a></li>
+<li class="chapter" data-level="1.2" data-path="aula-inaugural.html"><a href="aula-inaugural.html#sobre-o-professor"><i class="fa fa-check"></i><b>1.2</b> 👨‍🏫 Sobre o Professor</a></li>
+<li class="chapter" data-level="1.3" data-path="aula-inaugural.html"><a href="aula-inaugural.html#objetivos-da-disciplina"><i class="fa fa-check"></i><b>1.3</b> 🎯 Objetivos da Disciplina</a></li>
+<li class="chapter" data-level="1.4" data-path="aula-inaugural.html"><a href="aula-inaugural.html#calendário-da-disciplina"><i class="fa fa-check"></i><b>1.4</b> 📅 Calendário da Disciplina</a></li>
+<li class="chapter" data-level="1.5" data-path="aula-inaugural.html"><a href="aula-inaugural.html#ementa-resumida"><i class="fa fa-check"></i><b>1.5</b> 📚 Ementa Resumida</a></li>
+<li class="chapter" data-level="1.6" data-path="aula-inaugural.html"><a href="aula-inaugural.html#avaliação"><i class="fa fa-check"></i><b>1.6</b> 📝 Avaliação</a></li>
+<li class="chapter" data-level="1.7" data-path="aula-inaugural.html"><a href="aula-inaugural.html#ferramentas-da-disciplina"><i class="fa fa-check"></i><b>1.7</b> 🛠️ Ferramentas da Disciplina</a></li>
+<li class="chapter" data-level="1.8" data-path="aula-inaugural.html"><a href="aula-inaugural.html#expectativas-e-regras"><i class="fa fa-check"></i><b>1.8</b> 📌 Expectativas e Regras</a></li>
+<li class="chapter" data-level="1.9" data-path="aula-inaugural.html"><a href="aula-inaugural.html#dicas-para-mandar-bem"><i class="fa fa-check"></i><b>1.9</b> 💡 Dicas para Mandar Bem</a></li>
+<li class="chapter" data-level="1.10" data-path="aula-inaugural.html"><a href="aula-inaugural.html#encerramento"><i class="fa fa-check"></i><b>1.10</b> 🙌 Encerramento</a></li>
+<li class="chapter" data-level="1.11" data-path="aula-inaugural.html"><a href="aula-inaugural.html#estamos-prontos"><i class="fa fa-check"></i><b>1.11</b> Estamos prontos?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html"><i class="fa fa-check"></i><b>2</b> Fundamentos de Sistemas de Bancos de Dados</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#o-início-edgar-frank-ted-codd-19081923-18042003"><i class="fa fa-check"></i><b>2.1</b> O início : Edgar Frank “Ted” Codd (19/08/1923 – 18/04/2003)</a></li>
+<li class="chapter" data-level="2.2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#anos-1970-ibm-entra-no-modelo-relacional-systemr-e-sequelsql"><i class="fa fa-check"></i><b>2.2</b> Anos 1970: IBM entra no Modelo relacional: SystemR e SEQUEL/SQL</a></li>
+<li class="chapter" data-level="2.3" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#anos-1970-prof-codd-inspira-prof-stonebraker-banco-ingres"><i class="fa fa-check"></i><b>2.3</b> Anos 1970: Prof Codd inspira Prof StoneBraker: BANCO INGRES</a></li>
+<li class="chapter" data-level="2.4" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#anos-1980-ingres-semi-livre-vs-ibm-system-r-pago-vs-oracle"><i class="fa fa-check"></i><b>2.4</b> Anos 1980: INGRES (SEMI-LIVRE) vs IBM System R ( pago ) vs ORACLE</a></li>
+<li class="chapter" data-level="2.5" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#anos-1990-mysql-e-postgres-que-vira-postgresql"><i class="fa fa-check"></i><b>2.5</b> Anos 1990: MySQL e POSTGRES que vira POSTGRESQL</a></li>
+<li class="chapter" data-level="2.6" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#anos-2000-sybase-eo-no-sql"><i class="fa fa-check"></i><b>2.6</b> Anos 2000: Sybase eo No-SQL</a></li>
+<li class="chapter" data-level="2.7" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#exercícios"><i class="fa fa-check"></i><b>2.7</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html"><i class="fa fa-check"></i><b>3</b> Modelagem de Bancos de Dados</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#introdução-visitando-a-teoria-de-bancos-de-dados"><i class="fa fa-check"></i><b>3.1</b> Introdução: Visitando a teoria de Bancos de Dados</a></li>
+<li class="chapter" data-level="3.2" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#modelo-matemático-de-um-banco-de-dados"><i class="fa fa-check"></i><b>3.2</b> Modelo Matemático de um Banco de Dados</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#podemos-representa-lo-matemáticamente-utilizando-a-teoria-dos-conjuntos"><i class="fa fa-check"></i><b>3.2.1</b> Podemos representa-lo matemáticamente utilizando a teoria dos conjuntos</a></li>
+<li class="chapter" data-level="3.2.2" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#então-para-podemos-relacionar-estes-dois-conjuntos-funcionários-e-departamentos-utilizando-a-teoria-das-funções"><i class="fa fa-check"></i><b>3.2.2</b> Então para podemos relacionar estes dois conjuntos (Funcionários e Departamentos) utilizando a Teoria das Funções</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#modelo-lógico-de-banco-de-dados"><i class="fa fa-check"></i><b>3.3</b> Modelo Lógico de Banco de Dados</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#modelo-conceitual-entidade-relacionamento-de-banco-de-dados"><i class="fa fa-check"></i><b>3.3.1</b> Modelo Conceitual “Entidade Relacionamento” de Banco de Dados</a></li>
+<li class="chapter" data-level="3.3.2" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#composição-e-significado-do-diagrama-entidade-relacionamento-der"><i class="fa fa-check"></i><b>3.3.2</b> Composição e Significado do Diagrama Entidade Relacionamento (DER)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#modelo-físico-de-banco-de-dados"><i class="fa fa-check"></i><b>3.4</b> Modelo Físico de Banco de Dados</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#geração-do-modelo-físico-para-aplica-lo-ao-sgbd-sistema-de-gerenciamento-de-banco-de-dados"><i class="fa fa-check"></i><b>3.4.1</b> Geração do modelo Físico para aplica-lo ao SGBD (Sistema de Gerenciamento de Banco de Dados):</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#interagindo-com-o-modelo-físico---a-linguagem-sql-structured-query-language"><i class="fa fa-check"></i><b>3.4.2</b> Interagindo com o Modelo Físico - A linguagem SQL (Structured Query Language)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#exemplo-revenda-de-veículos-multi-marcas"><i class="fa fa-check"></i><b>3.5</b> EXEMPLO: REVENDA DE VEÍCULOS MULTI-MARCAS</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#passo-1---visualizando-matemáticamente-os-dados"><i class="fa fa-check"></i><b>3.5.1</b> Passo 1 - Visualizando matemáticamente os dados:</a></li>
+<li class="chapter" data-level="3.5.2" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#modelo-lógico-modelo-entidade-relacionamento"><i class="fa fa-check"></i><b>3.5.2</b> Modelo Lógico: Modelo Entidade Relacionamento</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#verbos-relacionamentos-e-cardinalidade"><i class="fa fa-check"></i><b>3.6</b> VERBOS: Relacionamentos e Cardinalidade</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#tipos-principais-de-cardinalidade"><i class="fa fa-check"></i><b>3.6.1</b> 🔹 Tipos principais de cardinalidade</a></li>
+<li class="chapter" data-level="3.6.2" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#relacionamento-11-um-para-um"><i class="fa fa-check"></i><b>3.6.2</b> 1. Relacionamento <strong>1:1 (Um para Um)</strong></a></li>
+<li class="chapter" data-level="3.6.3" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#relacionamento-1n-um-para-muitos"><i class="fa fa-check"></i><b>3.6.3</b> Relacionamento <strong>1:N (Um para Muitos)</strong></a></li>
+<li class="chapter" data-level="3.6.4" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#relacionamento-nn-muitos-para-muitos"><i class="fa fa-check"></i><b>3.6.4</b> Relacionamento N:N (Muitos para Muitos)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#entidade-dominante-e-entidade-subordinada"><i class="fa fa-check"></i><b>3.7</b> Entidade Dominante e Entidade Subordinada</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#definições"><i class="fa fa-check"></i><b>3.7.1</b> Definições:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#cardinalidade-do-modelo-lógico-e-a-criação-de-chaves-estrangeiras-no-modelo-físico-relacional"><i class="fa fa-check"></i><b>3.8</b> CARDINALIDADE DO MODELO LÓGICO E A CRIAÇÃO DE CHAVES ESTRANGEIRAS NO MODELO FÍSICO-RELACIONAL</a></li>
+<li class="chapter" data-level="3.9" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#normalização-em-bancos-de-dados-relaionais"><i class="fa fa-check"></i><b>3.9</b> Normalização em Bancos de Dados Relaionais</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#tabela-desnormalizada"><i class="fa fa-check"></i><b>3.9.1</b> Tabela Desnormalizada</a></li>
+<li class="chapter" data-level="3.9.2" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#tabela-normalizada"><i class="fa fa-check"></i><b>3.9.2</b> Tabela Normalizada</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#referências"><i class="fa fa-check"></i><b>3.10</b> Referências</a></li>
+<li class="chapter" data-level="3.11" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#exercícios-resolvidos"><i class="fa fa-check"></i><b>3.11</b> Exercícios RESOLVIDOS</a>
+<ul>
+<li class="chapter" data-level="3.11.1" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#exercícios-1"><i class="fa fa-check"></i><b>3.11.1</b> Exercícios</a></li>
+<li class="chapter" data-level="3.11.2" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#lista-de-exercícios-modelo-entidade-relacionamento-mer"><i class="fa fa-check"></i><b>3.11.2</b> 📝 Lista de Exercícios – Modelo Entidade-Relacionamento (MER)</a></li>
+<li class="chapter" data-level="3.11.3" data-path="modelagem-de-bancos-de-dados.html"><a href="modelagem-de-bancos-de-dados.html#respostas-dos-exercícios"><i class="fa fa-check"></i><b>3.11.3</b> Respostas dos Exercícios:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html"><i class="fa fa-check"></i><b>4</b> Administração e Gerenciamento de Bancos de Dados</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#administração-e-gerenciamento-de-banco-de-dados"><i class="fa fa-check"></i><b>4.1</b> Administração e Gerenciamento de Banco de Dados:</a></li>
+<li class="chapter" data-level="4.2" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#papel-do-dba-database-administrator"><i class="fa fa-check"></i><b>4.2</b> Papel do DBA (Database Administrator)</a></li>
+<li class="chapter" data-level="4.3" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#usuários-grupos-e-esquemas-de-bancos-de-dados"><i class="fa fa-check"></i><b>4.3</b> Usuários, Grupos e Esquemas de Bancos de Dados</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#usuários"><i class="fa fa-check"></i><b>4.3.1</b> Usuários</a></li>
+<li class="chapter" data-level="4.3.2" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#esquemas"><i class="fa fa-check"></i><b>4.3.2</b> Esquemas</a></li>
+<li class="chapter" data-level="4.3.3" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#grupos-ou-roles"><i class="fa fa-check"></i><b>4.3.3</b> Grupos ou Roles</a></li>
+<li class="chapter" data-level="4.3.4" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#sistema-de-gerenciamento-de-banco-de-dados-s.g.b.d."><i class="fa fa-check"></i><b>4.3.4</b> Sistema de Gerenciamento de Banco de Dados (S.G.B.D.)</a></li>
+<li class="chapter" data-level="4.3.5" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#criação-de-usuários-no-mysql"><i class="fa fa-check"></i><b>4.3.5</b> Criação de usuários no MySQL</a></li>
+<li class="chapter" data-level="4.3.6" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#criação-de-esquemas-de-banco-de-dados-no-mysql"><i class="fa fa-check"></i><b>4.3.6</b> Criação de Esquemas de Banco de Dados no MySQL</a></li>
+<li class="chapter" data-level="4.3.7" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#criando-de-grupos-de-permissões-no-mysql"><i class="fa fa-check"></i><b>4.3.7</b> Criando de Grupos de Permissões no MySQL:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#fazendo-tudo-funcionar-colocando-usuários-em-grupos-e-concedendo-a-estes-acesso-a-esquemas-de-banco-de-dados"><i class="fa fa-check"></i><b>4.4</b> Fazendo tudo funcionar: Colocando usuários em grupos e concedendo a estes acesso a Esquemas de Banco de Dados:</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#associando-os-esquemas-que-representam-cada-estado-a-cada-grupo-que-representa-cada-regição"><i class="fa fa-check"></i><b>4.4.1</b> Associando os esquemas que representam cada estado a cada grupo (que representa cada regição):</a></li>
+<li class="chapter" data-level="4.4.2" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#associando-associando-alunos-a-cada-grupo-região"><i class="fa fa-check"></i><b>4.4.2</b> Associando associando alunos a cada grupo (região):</a></li>
+<li class="chapter" data-level="4.4.3" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#associando-usuários-aos-grupos"><i class="fa fa-check"></i><b>4.4.3</b> Associando usuários aos grupos</a></li>
+<li class="chapter" data-level="4.4.4" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#concedendo-privilégios-aos-grupos"><i class="fa fa-check"></i><b>4.4.4</b> Concedendo privilégios aos grupos:</a></li>
+<li class="chapter" data-level="4.4.5" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#exemplo-no-mysql"><i class="fa fa-check"></i><b>4.4.5</b> Exemplo no MySQL</a></li>
+<li class="chapter" data-level="4.4.6" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#exemplo-no-postgresql"><i class="fa fa-check"></i><b>4.4.6</b> Exemplo no PostGreSQL</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="administração-e-gerenciamento-de-bancos-de-dados-1.html"><a href="administração-e-gerenciamento-de-bancos-de-dados-1.html"><i class="fa fa-check"></i><b>5</b> Administração e Gerenciamento de Bancos de Dados</a></li>
+<li class="chapter" data-level="6" data-path="banco-de-dados-uma-aplicação-crud.html"><a href="banco-de-dados-uma-aplicação-crud.html"><i class="fa fa-check"></i><b>6</b> Banco de Dados: Uma Aplicação CRUD</a></li>
+<li class="chapter" data-level="7" data-path="o-que-é-uma-aplicação-crud.html"><a href="o-que-é-uma-aplicação-crud.html"><i class="fa fa-check"></i><b>7</b> O que é uma Aplicação CRUD?</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="o-que-é-uma-aplicação-crud.html"><a href="o-que-é-uma-aplicação-crud.html#conceito-de-crud"><i class="fa fa-check"></i><b>7.1</b> Conceito de CRUD</a></li>
+<li class="chapter" data-level="7.2" data-path="o-que-é-uma-aplicação-crud.html"><a href="o-que-é-uma-aplicação-crud.html#o-padrão-de-design-de-sistemas-mvc-model-view-controller"><i class="fa fa-check"></i><b>7.2</b> O padrão de Design de Sistemas MVC (Model View Controller)</a></li>
+<li class="chapter" data-level="7.3" data-path="o-que-é-uma-aplicação-crud.html"><a href="o-que-é-uma-aplicação-crud.html#construindo-uma-aplicação-crud-para-interfacear-com-a-tabela-pessoa"><i class="fa fa-check"></i><b>7.3</b> Construindo uma aplicação CRUD para interfacear com a tabela “Pessoa”</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="o-que-é-uma-aplicação-crud.html"><a href="o-que-é-uma-aplicação-crud.html#representação-gráfica-no-modelo-físico-relacional"><i class="fa fa-check"></i><b>7.3.1</b> Representação gráfica no modelo Físico-Relacional</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="o-que-é-uma-aplicação-crud.html"><a href="o-que-é-uma-aplicação-crud.html#criação-de-uma-aplicação-crud"><i class="fa fa-check"></i><b>7.4</b> Criação de uma aplicação CRUD</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html"><i class="fa fa-check"></i><b>8</b> Banco de Dados: Uma Aplicação CRUD</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-02"><i class="fa fa-check"></i><b>8.1</b> Exemplo 02</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#servidor-python"><i class="fa fa-check"></i><b>8.1.1</b> Servidor python</a></li>
+<li class="chapter" data-level="8.1.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#cliente-html-conexão-restful"><i class="fa fa-check"></i><b>8.1.2</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-03"><i class="fa fa-check"></i><b>8.2</b> Exemplo 03</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#servidor-perl"><i class="fa fa-check"></i><b>8.2.1</b> Servidor Perl</a></li>
+<li class="chapter" data-level="8.2.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#cliente-html-conexão-restful-1"><i class="fa fa-check"></i><b>8.2.2</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-05"><i class="fa fa-check"></i><b>8.3</b> Exemplo 05</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#criando-o-arquivo-c-do-servidor"><i class="fa fa-check"></i><b>8.3.1</b> Criando o arquivo C++ do servidor</a></li>
+<li class="chapter" data-level="8.3.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#ferramenta-de-compilação-cmake"><i class="fa fa-check"></i><b>8.3.2</b> Ferramenta de compilação CMAKE</a></li>
+<li class="chapter" data-level="8.3.3" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#cliente-html-conexão-restful-2"><i class="fa fa-check"></i><b>8.3.3</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="banco-de-dados-mysql-mariadb.html"><a href="banco-de-dados-mysql-mariadb.html"><i class="fa fa-check"></i><b>9</b> Banco de Dados: MySQL (MariaDB)</a></li>
+<li class="chapter" data-level="10" data-path="banco-de-dados-mysql-mariadb-1.html"><a href="banco-de-dados-mysql-mariadb-1.html"><i class="fa fa-check"></i><b>10</b> Banco de Dados: MySQL (MariaDB)</a></li>
+<li class="chapter" data-level="11" data-path="banco-de-dados-postgres.html"><a href="banco-de-dados-postgres.html"><i class="fa fa-check"></i><b>11</b> Banco de Dados: Postgres</a></li>
+<li class="chapter" data-level="12" data-path="banco-de-dados-postgres-1.html"><a href="banco-de-dados-postgres-1.html"><i class="fa fa-check"></i><b>12</b> Banco de Dados: Postgres</a></li>
+<li class="chapter" data-level="13" data-path="banco-de-dados-espaciais---cliente-qgis.html"><a href="banco-de-dados-espaciais---cliente-qgis.html"><i class="fa fa-check"></i><b>13</b> Banco de Dados Espaciais - Cliente QGIS</a></li>
+<li class="chapter" data-level="14" data-path="banco-de-dados-espaciais---cliente-qgis-1.html"><a href="banco-de-dados-espaciais---cliente-qgis-1.html"><i class="fa fa-check"></i><b>14</b> Banco de Dados Espaciais - Cliente QGIS</a></li>
+<li class="chapter" data-level="15" data-path="banco-de-dados-estatístico---cliente-rstudio.html"><a href="banco-de-dados-estatístico---cliente-rstudio.html"><i class="fa fa-check"></i><b>15</b> Banco de Dados Estatístico - Cliente Rstudio</a></li>
+<li class="chapter" data-level="16" data-path="banco-de-dados-estatístico---cliente-rstudio-1.html"><a href="banco-de-dados-estatístico---cliente-rstudio-1.html"><i class="fa fa-check"></i><b>16</b> Banco de Dados Estatístico - Cliente Rstudio</a></li>
+<li class="chapter" data-level="17" data-path="banco-de-dados---análise-de-dados-parte-01.html"><a href="banco-de-dados---análise-de-dados-parte-01.html"><i class="fa fa-check"></i><b>17</b> Banco de Dados - Análise de Dados Parte 01</a></li>
+<li class="chapter" data-level="18" data-path="banco-de-dados---análise-de-dados-parte-01-1.html"><a href="banco-de-dados---análise-de-dados-parte-01-1.html"><i class="fa fa-check"></i><b>18</b> Banco de Dados - Análise de Dados Parte 01</a></li>
+<li class="chapter" data-level="19" data-path="banco-de-dados---análise-de-dados-parte-02.html"><a href="banco-de-dados---análise-de-dados-parte-02.html"><i class="fa fa-check"></i><b>19</b> Banco de Dados - Análise de Dados Parte 02</a></li>
+<li class="chapter" data-level="20" data-path="banco-de-dados---análise-de-dados-parte-02-1.html"><a href="banco-de-dados---análise-de-dados-parte-02-1.html"><i class="fa fa-check"></i><b>20</b> Banco de Dados - Análise de Dados Parte 02</a></li>
+<li class="chapter" data-level="21" data-path="banco-de-dados---análise-de-dados-parte-03.html"><a href="banco-de-dados---análise-de-dados-parte-03.html"><i class="fa fa-check"></i><b>21</b> Banco de Dados - Análise de Dados Parte 03</a></li>
+<li class="chapter" data-level="22" data-path="banco-de-dados---análise-de-dados-parte-03-1.html"><a href="banco-de-dados---análise-de-dados-parte-03-1.html"><i class="fa fa-check"></i><b>22</b> Banco de Dados - Análise de Dados Parte 03</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com Biblioteca R bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">GTI - Banco de dados - 2025 - Anotações de aula</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="o-que-é-uma-aplicação-crud" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Slide 7</span> O que é uma Aplicação CRUD?<a href="o-que-é-uma-aplicação-crud.html#o-que-é-uma-aplicação-crud" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Hoje vamos desenvolver um cadastro web simples e entender o que é o acronimo C.R.U.D.</p>
+<div id="conceito-de-crud" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Conceito de CRUD<a href="o-que-é-uma-aplicação-crud.html#conceito-de-crud" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>CRUD</strong> é um acrônimo para quatro operações fundamentais que um sistema realiza sobre dados em um banco de dados:</p>
+<table>
+<colgroup>
+<col width="23%" />
+<col width="23%" />
+<col width="30%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operação</th>
+<th>Verbo HTTP (na web)</th>
+<th>SQL</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>C</strong>reate</td>
+<td><code>POST</code></td>
+<td><code>INSERT</code></td>
+<td>Inserir novos registros.</td>
+</tr>
+<tr class="even">
+<td><strong>R</strong>ead</td>
+<td><code>GET</code></td>
+<td><code>SELECT</code></td>
+<td>Ler (listar ou buscar) registros existentes.</td>
+</tr>
+<tr class="odd">
+<td><strong>U</strong>pdate</td>
+<td><code>PUT</code> / <code>PATCH</code></td>
+<td><code>UPDATE</code></td>
+<td>Atualizar dados de registros existentes.</td>
+</tr>
+<tr class="even">
+<td><strong>D</strong>elete</td>
+<td><code>DELETE</code></td>
+<td><code>DELETE</code></td>
+<td>Remover registros.</td>
+</tr>
+</tbody>
+</table>
+<p>Essas quatro operações compõem a base da maioria das <strong>aplicações web</strong> que manipulam dados persistidos em um <strong>SGBD</strong> (Sistema Gerenciador de Banco de Dados).</p>
+<hr />
+</div>
+<div id="o-padrão-de-design-de-sistemas-mvc-model-view-controller" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> O padrão de Design de Sistemas MVC (Model View Controller)<a href="o-que-é-uma-aplicação-crud.html#o-padrão-de-design-de-sistemas-mvc-model-view-controller" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Uma aplicação Cliente-Servidor (modelo 2 camadas) geralmente segue o <strong>padrão MVC</strong> — <strong>Model, View, Controller</strong>:</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="19%" />
+<col width="25%" />
+<col width="34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Camada</th>
+<th align="left">Nome em Inglês</th>
+<th align="left">Função</th>
+<th align="left">Exemplo na Aplicação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Modelo</strong></td>
+<td align="left">Model</td>
+<td align="left">Representa a estrutura dos dados armazenados e suas regras de negócio.</td>
+<td align="left">Tabela <strong>pessoas</strong> no banco MySQL e classe <code>Pessoa</code> no SQLAlchemy.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Visão</strong></td>
+<td align="left">View</td>
+<td align="left">Define a interface visual com o usuário, permitindo inserir, visualizar e interagir com os dados.</td>
+<td align="left">Páginas <strong>HTML</strong>, <strong>CSS</strong> e scripts <strong>JavaScript</strong> (formulário e tabela).</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Controlador</strong></td>
+<td align="left">Controller</td>
+<td align="left">Recebe as ações do usuário, interpreta as solicitações e chama os serviços adequados (operações CRUD).</td>
+<td align="left">Rotas <strong>Flask</strong> (<code>/pessoas</code>, <code>/pessoas/&lt;cpf&gt;</code>) no servidor Python.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="construindo-uma-aplicação-crud-para-interfacear-com-a-tabela-pessoa" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Construindo uma aplicação CRUD para interfacear com a tabela “Pessoa”<a href="o-que-é-uma-aplicação-crud.html#construindo-uma-aplicação-crud-para-interfacear-com-a-tabela-pessoa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Considere o Diagrama Entidade-Relacionamento abaixo:</p>
+<p><img src="images/aula-05-Exemplo-01-continua%C3%A7%C3%A3o.svg" /><!-- --></p>
+<p>Vamos Converte-lo para o Modelo Físico-Relacional em linguagem SQL:</p>
+<div id="representação-gráfica-no-modelo-físico-relacional" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Representação gráfica no modelo Físico-Relacional<a href="o-que-é-uma-aplicação-crud.html#representação-gráfica-no-modelo-físico-relacional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vamos agora representa-lo em linguagem SQL:</p>
+<p><img src="images/aula-05-Exemplo-01-Modelo_Fisico.svg" /><!-- --></p>
+</div>
+</div>
+<div id="criação-de-uma-aplicação-crud" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Criação de uma aplicação CRUD<a href="o-que-é-uma-aplicação-crud.html#criação-de-uma-aplicação-crud" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vamos criar um microsas (micro Software As A Service) , ou seja, um site para inserir informações dentro da tabela acima.</p>
+<p><img src="images/Diagrama-Aplicacao-CRUD.svg" /><!-- --></p>
+<table>
+<caption>Criando um Esquema de Banco de Dados - CRUD tabela Pessoas</caption>
+<colgroup>
+<col width="34%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Informações de Projeto</th>
+<th>Tecnologias utilizadas no projeto CRUD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Servidor de banco de dados SGBD</td>
+<td>MySQL 8</td>
+</tr>
+<tr class="even">
+<td>Usuário de Banco de Dados</td>
+<td><strong>pessoas_user</strong></td>
+</tr>
+<tr class="odd">
+<td>De onde pode ser acessado</td>
+<td>Apenas Máquina Local (localhost)</td>
+</tr>
+<tr class="even">
+<td>Esquema de Banco de Dados</td>
+<td><strong>pessoasdb</strong></td>
+</tr>
+<tr class="odd">
+<td>Servidor de Aplicação</td>
+<td>Python 3</td>
+</tr>
+<tr class="even">
+<td>Cliente da Aplicação</td>
+<td>HTML + Javascript</td>
+</tr>
+<tr class="odd">
+<td>Tecnologia de API</td>
+<td>RestuFul</td>
+</tr>
+<tr class="even">
+<td><strong>Biblioteca de Javascript</strong> para criar API <strong>RestFul</strong></td>
+<td>Método <strong>Fetch</strong> (Biblioteca Padrão do JavaScript para API RestFul)</td>
+</tr>
+<tr class="odd">
+<td>Formato de Dados entre Servidor de Aplicação e Cliente de Aplicação</td>
+<td><strong>JSON</strong></td>
+</tr>
+</tbody>
+</table>
+<div id="criação-de-um-usuário-para-interagir-com-o-esquema-de-banco-de-dados" class="section level4 hasAnchor" number="7.4.0.1">
+<h4><span class="header-section-number">7.4.0.1</span> Criação de um usuário para Interagir com o Esquema de Banco de Dados<a href="o-que-é-uma-aplicação-crud.html#criação-de-um-usuário-para-interagir-com-o-esquema-de-banco-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb35"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb35-1"><a href="o-que-é-uma-aplicação-crud.html#cb35-1" tabindex="-1"></a></span>
+<span id="cb35-2"><a href="o-que-é-uma-aplicação-crud.html#cb35-2" tabindex="-1"></a><span class="co">-- CRIAR USUÁRIO LOCAL E CONCEDER PERMISSÕES</span></span>
+<span id="cb35-3"><a href="o-que-é-uma-aplicação-crud.html#cb35-3" tabindex="-1"></a><span class="co">-- Troque &#39;MinhaSenhaForte&#39; por uma senha segura</span></span>
+<span id="cb35-4"><a href="o-que-é-uma-aplicação-crud.html#cb35-4" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="o-que-é-uma-aplicação-crud.html#cb35-5" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="o-que-é-uma-aplicação-crud.html#cb35-6" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> <span class="st">&#39;pessoas_user&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;MinhaSenhaForte&#39;</span>;</span>
+<span id="cb35-7"><a href="o-que-é-uma-aplicação-crud.html#cb35-7" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="o-que-é-uma-aplicação-crud.html#cb35-8" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> pessoasdb.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;pessoas_user&#39;</span>@<span class="st">&#39;localhost&#39;</span>;</span>
+<span id="cb35-9"><a href="o-que-é-uma-aplicação-crud.html#cb35-9" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="o-que-é-uma-aplicação-crud.html#cb35-10" tabindex="-1"></a><span class="kw">FLUSH</span> <span class="kw">PRIVILEGES</span>;</span></code></pre></div>
+</div>
+<div id="criação-do-esquema-de-banco-de-dados-no-sgbd-mysql" class="section level4 hasAnchor" number="7.4.0.2">
+<h4><span class="header-section-number">7.4.0.2</span> Criação do Esquema de Banco de Dados no SGBD MySQL<a href="o-que-é-uma-aplicação-crud.html#criação-do-esquema-de-banco-de-dados-no-sgbd-mysql" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Agora vamos criar um esquema de Banco de Dados para abrigar nossa futura tabela:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb36-1"><a href="o-que-é-uma-aplicação-crud.html#cb36-1" tabindex="-1"></a><span class="co">-- 1) CRIAR BANCO (ajuste o nome se quiser)</span></span>
+<span id="cb36-2"><a href="o-que-é-uma-aplicação-crud.html#cb36-2" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="o-que-é-uma-aplicação-crud.html#cb36-3" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> pessoasdb</span>
+<span id="cb36-4"><a href="o-que-é-uma-aplicação-crud.html#cb36-4" tabindex="-1"></a>  <span class="dt">CHARACTER</span> <span class="kw">SET</span> utf8mb4</span>
+<span id="cb36-5"><a href="o-que-é-uma-aplicação-crud.html#cb36-5" tabindex="-1"></a>  COLLATE utf8mb4_0900_ai_ci;</span>
+<span id="cb36-6"><a href="o-que-é-uma-aplicação-crud.html#cb36-6" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="o-que-é-uma-aplicação-crud.html#cb36-7" tabindex="-1"></a><span class="kw">USE</span> pessoasdb;</span></code></pre></div>
+</div>
+<div id="criação-da-tabela-pessoas" class="section level4 hasAnchor" number="7.4.0.3">
+<h4><span class="header-section-number">7.4.0.3</span> Criação da Tabela “pessoas”<a href="o-que-é-uma-aplicação-crud.html#criação-da-tabela-pessoas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb37"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb37-1"><a href="o-que-é-uma-aplicação-crud.html#cb37-1" tabindex="-1"></a></span>
+<span id="cb37-2"><a href="o-que-é-uma-aplicação-crud.html#cb37-2" tabindex="-1"></a><span class="co">-- 3) TABELA &#39;pessoas&#39; COMPATÍVEL COM O MODELO SQLAlchemy</span></span>
+<span id="cb37-3"><a href="o-que-é-uma-aplicação-crud.html#cb37-3" tabindex="-1"></a><span class="co">--    - cpf: chave primária (String(14))</span></span>
+<span id="cb37-4"><a href="o-que-é-uma-aplicação-crud.html#cb37-4" tabindex="-1"></a><span class="co">--    - nome, endereco, foto: TEXT</span></span>
+<span id="cb37-5"><a href="o-que-é-uma-aplicação-crud.html#cb37-5" tabindex="-1"></a><span class="co">--    - data_nascimento: DATE</span></span>
+<span id="cb37-6"><a href="o-que-é-uma-aplicação-crud.html#cb37-6" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="o-que-é-uma-aplicação-crud.html#cb37-7" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> pessoas </span>
+<span id="cb37-8"><a href="o-que-é-uma-aplicação-crud.html#cb37-8" tabindex="-1"></a>(</span>
+<span id="cb37-9"><a href="o-que-é-uma-aplicação-crud.html#cb37-9" tabindex="-1"></a>  cpf             <span class="dt">VARCHAR</span>(<span class="dv">14</span>)  <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb37-10"><a href="o-que-é-uma-aplicação-crud.html#cb37-10" tabindex="-1"></a>  nome            TEXT         <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb37-11"><a href="o-que-é-uma-aplicação-crud.html#cb37-11" tabindex="-1"></a>  endereco        TEXT         <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb37-12"><a href="o-que-é-uma-aplicação-crud.html#cb37-12" tabindex="-1"></a>  data_nascimento <span class="dt">DATE</span>         <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb37-13"><a href="o-que-é-uma-aplicação-crud.html#cb37-13" tabindex="-1"></a>  foto            TEXT         <span class="kw">NULL</span>,</span>
+<span id="cb37-14"><a href="o-que-é-uma-aplicação-crud.html#cb37-14" tabindex="-1"></a>  <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (cpf)</span>
+<span id="cb37-15"><a href="o-que-é-uma-aplicação-crud.html#cb37-15" tabindex="-1"></a>) ENGINE<span class="op">=</span>InnoDB <span class="kw">DEFAULT</span> CHARSET<span class="op">=</span>utf8mb4 COLLATE<span class="op">=</span>utf8mb4_0900_ai_ci;</span>
+<span id="cb37-16"><a href="o-que-é-uma-aplicação-crud.html#cb37-16" tabindex="-1"></a></span>
+<span id="cb37-17"><a href="o-que-é-uma-aplicação-crud.html#cb37-17" tabindex="-1"></a></span>
+<span id="cb37-18"><a href="o-que-é-uma-aplicação-crud.html#cb37-18" tabindex="-1"></a><span class="co">-- 4) (OPCIONAL) ÍNDICES PARA BUSCA</span></span>
+<span id="cb37-19"><a href="o-que-é-uma-aplicação-crud.html#cb37-19" tabindex="-1"></a><span class="co">-- Seu endpoint usa LIKE/ILIKE em nome e cpf; cpf já é PK.</span></span>
+<span id="cb37-20"><a href="o-que-é-uma-aplicação-crud.html#cb37-20" tabindex="-1"></a><span class="co">-- Para acelerar buscas por nome com LIKE, crie um índice por prefixo.</span></span>
+<span id="cb37-21"><a href="o-que-é-uma-aplicação-crud.html#cb37-21" tabindex="-1"></a><span class="co">-- OBS: índices em TEXT precisam de comprimento; 128 costuma ser um bom compromisso.</span></span>
+<span id="cb37-22"><a href="o-que-é-uma-aplicação-crud.html#cb37-22" tabindex="-1"></a></span>
+<span id="cb37-23"><a href="o-que-é-uma-aplicação-crud.html#cb37-23" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">INDEX</span> idx_pessoas_nome_prefix <span class="kw">ON</span> pessoas (nome(<span class="dv">128</span>));</span></code></pre></div>
+</div>
+<div id="uma-aplicação-cliente-servidor-no-formato-mvc-model-view-controller" class="section level4 hasAnchor" number="7.4.0.4">
+<h4><span class="header-section-number">7.4.0.4</span> Uma aplicação Cliente Servidor no formato MVC (Model View Controller)<a href="o-que-é-uma-aplicação-crud.html#uma-aplicação-cliente-servidor-no-formato-mvc-model-view-controller" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/Aplicacao-MVC-CRUD-Pessoas-01.svg" /><!-- --></p>
+</div>
+<div id="criação-do-servidor-de-aplicação-em-linguagem-python" class="section level4 hasAnchor" number="7.4.0.5">
+<h4><span class="header-section-number">7.4.0.5</span> Criação do Servidor de Aplicação em Linguagem Python<a href="o-que-é-uma-aplicação-crud.html#criação-do-servidor-de-aplicação-em-linguagem-python" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Vejamos a representação gráfica de nosso servidor utilizando o diagrama de classes da linguagem UML</p>
+<p><img src="images/Servidor-CRUD-Pessoas-01.svg" /><!-- --></p>
+<p>Para utilizar o MySQL como servidor, devemos instalar os drivers de MySQL para a biblioteca SQLAlchemy do Python através da ferramenta de linha de comando PIP do python</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode cmd"><code class="sourceCode dosbat"><span id="cb38-1"><a href="o-que-é-uma-aplicação-crud.html#cb38-1" tabindex="-1"></a>pip install flask flask<span class="at">-cors</span> sqlalchemy <span class="st">&quot;pymysql&gt;=1.1&quot;</span></span>
+<span id="cb38-2"><a href="o-que-é-uma-aplicação-crud.html#cb38-2" tabindex="-1"></a># (ou use mysqlclient: pip install mysqlclient e troque o driver para mysql+mysqlclient<span class="kw">)</span></span></code></pre></div>
+<p>Agora vamos escrever o script python que criará o servidor de aplicação para interfacear nosso Cliente no Navegador e nossa tabela pessoas dentro do SGBD MySQL:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="o-que-é-uma-aplicação-crud.html#cb39-1" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, request, jsonify</span>
+<span id="cb39-2"><a href="o-que-é-uma-aplicação-crud.html#cb39-2" tabindex="-1"></a><span class="im">from</span> flask_cors <span class="im">import</span> CORS</span>
+<span id="cb39-3"><a href="o-que-é-uma-aplicação-crud.html#cb39-3" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine, Column, String, Date, Text</span>
+<span id="cb39-4"><a href="o-que-é-uma-aplicação-crud.html#cb39-4" tabindex="-1"></a><span class="im">from</span> sqlalchemy.orm <span class="im">import</span> sessionmaker, declarative_base</span>
+<span id="cb39-5"><a href="o-que-é-uma-aplicação-crud.html#cb39-5" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date</span>
+<span id="cb39-6"><a href="o-que-é-uma-aplicação-crud.html#cb39-6" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="o-que-é-uma-aplicação-crud.html#cb39-7" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-8"><a href="o-que-é-uma-aplicação-crud.html#cb39-8" tabindex="-1"></a><span class="co"># Flask + CORS</span></span>
+<span id="cb39-9"><a href="o-que-é-uma-aplicação-crud.html#cb39-9" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-10"><a href="o-que-é-uma-aplicação-crud.html#cb39-10" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb39-11"><a href="o-que-é-uma-aplicação-crud.html#cb39-11" tabindex="-1"></a>CORS(app)  <span class="co"># em produção, restrinja as origens</span></span>
+<span id="cb39-12"><a href="o-que-é-uma-aplicação-crud.html#cb39-12" tabindex="-1"></a></span>
+<span id="cb39-13"><a href="o-que-é-uma-aplicação-crud.html#cb39-13" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-14"><a href="o-que-é-uma-aplicação-crud.html#cb39-14" tabindex="-1"></a><span class="co"># Banco de Dados MySQL (localhost)</span></span>
+<span id="cb39-15"><a href="o-que-é-uma-aplicação-crud.html#cb39-15" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-16"><a href="o-que-é-uma-aplicação-crud.html#cb39-16" tabindex="-1"></a><span class="co"># Parâmetros do projeto:</span></span>
+<span id="cb39-17"><a href="o-que-é-uma-aplicação-crud.html#cb39-17" tabindex="-1"></a><span class="co">#   SGBD: MySQL 8</span></span>
+<span id="cb39-18"><a href="o-que-é-uma-aplicação-crud.html#cb39-18" tabindex="-1"></a><span class="co">#   Host: localhost</span></span>
+<span id="cb39-19"><a href="o-que-é-uma-aplicação-crud.html#cb39-19" tabindex="-1"></a><span class="co">#   Usuário: pessoas_user</span></span>
+<span id="cb39-20"><a href="o-que-é-uma-aplicação-crud.html#cb39-20" tabindex="-1"></a><span class="co">#   DB/Schema: pessoasdb</span></span>
+<span id="cb39-21"><a href="o-que-é-uma-aplicação-crud.html#cb39-21" tabindex="-1"></a><span class="co">#   Tabela: pessoas</span></span>
+<span id="cb39-22"><a href="o-que-é-uma-aplicação-crud.html#cb39-22" tabindex="-1"></a>DATABASE_URL <span class="op">=</span> <span class="st">&quot;mysql+pymysql://pessoas_user:MinhaSenhaForte@localhost:3306/pessoasdb&quot;</span></span>
+<span id="cb39-23"><a href="o-que-é-uma-aplicação-crud.html#cb39-23" tabindex="-1"></a></span>
+<span id="cb39-24"><a href="o-que-é-uma-aplicação-crud.html#cb39-24" tabindex="-1"></a>engine <span class="op">=</span> create_engine(</span>
+<span id="cb39-25"><a href="o-que-é-uma-aplicação-crud.html#cb39-25" tabindex="-1"></a>    DATABASE_URL,</span>
+<span id="cb39-26"><a href="o-que-é-uma-aplicação-crud.html#cb39-26" tabindex="-1"></a>    pool_pre_ping<span class="op">=</span><span class="va">True</span>,        <span class="co"># evita &quot;MySQL server has gone away&quot;</span></span>
+<span id="cb39-27"><a href="o-que-é-uma-aplicação-crud.html#cb39-27" tabindex="-1"></a>    future<span class="op">=</span><span class="va">True</span></span>
+<span id="cb39-28"><a href="o-que-é-uma-aplicação-crud.html#cb39-28" tabindex="-1"></a>)</span>
+<span id="cb39-29"><a href="o-que-é-uma-aplicação-crud.html#cb39-29" tabindex="-1"></a>SessionLocal <span class="op">=</span> sessionmaker(bind<span class="op">=</span>engine, autoflush<span class="op">=</span><span class="va">False</span>, autocommit<span class="op">=</span><span class="va">False</span>, future<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb39-30"><a href="o-que-é-uma-aplicação-crud.html#cb39-30" tabindex="-1"></a>Base <span class="op">=</span> declarative_base()</span>
+<span id="cb39-31"><a href="o-que-é-uma-aplicação-crud.html#cb39-31" tabindex="-1"></a></span>
+<span id="cb39-32"><a href="o-que-é-uma-aplicação-crud.html#cb39-32" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-33"><a href="o-que-é-uma-aplicação-crud.html#cb39-33" tabindex="-1"></a><span class="co"># Modelo Pessoa</span></span>
+<span id="cb39-34"><a href="o-que-é-uma-aplicação-crud.html#cb39-34" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-35"><a href="o-que-é-uma-aplicação-crud.html#cb39-35" tabindex="-1"></a><span class="kw">class</span> Pessoa(Base):</span>
+<span id="cb39-36"><a href="o-que-é-uma-aplicação-crud.html#cb39-36" tabindex="-1"></a>    __tablename__ <span class="op">=</span> <span class="st">&quot;pessoas&quot;</span></span>
+<span id="cb39-37"><a href="o-que-é-uma-aplicação-crud.html#cb39-37" tabindex="-1"></a>    cpf <span class="op">=</span> Column(String(<span class="dv">14</span>), primary_key<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb39-38"><a href="o-que-é-uma-aplicação-crud.html#cb39-38" tabindex="-1"></a>    nome <span class="op">=</span> Column(Text, nullable<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb39-39"><a href="o-que-é-uma-aplicação-crud.html#cb39-39" tabindex="-1"></a>    endereco <span class="op">=</span> Column(Text, nullable<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb39-40"><a href="o-que-é-uma-aplicação-crud.html#cb39-40" tabindex="-1"></a>    data_nascimento <span class="op">=</span> Column(Date, nullable<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb39-41"><a href="o-que-é-uma-aplicação-crud.html#cb39-41" tabindex="-1"></a>    foto <span class="op">=</span> Column(Text)  <span class="co"># Base64 ou URL</span></span>
+<span id="cb39-42"><a href="o-que-é-uma-aplicação-crud.html#cb39-42" tabindex="-1"></a></span>
+<span id="cb39-43"><a href="o-que-é-uma-aplicação-crud.html#cb39-43" tabindex="-1"></a><span class="co"># Cria a tabela se não existir (deve existir conforme seu script SQL)</span></span>
+<span id="cb39-44"><a href="o-que-é-uma-aplicação-crud.html#cb39-44" tabindex="-1"></a>Base.metadata.create_all(engine)</span>
+<span id="cb39-45"><a href="o-que-é-uma-aplicação-crud.html#cb39-45" tabindex="-1"></a></span>
+<span id="cb39-46"><a href="o-que-é-uma-aplicação-crud.html#cb39-46" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-47"><a href="o-que-é-uma-aplicação-crud.html#cb39-47" tabindex="-1"></a><span class="co"># Helpers</span></span>
+<span id="cb39-48"><a href="o-que-é-uma-aplicação-crud.html#cb39-48" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-49"><a href="o-que-é-uma-aplicação-crud.html#cb39-49" tabindex="-1"></a><span class="kw">def</span> to_dict(p: Pessoa):</span>
+<span id="cb39-50"><a href="o-que-é-uma-aplicação-crud.html#cb39-50" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb39-51"><a href="o-que-é-uma-aplicação-crud.html#cb39-51" tabindex="-1"></a>        <span class="st">&quot;cpf&quot;</span>: p.cpf,</span>
+<span id="cb39-52"><a href="o-que-é-uma-aplicação-crud.html#cb39-52" tabindex="-1"></a>        <span class="st">&quot;nome&quot;</span>: p.nome,</span>
+<span id="cb39-53"><a href="o-que-é-uma-aplicação-crud.html#cb39-53" tabindex="-1"></a>        <span class="st">&quot;endereco&quot;</span>: p.endereco,</span>
+<span id="cb39-54"><a href="o-que-é-uma-aplicação-crud.html#cb39-54" tabindex="-1"></a>        <span class="st">&quot;data_nascimento&quot;</span>: p.data_nascimento.isoformat(),</span>
+<span id="cb39-55"><a href="o-que-é-uma-aplicação-crud.html#cb39-55" tabindex="-1"></a>        <span class="st">&quot;foto&quot;</span>: p.foto</span>
+<span id="cb39-56"><a href="o-que-é-uma-aplicação-crud.html#cb39-56" tabindex="-1"></a>    }</span>
+<span id="cb39-57"><a href="o-que-é-uma-aplicação-crud.html#cb39-57" tabindex="-1"></a></span>
+<span id="cb39-58"><a href="o-que-é-uma-aplicação-crud.html#cb39-58" tabindex="-1"></a><span class="kw">def</span> parse_date_iso(value):</span>
+<span id="cb39-59"><a href="o-que-é-uma-aplicação-crud.html#cb39-59" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(value, date):</span>
+<span id="cb39-60"><a href="o-que-é-uma-aplicação-crud.html#cb39-60" tabindex="-1"></a>        <span class="cf">return</span> value</span>
+<span id="cb39-61"><a href="o-que-é-uma-aplicação-crud.html#cb39-61" tabindex="-1"></a>    <span class="cf">return</span> date.fromisoformat(value)  <span class="co"># espera &quot;YYYY-MM-DD&quot;</span></span>
+<span id="cb39-62"><a href="o-que-é-uma-aplicação-crud.html#cb39-62" tabindex="-1"></a></span>
+<span id="cb39-63"><a href="o-que-é-uma-aplicação-crud.html#cb39-63" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-64"><a href="o-que-é-uma-aplicação-crud.html#cb39-64" tabindex="-1"></a><span class="co"># CRUD</span></span>
+<span id="cb39-65"><a href="o-que-é-uma-aplicação-crud.html#cb39-65" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-66"><a href="o-que-é-uma-aplicação-crud.html#cb39-66" tabindex="-1"></a></span>
+<span id="cb39-67"><a href="o-que-é-uma-aplicação-crud.html#cb39-67" tabindex="-1"></a><span class="co"># Listar todas as pessoas ou pesquisar por termo (?q=)</span></span>
+<span id="cb39-68"><a href="o-que-é-uma-aplicação-crud.html#cb39-68" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/pessoas&#39;</span>, methods<span class="op">=</span>[<span class="st">&#39;GET&#39;</span>])</span>
+<span id="cb39-69"><a href="o-que-é-uma-aplicação-crud.html#cb39-69" tabindex="-1"></a><span class="kw">def</span> listar():</span>
+<span id="cb39-70"><a href="o-que-é-uma-aplicação-crud.html#cb39-70" tabindex="-1"></a>    termo <span class="op">=</span> (request.args.get(<span class="st">&#39;q&#39;</span>) <span class="kw">or</span> <span class="st">&#39;&#39;</span>).strip()</span>
+<span id="cb39-71"><a href="o-que-é-uma-aplicação-crud.html#cb39-71" tabindex="-1"></a>    <span class="cf">with</span> SessionLocal() <span class="im">as</span> session:</span>
+<span id="cb39-72"><a href="o-que-é-uma-aplicação-crud.html#cb39-72" tabindex="-1"></a>        query <span class="op">=</span> session.query(Pessoa)</span>
+<span id="cb39-73"><a href="o-que-é-uma-aplicação-crud.html#cb39-73" tabindex="-1"></a>        <span class="cf">if</span> termo:</span>
+<span id="cb39-74"><a href="o-que-é-uma-aplicação-crud.html#cb39-74" tabindex="-1"></a>            like <span class="op">=</span> <span class="ss">f&quot;%</span><span class="sc">{</span>termo<span class="sc">}</span><span class="ss">%&quot;</span></span>
+<span id="cb39-75"><a href="o-que-é-uma-aplicação-crud.html#cb39-75" tabindex="-1"></a>            <span class="co"># MySQL é case-insensitive com collation *_ci; ilike é traduzido para LIKE</span></span>
+<span id="cb39-76"><a href="o-que-é-uma-aplicação-crud.html#cb39-76" tabindex="-1"></a>            query <span class="op">=</span> query.<span class="bu">filter</span>((Pessoa.nome.ilike(like)) <span class="op">|</span> (Pessoa.cpf.ilike(like)))</span>
+<span id="cb39-77"><a href="o-que-é-uma-aplicação-crud.html#cb39-77" tabindex="-1"></a>        pessoas <span class="op">=</span> query.order_by(Pessoa.nome.asc()).<span class="bu">all</span>()</span>
+<span id="cb39-78"><a href="o-que-é-uma-aplicação-crud.html#cb39-78" tabindex="-1"></a>        <span class="cf">return</span> jsonify([to_dict(p) <span class="cf">for</span> p <span class="kw">in</span> pessoas])</span>
+<span id="cb39-79"><a href="o-que-é-uma-aplicação-crud.html#cb39-79" tabindex="-1"></a></span>
+<span id="cb39-80"><a href="o-que-é-uma-aplicação-crud.html#cb39-80" tabindex="-1"></a><span class="co"># Inserir nova pessoa</span></span>
+<span id="cb39-81"><a href="o-que-é-uma-aplicação-crud.html#cb39-81" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/pessoas&#39;</span>, methods<span class="op">=</span>[<span class="st">&#39;POST&#39;</span>])</span>
+<span id="cb39-82"><a href="o-que-é-uma-aplicação-crud.html#cb39-82" tabindex="-1"></a><span class="kw">def</span> inserir():</span>
+<span id="cb39-83"><a href="o-que-é-uma-aplicação-crud.html#cb39-83" tabindex="-1"></a>    dados <span class="op">=</span> request.get_json(force<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb39-84"><a href="o-que-é-uma-aplicação-crud.html#cb39-84" tabindex="-1"></a>    required <span class="op">=</span> [<span class="st">&#39;cpf&#39;</span>, <span class="st">&#39;nome&#39;</span>, <span class="st">&#39;endereco&#39;</span>, <span class="st">&#39;data_nascimento&#39;</span>]</span>
+<span id="cb39-85"><a href="o-que-é-uma-aplicação-crud.html#cb39-85" tabindex="-1"></a>    faltantes <span class="op">=</span> [k <span class="cf">for</span> k <span class="kw">in</span> required <span class="cf">if</span> <span class="kw">not</span> dados.get(k)]</span>
+<span id="cb39-86"><a href="o-que-é-uma-aplicação-crud.html#cb39-86" tabindex="-1"></a>    <span class="cf">if</span> faltantes:</span>
+<span id="cb39-87"><a href="o-que-é-uma-aplicação-crud.html#cb39-87" tabindex="-1"></a>        <span class="cf">return</span> jsonify({<span class="st">&quot;error&quot;</span>: <span class="st">&quot;Campos obrigatórios faltando&quot;</span>, <span class="st">&quot;fields&quot;</span>: faltantes}), <span class="dv">422</span></span>
+<span id="cb39-88"><a href="o-que-é-uma-aplicação-crud.html#cb39-88" tabindex="-1"></a></span>
+<span id="cb39-89"><a href="o-que-é-uma-aplicação-crud.html#cb39-89" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb39-90"><a href="o-que-é-uma-aplicação-crud.html#cb39-90" tabindex="-1"></a>        dn <span class="op">=</span> parse_date_iso(dados[<span class="st">&#39;data_nascimento&#39;</span>])</span>
+<span id="cb39-91"><a href="o-que-é-uma-aplicação-crud.html#cb39-91" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb39-92"><a href="o-que-é-uma-aplicação-crud.html#cb39-92" tabindex="-1"></a>        <span class="cf">return</span> jsonify({<span class="st">&quot;error&quot;</span>: <span class="st">&quot;data_nascimento inválida. Use YYYY-MM-DD&quot;</span>}), <span class="dv">422</span></span>
+<span id="cb39-93"><a href="o-que-é-uma-aplicação-crud.html#cb39-93" tabindex="-1"></a></span>
+<span id="cb39-94"><a href="o-que-é-uma-aplicação-crud.html#cb39-94" tabindex="-1"></a>    <span class="cf">with</span> SessionLocal() <span class="im">as</span> session:</span>
+<span id="cb39-95"><a href="o-que-é-uma-aplicação-crud.html#cb39-95" tabindex="-1"></a>        <span class="cf">if</span> session.query(Pessoa).filter_by(cpf<span class="op">=</span>dados[<span class="st">&#39;cpf&#39;</span>]).first():</span>
+<span id="cb39-96"><a href="o-que-é-uma-aplicação-crud.html#cb39-96" tabindex="-1"></a>            <span class="cf">return</span> jsonify({<span class="st">&quot;error&quot;</span>: <span class="st">&quot;CPF já cadastrado&quot;</span>}), <span class="dv">409</span></span>
+<span id="cb39-97"><a href="o-que-é-uma-aplicação-crud.html#cb39-97" tabindex="-1"></a>        pessoa <span class="op">=</span> Pessoa(</span>
+<span id="cb39-98"><a href="o-que-é-uma-aplicação-crud.html#cb39-98" tabindex="-1"></a>            cpf<span class="op">=</span>dados[<span class="st">&#39;cpf&#39;</span>],</span>
+<span id="cb39-99"><a href="o-que-é-uma-aplicação-crud.html#cb39-99" tabindex="-1"></a>            nome<span class="op">=</span>dados[<span class="st">&#39;nome&#39;</span>],</span>
+<span id="cb39-100"><a href="o-que-é-uma-aplicação-crud.html#cb39-100" tabindex="-1"></a>            endereco<span class="op">=</span>dados[<span class="st">&#39;endereco&#39;</span>],</span>
+<span id="cb39-101"><a href="o-que-é-uma-aplicação-crud.html#cb39-101" tabindex="-1"></a>            data_nascimento<span class="op">=</span>dn,</span>
+<span id="cb39-102"><a href="o-que-é-uma-aplicação-crud.html#cb39-102" tabindex="-1"></a>            foto<span class="op">=</span>dados.get(<span class="st">&#39;foto&#39;</span>)</span>
+<span id="cb39-103"><a href="o-que-é-uma-aplicação-crud.html#cb39-103" tabindex="-1"></a>        )</span>
+<span id="cb39-104"><a href="o-que-é-uma-aplicação-crud.html#cb39-104" tabindex="-1"></a>        session.add(pessoa)</span>
+<span id="cb39-105"><a href="o-que-é-uma-aplicação-crud.html#cb39-105" tabindex="-1"></a>        session.commit()</span>
+<span id="cb39-106"><a href="o-que-é-uma-aplicação-crud.html#cb39-106" tabindex="-1"></a>        session.refresh(pessoa)</span>
+<span id="cb39-107"><a href="o-que-é-uma-aplicação-crud.html#cb39-107" tabindex="-1"></a>        <span class="cf">return</span> jsonify(to_dict(pessoa)), <span class="dv">201</span></span>
+<span id="cb39-108"><a href="o-que-é-uma-aplicação-crud.html#cb39-108" tabindex="-1"></a></span>
+<span id="cb39-109"><a href="o-que-é-uma-aplicação-crud.html#cb39-109" tabindex="-1"></a><span class="co"># Alterar pessoa (PUT)</span></span>
+<span id="cb39-110"><a href="o-que-é-uma-aplicação-crud.html#cb39-110" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/pessoas/&lt;cpf&gt;&#39;</span>, methods<span class="op">=</span>[<span class="st">&#39;PUT&#39;</span>])</span>
+<span id="cb39-111"><a href="o-que-é-uma-aplicação-crud.html#cb39-111" tabindex="-1"></a><span class="kw">def</span> alterar(cpf):</span>
+<span id="cb39-112"><a href="o-que-é-uma-aplicação-crud.html#cb39-112" tabindex="-1"></a>    dados <span class="op">=</span> request.get_json(force<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb39-113"><a href="o-que-é-uma-aplicação-crud.html#cb39-113" tabindex="-1"></a>    <span class="cf">with</span> SessionLocal() <span class="im">as</span> session:</span>
+<span id="cb39-114"><a href="o-que-é-uma-aplicação-crud.html#cb39-114" tabindex="-1"></a>        pessoa <span class="op">=</span> session.query(Pessoa).filter_by(cpf<span class="op">=</span>cpf).first()</span>
+<span id="cb39-115"><a href="o-que-é-uma-aplicação-crud.html#cb39-115" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> pessoa:</span>
+<span id="cb39-116"><a href="o-que-é-uma-aplicação-crud.html#cb39-116" tabindex="-1"></a>            <span class="cf">return</span> jsonify({<span class="st">&quot;error&quot;</span>: <span class="st">&quot;CPF não encontrado&quot;</span>}), <span class="dv">404</span></span>
+<span id="cb39-117"><a href="o-que-é-uma-aplicação-crud.html#cb39-117" tabindex="-1"></a></span>
+<span id="cb39-118"><a href="o-que-é-uma-aplicação-crud.html#cb39-118" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">&#39;nome&#39;</span> <span class="kw">in</span> dados <span class="kw">and</span> dados[<span class="st">&#39;nome&#39;</span>] <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb39-119"><a href="o-que-é-uma-aplicação-crud.html#cb39-119" tabindex="-1"></a>            pessoa.nome <span class="op">=</span> dados[<span class="st">&#39;nome&#39;</span>]</span>
+<span id="cb39-120"><a href="o-que-é-uma-aplicação-crud.html#cb39-120" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">&#39;endereco&#39;</span> <span class="kw">in</span> dados <span class="kw">and</span> dados[<span class="st">&#39;endereco&#39;</span>] <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb39-121"><a href="o-que-é-uma-aplicação-crud.html#cb39-121" tabindex="-1"></a>            pessoa.endereco <span class="op">=</span> dados[<span class="st">&#39;endereco&#39;</span>]</span>
+<span id="cb39-122"><a href="o-que-é-uma-aplicação-crud.html#cb39-122" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">&#39;data_nascimento&#39;</span> <span class="kw">in</span> dados <span class="kw">and</span> dados[<span class="st">&#39;data_nascimento&#39;</span>] <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb39-123"><a href="o-que-é-uma-aplicação-crud.html#cb39-123" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb39-124"><a href="o-que-é-uma-aplicação-crud.html#cb39-124" tabindex="-1"></a>                pessoa.data_nascimento <span class="op">=</span> parse_date_iso(dados[<span class="st">&#39;data_nascimento&#39;</span>])</span>
+<span id="cb39-125"><a href="o-que-é-uma-aplicação-crud.html#cb39-125" tabindex="-1"></a>            <span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb39-126"><a href="o-que-é-uma-aplicação-crud.html#cb39-126" tabindex="-1"></a>                <span class="cf">return</span> jsonify({<span class="st">&quot;error&quot;</span>: <span class="st">&quot;data_nascimento inválida. Use YYYY-MM-DD&quot;</span>}), <span class="dv">422</span></span>
+<span id="cb39-127"><a href="o-que-é-uma-aplicação-crud.html#cb39-127" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">&#39;foto&#39;</span> <span class="kw">in</span> dados:</span>
+<span id="cb39-128"><a href="o-que-é-uma-aplicação-crud.html#cb39-128" tabindex="-1"></a>            pessoa.foto <span class="op">=</span> dados[<span class="st">&#39;foto&#39;</span>]</span>
+<span id="cb39-129"><a href="o-que-é-uma-aplicação-crud.html#cb39-129" tabindex="-1"></a></span>
+<span id="cb39-130"><a href="o-que-é-uma-aplicação-crud.html#cb39-130" tabindex="-1"></a>        session.commit()</span>
+<span id="cb39-131"><a href="o-que-é-uma-aplicação-crud.html#cb39-131" tabindex="-1"></a>        session.refresh(pessoa)</span>
+<span id="cb39-132"><a href="o-que-é-uma-aplicação-crud.html#cb39-132" tabindex="-1"></a>        <span class="cf">return</span> jsonify(to_dict(pessoa)), <span class="dv">200</span></span>
+<span id="cb39-133"><a href="o-que-é-uma-aplicação-crud.html#cb39-133" tabindex="-1"></a></span>
+<span id="cb39-134"><a href="o-que-é-uma-aplicação-crud.html#cb39-134" tabindex="-1"></a><span class="co"># Remover pessoa</span></span>
+<span id="cb39-135"><a href="o-que-é-uma-aplicação-crud.html#cb39-135" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/pessoas/&lt;cpf&gt;&#39;</span>, methods<span class="op">=</span>[<span class="st">&#39;DELETE&#39;</span>])</span>
+<span id="cb39-136"><a href="o-que-é-uma-aplicação-crud.html#cb39-136" tabindex="-1"></a><span class="kw">def</span> remover(cpf):</span>
+<span id="cb39-137"><a href="o-que-é-uma-aplicação-crud.html#cb39-137" tabindex="-1"></a>    <span class="cf">with</span> SessionLocal() <span class="im">as</span> session:</span>
+<span id="cb39-138"><a href="o-que-é-uma-aplicação-crud.html#cb39-138" tabindex="-1"></a>        pessoa <span class="op">=</span> session.query(Pessoa).filter_by(cpf<span class="op">=</span>cpf).first()</span>
+<span id="cb39-139"><a href="o-que-é-uma-aplicação-crud.html#cb39-139" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> pessoa:</span>
+<span id="cb39-140"><a href="o-que-é-uma-aplicação-crud.html#cb39-140" tabindex="-1"></a>            <span class="cf">return</span> jsonify({<span class="st">&quot;error&quot;</span>: <span class="st">&quot;CPF não encontrado&quot;</span>}), <span class="dv">404</span></span>
+<span id="cb39-141"><a href="o-que-é-uma-aplicação-crud.html#cb39-141" tabindex="-1"></a>        session.delete(pessoa)</span>
+<span id="cb39-142"><a href="o-que-é-uma-aplicação-crud.html#cb39-142" tabindex="-1"></a>        session.commit()</span>
+<span id="cb39-143"><a href="o-que-é-uma-aplicação-crud.html#cb39-143" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;&#39;</span>, <span class="dv">204</span></span>
+<span id="cb39-144"><a href="o-que-é-uma-aplicação-crud.html#cb39-144" tabindex="-1"></a></span>
+<span id="cb39-145"><a href="o-que-é-uma-aplicação-crud.html#cb39-145" tabindex="-1"></a><span class="co"># Buscar pessoa por CPF</span></span>
+<span id="cb39-146"><a href="o-que-é-uma-aplicação-crud.html#cb39-146" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/pessoas/&lt;cpf&gt;&#39;</span>, methods<span class="op">=</span>[<span class="st">&#39;GET&#39;</span>])</span>
+<span id="cb39-147"><a href="o-que-é-uma-aplicação-crud.html#cb39-147" tabindex="-1"></a><span class="kw">def</span> buscar(cpf):</span>
+<span id="cb39-148"><a href="o-que-é-uma-aplicação-crud.html#cb39-148" tabindex="-1"></a>    <span class="cf">with</span> SessionLocal() <span class="im">as</span> session:</span>
+<span id="cb39-149"><a href="o-que-é-uma-aplicação-crud.html#cb39-149" tabindex="-1"></a>        pessoa <span class="op">=</span> session.query(Pessoa).filter_by(cpf<span class="op">=</span>cpf).first()</span>
+<span id="cb39-150"><a href="o-que-é-uma-aplicação-crud.html#cb39-150" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> pessoa:</span>
+<span id="cb39-151"><a href="o-que-é-uma-aplicação-crud.html#cb39-151" tabindex="-1"></a>            <span class="cf">return</span> jsonify({<span class="st">&quot;error&quot;</span>: <span class="st">&quot;CPF não encontrado&quot;</span>}), <span class="dv">404</span></span>
+<span id="cb39-152"><a href="o-que-é-uma-aplicação-crud.html#cb39-152" tabindex="-1"></a>        <span class="cf">return</span> jsonify(to_dict(pessoa))</span>
+<span id="cb39-153"><a href="o-que-é-uma-aplicação-crud.html#cb39-153" tabindex="-1"></a></span>
+<span id="cb39-154"><a href="o-que-é-uma-aplicação-crud.html#cb39-154" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-155"><a href="o-que-é-uma-aplicação-crud.html#cb39-155" tabindex="-1"></a><span class="co"># Inicia o servidor</span></span>
+<span id="cb39-156"><a href="o-que-é-uma-aplicação-crud.html#cb39-156" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb39-157"><a href="o-que-é-uma-aplicação-crud.html#cb39-157" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb39-158"><a href="o-que-é-uma-aplicação-crud.html#cb39-158" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>, port<span class="op">=</span><span class="dv">5000</span>)</span></code></pre></div>
+</div>
+<div id="criação-do-cliente-de-aplicação-em-html-parte-gráfica-e-javascript-programação-executável" class="section level4 hasAnchor" number="7.4.0.6">
+<h4><span class="header-section-number">7.4.0.6</span> Criação do Cliente de Aplicação em HTML (Parte Gráfica) e Javascript (Programação Executável)<a href="o-que-é-uma-aplicação-crud.html#criação-do-cliente-de-aplicação-em-html-parte-gráfica-e-javascript-programação-executável" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Vamos verificar como é o Diagrama de Classes do Cliente que vai conversar com o servidor que vimos anteriormente:</p>
+<p><img src="images/Cliente-CRUD-Pessoas-01.svg" /><!-- --></p>
+<p>Agora vamos verificar o código-fonte. Salve esse código em um arquivo chamado <strong>cliente.html</strong>, para poder abrilo no navegador, juntament com o cliente rodando:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb40-1"><a href="o-que-é-uma-aplicação-crud.html#cb40-1" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb40-2"><a href="o-que-é-uma-aplicação-crud.html#cb40-2" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;pt-BR&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb40-3"><a href="o-que-é-uma-aplicação-crud.html#cb40-3" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb40-4"><a href="o-que-é-uma-aplicação-crud.html#cb40-4" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb40-5"><a href="o-que-é-uma-aplicação-crud.html#cb40-5" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Cadastro de Pessoas - Flask/MySQL<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb40-6"><a href="o-que-é-uma-aplicação-crud.html#cb40-6" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb40-7"><a href="o-que-é-uma-aplicação-crud.html#cb40-7" tabindex="-1"></a>  body { <span class="kw">font-family</span><span class="ch">:</span> <span class="dv">system-ui</span><span class="op">,</span> <span class="dv">-apple-system</span><span class="op">,</span> <span class="dv">Segoe UI</span><span class="op">,</span> <span class="dv">Roboto</span><span class="op">,</span> <span class="dv">Arial</span><span class="op">;</span> <span class="kw">max-width</span><span class="ch">:</span> <span class="dv">980</span><span class="dt">px</span><span class="op">;</span> <span class="kw">margin</span><span class="ch">:</span> <span class="dv">24</span><span class="dt">px</span> <span class="bu">auto</span><span class="op">;</span> }</span>
+<span id="cb40-8"><a href="o-que-é-uma-aplicação-crud.html#cb40-8" tabindex="-1"></a>  label { <span class="kw">display</span><span class="ch">:</span> <span class="dv">block</span><span class="op">;</span> <span class="kw">margin-top</span><span class="ch">:</span> <span class="dv">10</span><span class="dt">px</span><span class="op">;</span> }</span>
+<span id="cb40-9"><a href="o-que-é-uma-aplicação-crud.html#cb40-9" tabindex="-1"></a>  button { <span class="kw">margin-top</span><span class="ch">:</span> <span class="dv">10</span><span class="dt">px</span><span class="op">;</span> <span class="kw">margin-right</span><span class="ch">:</span> <span class="dv">6</span><span class="dt">px</span><span class="op">;</span> <span class="kw">padding</span><span class="ch">:</span> <span class="dv">8</span><span class="dt">px</span> <span class="dv">12</span><span class="dt">px</span><span class="op">;</span> }</span>
+<span id="cb40-10"><a href="o-que-é-uma-aplicação-crud.html#cb40-10" tabindex="-1"></a>  table { <span class="kw">border-collapse</span><span class="ch">:</span> <span class="dv">collapse</span><span class="op">;</span> <span class="kw">width</span><span class="ch">:</span><span class="dv">100</span><span class="dt">%</span><span class="op">;</span> <span class="kw">margin-top</span><span class="ch">:</span><span class="dv">20</span><span class="dt">px</span><span class="op">;</span> }</span>
+<span id="cb40-11"><a href="o-que-é-uma-aplicação-crud.html#cb40-11" tabindex="-1"></a>  th<span class="op">,</span> td { <span class="kw">border</span><span class="ch">:</span><span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#ddd</span><span class="op">;</span> <span class="kw">padding</span><span class="ch">:</span><span class="dv">8</span><span class="dt">px</span><span class="op">;</span> <span class="kw">text-align</span><span class="ch">:</span><span class="dv">left</span><span class="op">;</span> }</span>
+<span id="cb40-12"><a href="o-que-é-uma-aplicação-crud.html#cb40-12" tabindex="-1"></a>  img<span class="fu">.thumb</span> { <span class="kw">width</span><span class="ch">:</span><span class="dv">60</span><span class="dt">px</span><span class="op">;</span> <span class="kw">height</span><span class="ch">:</span><span class="dv">60</span><span class="dt">px</span><span class="op">;</span> <span class="kw">object-fit</span><span class="ch">:</span><span class="dv">cover</span><span class="op">;</span> <span class="kw">border-radius</span><span class="ch">:</span><span class="dv">4</span><span class="dt">px</span><span class="op">;</span> }</span>
+<span id="cb40-13"><a href="o-que-é-uma-aplicação-crud.html#cb40-13" tabindex="-1"></a>  <span class="fu">.row</span> { <span class="kw">display</span><span class="ch">:</span><span class="dv">flex</span><span class="op">;</span> <span class="kw">gap</span><span class="ch">:</span><span class="dv">8</span><span class="dt">px</span><span class="op">;</span> <span class="kw">align-items</span><span class="ch">:</span><span class="dv">center</span><span class="op">;</span> <span class="kw">flex-wrap</span><span class="ch">:</span><span class="dv">wrap</span><span class="op">;</span> }</span>
+<span id="cb40-14"><a href="o-que-é-uma-aplicação-crud.html#cb40-14" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb40-15"><a href="o-que-é-uma-aplicação-crud.html#cb40-15" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb40-16"><a href="o-que-é-uma-aplicação-crud.html#cb40-16" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb40-17"><a href="o-que-é-uma-aplicação-crud.html#cb40-17" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Cadastro de Pessoas (Flask/MySQL)<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb40-18"><a href="o-que-é-uma-aplicação-crud.html#cb40-18" tabindex="-1"></a></span>
+<span id="cb40-19"><a href="o-que-é-uma-aplicação-crud.html#cb40-19" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;formPessoa&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb40-20"><a href="o-que-é-uma-aplicação-crud.html#cb40-20" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span>CPF (chave primária): <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;cpf&quot;</span><span class="ot"> required</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb40-21"><a href="o-que-é-uma-aplicação-crud.html#cb40-21" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span>Nome: <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nome&quot;</span><span class="ot"> required</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb40-22"><a href="o-que-é-uma-aplicação-crud.html#cb40-22" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span>Endereço: <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;endereco&quot;</span><span class="ot"> required</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb40-23"><a href="o-que-é-uma-aplicação-crud.html#cb40-23" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span>Data Nasc.: <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;date&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;data_nascimento&quot;</span><span class="ot"> required</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb40-24"><a href="o-que-é-uma-aplicação-crud.html#cb40-24" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span>Foto: <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;file&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;foto&quot;</span><span class="ot"> accept</span><span class="op">=</span><span class="st">&quot;image/*&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb40-25"><a href="o-que-é-uma-aplicação-crud.html#cb40-25" tabindex="-1"></a></span>
+<span id="cb40-26"><a href="o-que-é-uma-aplicação-crud.html#cb40-26" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;row&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb40-27"><a href="o-que-é-uma-aplicação-crud.html#cb40-27" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;btnInserir&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;inserir()&quot;</span><span class="dt">&gt;</span>Inserir<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb40-28"><a href="o-que-é-uma-aplicação-crud.html#cb40-28" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;btnAlterar&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;alterar()&quot;</span><span class="dt">&gt;</span>Alterar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb40-29"><a href="o-que-é-uma-aplicação-crud.html#cb40-29" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;btnRemover&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;remover()&quot;</span><span class="dt">&gt;</span>Remover<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb40-30"><a href="o-que-é-uma-aplicação-crud.html#cb40-30" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb40-31"><a href="o-que-é-uma-aplicação-crud.html#cb40-31" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb40-32"><a href="o-que-é-uma-aplicação-crud.html#cb40-32" tabindex="-1"></a></span>
+<span id="cb40-33"><a href="o-que-é-uma-aplicação-crud.html#cb40-33" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>Pesquisar<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb40-34"><a href="o-que-é-uma-aplicação-crud.html#cb40-34" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;row&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb40-35"><a href="o-que-é-uma-aplicação-crud.html#cb40-35" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;pesquisa&quot;</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">&quot;Digite nome ou CPF&quot;</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;flex:1&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb40-36"><a href="o-que-é-uma-aplicação-crud.html#cb40-36" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;btnPesquisar&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;pesquisar()&quot;</span><span class="dt">&gt;</span>Pesquisar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb40-37"><a href="o-que-é-uma-aplicação-crud.html#cb40-37" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;listar()&quot;</span><span class="dt">&gt;</span>Listar tudo<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb40-38"><a href="o-que-é-uma-aplicação-crud.html#cb40-38" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb40-39"><a href="o-que-é-uma-aplicação-crud.html#cb40-39" tabindex="-1"></a></span>
+<span id="cb40-40"><a href="o-que-é-uma-aplicação-crud.html#cb40-40" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb40-41"><a href="o-que-é-uma-aplicação-crud.html#cb40-41" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">thead</span><span class="dt">&gt;</span></span>
+<span id="cb40-42"><a href="o-que-é-uma-aplicação-crud.html#cb40-42" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb40-43"><a href="o-que-é-uma-aplicação-crud.html#cb40-43" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>CPF<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Foto<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Nome<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb40-44"><a href="o-que-é-uma-aplicação-crud.html#cb40-44" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Endereço<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Nascimento<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb40-45"><a href="o-que-é-uma-aplicação-crud.html#cb40-45" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb40-46"><a href="o-que-é-uma-aplicação-crud.html#cb40-46" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">thead</span><span class="dt">&gt;</span></span>
+<span id="cb40-47"><a href="o-que-é-uma-aplicação-crud.html#cb40-47" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tbody</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;tabela&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">tbody</span><span class="dt">&gt;</span></span>
+<span id="cb40-48"><a href="o-que-é-uma-aplicação-crud.html#cb40-48" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb40-49"><a href="o-que-é-uma-aplicação-crud.html#cb40-49" tabindex="-1"></a></span>
+<span id="cb40-50"><a href="o-que-é-uma-aplicação-crud.html#cb40-50" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb40-51"><a href="o-que-é-uma-aplicação-crud.html#cb40-51" tabindex="-1"></a><span class="kw">const</span> API <span class="op">=</span> <span class="st">&#39;http://localhost:5000/pessoas&#39;</span><span class="op">;</span></span>
+<span id="cb40-52"><a href="o-que-é-uma-aplicação-crud.html#cb40-52" tabindex="-1"></a></span>
+<span id="cb40-53"><a href="o-que-é-uma-aplicação-crud.html#cb40-53" tabindex="-1"></a><span class="co">/* ---------- Helpers ---------- */</span></span>
+<span id="cb40-54"><a href="o-que-é-uma-aplicação-crud.html#cb40-54" tabindex="-1"></a><span class="kw">function</span> <span class="fu">setBusy</span>(busy) {</span>
+<span id="cb40-55"><a href="o-que-é-uma-aplicação-crud.html#cb40-55" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> id <span class="kw">of</span> [<span class="st">&#39;btnInserir&#39;</span><span class="op">,</span><span class="st">&#39;btnAlterar&#39;</span><span class="op">,</span><span class="st">&#39;btnRemover&#39;</span><span class="op">,</span><span class="st">&#39;btnPesquisar&#39;</span>]) {</span>
+<span id="cb40-56"><a href="o-que-é-uma-aplicação-crud.html#cb40-56" tabindex="-1"></a>    <span class="kw">const</span> el <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(id)<span class="op">;</span></span>
+<span id="cb40-57"><a href="o-que-é-uma-aplicação-crud.html#cb40-57" tabindex="-1"></a>    <span class="cf">if</span> (el) el<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> busy<span class="op">;</span></span>
+<span id="cb40-58"><a href="o-que-é-uma-aplicação-crud.html#cb40-58" tabindex="-1"></a>  }</span>
+<span id="cb40-59"><a href="o-que-é-uma-aplicação-crud.html#cb40-59" tabindex="-1"></a>}</span>
+<span id="cb40-60"><a href="o-que-é-uma-aplicação-crud.html#cb40-60" tabindex="-1"></a></span>
+<span id="cb40-61"><a href="o-que-é-uma-aplicação-crud.html#cb40-61" tabindex="-1"></a><span class="kw">function</span> <span class="fu">validaCampos</span>() {</span>
+<span id="cb40-62"><a href="o-que-é-uma-aplicação-crud.html#cb40-62" tabindex="-1"></a>  <span class="kw">const</span> campos <span class="op">=</span> [<span class="st">&#39;cpf&#39;</span><span class="op">,</span><span class="st">&#39;nome&#39;</span><span class="op">,</span><span class="st">&#39;endereco&#39;</span><span class="op">,</span><span class="st">&#39;data_nascimento&#39;</span>]<span class="op">;</span></span>
+<span id="cb40-63"><a href="o-que-é-uma-aplicação-crud.html#cb40-63" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> id <span class="kw">of</span> campos) {</span>
+<span id="cb40-64"><a href="o-que-é-uma-aplicação-crud.html#cb40-64" tabindex="-1"></a>    <span class="kw">const</span> valor <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(id)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb40-65"><a href="o-que-é-uma-aplicação-crud.html#cb40-65" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>valor) {</span>
+<span id="cb40-66"><a href="o-que-é-uma-aplicação-crud.html#cb40-66" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="vs">`O campo &quot;</span><span class="sc">${</span>id<span class="sc">}</span><span class="vs">&quot; não pode ficar em branco.`</span>)<span class="op">;</span></span>
+<span id="cb40-67"><a href="o-que-é-uma-aplicação-crud.html#cb40-67" tabindex="-1"></a>      <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb40-68"><a href="o-que-é-uma-aplicação-crud.html#cb40-68" tabindex="-1"></a>    }</span>
+<span id="cb40-69"><a href="o-que-é-uma-aplicação-crud.html#cb40-69" tabindex="-1"></a>  }</span>
+<span id="cb40-70"><a href="o-que-é-uma-aplicação-crud.html#cb40-70" tabindex="-1"></a>  <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb40-71"><a href="o-que-é-uma-aplicação-crud.html#cb40-71" tabindex="-1"></a>}</span>
+<span id="cb40-72"><a href="o-que-é-uma-aplicação-crud.html#cb40-72" tabindex="-1"></a></span>
+<span id="cb40-73"><a href="o-que-é-uma-aplicação-crud.html#cb40-73" tabindex="-1"></a><span class="kw">function</span> <span class="fu">getFotoBase64</span>() {</span>
+<span id="cb40-74"><a href="o-que-é-uma-aplicação-crud.html#cb40-74" tabindex="-1"></a>  <span class="kw">const</span> file <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;foto&#39;</span>)<span class="op">.</span><span class="at">files</span>[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb40-75"><a href="o-que-é-uma-aplicação-crud.html#cb40-75" tabindex="-1"></a>  <span class="cf">if</span>(<span class="op">!</span>file) <span class="cf">return</span> <span class="bu">Promise</span><span class="op">.</span><span class="fu">resolve</span>(<span class="st">&#39;&#39;</span>)<span class="op">;</span></span>
+<span id="cb40-76"><a href="o-que-é-uma-aplicação-crud.html#cb40-76" tabindex="-1"></a>  <span class="cf">return</span> <span class="kw">new</span> <span class="bu">Promise</span>((resolve<span class="op">,</span>reject)<span class="kw">=&gt;</span>{</span>
+<span id="cb40-77"><a href="o-que-é-uma-aplicação-crud.html#cb40-77" tabindex="-1"></a>    <span class="kw">const</span> reader <span class="op">=</span> <span class="kw">new</span> <span class="bu">FileReader</span>()<span class="op">;</span></span>
+<span id="cb40-78"><a href="o-que-é-uma-aplicação-crud.html#cb40-78" tabindex="-1"></a>    reader<span class="op">.</span><span class="at">onload</span> <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="fu">resolve</span>(reader<span class="op">.</span><span class="at">result</span>)<span class="op">;</span></span>
+<span id="cb40-79"><a href="o-que-é-uma-aplicação-crud.html#cb40-79" tabindex="-1"></a>    reader<span class="op">.</span><span class="at">onerror</span> <span class="op">=</span> reject<span class="op">;</span></span>
+<span id="cb40-80"><a href="o-que-é-uma-aplicação-crud.html#cb40-80" tabindex="-1"></a>    reader<span class="op">.</span><span class="fu">readAsDataURL</span>(file)<span class="op">;</span></span>
+<span id="cb40-81"><a href="o-que-é-uma-aplicação-crud.html#cb40-81" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb40-82"><a href="o-que-é-uma-aplicação-crud.html#cb40-82" tabindex="-1"></a>}</span>
+<span id="cb40-83"><a href="o-que-é-uma-aplicação-crud.html#cb40-83" tabindex="-1"></a></span>
+<span id="cb40-84"><a href="o-que-é-uma-aplicação-crud.html#cb40-84" tabindex="-1"></a><span class="kw">function</span> <span class="fu">coletaDados</span>(base64Foto){</span>
+<span id="cb40-85"><a href="o-que-é-uma-aplicação-crud.html#cb40-85" tabindex="-1"></a>  <span class="cf">return</span> {</span>
+<span id="cb40-86"><a href="o-que-é-uma-aplicação-crud.html#cb40-86" tabindex="-1"></a>    <span class="dt">cpf</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;cpf&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">,</span></span>
+<span id="cb40-87"><a href="o-que-é-uma-aplicação-crud.html#cb40-87" tabindex="-1"></a>    <span class="dt">nome</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;nome&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">,</span></span>
+<span id="cb40-88"><a href="o-que-é-uma-aplicação-crud.html#cb40-88" tabindex="-1"></a>    <span class="dt">endereco</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;endereco&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">,</span></span>
+<span id="cb40-89"><a href="o-que-é-uma-aplicação-crud.html#cb40-89" tabindex="-1"></a>    <span class="dt">data_nascimento</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;data_nascimento&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">,</span> <span class="co">// YYYY-MM-DD</span></span>
+<span id="cb40-90"><a href="o-que-é-uma-aplicação-crud.html#cb40-90" tabindex="-1"></a>    <span class="dt">foto</span><span class="op">:</span> base64Foto <span class="op">||</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb40-91"><a href="o-que-é-uma-aplicação-crud.html#cb40-91" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb40-92"><a href="o-que-é-uma-aplicação-crud.html#cb40-92" tabindex="-1"></a>}</span>
+<span id="cb40-93"><a href="o-que-é-uma-aplicação-crud.html#cb40-93" tabindex="-1"></a></span>
+<span id="cb40-94"><a href="o-que-é-uma-aplicação-crud.html#cb40-94" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">readJsonSafe</span>(res) {</span>
+<span id="cb40-95"><a href="o-que-é-uma-aplicação-crud.html#cb40-95" tabindex="-1"></a>  <span class="kw">const</span> ct <span class="op">=</span> res<span class="op">.</span><span class="at">headers</span><span class="op">.</span><span class="fu">get</span>(<span class="st">&#39;content-type&#39;</span>) <span class="op">||</span> <span class="st">&#39;&#39;</span><span class="op">;</span></span>
+<span id="cb40-96"><a href="o-que-é-uma-aplicação-crud.html#cb40-96" tabindex="-1"></a>  <span class="cf">if</span> (ct<span class="op">.</span><span class="fu">includes</span>(<span class="st">&#39;application/json&#39;</span>)) {</span>
+<span id="cb40-97"><a href="o-que-é-uma-aplicação-crud.html#cb40-97" tabindex="-1"></a>    <span class="cf">try</span> { <span class="cf">return</span> <span class="cf">await</span> res<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span> } <span class="cf">catch</span> { <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span> }</span>
+<span id="cb40-98"><a href="o-que-é-uma-aplicação-crud.html#cb40-98" tabindex="-1"></a>  }</span>
+<span id="cb40-99"><a href="o-que-é-uma-aplicação-crud.html#cb40-99" tabindex="-1"></a>  <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb40-100"><a href="o-que-é-uma-aplicação-crud.html#cb40-100" tabindex="-1"></a>}</span>
+<span id="cb40-101"><a href="o-que-é-uma-aplicação-crud.html#cb40-101" tabindex="-1"></a></span>
+<span id="cb40-102"><a href="o-que-é-uma-aplicação-crud.html#cb40-102" tabindex="-1"></a><span class="co">/* ---------- CRUD ---------- */</span></span>
+<span id="cb40-103"><a href="o-que-é-uma-aplicação-crud.html#cb40-103" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">inserir</span>() {</span>
+<span id="cb40-104"><a href="o-que-é-uma-aplicação-crud.html#cb40-104" tabindex="-1"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="fu">validaCampos</span>()) <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb40-105"><a href="o-que-é-uma-aplicação-crud.html#cb40-105" tabindex="-1"></a>  <span class="fu">setBusy</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb40-106"><a href="o-que-é-uma-aplicação-crud.html#cb40-106" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb40-107"><a href="o-que-é-uma-aplicação-crud.html#cb40-107" tabindex="-1"></a>    <span class="kw">const</span> base64 <span class="op">=</span> <span class="cf">await</span> <span class="fu">getFotoBase64</span>()<span class="op">;</span></span>
+<span id="cb40-108"><a href="o-que-é-uma-aplicação-crud.html#cb40-108" tabindex="-1"></a>    <span class="kw">const</span> pessoa <span class="op">=</span> <span class="fu">coletaDados</span>(base64)<span class="op">;</span></span>
+<span id="cb40-109"><a href="o-que-é-uma-aplicação-crud.html#cb40-109" tabindex="-1"></a></span>
+<span id="cb40-110"><a href="o-que-é-uma-aplicação-crud.html#cb40-110" tabindex="-1"></a>    <span class="kw">const</span> res <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(API<span class="op">,</span> {</span>
+<span id="cb40-111"><a href="o-que-é-uma-aplicação-crud.html#cb40-111" tabindex="-1"></a>      <span class="dt">method</span><span class="op">:</span> <span class="st">&#39;POST&#39;</span><span class="op">,</span></span>
+<span id="cb40-112"><a href="o-que-é-uma-aplicação-crud.html#cb40-112" tabindex="-1"></a>      <span class="dt">headers</span><span class="op">:</span> {<span class="st">&#39;Content-Type&#39;</span><span class="op">:</span> <span class="st">&#39;application/json&#39;</span>}<span class="op">,</span></span>
+<span id="cb40-113"><a href="o-que-é-uma-aplicação-crud.html#cb40-113" tabindex="-1"></a>      <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(pessoa)</span>
+<span id="cb40-114"><a href="o-que-é-uma-aplicação-crud.html#cb40-114" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb40-115"><a href="o-que-é-uma-aplicação-crud.html#cb40-115" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="fu">readJsonSafe</span>(res)<span class="op">;</span></span>
+<span id="cb40-116"><a href="o-que-é-uma-aplicação-crud.html#cb40-116" tabindex="-1"></a>    <span class="cf">if</span>(res<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb40-117"><a href="o-que-é-uma-aplicação-crud.html#cb40-117" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Inserido com sucesso!&#39;</span>)<span class="op">;</span></span>
+<span id="cb40-118"><a href="o-que-é-uma-aplicação-crud.html#cb40-118" tabindex="-1"></a>      <span class="fu">listar</span>()<span class="op">;</span></span>
+<span id="cb40-119"><a href="o-que-é-uma-aplicação-crud.html#cb40-119" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;formPessoa&#39;</span>)<span class="op">.</span><span class="fu">reset</span>()<span class="op">;</span></span>
+<span id="cb40-120"><a href="o-que-é-uma-aplicação-crud.html#cb40-120" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb40-121"><a href="o-que-é-uma-aplicação-crud.html#cb40-121" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Erro: &#39;</span> <span class="op">+</span> (data<span class="op">?.</span><span class="at">error</span> <span class="op">||</span> res<span class="op">.</span><span class="at">statusText</span>))<span class="op">;</span></span>
+<span id="cb40-122"><a href="o-que-é-uma-aplicação-crud.html#cb40-122" tabindex="-1"></a>    }</span>
+<span id="cb40-123"><a href="o-que-é-uma-aplicação-crud.html#cb40-123" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb40-124"><a href="o-que-é-uma-aplicação-crud.html#cb40-124" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&#39;Falha ao inserir: &#39;</span> <span class="op">+</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span>
+<span id="cb40-125"><a href="o-que-é-uma-aplicação-crud.html#cb40-125" tabindex="-1"></a>  } <span class="cf">finally</span> {</span>
+<span id="cb40-126"><a href="o-que-é-uma-aplicação-crud.html#cb40-126" tabindex="-1"></a>    <span class="fu">setBusy</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb40-127"><a href="o-que-é-uma-aplicação-crud.html#cb40-127" tabindex="-1"></a>  }</span>
+<span id="cb40-128"><a href="o-que-é-uma-aplicação-crud.html#cb40-128" tabindex="-1"></a>}</span>
+<span id="cb40-129"><a href="o-que-é-uma-aplicação-crud.html#cb40-129" tabindex="-1"></a></span>
+<span id="cb40-130"><a href="o-que-é-uma-aplicação-crud.html#cb40-130" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">alterar</span>() {</span>
+<span id="cb40-131"><a href="o-que-é-uma-aplicação-crud.html#cb40-131" tabindex="-1"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="fu">validaCampos</span>()) <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb40-132"><a href="o-que-é-uma-aplicação-crud.html#cb40-132" tabindex="-1"></a>  <span class="kw">const</span> cpf <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;cpf&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb40-133"><a href="o-que-é-uma-aplicação-crud.html#cb40-133" tabindex="-1"></a>  <span class="fu">setBusy</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb40-134"><a href="o-que-é-uma-aplicação-crud.html#cb40-134" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb40-135"><a href="o-que-é-uma-aplicação-crud.html#cb40-135" tabindex="-1"></a>    <span class="kw">const</span> base64 <span class="op">=</span> <span class="cf">await</span> <span class="fu">getFotoBase64</span>()<span class="op">;</span></span>
+<span id="cb40-136"><a href="o-que-é-uma-aplicação-crud.html#cb40-136" tabindex="-1"></a>    <span class="kw">const</span> novosDados <span class="op">=</span> <span class="fu">coletaDados</span>()<span class="op">;</span></span>
+<span id="cb40-137"><a href="o-que-é-uma-aplicação-crud.html#cb40-137" tabindex="-1"></a>    <span class="cf">if</span> (base64) novosDados<span class="op">.</span><span class="at">foto</span> <span class="op">=</span> base64<span class="op">;</span></span>
+<span id="cb40-138"><a href="o-que-é-uma-aplicação-crud.html#cb40-138" tabindex="-1"></a></span>
+<span id="cb40-139"><a href="o-que-é-uma-aplicação-crud.html#cb40-139" tabindex="-1"></a>    <span class="kw">const</span> res <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="vs">`</span><span class="sc">${</span>API<span class="sc">}</span><span class="vs">/</span><span class="sc">${</span><span class="pp">encodeURIComponent</span>(cpf)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> {</span>
+<span id="cb40-140"><a href="o-que-é-uma-aplicação-crud.html#cb40-140" tabindex="-1"></a>      <span class="dt">method</span><span class="op">:</span> <span class="st">&#39;PUT&#39;</span><span class="op">,</span></span>
+<span id="cb40-141"><a href="o-que-é-uma-aplicação-crud.html#cb40-141" tabindex="-1"></a>      <span class="dt">headers</span><span class="op">:</span> {<span class="st">&#39;Content-Type&#39;</span><span class="op">:</span> <span class="st">&#39;application/json&#39;</span>}<span class="op">,</span></span>
+<span id="cb40-142"><a href="o-que-é-uma-aplicação-crud.html#cb40-142" tabindex="-1"></a>      <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(novosDados)</span>
+<span id="cb40-143"><a href="o-que-é-uma-aplicação-crud.html#cb40-143" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb40-144"><a href="o-que-é-uma-aplicação-crud.html#cb40-144" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="fu">readJsonSafe</span>(res)<span class="op">;</span></span>
+<span id="cb40-145"><a href="o-que-é-uma-aplicação-crud.html#cb40-145" tabindex="-1"></a>    <span class="cf">if</span>(res<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb40-146"><a href="o-que-é-uma-aplicação-crud.html#cb40-146" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Alterado com sucesso!&#39;</span>)<span class="op">;</span></span>
+<span id="cb40-147"><a href="o-que-é-uma-aplicação-crud.html#cb40-147" tabindex="-1"></a>      <span class="fu">listar</span>()<span class="op">;</span></span>
+<span id="cb40-148"><a href="o-que-é-uma-aplicação-crud.html#cb40-148" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb40-149"><a href="o-que-é-uma-aplicação-crud.html#cb40-149" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Erro: &#39;</span> <span class="op">+</span> (data<span class="op">?.</span><span class="at">error</span> <span class="op">||</span> res<span class="op">.</span><span class="at">statusText</span>))<span class="op">;</span></span>
+<span id="cb40-150"><a href="o-que-é-uma-aplicação-crud.html#cb40-150" tabindex="-1"></a>    }</span>
+<span id="cb40-151"><a href="o-que-é-uma-aplicação-crud.html#cb40-151" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb40-152"><a href="o-que-é-uma-aplicação-crud.html#cb40-152" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&#39;Falha ao alterar: &#39;</span> <span class="op">+</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span>
+<span id="cb40-153"><a href="o-que-é-uma-aplicação-crud.html#cb40-153" tabindex="-1"></a>  } <span class="cf">finally</span> {</span>
+<span id="cb40-154"><a href="o-que-é-uma-aplicação-crud.html#cb40-154" tabindex="-1"></a>    <span class="fu">setBusy</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb40-155"><a href="o-que-é-uma-aplicação-crud.html#cb40-155" tabindex="-1"></a>  }</span>
+<span id="cb40-156"><a href="o-que-é-uma-aplicação-crud.html#cb40-156" tabindex="-1"></a>}</span>
+<span id="cb40-157"><a href="o-que-é-uma-aplicação-crud.html#cb40-157" tabindex="-1"></a></span>
+<span id="cb40-158"><a href="o-que-é-uma-aplicação-crud.html#cb40-158" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">remover</span>() {</span>
+<span id="cb40-159"><a href="o-que-é-uma-aplicação-crud.html#cb40-159" tabindex="-1"></a>  <span class="kw">const</span> cpf <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;cpf&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb40-160"><a href="o-que-é-uma-aplicação-crud.html#cb40-160" tabindex="-1"></a>  <span class="cf">if</span>(<span class="op">!</span>cpf) <span class="cf">return</span> <span class="fu">alert</span>(<span class="st">&#39;Informe o CPF para remover.&#39;</span>)<span class="op">;</span></span>
+<span id="cb40-161"><a href="o-que-é-uma-aplicação-crud.html#cb40-161" tabindex="-1"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="fu">confirm</span>(<span class="st">&#39;Confirma a exclusão?&#39;</span>)) <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb40-162"><a href="o-que-é-uma-aplicação-crud.html#cb40-162" tabindex="-1"></a></span>
+<span id="cb40-163"><a href="o-que-é-uma-aplicação-crud.html#cb40-163" tabindex="-1"></a>  <span class="fu">setBusy</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb40-164"><a href="o-que-é-uma-aplicação-crud.html#cb40-164" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb40-165"><a href="o-que-é-uma-aplicação-crud.html#cb40-165" tabindex="-1"></a>    <span class="kw">const</span> res <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="vs">`</span><span class="sc">${</span>API<span class="sc">}</span><span class="vs">/</span><span class="sc">${</span><span class="pp">encodeURIComponent</span>(cpf)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> {<span class="dt">method</span><span class="op">:</span><span class="st">&#39;DELETE&#39;</span>})<span class="op">;</span></span>
+<span id="cb40-166"><a href="o-que-é-uma-aplicação-crud.html#cb40-166" tabindex="-1"></a>    <span class="co">// 204 =&gt; sem corpo; não tente parsear JSON aqui</span></span>
+<span id="cb40-167"><a href="o-que-é-uma-aplicação-crud.html#cb40-167" tabindex="-1"></a>    <span class="cf">if</span>(res<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="dv">204</span>) {</span>
+<span id="cb40-168"><a href="o-que-é-uma-aplicação-crud.html#cb40-168" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Removido com sucesso!&#39;</span>)<span class="op">;</span></span>
+<span id="cb40-169"><a href="o-que-é-uma-aplicação-crud.html#cb40-169" tabindex="-1"></a>      <span class="fu">listar</span>()<span class="op">;</span></span>
+<span id="cb40-170"><a href="o-que-é-uma-aplicação-crud.html#cb40-170" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb40-171"><a href="o-que-é-uma-aplicação-crud.html#cb40-171" tabindex="-1"></a>    }</span>
+<span id="cb40-172"><a href="o-que-é-uma-aplicação-crud.html#cb40-172" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="fu">readJsonSafe</span>(res)<span class="op">;</span></span>
+<span id="cb40-173"><a href="o-que-é-uma-aplicação-crud.html#cb40-173" tabindex="-1"></a>    <span class="cf">if</span>(res<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb40-174"><a href="o-que-é-uma-aplicação-crud.html#cb40-174" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Removido com sucesso!&#39;</span>)<span class="op">;</span></span>
+<span id="cb40-175"><a href="o-que-é-uma-aplicação-crud.html#cb40-175" tabindex="-1"></a>      <span class="fu">listar</span>()<span class="op">;</span></span>
+<span id="cb40-176"><a href="o-que-é-uma-aplicação-crud.html#cb40-176" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb40-177"><a href="o-que-é-uma-aplicação-crud.html#cb40-177" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Erro: &#39;</span> <span class="op">+</span> (data<span class="op">?.</span><span class="at">error</span> <span class="op">||</span> res<span class="op">.</span><span class="at">statusText</span>))<span class="op">;</span></span>
+<span id="cb40-178"><a href="o-que-é-uma-aplicação-crud.html#cb40-178" tabindex="-1"></a>    }</span>
+<span id="cb40-179"><a href="o-que-é-uma-aplicação-crud.html#cb40-179" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb40-180"><a href="o-que-é-uma-aplicação-crud.html#cb40-180" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&#39;Falha ao remover: &#39;</span> <span class="op">+</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span>
+<span id="cb40-181"><a href="o-que-é-uma-aplicação-crud.html#cb40-181" tabindex="-1"></a>  } <span class="cf">finally</span> {</span>
+<span id="cb40-182"><a href="o-que-é-uma-aplicação-crud.html#cb40-182" tabindex="-1"></a>    <span class="fu">setBusy</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb40-183"><a href="o-que-é-uma-aplicação-crud.html#cb40-183" tabindex="-1"></a>  }</span>
+<span id="cb40-184"><a href="o-que-é-uma-aplicação-crud.html#cb40-184" tabindex="-1"></a>}</span>
+<span id="cb40-185"><a href="o-que-é-uma-aplicação-crud.html#cb40-185" tabindex="-1"></a></span>
+<span id="cb40-186"><a href="o-que-é-uma-aplicação-crud.html#cb40-186" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">pesquisar</span>() {</span>
+<span id="cb40-187"><a href="o-que-é-uma-aplicação-crud.html#cb40-187" tabindex="-1"></a>  <span class="kw">const</span> termo <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;pesquisa&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb40-188"><a href="o-que-é-uma-aplicação-crud.html#cb40-188" tabindex="-1"></a>  <span class="fu">setBusy</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb40-189"><a href="o-que-é-uma-aplicação-crud.html#cb40-189" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb40-190"><a href="o-que-é-uma-aplicação-crud.html#cb40-190" tabindex="-1"></a>    <span class="kw">const</span> url <span class="op">=</span> termo <span class="op">?</span> <span class="vs">`</span><span class="sc">${</span>API<span class="sc">}</span><span class="vs">?q=</span><span class="sc">${</span><span class="pp">encodeURIComponent</span>(termo)<span class="sc">}</span><span class="vs">`</span> <span class="op">:</span> API<span class="op">;</span></span>
+<span id="cb40-191"><a href="o-que-é-uma-aplicação-crud.html#cb40-191" tabindex="-1"></a>    <span class="kw">const</span> res <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
+<span id="cb40-192"><a href="o-que-é-uma-aplicação-crud.html#cb40-192" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="fu">readJsonSafe</span>(res)<span class="op">;</span></span>
+<span id="cb40-193"><a href="o-que-é-uma-aplicação-crud.html#cb40-193" tabindex="-1"></a>    <span class="cf">if</span>(<span class="op">!</span>res<span class="op">.</span><span class="at">ok</span>) <span class="cf">return</span> <span class="fu">alert</span>(<span class="st">&#39;Falha na pesquisa: &#39;</span> <span class="op">+</span> (data<span class="op">?.</span><span class="at">error</span> <span class="op">||</span> res<span class="op">.</span><span class="at">statusText</span>))<span class="op">;</span></span>
+<span id="cb40-194"><a href="o-que-é-uma-aplicação-crud.html#cb40-194" tabindex="-1"></a>    <span class="fu">preencheTabela</span>(<span class="bu">Array</span><span class="op">.</span><span class="fu">isArray</span>(data) <span class="op">?</span> data <span class="op">:</span> (data<span class="op">?.</span><span class="at">items</span> <span class="op">??</span> []))<span class="op">;</span></span>
+<span id="cb40-195"><a href="o-que-é-uma-aplicação-crud.html#cb40-195" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb40-196"><a href="o-que-é-uma-aplicação-crud.html#cb40-196" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&#39;Falha na pesquisa: &#39;</span> <span class="op">+</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span>
+<span id="cb40-197"><a href="o-que-é-uma-aplicação-crud.html#cb40-197" tabindex="-1"></a>  } <span class="cf">finally</span> {</span>
+<span id="cb40-198"><a href="o-que-é-uma-aplicação-crud.html#cb40-198" tabindex="-1"></a>    <span class="fu">setBusy</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb40-199"><a href="o-que-é-uma-aplicação-crud.html#cb40-199" tabindex="-1"></a>  }</span>
+<span id="cb40-200"><a href="o-que-é-uma-aplicação-crud.html#cb40-200" tabindex="-1"></a>}</span>
+<span id="cb40-201"><a href="o-que-é-uma-aplicação-crud.html#cb40-201" tabindex="-1"></a></span>
+<span id="cb40-202"><a href="o-que-é-uma-aplicação-crud.html#cb40-202" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">listar</span>() {</span>
+<span id="cb40-203"><a href="o-que-é-uma-aplicação-crud.html#cb40-203" tabindex="-1"></a>  <span class="fu">setBusy</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb40-204"><a href="o-que-é-uma-aplicação-crud.html#cb40-204" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb40-205"><a href="o-que-é-uma-aplicação-crud.html#cb40-205" tabindex="-1"></a>    <span class="kw">const</span> res <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(API)<span class="op">;</span></span>
+<span id="cb40-206"><a href="o-que-é-uma-aplicação-crud.html#cb40-206" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="fu">readJsonSafe</span>(res)<span class="op">;</span></span>
+<span id="cb40-207"><a href="o-que-é-uma-aplicação-crud.html#cb40-207" tabindex="-1"></a>    <span class="cf">if</span>(<span class="op">!</span>res<span class="op">.</span><span class="at">ok</span>) <span class="cf">return</span> <span class="fu">alert</span>(<span class="st">&#39;Falha ao listar: &#39;</span> <span class="op">+</span> (data<span class="op">?.</span><span class="at">error</span> <span class="op">||</span> res<span class="op">.</span><span class="at">statusText</span>))<span class="op">;</span></span>
+<span id="cb40-208"><a href="o-que-é-uma-aplicação-crud.html#cb40-208" tabindex="-1"></a>    <span class="fu">preencheTabela</span>(<span class="bu">Array</span><span class="op">.</span><span class="fu">isArray</span>(data) <span class="op">?</span> data <span class="op">:</span> (data<span class="op">?.</span><span class="at">items</span> <span class="op">??</span> []))<span class="op">;</span></span>
+<span id="cb40-209"><a href="o-que-é-uma-aplicação-crud.html#cb40-209" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb40-210"><a href="o-que-é-uma-aplicação-crud.html#cb40-210" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&#39;Falha ao listar: &#39;</span> <span class="op">+</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span>
+<span id="cb40-211"><a href="o-que-é-uma-aplicação-crud.html#cb40-211" tabindex="-1"></a>  } <span class="cf">finally</span> {</span>
+<span id="cb40-212"><a href="o-que-é-uma-aplicação-crud.html#cb40-212" tabindex="-1"></a>    <span class="fu">setBusy</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb40-213"><a href="o-que-é-uma-aplicação-crud.html#cb40-213" tabindex="-1"></a>  }</span>
+<span id="cb40-214"><a href="o-que-é-uma-aplicação-crud.html#cb40-214" tabindex="-1"></a>}</span>
+<span id="cb40-215"><a href="o-que-é-uma-aplicação-crud.html#cb40-215" tabindex="-1"></a></span>
+<span id="cb40-216"><a href="o-que-é-uma-aplicação-crud.html#cb40-216" tabindex="-1"></a><span class="co">/* ---------- UI ---------- */</span></span>
+<span id="cb40-217"><a href="o-que-é-uma-aplicação-crud.html#cb40-217" tabindex="-1"></a><span class="kw">function</span> <span class="fu">preencheTabela</span>(lista){</span>
+<span id="cb40-218"><a href="o-que-é-uma-aplicação-crud.html#cb40-218" tabindex="-1"></a>  <span class="kw">const</span> tbody <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;tabela&#39;</span>)<span class="op">;</span></span>
+<span id="cb40-219"><a href="o-que-é-uma-aplicação-crud.html#cb40-219" tabindex="-1"></a>  tbody<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&#39;&#39;</span><span class="op">;</span></span>
+<span id="cb40-220"><a href="o-que-é-uma-aplicação-crud.html#cb40-220" tabindex="-1"></a>  (lista <span class="op">||</span> [])<span class="op">.</span><span class="fu">forEach</span>(p<span class="kw">=&gt;</span>{</span>
+<span id="cb40-221"><a href="o-que-é-uma-aplicação-crud.html#cb40-221" tabindex="-1"></a>    <span class="kw">const</span> tr <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;tr&#39;</span>)<span class="op">;</span></span>
+<span id="cb40-222"><a href="o-que-é-uma-aplicação-crud.html#cb40-222" tabindex="-1"></a>    tr<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="vs">`</span></span>
+<span id="cb40-223"><a href="o-que-é-uma-aplicação-crud.html#cb40-223" tabindex="-1"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">cpf</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb40-224"><a href="o-que-é-uma-aplicação-crud.html#cb40-224" tabindex="-1"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">foto</span> <span class="op">?</span> <span class="vs">`&lt;img class=&quot;thumb&quot; src=&quot;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">foto</span><span class="sc">}</span><span class="vs">&quot; alt=&quot;foto&quot;&gt;`</span> <span class="op">:</span> <span class="st">&#39;&#39;</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb40-225"><a href="o-que-é-uma-aplicação-crud.html#cb40-225" tabindex="-1"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">nome</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb40-226"><a href="o-que-é-uma-aplicação-crud.html#cb40-226" tabindex="-1"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">endereco</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb40-227"><a href="o-que-é-uma-aplicação-crud.html#cb40-227" tabindex="-1"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">data_nascimento</span><span class="sc">}</span><span class="vs">&lt;/td&gt;`</span><span class="op">;</span></span>
+<span id="cb40-228"><a href="o-que-é-uma-aplicação-crud.html#cb40-228" tabindex="-1"></a>    tr<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb40-229"><a href="o-que-é-uma-aplicação-crud.html#cb40-229" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;cpf&#39;</span>)<span class="op">.</span><span class="at">value</span> <span class="op">=</span> p<span class="op">.</span><span class="at">cpf</span><span class="op">;</span></span>
+<span id="cb40-230"><a href="o-que-é-uma-aplicação-crud.html#cb40-230" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;nome&#39;</span>)<span class="op">.</span><span class="at">value</span> <span class="op">=</span> p<span class="op">.</span><span class="at">nome</span><span class="op">;</span></span>
+<span id="cb40-231"><a href="o-que-é-uma-aplicação-crud.html#cb40-231" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;endereco&#39;</span>)<span class="op">.</span><span class="at">value</span> <span class="op">=</span> p<span class="op">.</span><span class="at">endereco</span><span class="op">;</span></span>
+<span id="cb40-232"><a href="o-que-é-uma-aplicação-crud.html#cb40-232" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;data_nascimento&#39;</span>)<span class="op">.</span><span class="at">value</span> <span class="op">=</span> p<span class="op">.</span><span class="at">data_nascimento</span><span class="op">;</span></span>
+<span id="cb40-233"><a href="o-que-é-uma-aplicação-crud.html#cb40-233" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb40-234"><a href="o-que-é-uma-aplicação-crud.html#cb40-234" tabindex="-1"></a>    tbody<span class="op">.</span><span class="fu">appendChild</span>(tr)<span class="op">;</span></span>
+<span id="cb40-235"><a href="o-que-é-uma-aplicação-crud.html#cb40-235" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb40-236"><a href="o-que-é-uma-aplicação-crud.html#cb40-236" tabindex="-1"></a>}</span>
+<span id="cb40-237"><a href="o-que-é-uma-aplicação-crud.html#cb40-237" tabindex="-1"></a></span>
+<span id="cb40-238"><a href="o-que-é-uma-aplicação-crud.html#cb40-238" tabindex="-1"></a><span class="fu">listar</span>()<span class="op">;</span></span>
+<span id="cb40-239"><a href="o-que-é-uma-aplicação-crud.html#cb40-239" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb40-240"><a href="o-que-é-uma-aplicação-crud.html#cb40-240" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb40-241"><a href="o-que-é-uma-aplicação-crud.html#cb40-241" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="banco-de-dados-uma-aplicação-crud.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="banco-de-dados-uma-aplicação-crud-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/miguel7penteado/2025-2sem-GTI-BancoDeDados/edit/main/05-2025-09-01_Aplicacao_CRUD-aula.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["2025-GTI-Sem-BancoDeDados.pdf", "2025-GTI-Sem-BancoDeDados.epub", "2025-GTI-Sem-BancoDeDados.word", "2025-GTI-Sem-BancoDeDados.html"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,257 @@
+h1:sobre-estas-anotações Sobre estas anotações
+h2:acesso-ao-gitbook-celular ACESSO AO GITBOOK CELULAR
+h4:httpsmiguel7penteado.github.io2025-2sem-gti-bancodedados 
+h2:leitores-de-formato-de-arquivo-epub-para-smartphone Leitores de formato de arquivo EPUB para SmartPhone
+h3:android ANDROID
+h4:moon-reader 
+h2:livros-texto-da-disciplina Livros Texto da Disciplina
+h3:introdução-a-sistemas-de-bancos-de-dados-do-autor-christopher-john-date 
+h3:projeto-de-bancos-de-dados-do-autor-carlos-alberto-heuser 
+h2:calendário-das-aulas Calendário das aulas
+h5:agosto-de-2025 AGOSTO DE 2025
+h5:setembro-de-2025 SETEMBRO DE 2025
+h5:outubro-de-2025 OUTUBRO DE 2025
+h5:novembro-de-2025 NOVEMBRO DE 2025
+h5:dezembro-de-2025 DEZEMBRO DE 2025
+h2:alunos-2025---2o-semestre Alunos 2025 - 2o Semestre
+h3:campus-chácara-santo-antônio Campus Chácara Santo Antônio
+h4:turma-ti2p40 Turma TI2P40
+h1:postgres-zip-version-windows-starting-guide Postgres (Zip Version) Windows Starting Guide
+h1:aula-inaugural Aula Inaugural
+h4:section 04/08/2025
+h4:professor-miguél-suares Professor Miguél Suares
+h2:disciplina-banco-de-dados Disciplina: 
+h2:sobre-o-professor 👨‍🏫 Sobre o Professor
+h2:objetivos-da-disciplina 🎯 Objetivos da Disciplina
+h2:calendário-da-disciplina 📅 Calendário da Disciplina
+h2:ementa-resumida 📚 Ementa Resumida
+h2:avaliação 📝 Avaliação
+h2:ferramentas-da-disciplina 🛠️ Ferramentas da Disciplina
+h2:expectativas-e-regras 📌 Expectativas e Regras
+h2:dicas-para-mandar-bem 💡 Dicas para Mandar Bem
+h2:encerramento 🙌 Encerramento
+h2:estamos-prontos Estamos prontos?
+h1:fundamentos-de-sistemas-de-bancos-de-dados Fundamentos de Sistemas de Bancos de Dados
+h4:section-1 11/08/2025
+h4:professor-miguél-suares-1 Professor Miguél Suares
+h2:o-início-edgar-frank-ted-codd-19081923-18042003 O início : Edgar Frank  Codd (19/08/1923 – 18/04/2003)
+h2:anos-1970-ibm-entra-no-modelo-relacional-systemr-e-sequelsql Anos 1970: IBM entra no Modelo relacional: SystemR e SEQUEL/SQL
+h2:anos-1970-prof-codd-inspira-prof-stonebraker-banco-ingres Anos 1970: Prof Codd inspira Prof StoneBraker: BANCO INGRES
+h2:anos-1980-ingres-semi-livre-vs-ibm-system-r-pago-vs-oracle Anos 1980: INGRES (SEMI-LIVRE) vs IBM System R ( pago ) vs ORACLE
+h2:anos-1990-mysql-e-postgres-que-vira-postgresql Anos 1990: MySQL e POSTGRES que vira POSTGRESQL
+h2:anos-2000-sybase-eo-no-sql Anos 2000: Sybase eo No-SQL
+h2:exercícios Exercícios
+h1:modelagem-de-bancos-de-dados Modelagem de Bancos de Dados
+h4:section-2 18/08/2025
+h4:professor-miguél-suares-2 Professor Miguél Suares
+h2:introdução-visitando-a-teoria-de-bancos-de-dados Introdução: Visitando a teoria de Bancos de Dados
+h2:modelo-matemático-de-um-banco-de-dados Modelo Matemático de um Banco de Dados
+h3:podemos-representa-lo-matemáticamente-utilizando-a-teoria-dos-conjuntos Podemos representa-lo matemáticamente utilizando a teoria dos conjuntos
+fig:tikz-diagrama0 Diagrama de Montadoras, Veículos e Proprietários
+h4:edgard-f-cood-explica-em-sua-obra-a-relational-model-of-data-for-large-shared-data-banks-como-definir-uma-banco-de-dados-compartilhado-matemáticamente Edgard F Cood explica em sua obra  como definir uma Banco de Dados compartilhado 
+h3:então-para-podemos-relacionar-estes-dois-conjuntos-funcionários-e-departamentos-utilizando-a-teoria-das-funções Então para podemos relacionar estes dois conjuntos (Funcionários e Departamentos) utilizando a Teoria das Funções
+fig:tikz-diagrama10 Diagrama de Montadoras, Veículos e Proprietários
+h2:modelo-lógico-de-banco-de-dados Modelo Lógico de Banco de Dados
+h3:modelo-conceitual-entidade-relacionamento-de-banco-de-dados Modelo Conceitual  de Banco de Dados
+h3:composição-e-significado-do-diagrama-entidade-relacionamento-der Composição e Significado do Diagrama Entidade Relacionamento (DER)
+fig:tikz-diagrama-DER-00 Diagrama de Montadoras, Veículos e Proprietários
+h2:modelo-físico-de-banco-de-dados Modelo Físico de Banco de Dados
+h3:geração-do-modelo-físico-para-aplica-lo-ao-sgbd-sistema-de-gerenciamento-de-banco-de-dados Geração do modelo Físico para aplica-lo ao SGBD (Sistema de Gerenciamento de Banco de Dados):
+h3:interagindo-com-o-modelo-físico---a-linguagem-sql-structured-query-language Interagindo com o Modelo Físico - A linguagem SQL (Structured Query Language)
+h2:exemplo-revenda-de-veículos-multi-marcas EXEMPLO: REVENDA DE VEÍCULOS MULTI-MARCAS
+h3:passo-1---visualizando-matemáticamente-os-dados Passo 1 - Visualizando matemáticamente os dados:
+h4:representação-matemática-em-conjuntos-e-seus-elementos Representação Matemática em Conjuntos e seus Elementos :
+fig:tikz-diagrama1 Diagrama de Montadoras, Veículos e Proprietários
+h4:gerando-os-relacionamentos-matemáticamente---teoria-das-funções-domínios-e-imagens Gerando os Relacionamentos  - (Teoria das Funções, Domínios e Imagens):
+fig:tikz-diagrama2 Diagrama de Montadoras, Veículos e Proprietários
+h3:modelo-lógico-modelo-entidade-relacionamento Modelo Lógico: Modelo Entidade Relacionamento
+h4:modelo-entidade-relacionamento Modelo Entidade Relacionamento
+h4:modelo-entidade-relacionamento---representação-gráfica Modelo Entidade Relacionamento - representação gráfica
+h2:verbos-relacionamentos-e-cardinalidade VERBOS: Relacionamentos e Cardinalidade
+h3:tipos-principais-de-cardinalidade 🔹 Tipos principais de cardinalidade
+h3:relacionamento-11-um-para-um 1. Relacionamento 
+h4:representação-no-der Representação no DER:
+h3:relacionamento-1n-um-para-muitos Relacionamento 
+h4:representação-no-der-1 Representação no DER:
+h3:relacionamento-nn-muitos-para-muitos Relacionamento N:N (Muitos para Muitos)
+h4:representação-no-der-2 Representação no DER:
+h2:entidade-dominante-e-entidade-subordinada Entidade Dominante e Entidade Subordinada
+h3:definições Definições:
+h2:cardinalidade-do-modelo-lógico-e-a-criação-de-chaves-estrangeiras-no-modelo-físico-relacional CARDINALIDADE DO MODELO LÓGICO E A CRIAÇÃO DE CHAVES ESTRANGEIRAS NO MODELO FÍSICO-RELACIONAL
+h2:normalização-em-bancos-de-dados-relaionais Normalização em Bancos de Dados Relaionais
+h3:tabela-desnormalizada Tabela Desnormalizada
+h3:tabela-normalizada Tabela Normalizada
+h2:referências Referências
+h2:exercícios-resolvidos Exercícios RESOLVIDOS
+h4:passo-1-- Passo #1 -
+h4:passo-2 Passo #2
+h4:passo-3 Passo #3
+h4:passo-4 Passo #4
+h4:passo-5---crie-o-código-sql-referente-ao-diagrama-que-você-desenhou Passo #5 - Crie o código SQL referente ao diagrama que você desenhou:
+h4:passo-1---1 Passo #1 -
+h4:passo-2-1 Passo #2
+h4:passo-3-1 Passo #3
+h4:passo-5---crie-o-código-sql-referente-ao-diagrama-que-você-desenhou-1 Passo #5 - Crie o código SQL referente ao diagrama que você desenhou:
+h4:passo-1---2 Passo #1 -
+h4:passo-2-2 Passo #2
+h4:passo-3-2 Passo #3
+h4:passo-5---faça-o-código-sql-do-diagrama-acima Passo #5 - Faça o código SQL do diagrama acima
+h3:exercícios-1 Exercícios
+h3:lista-de-exercícios-modelo-entidade-relacionamento-mer 📝 Lista de Exercícios – Modelo Entidade-Relacionamento (MER)
+h4:exercício-1-cliente-e-cpf-11 Exercício 1 – Cliente e CPF (1:1)
+h4:exercício-2-cliente-e-pedidos-1n Exercício 2 – Cliente e Pedidos (1:N)
+h4:exercício-3-alunos-e-disciplinas-nn Exercício 3 – Alunos e Disciplinas (N:N)
+h4:exercício-4-funcionário-e-dependentes-entidade-fraca Exercício 4 – Funcionário e Dependentes (Entidade Fraca)
+h4:exercício-5-pedido-e-itens-de-pedido-entidade-associativa-fraca Exercício 5 – Pedido e Itens de Pedido (Entidade Associativa + Fraca)
+h4:exercício-6-médicos-e-consultas-1n Exercício 6 – Médicos e Consultas (1:N)
+h4:exercício-7-professor-e-departamento-11 Exercício 7 – Professor e Departamento (1:1)
+h4:exercício-8-livros-e-autores-nn Exercício 8 – Livros e Autores (N:N)
+h4:exercício-9-biblioteca-entidades-fortes-e-fracas Exercício 9 – Biblioteca (Entidades Fortes e Fracas)
+h4:exercício-10-empresa-funcionário-e-projeto-misto-1n-e-nn Exercício 10 – Empresa, Funcionário e Projeto (Misto 1:N e N:N)
+h4:tarefas-propostas-para-cada-exercício Tarefas propostas para cada exercício:
+h3:respostas-dos-exercícios Respostas dos Exercícios:
+h4:exercício-1 Exercício #1
+h5:exercício-1---sql-referênte-ao-diagrama-anterior Exercício 1 - SQL referênte ao diagrama anterior
+h4:exercício-2 Exercício #2
+h5:exercício-2---sql-referênte-ao-diagrama-anterior Exercício 2 - SQL referênte ao diagrama anterior
+h4:exercício-3 Exercício #3
+h5:exercício-3---sql-referênte-ao-diagrama-anterior Exercício 3 - SQL referênte ao diagrama anterior
+h4:exercício-4 Exercício #4
+h5:exercício-4---sql-referênte-ao-diagrama-anterior Exercício 4 - SQL referênte ao diagrama anterior
+h4:exercício-5 Exercício #5
+h5:exercício-5---sql-referênte-ao-diagrama-anterior Exercício 5 - SQL referênte ao diagrama anterior
+h4:exercício-6 Exercício #6
+h5:exercício-6---sql-referênte-ao-diagrama-anterior Exercício 6 - SQL referênte ao diagrama anterior
+h4:exercício-7 Exercício #7
+h5:exercício-7---sql-referênte-ao-diagrama-anterior Exercício 7 - SQL referênte ao diagrama anterior
+h4:exercício-8 Exercício #8
+h5:exercício-8---sql-referênte-ao-diagrama-anterior Exercício 8 - SQL referênte ao diagrama anterior
+h4:exercício-9 Exercício #9
+h5:exercício-9---sql-referênte-ao-diagrama-anterior Exercício 9 - SQL referênte ao diagrama anterior
+h4:exercício-10 Exercício #10
+h5:exercício-10---sql-referênte-ao-diagrama-anterior Exercício 10 - SQL referênte ao diagrama anterior
+h1:administração-e-gerenciamento-de-bancos-de-dados Administração e Gerenciamento de Bancos de Dados
+h4:section-3 25/08/2025
+h4:professor-miguél-suares-3 Professor Miguél Suares
+h2:administração-e-gerenciamento-de-banco-de-dados Administração e Gerenciamento de Banco de Dados:
+h2:papel-do-dba-database-administrator Papel do DBA (Database Administrator)
+h2:usuários-grupos-e-esquemas-de-bancos-de-dados Usuários, Grupos e Esquemas de Bancos de Dados
+h3:usuários Usuários
+h4:funções-principal Funções principal
+h4:privilégios Privilégios:
+h3:esquemas Esquemas
+h4:por-que-usar Por que usar
+h3:grupos-ou-roles Grupos ou Roles
+h4:vantagens Vantagens
+h3:sistema-de-gerenciamento-de-banco-de-dados-s.g.b.d. Sistema de Gerenciamento de Banco de Dados (S.G.B.D.)
+h3:criação-de-usuários-no-mysql Criação de usuários no MySQL
+h3:criação-de-esquemas-de-banco-de-dados-no-mysql Criação de Esquemas de Banco de Dados no MySQL
+h3:criando-de-grupos-de-permissões-no-mysql Criando de Grupos de Permissões no MySQL:
+h2:fazendo-tudo-funcionar-colocando-usuários-em-grupos-e-concedendo-a-estes-acesso-a-esquemas-de-banco-de-dados Fazendo tudo funcionar: Colocando usuários em grupos e concedendo a estes acesso a Esquemas de Banco de Dados:
+h3:associando-os-esquemas-que-representam-cada-estado-a-cada-grupo-que-representa-cada-regição Associando os esquemas que representam cada estado a cada grupo (que representa cada regição):
+h3:associando-associando-alunos-a-cada-grupo-região Associando associando alunos a cada grupo (região):
+h4:região-norte Região Norte
+h4:região-nordeste Região Nordeste
+h4:região-centro-oeste Região Centro-Oeste
+h4:região-sudeste Região Sudeste
+h4:região-sul Região Sul
+h3:associando-usuários-aos-grupos Associando usuários aos grupos
+h3:concedendo-privilégios-aos-grupos Concedendo privilégios aos grupos:
+h3:exemplo-no-mysql Exemplo no MySQL
+h4:passo-1---criar-o-esquema-de-banco-de-dados-compras Passo 1 - Criar o esquema de Banco de Dados 
+h4:passo-2---criar-o-usuário-aluno Passo 2 - Criar o usuário 
+h4:passo-2---conceder-ao-usuário-aluno-privilégios-sobre-todas-os-objetos-tabelas-views-gatilhos-índices-do-esquema-compras Passo 2 - Conceder ao usuário  privilégios sobre todas os objetos (tabelas, views, gatilhos, índices) do esquema 
+h4:passo-3---criar-a-tabela-clientes-dentro-do-esquema-compras Passo 3 - Criar a tabela  dentro do esquema 
+h3:exemplo-no-postgresql Exemplo no PostGreSQL
+h4:passo-0---crie-um-banco-de-dados-sistema_compras Passo 0 - Crie um Banco de Dados 
+h4:passo-1---criar-o-esquema-de-banco-de-dados-compras-1 Passo 1 - Criar o esquema de Banco de Dados 
+h4:passo-2---criar-o-usuário-aluno-1 Passo 2 - Criar o usuário 
+h4:passo-3---conceder-ao-usuário-aluno-privilégios-sobre-todas-os-objetos-tabelas-views-gatilhos-índices-do-esquema-compras Passo 3 - Conceder ao usuário  privilégios sobre todas os objetos (tabelas, views, gatilhos, índices) do esquema 
+h4:passo-4---criar-a-tabela-clientes-dentro-do-esquema-compras Passo 4 - Criar a tabela  dentro do esquema 
+h4:passo-5---conceder-privilégios-da-tabela-clientes-do-esquema-compras-para-o-usuário-aluno Passo 5 - Conceder privilégios da tabela  do esquema  para o usuário 
+h2:feito Feito
+h1:administração-e-gerenciamento-de-bancos-de-dados-1 Administração e Gerenciamento de Bancos de Dados
+h4:section-4 25/08/2025
+h4:professor-miguél-suares-4 Professor Miguél Suares
+h1:banco-de-dados-uma-aplicação-crud Banco de Dados: Uma Aplicação CRUD
+h4:section-5 01/09/2025
+h4:professor-miguél-suares-5 Professor Miguél Suares
+h2:o-que-é-uma-aplicação-crud O que é uma Aplicação CRUD?
+h2:conceito-de-crud Conceito de CRUD
+h2:o-padrão-de-design-de-sistemas-mvc-model-view-controller O padrão de Design de Sistemas MVC (Model View Controller)
+h2:construindo-uma-aplicação-crud-para-interfacear-com-a-tabela-pessoa Construindo uma aplicação CRUD para interfacear com a tabela 
+h3:representação-gráfica-no-modelo-físico-relacional Representação gráfica no modelo Físico-Relacional
+h2:criação-de-uma-aplicação-crud Criação de uma aplicação CRUD
+h4:criação-de-um-usuário-para-interagir-com-o-esquema-de-banco-de-dados Criação de um usuário para Interagir com o Esquema de Banco de Dados
+h4:criação-do-esquema-de-banco-de-dados-no-sgbd-mysql Criação do Esquema de Banco de Dados no SGBD MySQL
+h4:criação-da-tabela-pessoas Criação da Tabela 
+h4:uma-aplicação-cliente-servidor-no-formato-mvc-model-view-controller Uma aplicação Cliente Servidor no formato MVC (Model View Controller)
+h4:criação-do-servidor-de-aplicação-em-linguagem-python Criação do Servidor de Aplicação em Linguagem Python
+h4:criação-do-cliente-de-aplicação-em-html-parte-gráfica-e-javascript-programação-executável Criação do Cliente de Aplicação em HTML (Parte Gráfica) e Javascript (Programação Executável)
+h3:resultado-final Resultado final:
+h4:servidor-de-aplicação-python-restful-rodando Servidor de aplicação Python  rodando
+h4:cliente-html-javascript-página-estática-aberta-no-navegador Cliente HTML + Javascript ( página ESTÁTICA ) aberta no navegador
+h5:passo-1---preencher-dados-no-formulário-do-cliente Passo 1 - Preencher dados no formulário do cliente
+h5:passo-2---pressionar-o-botão-inserir Passo 2 - Pressionar o Botão INSERIR
+h5:passo-3---verificar-se-o-dbgrid-do-cliente-espelhando-a-linha-da-tabela-pessoas-no-esquema-pessoasdb-do-sqbg-mysql Passo 3 - Verificar se o  do cliente  a linha da tabela  no esquema  do SQBG MySQL
+h5:passo-4---verificar-na-tabela-pessoas-a-linha-que-o-cliente-preencheu-através-da-api-da-aplicação-clienteservidor Passo 4 - Verificar na tabela pessoas a linha que o cliente preencheu através da API da aplicação cliente/servidor
+h2:feito-1 Feito
+h2:exercícios-2 Exercícios
+h4:section-6 01/09/2025
+h4:professor-miguél-suares-6 Professor Miguél Suares
+h3:banco-de-dados-utilizado-nos-exemplos-de-aplicações-abaixo Banco de Dados utilizado nos exemplos de aplicações abaixo
+h2:exemplo-01 Exemplo 01
+h2:exemplo-02---servidor-de-aplicação-python Exemplo 02 - SERVIDOR DE APLICAÇÃO PYTHON
+h3:servidor-python Servidor python
+h3:cliente-html-conexão-restful Cliente HTML (conexão Restful)
+h2:exemplo-03---servidor-de-aplicação-perl Exemplo 03 - SERVIDOR DE APLICAÇÃO PERL
+h3:servidor-perl Servidor Perl
+h3:cliente-html-conexão-restful-1 Cliente HTML (conexão Restful)
+h2:exemplo-04---servidor-de-aplicação-java Exemplo 04 - SERVIDOR DE APLICAÇÃO JAVA
+h2:exemplo-05---servidor-de-aplicação-c Exemplo 05 - SERVIDOR DE APLICAÇÃO C++
+h3:criando-o-arquivo-c-do-servidor Criando o arquivo C++ do servidor
+h3:ferramenta-de-compilação-cmake Ferramenta de compilação CMAKE
+h3:cliente-html-conexão-restful-2 Cliente HTML (conexão Restful)
+h1:banco-de-dados-mysql-mariadb Banco de Dados: MySQL (MariaDB)
+h4:section-7 08/09/2025
+h4:professor-miguél-suares-7 Professor Miguél Suares
+h1:banco-de-dados-mysql-mariadb-1 Banco de Dados: MySQL (MariaDB)
+h4:section-8 08/09/2025
+h4:professor-miguél-suares-8 Professor Miguél Suares
+h1:banco-de-dados-postgres Banco de Dados: Postgres
+h4:section-9 22/09/2025
+h4:professor-miguél-suares-9 Professor Miguél Suares
+h1:banco-de-dados-postgres-1 Banco de Dados: Postgres
+h4:section-10 22/09/2025
+h4:professor-miguél-suares-10 Professor Miguél Suares
+h1:banco-de-dados-espaciais---cliente-qgis Banco de Dados Espaciais - Cliente QGIS
+h4:section-11 29/09/2025
+h4:professor-miguél-suares-11 Professor Miguél Suares
+h1:banco-de-dados-espaciais---cliente-qgis-1 Banco de Dados Espaciais - Cliente QGIS
+h4:section-12 29/09/2025
+h4:professor-miguél-suares-12 Professor Miguél Suares
+h1:banco-de-dados-estatístico---cliente-rstudio Banco de Dados Estatístico - Cliente Rstudio
+h4:section-13 06/10/2025
+h4:professor-miguél-suares-13 Professor Miguél Suares
+h1:banco-de-dados-estatístico---cliente-rstudio-1 Banco de Dados Estatístico - Cliente Rstudio
+h4:section-14 06/10/2025
+h4:professor-miguél-suares-14 Professor Miguél Suares
+h1:banco-de-dados---análise-de-dados-parte-01 Banco de Dados - Análise de Dados Parte 01
+h4:section-15 13/10/2025
+h4:professor-miguél-suares-15 Professor Miguél Suares
+h1:banco-de-dados---análise-de-dados-parte-01-1 Banco de Dados - Análise de Dados Parte 01
+h4:section-16 13/10/2025
+h4:professor-miguél-suares-16 Professor Miguél Suares
+h1:banco-de-dados---análise-de-dados-parte-02 Banco de Dados - Análise de Dados Parte 02
+h4:section-17 20/10/2025
+h4:professor-miguél-suares-17 Professor Miguél Suares
+h1:banco-de-dados---análise-de-dados-parte-02-1 Banco de Dados - Análise de Dados Parte 02
+h4:section-18 20/10/2025
+h4:professor-miguél-suares-18 Professor Miguél Suares
+h1:banco-de-dados---análise-de-dados-parte-03 Banco de Dados - Análise de Dados Parte 03
+h4:section-19 27/10/2025
+h4:professor-miguél-suares-19 Professor Miguél Suares
+h1:banco-de-dados---análise-de-dados-parte-03-1 Banco de Dados - Análise de Dados Parte 03
+h4:section-20 27/10/2025
+h4:professor-miguél-suares-20 Professor Miguél Suares
+

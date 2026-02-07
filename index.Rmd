@@ -1,0 +1,236 @@
+---
+title: "GTI - Banco de dados - 2025 - Anotações de aula"
+author: "Professor Miguél Suares"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib]
+url: your book url like https://bookdown.org/yihui/bookdown
+cover-image: images/cover.jpg
+description: |
+  Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da  disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas.
+link-citations: yes
+github-repo: miguel7penteado/2025-2sem-GTI-BancoDeDados
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(plantuml)
+
+
+# Detectar o sistema operacional
+so <- Sys.info()[["sysname"]]
+
+if (so == "Linux")
+{
+  plantumlOptions(jar_path = "/usr/share/java/plantuml.jar")  
+}else 
+  if (so == "Windows") 
+  {
+    plantumlOptions(jar_path = "C:/PROGRA~1/COMMON~1/Oracle/Java/libs/plantuml-1.2025.4.jar")
+  }else
+  {
+    print(paste("Sistema não reconhecido:", so))
+  }
+
+
+knitr::knit_engines$set(plantuml = function(options)
+{
+    code <- paste(options$code, collapse = "\n")
+  
+  if (is.null(options$plantuml.path)) 
+  {
+    path <-  "."
+  } else
+    {
+      path <- options$plantuml.path
+    }
+  
+  dir.create(path, showWarnings = FALSE, recursive = TRUE)
+  fig <- paste0(options$label, ".", "svg")
+  fig <- file.path(path, fig)
+  if (options$eval) plot(x = plantuml(code), vector=FALSE, file=fig)
+  knitr::engine_output(options, out = list(knitr::include_graphics(fig)))
+})
+```
+
+# Sobre estas anotações {.unnumbered}
+
+—————————————————————————————————————————————
+
+Estas anotações são apenas lembretes das aulas expostas em sala, durante a disciplina de Banco de dados.
+
+## ACESSO AO GITBOOK CELULAR
+
+—————————————————————————————————————————————
+
+#### <https://miguel7penteado.github.io/2025-2sem-GTI-BancoDeDados>
+
+![](images/qr-code-disciplina.jpg)
+
+## Leitores de formato de arquivo EPUB para SmartPhone
+
+—————————————————————————————————————————————
+
+### ANDROID
+
+#### **Moon+ Reader**
+
+![](images/qrcode/leitor_epub/MoonReaderPlus.jpg){width="340"}
+
+## Livros Texto da Disciplina
+
+—————————————————————————————————————————————
+
+### ["Introdução a sistemas de bancos de dados" do autor "**Christopher John Date**"](https://www.kufunda.net/publicdocs/Introdu%C3%A7%C3%A3o%20a%20Sistemas%20de%20Bancos%20de%20Dados%20(C.%20J.%20Date)%20(z-lib.org).pdf)
+
+![](images/livros/livro1.jpg)
+
++-----------------------+------------------------------------------------------------------------------------+
+| **Autor(es)**         | ### [**Christopher John Date**](https://en.wikipedia.org/wiki/Christopher_J._Date) |
++-----------------------+------------------------------------------------------------------------------------+
+| **Editora**           | LTC                                                                                |
++-----------------------+------------------------------------------------------------------------------------+
+| **Idioma**            | Português                                                                          |
++-----------------------+------------------------------------------------------------------------------------+
+| **ISBN**              | 978-85-352-8445-4                                                                  |
++-----------------------+------------------------------------------------------------------------------------+
+| **Formato**           | Capa dura                                                                          |
++-----------------------+------------------------------------------------------------------------------------+
+| **Páginas**           | 1623                                                                               |
++-----------------------+------------------------------------------------------------------------------------+
+| **Código Biblioteca** |                                                                                    |
++-----------------------+------------------------------------------------------------------------------------+
+
+### ["**Projeto de bancos de dados**" do autor "Carlos Alberto HEUSER"](https://drive.google.com/file/d/0B452rmbcudPSVFdCZ09vVkJUUUd2dlpMNS1vaEczUQ/view?pli=1&resourcekey=0-3MTcHlAYjPX6YSvBQGweUQ)
+
+![](images/livros/livro2.jpg)
+
++-----------------------+-------------------------------------------------------------------------------------------+
+| **Autor(es)**         | ### [Carlos Alberto HEUSER](https://www.inf.ufrgs.br/site/docente/carlos-alberto-heuser/) |
++-----------------------+-------------------------------------------------------------------------------------------+
+| **Editora**           | Bookman                                                                                   |
++-----------------------+-------------------------------------------------------------------------------------------+
+| **Idioma**            | Português                                                                                 |
++-----------------------+-------------------------------------------------------------------------------------------+
+| **ISBN-10**           | 8577803821                                                                                |
++-----------------------+-------------------------------------------------------------------------------------------+
+| **Formato**           | Impresso                                                                                  |
++-----------------------+-------------------------------------------------------------------------------------------+
+| **Páginas**           | 282                                                                                       |
++-----------------------+-------------------------------------------------------------------------------------------+
+| **Código Biblioteca** |                                                                                           |
++-----------------------+-------------------------------------------------------------------------------------------+
+
+## Calendário das aulas
+
+—————————————————————————————————————————————
+
+##### AGOSTO DE 2025
+
+| Data       | Dia da Semana | Aulas          | Conteúdo |
+|------------|---------------|----------------|----------|
+| 04/08/2025 | Segunda-Feira | Aula Inaugural |          |
+| 11/08/2025 | Segunda-Feira | Aula 2         |          |
+| 18/08/2025 | Segunda-Feira | Aula 3         |          |
+| 25/08/2025 | Segunda-Feira | Aula 4         |          |
+
+##### SETEMBRO DE 2025
+
+| Data       | Dia da Semana | Aulas  | Conteúdo |
+|------------|---------------|--------|----------|
+| 01/09/2025 | Segunda-Feira | Aula 5 |          |
+| 08/09/2025 | Segunda-Feira | Aula 6 |          |
+| 15/09/2025 | Segunda-Feira | NP1    | PROVA    |
+| 22/09/2025 | Segunda-Feira | Aula 7 |          |
+| 29/09/2025 | Segunda-Feira | Aula 8 |          |
+
+##### OUTUBRO DE 2025
+
+| Data       | Dia da Semana | Aulas   | Conteúdo |
+|------------|---------------|---------|----------|
+| 06/10/2025 | Segunda-Feira | Aula 9  |          |
+| 13/10/2025 | Segunda-Feira | Aula 10 |          |
+| 20/10/2025 | Segunda-Feira | Aula 11 |          |
+| 27/10/2025 | Segunda-Feira | Aula 12 |          |
+
+##### NOVEMBRO DE 2025
+
+| Data       | Dia da Semana | Aulas | Conteúdo |
+|------------|---------------|-------|----------|
+| 03/11/2025 | Segunda-Feira | NP2   | PROVA    |
+| 10/11/2025 | Segunda-Feira |       | N/A      |
+| 17/11/2025 | Segunda-Feira | SUB   | PROVA    |
+| 24/11/2025 | Segunda-Feira |       | N/A      |
+
+##### DEZEMBRO DE 2025
+
+| Data       | Dia da Semana | Aulas | Conteúdo |
+|------------|---------------|-------|----------|
+| 01/12/2025 | Segunda-Feira |       | N/A      |
+| 08/12/2025 | Segunda-Feira | EXAME | PROVA    |
+| 15/12/2025 | Segunda-Feira |       | N/A      |
+
+## Alunos 2025 - 2o Semestre
+
+—————————————————————————————————————————————
+
+### Campus Chácara Santo Antônio
+
+#### Turma TI2P40
+
+| Matrícula |         Nome do aluno          |
+|:---------:|:------------------------------:|
+|  F362BF0  |     BRUNO ANTONIO MARQUES      |
+|  R536FA6  |  CAIO CESAR BALBINO DA SILVA   |
+|  H6094I1  | DOUGLAS VINICIUS M DOS SANTOS  |
+|  R6607G5  |    GABRIEL ROQUE DOS SANTOS    |
+|  R8133G7  | ÍTALO KEVIN RODRIGUES DA SILVA |
+|  R837AA0  |     LUCAS SOUZA RODRIGUES      |
+|  H714419  |   MARCOS PAULO CORDEIRO GOES   |
+
+# Postgres (Zip Version) Windows Starting Guide
+
+Download postgresql from <https://www.enterprisedb.com/download-postgresql-binaries>;
+
+Unzip it;
+
+Open a cmd;
+
+Enter into the ‘bin’ directory;
+
+Init the database:
+
+``` powershell
+initdb.exe -D ../data –username=postgres –auth=trust
+```
+
+Start the database:
+
+``` powershell
+pg_ctl.exe start -D ../data
+```
+
+Open another cmd;
+
+Enter into the ‘bin’ directory;
+
+Log into the database:
+
+``` powershell
+psql.exe –username=postgres
+```
+
+Create a password for your user:
+
+``` sql
+ALTER USER postgres WITH PASSWORD ‘VeryVerySecret’;
+```
+
+Install adminpack extension:
+
+``` sql
+CREATE EXTENSION adminpack;
+```
+
+Reference: <https://feilerdev.wordpress.com/2017/12/05/installing-postgresql-on-windows-using-zip-archive-without-the-installer/>

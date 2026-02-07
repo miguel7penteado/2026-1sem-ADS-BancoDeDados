@@ -1,0 +1,24 @@
+h1:banco-de-dados-uma-aplicação-crud Banco de Dados: Uma Aplicação CRUD
+h4:section 01/09/2025
+h4:professor-miguél-suares Professor Miguél Suares
+h2:o-que-é-uma-aplicação-crud O que é uma Aplicação CRUD?
+h2:conceito-de-crud Conceito de CRUD
+h2:o-padrão-de-design-de-sistemas-mvc-model-view-controller O padrão de Design de Sistemas MVC (Model View Controller)
+h2:construindo-uma-aplicação-crud-para-interfacear-com-a-tabela-pessoa Construindo uma aplicação CRUD para interfacear com a tabela 
+h3:representação-gráfica-no-modelo-físico-relacional Representação gráfica no modelo Físico-Relacional
+h2:criação-de-uma-aplicação-crud Criação de uma aplicação CRUD
+h4:criação-de-um-usuário-para-interagir-com-o-esquema-de-banco-de-dados Criação de um usuário para Interagir com o Esquema de Banco de Dados
+h4:criação-do-esquema-de-banco-de-dados-no-sgbd-mysql Criação do Esquema de Banco de Dados no SGBD MySQL
+h4:criação-da-tabela-pessoas Criação da Tabela 
+h4:uma-aplicação-cliente-servidor-no-formato-mvc-model-view-controller Uma aplicação Cliente Servidor no formato MVC (Model View Controller)
+h4:criação-do-servidor-de-aplicação-em-linguagem-python Criação do Servidor de Aplicação em Linguagem Python
+h4:criação-do-cliente-de-aplicação-em-html-parte-gráfica-e-javascript-programação-executável Criação do Cliente de Aplicação em HTML (Parte Gráfica) e Javascript (Programação Executável)
+h3:resultado-final Resultado final:
+h4:servidor-de-aplicação-python-restful-rodando Servidor de aplicação Python  rodando
+h4:cliente-html-javascript-página-estática-aberta-no-navegador Cliente HTML + Javascript ( página ESTÁTICA ) aberta no navegador
+h5:passo-1---preencher-dados-no-formulário-do-cliente Passo 1 - Preencher dados no formulário do cliente
+h5:passo-2---pressionar-o-botão-inserir Passo 2 - Pressionar o Botão INSERIR
+h5:passo-3---verificar-se-o-dbgrid-do-cliente-espelhando-a-linha-da-tabela-pessoas-no-esquema-pessoasdb-do-sqbg-mysql Passo 3 - Verificar se o  do cliente  a linha da tabela  no esquema  do SQBG MySQL
+h5:passo-4---verificar-na-tabela-pessoas-a-linha-que-o-cliente-preencheu-através-da-api-da-aplicação-clienteservidor Passo 4 - Verificar na tabela pessoas a linha que o cliente preencheu através da API da aplicação cliente/servidor
+h2:feito Feito
+

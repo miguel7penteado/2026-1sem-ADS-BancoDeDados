@@ -1,0 +1,3 @@
+# Banco de Dados Espaciais - Cliente QGIS
+#### 29/09/2025 {.unnumbered}
+#### Professor Miguél Suares {.unnumbered}

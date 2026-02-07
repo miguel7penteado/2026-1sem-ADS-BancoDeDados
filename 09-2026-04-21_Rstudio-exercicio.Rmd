@@ -1,0 +1,3 @@
+# Banco de Dados Estatístico - Cliente Rstudio
+#### 06/10/2025 {.unnumbered}
+#### Professor Miguél Suares {.unnumbered}
