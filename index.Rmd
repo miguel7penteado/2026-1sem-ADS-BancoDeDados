@@ -127,22 +127,24 @@ Estas anotações são apenas lembretes das aulas expostas em sala, durante a di
 ### Fevereiro de 2026
 —————————————————————————————————————————————
 
-| Data       | Dia da Semana | Aulas          | Conteúdo                       |
-| ---------- | ------------- | -------------- | ------------------------------ |
-| 10/02/2026 | Terça-Feira   | Aula Inaugural |                                |
-| 17/02/2026 | Terça-Feira   | —              | **Carnaval – Não haverá aula** |
-| 24/02/2026 | Terça-Feira   | Aula 2         |                                |
+| Data       | Dia da Semana | Aulas          | Conteúdo                           |
+| ---------- | ------------- | -------------- | ---------------------------------- |
+| 10/02/2026 | Terça-Feira   | Aula Inaugural | Apresentação da disciplina         |
+| 17/02/2026 | Terça-Feira   | —              | **Carnaval – Não haverá aula**     |
+| 24/02/2026 | Terça-Feira   | Aula 2         | **Fundamentos de Bancos de Dados** |
+
 
 ### Março de 2026
 —————————————————————————————————————————————
 
-| Data       | Dia da Semana | Aulas   | Conteúdo  |
-| ---------- | ------------- | ------- | --------- |
-| 03/03/2026 | Terça-Feira   | Aula 3  |           |
-| 10/03/2026 | Terça-Feira   | Aula 4  |           |
-| 17/03/2026 | Terça-Feira   | Aula 5  |           |
-| 24/03/2026 | Terça-Feira   | Aula 6  |           |
-| 31/03/2026 | Terça-Feira   | **NP1** | **PROVA** |
+| Data       | Dia da Semana | Aulas  | Conteúdo                                            |
+| ---------- | ------------- | ------ | --------------------------------------------------- |
+| 03/03/2026 | Terça-Feira   | Aula 3 | **Modelagem de Banco de Dados (I)**                 |
+| 10/03/2026 | Terça-Feira   | Aula 4 | **Modelagem de Banco de Dados (II)**                |
+| 17/03/2026 | Terça-Feira   | Aula 5 | **Administração e Gerenciamento de Banco de Dados** |
+| 24/03/2026 | Terça-Feira   | Aula 6 | **Aplicação CRUD**                                  |
+| 31/03/2026 | Terça-Feira   | NP1    | **PROVA**                                           |
+
 
 
 ### Abril de 2026
@@ -150,10 +152,11 @@ Estas anotações são apenas lembretes das aulas expostas em sala, durante a di
 
 | Data       | Dia da Semana | Aulas  | Conteúdo                                |
 | ---------- | ------------- | ------ | --------------------------------------- |
-| 07/04/2026 | Terça-Feira   | Aula 7 |                                         |
-| 14/04/2026 | Terça-Feira   | Aula 8 |                                         |
+| 07/04/2026 | Terça-Feira   | Aula 7 | **MySQL**                               |
+| 14/04/2026 | Terça-Feira   | Aula 8 | **PostgreSQL**                          |
 | 21/04/2026 | Terça-Feira   | —      | **Dia de Tiradentes – Não haverá aula** |
-| 28/04/2026 | Terça-Feira   | Aula 9 |                                         |
+| 28/04/2026 | Terça-Feira   | Aula 9 | **SGBD Espacial – Python**              |
+
 
 
 ### Maio de 2026
@@ -161,10 +164,11 @@ Estas anotações são apenas lembretes das aulas expostas em sala, durante a di
 
 | Data       | Dia da Semana | Aulas   | Conteúdo               |
 | ---------- | ------------- | ------- | ---------------------- |
-| 05/05/2026 | Terça-Feira   | Aula 10 |                        |
-| 12/05/2026 | Terça-Feira   | Aula 11 |                        |
-| 19/05/2026 | Terça-Feira   | **NP2** | **PROVA**              |
-| 26/05/2026 | Terça-Feira   | **SUB** | **PROVA SUBSTITUTIVA** |
+| 05/05/2026 | Terça-Feira   | Aula 10 | **SGBD e linguagem R** |
+| 12/05/2026 | Terça-Feira   | Aula 11 | **Análise 1**          |
+| 19/05/2026 | Terça-Feira   | NP2     | **PROVA**              |
+| 26/05/2026 | Terça-Feira   | SUB     | **PROVA SUBSTITUTIVA** |
+
 
 
 
@@ -173,11 +177,12 @@ Estas anotações são apenas lembretes das aulas expostas em sala, durante a di
 
 | Data       | Dia da Semana | Aulas   | Conteúdo                       |
 | ---------- | ------------- | ------- | ------------------------------ |
-| 02/06/2026 | Terça-Feira   | Aula 12 |                                |
-| 09/06/2026 | Terça-Feira   | **EXA** | **EXAME – PROVA SUBSTITUTIVA** |
-| 16/06/2026 | Terça-Feira   | Aula 13 |                                |
-| 23/06/2026 | Terça-Feira   | Aula 14 |                                |
-| 30/06/2026 | Terça-Feira   | Aula 15 |                                |
+| 02/06/2026 | Terça-Feira   | Aula 12 | **Análise 2**                  |
+| 09/06/2026 | Terça-Feira   | EXA     | **EXAME – PROVA SUBSTITUTIVA** |
+| 16/06/2026 | Terça-Feira   | Aula 13 | **Análise 3**                  |
+| 23/06/2026 | Terça-Feira   | Aula 14 | **Análise 4**                  |
+| 30/06/2026 | Terça-Feira   | Aula 15 | Encerramento da disciplina     |
+
 
 
 
