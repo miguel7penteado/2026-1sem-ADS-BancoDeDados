@@ -10,7 +10,7 @@ cover-image: images/cover.jpg
 description: |
   Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da  disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas.
 link-citations: yes
-github-repo: miguel7penteado/2025-2sem-GTI-BancoDeDados
+github-repo: miguel7penteado/2026-1sem-ADS-BancoDeDados
 ---
 
 ```{r setup, include=FALSE}
@@ -64,7 +64,7 @@ Estas anotações são apenas lembretes das aulas expostas em sala, durante a di
 
 —————————————————————————————————————————————
 
-#### <https://miguel7penteado.github.io/2025-2sem-GTI-BancoDeDados>
+#### <https://github.com/miguel7penteado/2026-1sem-ADS-BancoDeDados>
 
 ![](images/qr-code-disciplina.jpg)
 
@@ -124,70 +124,72 @@ Estas anotações são apenas lembretes das aulas expostas em sala, durante a di
 
 ## Calendário das aulas
 
+### Fevereiro de 2026
 —————————————————————————————————————————————
 
-##### AGOSTO DE 2025
+| Data       | Dia da Semana | Aulas          | Conteúdo                       |
+| ---------- | ------------- | -------------- | ------------------------------ |
+| 10/02/2026 | Terça-Feira   | Aula Inaugural |                                |
+| 17/02/2026 | Terça-Feira   | —              | **Carnaval – Não haverá aula** |
+| 24/02/2026 | Terça-Feira   | Aula 2         |                                |
 
-| Data       | Dia da Semana | Aulas          | Conteúdo |
-|------------|---------------|----------------|----------|
-| 04/08/2025 | Segunda-Feira | Aula Inaugural |          |
-| 11/08/2025 | Segunda-Feira | Aula 2         |          |
-| 18/08/2025 | Segunda-Feira | Aula 3         |          |
-| 25/08/2025 | Segunda-Feira | Aula 4         |          |
+### Março de 2026
+—————————————————————————————————————————————
 
-##### SETEMBRO DE 2025
+| Data       | Dia da Semana | Aulas   | Conteúdo  |
+| ---------- | ------------- | ------- | --------- |
+| 03/03/2026 | Terça-Feira   | Aula 3  |           |
+| 10/03/2026 | Terça-Feira   | Aula 4  |           |
+| 17/03/2026 | Terça-Feira   | Aula 5  |           |
+| 24/03/2026 | Terça-Feira   | Aula 6  |           |
+| 31/03/2026 | Terça-Feira   | **NP1** | **PROVA** |
 
-| Data       | Dia da Semana | Aulas  | Conteúdo |
-|------------|---------------|--------|----------|
-| 01/09/2025 | Segunda-Feira | Aula 5 |          |
-| 08/09/2025 | Segunda-Feira | Aula 6 |          |
-| 15/09/2025 | Segunda-Feira | NP1    | PROVA    |
-| 22/09/2025 | Segunda-Feira | Aula 7 |          |
-| 29/09/2025 | Segunda-Feira | Aula 8 |          |
 
-##### OUTUBRO DE 2025
+### Abril de 2026
+—————————————————————————————————————————————
 
-| Data       | Dia da Semana | Aulas   | Conteúdo |
-|------------|---------------|---------|----------|
-| 06/10/2025 | Segunda-Feira | Aula 9  |          |
-| 13/10/2025 | Segunda-Feira | Aula 10 |          |
-| 20/10/2025 | Segunda-Feira | Aula 11 |          |
-| 27/10/2025 | Segunda-Feira | Aula 12 |          |
+| Data       | Dia da Semana | Aulas  | Conteúdo                                |
+| ---------- | ------------- | ------ | --------------------------------------- |
+| 07/04/2026 | Terça-Feira   | Aula 7 |                                         |
+| 14/04/2026 | Terça-Feira   | Aula 8 |                                         |
+| 21/04/2026 | Terça-Feira   | —      | **Dia de Tiradentes – Não haverá aula** |
+| 28/04/2026 | Terça-Feira   | Aula 9 |                                         |
 
-##### NOVEMBRO DE 2025
 
-| Data       | Dia da Semana | Aulas | Conteúdo |
-|------------|---------------|-------|----------|
-| 03/11/2025 | Segunda-Feira | NP2   | PROVA    |
-| 10/11/2025 | Segunda-Feira |       | N/A      |
-| 17/11/2025 | Segunda-Feira | SUB   | PROVA    |
-| 24/11/2025 | Segunda-Feira |       | N/A      |
+### Maio de 2026
+—————————————————————————————————————————————
 
-##### DEZEMBRO DE 2025
+| Data       | Dia da Semana | Aulas   | Conteúdo               |
+| ---------- | ------------- | ------- | ---------------------- |
+| 05/05/2026 | Terça-Feira   | Aula 10 |                        |
+| 12/05/2026 | Terça-Feira   | Aula 11 |                        |
+| 19/05/2026 | Terça-Feira   | **NP2** | **PROVA**              |
+| 26/05/2026 | Terça-Feira   | **SUB** | **PROVA SUBSTITUTIVA** |
 
-| Data       | Dia da Semana | Aulas | Conteúdo |
-|------------|---------------|-------|----------|
-| 01/12/2025 | Segunda-Feira |       | N/A      |
-| 08/12/2025 | Segunda-Feira | EXAME | PROVA    |
-| 15/12/2025 | Segunda-Feira |       | N/A      |
 
-## Alunos 2025 - 2o Semestre
+
+### Junho de 2026
+—————————————————————————————————————————————
+
+| Data       | Dia da Semana | Aulas   | Conteúdo                       |
+| ---------- | ------------- | ------- | ------------------------------ |
+| 02/06/2026 | Terça-Feira   | Aula 12 |                                |
+| 09/06/2026 | Terça-Feira   | **EXA** | **EXAME – PROVA SUBSTITUTIVA** |
+| 16/06/2026 | Terça-Feira   | Aula 13 |                                |
+| 23/06/2026 | Terça-Feira   | Aula 14 |                                |
+| 30/06/2026 | Terça-Feira   | Aula 15 |                                |
+
+
+
+## Alunos 2026 - 1o Semestre
 
 —————————————————————————————————————————————
 
 ### Campus Chácara Santo Antônio
 
-#### Turma TI2P40
 
-| Matrícula |         Nome do aluno          |
-|:---------:|:------------------------------:|
-|  F362BF0  |     BRUNO ANTONIO MARQUES      |
-|  R536FA6  |  CAIO CESAR BALBINO DA SILVA   |
-|  H6094I1  | DOUGLAS VINICIUS M DOS SANTOS  |
-|  R6607G5  |    GABRIEL ROQUE DOS SANTOS    |
-|  R8133G7  | ÍTALO KEVIN RODRIGUES DA SILVA |
-|  R837AA0  |     LUCAS SOUZA RODRIGUES      |
-|  H714419  |   MARCOS PAULO CORDEIRO GOES   |
+
+
 
 # Postgres (Zip Version) Windows Starting Guide
 
