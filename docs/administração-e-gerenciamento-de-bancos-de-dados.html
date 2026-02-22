@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Slide 6 Administração e Gerenciamento de Bancos de Dados | ADS - Banco de dados e No-SQL - 2026 - Anotações de aula</title>
+  <meta name="description" content="Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas." />
+  <meta name="generator" content="bookdown 0.46.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Slide 6 Administração e Gerenciamento de Bancos de Dados | ADS - Banco de dados e No-SQL - 2026 - Anotações de aula" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="your book url like https://bookdown.org/yihui/bookdown/images/cover.jpg" />
+  <meta property="og:description" content="Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas." />
+  <meta name="github-repo" content="miguel7penteado/2026-1sem-ADS-BancoDeDados" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Slide 6 Administração e Gerenciamento de Bancos de Dados | ADS - Banco de dados e No-SQL - 2026 - Anotações de aula" />
+  
+  <meta name="twitter:description" content="Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas." />
+  <meta name="twitter:image" content="your book url like https://bookdown.org/yihui/bookdown/images/cover.jpg" />
+
+<meta name="author" content="Professor Miguél Suares" />
+
+
+<meta name="date" content="2026-02-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modelagem-de-bancos-de-dados-parte-02.html"/>
+<link rel="next" href="administração-e-gerenciamento-de-bancos-de-dados-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">2026-ADS- Disciplina de Banco de Dados - Anotações de Aula</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sobre estas anotações</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#acesso-ao-gitbook-celular"><i class="fa fa-check"></i><b>0.1</b> ACESSO AO GITBOOK CELULAR</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#leitores-de-formato-de-arquivo-epub-para-smartphone"><i class="fa fa-check"></i><b>0.2</b> Leitores de formato de arquivo EPUB para SmartPhone</a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#android"><i class="fa fa-check"></i><b>0.2.1</b> ANDROID</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#livros-texto-da-disciplina"><i class="fa fa-check"></i><b>0.3</b> Livros Texto da Disciplina</a>
+<ul>
+<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#introdu%C3%A7%C3%A3o-a-sistemas-de-bancos-de-dados-do-autor-christopher-john-date"><i class="fa fa-check"></i><b>0.3.1</b> “Introdução a sistemas de bancos de dados” do autor “<strong>Christopher John Date</strong>”</a></li>
+<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#projeto-de-bancos-de-dados-do-autor-carlos-alberto-heuser"><i class="fa fa-check"></i><b>0.3.2</b> “<strong>Projeto de bancos de dados</strong>” do autor “Carlos Alberto HEUSER”</a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#calend%C3%A1rio-das-aulas"><i class="fa fa-check"></i><b>0.4</b> Calendário das aulas</a>
+<ul>
+<li class="chapter" data-level="0.4.1" data-path="index.html"><a href="index.html#fevereiro-de-2026"><i class="fa fa-check"></i><b>0.4.1</b> Fevereiro de 2026</a></li>
+<li class="chapter" data-level="0.4.2" data-path="index.html"><a href="index.html#mar%C3%A7o-de-2026"><i class="fa fa-check"></i><b>0.4.2</b> Março de 2026</a></li>
+<li class="chapter" data-level="0.4.3" data-path="index.html"><a href="index.html#abril-de-2026"><i class="fa fa-check"></i><b>0.4.3</b> Abril de 2026</a></li>
+<li class="chapter" data-level="0.4.4" data-path="index.html"><a href="index.html#maio-de-2026"><i class="fa fa-check"></i><b>0.4.4</b> Maio de 2026</a></li>
+<li class="chapter" data-level="0.4.5" data-path="index.html"><a href="index.html#junho-de-2026"><i class="fa fa-check"></i><b>0.4.5</b> Junho de 2026</a></li>
+</ul></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#alunos-2026---1o-semestre"><i class="fa fa-check"></i><b>0.5</b> Alunos 2026 - 1o Semestre</a>
+<ul>
+<li class="chapter" data-level="0.5.1" data-path="index.html"><a href="index.html#campus-ch%C3%A1cara-santo-ant%C3%B4nio"><i class="fa fa-check"></i><b>0.5.1</b> Campus Chácara Santo Antônio</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="postgres-zip-version-windows-starting-guide.html"><a href="postgres-zip-version-windows-starting-guide.html"><i class="fa fa-check"></i><b>1</b> Postgres (Zip Version) Windows Starting Guide</a></li>
+<li class="chapter" data-level="2" data-path="aula-inaugural.html"><a href="aula-inaugural.html"><i class="fa fa-check"></i><b>2</b> <strong>Aula Inaugural</strong></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="aula-inaugural.html"><a href="aula-inaugural.html#disciplina-banco-de-dados"><i class="fa fa-check"></i><b>2.1</b> Disciplina: <strong>Banco de Dados</strong></a></li>
+<li class="chapter" data-level="2.2" data-path="aula-inaugural.html"><a href="aula-inaugural.html#sobre-o-professor"><i class="fa fa-check"></i><b>2.2</b> 👨‍🏫 Sobre o Professor</a></li>
+<li class="chapter" data-level="2.3" data-path="aula-inaugural.html"><a href="aula-inaugural.html#objetivos-da-disciplina"><i class="fa fa-check"></i><b>2.3</b> 🎯 Objetivos da Disciplina</a></li>
+<li class="chapter" data-level="2.4" data-path="aula-inaugural.html"><a href="aula-inaugural.html#calend%C3%A1rio-da-disciplina"><i class="fa fa-check"></i><b>2.4</b> 📅 Calendário da Disciplina</a></li>
+<li class="chapter" data-level="2.5" data-path="aula-inaugural.html"><a href="aula-inaugural.html#ementa-resumida"><i class="fa fa-check"></i><b>2.5</b> 📚 Ementa Resumida</a></li>
+<li class="chapter" data-level="2.6" data-path="aula-inaugural.html"><a href="aula-inaugural.html#avalia%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>2.6</b> 📝 Avaliação</a></li>
+<li class="chapter" data-level="2.7" data-path="aula-inaugural.html"><a href="aula-inaugural.html#ferramentas-da-disciplina"><i class="fa fa-check"></i><b>2.7</b> 🛠️ Ferramentas da Disciplina</a></li>
+<li class="chapter" data-level="2.8" data-path="aula-inaugural.html"><a href="aula-inaugural.html#expectativas-e-regras"><i class="fa fa-check"></i><b>2.8</b> 📌 Expectativas e Regras</a></li>
+<li class="chapter" data-level="2.9" data-path="aula-inaugural.html"><a href="aula-inaugural.html#dicas-para-mandar-bem"><i class="fa fa-check"></i><b>2.9</b> 💡 Dicas para Mandar Bem</a></li>
+<li class="chapter" data-level="2.10" data-path="aula-inaugural.html"><a href="aula-inaugural.html#encerramento"><i class="fa fa-check"></i><b>2.10</b> 🙌 Encerramento</a></li>
+<li class="chapter" data-level="2.11" data-path="aula-inaugural.html"><a href="aula-inaugural.html#estamos-prontos"><i class="fa fa-check"></i><b>2.11</b> Estamos prontos?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html"><i class="fa fa-check"></i><b>3</b> Fundamentos de Sistemas de Bancos de Dados</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#parte-i-linha-do-tempo-dos-sgbds"><i class="fa fa-check"></i><b>3.1</b> Parte I — Linha do Tempo dos SGBDs</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#o-in%C3%ADcio-do-modelo-relacional"><i class="fa fa-check"></i><b>3.1.1</b> O Início do Modelo Relacional</a></li>
+<li class="chapter" data-level="3.1.2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#edgar-f.-codd-19232003"><i class="fa fa-check"></i><b>3.1.2</b> Edgar F. Codd (1923–2003)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#system-r-e-sql"><i class="fa fa-check"></i><b>3.1.3</b> System R e SQL</a></li>
+<li class="chapter" data-level="3.1.4" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#raymond-f.-boyce"><i class="fa fa-check"></i><b>3.1.4</b> Raymond F. Boyce</a></li>
+<li class="chapter" data-level="3.1.5" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#donald-d.-chamberlin"><i class="fa fa-check"></i><b>3.1.5</b> Donald D. Chamberlin</a></li>
+<li class="chapter" data-level="3.1.6" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#modelo-entidade-relacionamento"><i class="fa fa-check"></i><b>3.1.6</b> Modelo Entidade-Relacionamento</a></li>
+<li class="chapter" data-level="3.1.7" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#peter-chen"><i class="fa fa-check"></i><b>3.1.7</b> Peter Chen</a></li>
+<li class="chapter" data-level="3.1.8" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#escola-de-berkeley"><i class="fa fa-check"></i><b>3.1.8</b> Escola de Berkeley</a></li>
+<li class="chapter" data-level="3.1.9" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#prof-michael-stonebraker"><i class="fa fa-check"></i><b>3.1.9</b> Prof Michael Stonebraker</a></li>
+<li class="chapter" data-level="3.1.10" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#d%C3%A9cadas-de-consolida%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>3.1.10</b> Décadas de Consolidação</a></li>
+<li class="chapter" data-level="3.1.11" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#anos-2000-big-data-e-nosql"><i class="fa fa-check"></i><b>3.1.11</b> Anos 2000 — Big Data e NoSQL</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#parte-ii-fundamentos-matem%C3%A1ticos-do-modelo-relacional"><i class="fa fa-check"></i><b>3.2</b> Parte II — Fundamentos Matemáticos do Modelo Relacional</a></li>
+<li class="chapter" data-level="3.3" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#conceito-de-rela%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>3.3</b> 1. Conceito de Relação</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#a-solu%C3%A7%C3%A3o-vem-da-matem%C3%A1tica-fun%C3%A7%C3%B5es-como-relacionamentos"><i class="fa fa-check"></i><b>3.3.1</b> A Solução vem da Matemática: FUNÇÕES como RELACIONAMENTOS:</a></li>
+<li class="chapter" data-level="3.3.2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#rela%C3%A7%C3%A3o-em-banco-de-dados"><i class="fa fa-check"></i><b>3.3.2</b> Relação em Banco de Dados</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#opera%C3%A7%C3%B5es-relacionais"><i class="fa fa-check"></i><b>3.4</b> 2. Operações Relacionais</a></li>
+<li class="chapter" data-level="3.5" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#propriedades-de-rela%C3%A7%C3%B5es"><i class="fa fa-check"></i><b>3.5</b> 3. Propriedades de Relações</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#reflexiva"><i class="fa fa-check"></i><b>3.5.1</b> 3.1 Reflexiva</a></li>
+<li class="chapter" data-level="3.5.2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#sim%C3%A9trica"><i class="fa fa-check"></i><b>3.5.2</b> 3.2 Simétrica</a></li>
+<li class="chapter" data-level="3.5.3" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#transitiva"><i class="fa fa-check"></i><b>3.5.3</b> 3.3 Transitiva</a></li>
+<li class="chapter" data-level="3.5.4" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#antissim%C3%A9trica"><i class="fa fa-check"></i><b>3.5.4</b> 3.4 Antissimétrica</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#rela%C3%A7%C3%A3o-de-equival%C3%AAncia"><i class="fa fa-check"></i><b>3.6</b> 4. Relação de Equivalência</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#classes-de-equival%C3%AAncia"><i class="fa fa-check"></i><b>3.6.1</b> Classes de Equivalência</a></li>
+<li class="chapter" data-level="3.6.2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#rela%C3%A7%C3%B5es-de-equival%C3%AAncia-e-normaliza%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>3.6.2</b> Relações de Equivalência e Normalização</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#conceito-de-fecho"><i class="fa fa-check"></i><b>3.7</b> 5. Conceito de Fecho</a></li>
+<li class="chapter" data-level="3.8" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#normaliza%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>3.8</b> 6. Normalização</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#%C2%AA-forma-normal-1fn"><i class="fa fa-check"></i><b>3.8.1</b> 1ª Forma Normal (1FN)</a></li>
+<li class="chapter" data-level="3.8.2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#%C2%AA-forma-normal-2fn"><i class="fa fa-check"></i><b>3.8.2</b> 2ª Forma Normal (2FN)</a></li>
+<li class="chapter" data-level="3.8.3" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#%C2%AA-forma-normal-3fn"><i class="fa fa-check"></i><b>3.8.3</b> 3ª Forma Normal (3FN)</a></li>
+<li class="chapter" data-level="3.8.4" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#bcnf"><i class="fa fa-check"></i><b>3.8.4</b> BCNF</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#conex%C3%A3o-final-a-base-matem%C3%A1tica-do-sgbd"><i class="fa fa-check"></i><b>3.9</b> Conexão Final — A Base Matemática do SGBD</a></li>
+<li class="chapter" data-level="3.10" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#exerc%C3%ADcios"><i class="fa fa-check"></i><b>3.10</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html"><i class="fa fa-check"></i><b>4</b> Modelagem de Bancos de Dados parte 01</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#introdu%C3%A7%C3%A3o-visitando-a-teoria-de-bancos-de-dados"><i class="fa fa-check"></i><b>4.1</b> Introdução: Visitando a teoria de Bancos de Dados</a></li>
+<li class="chapter" data-level="4.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#modelo-matem%C3%A1tico-de-um-banco-de-dados"><i class="fa fa-check"></i><b>4.2</b> Modelo Matemático de um Banco de Dados</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#podemos-representa-lo-matem%C3%A1ticamente-utilizando-a-teoria-dos-conjuntos"><i class="fa fa-check"></i><b>4.2.1</b> Podemos representa-lo matemáticamente utilizando a teoria dos conjuntos</a></li>
+<li class="chapter" data-level="4.2.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#ent%C3%A3o-para-podemos-relacionar-estes-dois-conjuntos-funcion%C3%A1rios-e-departamentos-utilizando-a-teoria-das-fun%C3%A7%C3%B5es"><i class="fa fa-check"></i><b>4.2.2</b> Então para podemos relacionar estes dois conjuntos (Funcionários e Departamentos) utilizando a Teoria das Funções</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#modelo-l%C3%B3gico-de-banco-de-dados"><i class="fa fa-check"></i><b>4.3</b> Modelo Lógico de Banco de Dados</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#modelo-conceitual-entidade-relacionamento-de-banco-de-dados"><i class="fa fa-check"></i><b>4.3.1</b> Modelo Conceitual “Entidade Relacionamento” de Banco de Dados</a></li>
+<li class="chapter" data-level="4.3.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#composi%C3%A7%C3%A3o-e-significado-do-diagrama-entidade-relacionamento-der"><i class="fa fa-check"></i><b>4.3.2</b> Composição e Significado do Diagrama Entidade Relacionamento (DER)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#modelo-f%C3%ADsico-de-banco-de-dados"><i class="fa fa-check"></i><b>4.4</b> Modelo Físico de Banco de Dados</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#gera%C3%A7%C3%A3o-do-modelo-f%C3%ADsico-para-aplica-lo-ao-sgbd-sistema-de-gerenciamento-de-banco-de-dados"><i class="fa fa-check"></i><b>4.4.1</b> Geração do modelo Físico para aplica-lo ao SGBD (Sistema de Gerenciamento de Banco de Dados):</a></li>
+<li class="chapter" data-level="4.4.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#interagindo-com-o-modelo-f%C3%ADsico---a-linguagem-sql-structured-query-language"><i class="fa fa-check"></i><b>4.4.2</b> Interagindo com o Modelo Físico - A linguagem SQL (Structured Query Language)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#exemplo-revenda-de-ve%C3%ADculos-multi-marcas"><i class="fa fa-check"></i><b>4.5</b> EXEMPLO: REVENDA DE VEÍCULOS MULTI-MARCAS</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#passo-1---visualizando-matem%C3%A1ticamente-os-dados"><i class="fa fa-check"></i><b>4.5.1</b> Passo 1 - Visualizando matemáticamente os dados:</a></li>
+<li class="chapter" data-level="4.5.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#modelo-l%C3%B3gico-modelo-entidade-relacionamento"><i class="fa fa-check"></i><b>4.5.2</b> Modelo Lógico: Modelo Entidade Relacionamento</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#verbos-relacionamentos-e-cardinalidade"><i class="fa fa-check"></i><b>4.6</b> VERBOS: Relacionamentos e Cardinalidade</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#tipos-principais-de-cardinalidade"><i class="fa fa-check"></i><b>4.6.1</b> 🔹 Tipos principais de cardinalidade</a></li>
+<li class="chapter" data-level="4.6.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#relacionamento-11-um-para-um"><i class="fa fa-check"></i><b>4.6.2</b> 1. Relacionamento <strong>1:1 (Um para Um)</strong></a></li>
+<li class="chapter" data-level="4.6.3" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#relacionamento-1n-um-para-muitos"><i class="fa fa-check"></i><b>4.6.3</b> Relacionamento <strong>1:N (Um para Muitos)</strong></a></li>
+<li class="chapter" data-level="4.6.4" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#relacionamento-nn-muitos-para-muitos"><i class="fa fa-check"></i><b>4.6.4</b> Relacionamento N:N (Muitos para Muitos)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#entidade-dominante-e-entidade-subordinada"><i class="fa fa-check"></i><b>4.7</b> Entidade Dominante e Entidade Subordinada</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#defini%C3%A7%C3%B5es"><i class="fa fa-check"></i><b>4.7.1</b> Definições:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#cardinalidade-do-modelo-l%C3%B3gico-e-a-cria%C3%A7%C3%A3o-de-chaves-estrangeiras-no-modelo-f%C3%ADsico-relacional"><i class="fa fa-check"></i><b>4.8</b> CARDINALIDADE DO MODELO LÓGICO E A CRIAÇÃO DE CHAVES ESTRANGEIRAS NO MODELO FÍSICO-RELACIONAL</a></li>
+<li class="chapter" data-level="4.9" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#normaliza%C3%A7%C3%A3o-em-bancos-de-dados-relaionais"><i class="fa fa-check"></i><b>4.9</b> Normalização em Bancos de Dados Relaionais</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#tabela-desnormalizada"><i class="fa fa-check"></i><b>4.9.1</b> Tabela Desnormalizada</a></li>
+<li class="chapter" data-level="4.9.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#tabela-normalizada"><i class="fa fa-check"></i><b>4.9.2</b> Tabela Normalizada</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#refer%C3%AAncias"><i class="fa fa-check"></i><b>4.10</b> Referências</a></li>
+<li class="chapter" data-level="4.11" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcios-resolvidos"><i class="fa fa-check"></i><b>4.11</b> Exercícios RESOLVIDOS</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcios-1"><i class="fa fa-check"></i><b>4.11.1</b> Exercícios</a></li>
+<li class="chapter" data-level="4.11.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#lista-de-exerc%C3%ADcios-modelo-entidade-relacionamento-mer"><i class="fa fa-check"></i><b>4.11.2</b> 📝 Lista de Exercícios – Modelo Entidade-Relacionamento (MER)</a></li>
+<li class="chapter" data-level="4.11.3" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#respostas-dos-exerc%C3%ADcios"><i class="fa fa-check"></i><b>4.11.3</b> Respostas dos Exercícios:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html"><i class="fa fa-check"></i><b>5</b> Modelagem de Bancos de Dados parte 02</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#exerc%C3%ADcios-resolvidos-1"><i class="fa fa-check"></i><b>5.1</b> Exercícios RESOLVIDOS</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html"><i class="fa fa-check"></i><b>6</b> Administração e Gerenciamento de Bancos de Dados</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#administra%C3%A7%C3%A3o-e-gerenciamento-de-banco-de-dados"><i class="fa fa-check"></i><b>6.1</b> Administração e Gerenciamento de Banco de Dados:</a></li>
+<li class="chapter" data-level="6.2" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#papel-do-dba-database-administrator"><i class="fa fa-check"></i><b>6.2</b> Papel do DBA (Database Administrator)</a></li>
+<li class="chapter" data-level="6.3" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#usu%C3%A1rios-grupos-e-esquemas-de-bancos-de-dados"><i class="fa fa-check"></i><b>6.3</b> Usuários, Grupos e Esquemas de Bancos de Dados</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#usu%C3%A1rios"><i class="fa fa-check"></i><b>6.3.1</b> Usuários</a></li>
+<li class="chapter" data-level="6.3.2" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#esquemas"><i class="fa fa-check"></i><b>6.3.2</b> Esquemas</a></li>
+<li class="chapter" data-level="6.3.3" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#grupos-ou-roles"><i class="fa fa-check"></i><b>6.3.3</b> Grupos ou Roles</a></li>
+<li class="chapter" data-level="6.3.4" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#sistema-de-gerenciamento-de-banco-de-dados-s.g.b.d."><i class="fa fa-check"></i><b>6.3.4</b> Sistema de Gerenciamento de Banco de Dados (S.G.B.D.)</a></li>
+<li class="chapter" data-level="6.3.5" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cria%C3%A7%C3%A3o-de-usu%C3%A1rios-no-mysql"><i class="fa fa-check"></i><b>6.3.5</b> Criação de usuários no MySQL</a></li>
+<li class="chapter" data-level="6.3.6" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cria%C3%A7%C3%A3o-de-esquemas-de-banco-de-dados-no-mysql"><i class="fa fa-check"></i><b>6.3.6</b> Criação de Esquemas de Banco de Dados no MySQL</a></li>
+<li class="chapter" data-level="6.3.7" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#criando-de-grupos-de-permiss%C3%B5es-no-mysql"><i class="fa fa-check"></i><b>6.3.7</b> Criando de Grupos de Permissões no MySQL:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#fazendo-tudo-funcionar-colocando-usu%C3%A1rios-em-grupos-e-concedendo-a-estes-acesso-a-esquemas-de-banco-de-dados"><i class="fa fa-check"></i><b>6.4</b> Fazendo tudo funcionar: Colocando usuários em grupos e concedendo a estes acesso a Esquemas de Banco de Dados:</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#associando-os-esquemas-que-representam-cada-estado-a-cada-grupo-que-representa-cada-regi%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>6.4.1</b> Associando os esquemas que representam cada estado a cada grupo (que representa cada regição):</a></li>
+<li class="chapter" data-level="6.4.2" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#associando-associando-alunos-a-cada-grupo-regi%C3%A3o"><i class="fa fa-check"></i><b>6.4.2</b> Associando associando alunos a cada grupo (região):</a></li>
+<li class="chapter" data-level="6.4.3" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#associando-usu%C3%A1rios-aos-grupos"><i class="fa fa-check"></i><b>6.4.3</b> Associando usuários aos grupos</a></li>
+<li class="chapter" data-level="6.4.4" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#concedendo-privil%C3%A9gios-aos-grupos"><i class="fa fa-check"></i><b>6.4.4</b> Concedendo privilégios aos grupos:</a></li>
+<li class="chapter" data-level="6.4.5" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#exemplo-no-mysql"><i class="fa fa-check"></i><b>6.4.5</b> Exemplo no MySQL</a></li>
+<li class="chapter" data-level="6.4.6" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#exemplo-no-postgresql"><i class="fa fa-check"></i><b>6.4.6</b> Exemplo no PostGreSQL</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="administração-e-gerenciamento-de-bancos-de-dados.html"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#feito"><i class="fa fa-check"></i><b>6.5</b> Feito</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="administração-e-gerenciamento-de-bancos-de-dados-1.html"><a href="administração-e-gerenciamento-de-bancos-de-dados-1.html"><i class="fa fa-check"></i><b>7</b> Administração e Gerenciamento de Bancos de Dados</a></li>
+<li class="chapter" data-level="8" data-path="banco-de-dados-uma-aplicação-crud.html"><a href="banco-de-dados-uma-aplicação-crud.html"><i class="fa fa-check"></i><b>8</b> Banco de Dados: Uma Aplicação CRUD</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="banco-de-dados-uma-aplicação-crud.html"><a href="banco-de-dados-uma-aplicação-crud.html#feito-1"><i class="fa fa-check"></i><b>8.1</b> Feito</a></li>
+<li class="chapter" data-level="8.2" data-path="banco-de-dados-uma-aplicação-crud.html"><a href="banco-de-dados-uma-aplicação-crud.html#exerc%C3%ADcios-2"><i class="fa fa-check"></i><b>8.2</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="banco-de-dados-mysql-mariadb.html"><a href="banco-de-dados-mysql-mariadb.html"><i class="fa fa-check"></i><b>9</b> Banco de Dados: MySQL (MariaDB)</a></li>
+<li class="chapter" data-level="10" data-path="banco-de-dados-mysql-mariadb-1.html"><a href="banco-de-dados-mysql-mariadb-1.html"><i class="fa fa-check"></i><b>10</b> Banco de Dados: MySQL (MariaDB)</a></li>
+<li class="chapter" data-level="11" data-path="banco-de-dados-postgres.html"><a href="banco-de-dados-postgres.html"><i class="fa fa-check"></i><b>11</b> Banco de Dados: Postgres</a></li>
+<li class="chapter" data-level="12" data-path="banco-de-dados-postgres-1.html"><a href="banco-de-dados-postgres-1.html"><i class="fa fa-check"></i><b>12</b> Banco de Dados: Postgres</a></li>
+<li class="chapter" data-level="13" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html"><i class="fa fa-check"></i><b>13</b> Banco de Dados: Uma Aplicação CRUD</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#o-que-%C3%A9-uma-aplica%C3%A7%C3%A3o-crud"><i class="fa fa-check"></i><b>13.1</b> O que é uma Aplicação CRUD?</a></li>
+<li class="chapter" data-level="13.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#conceito-de-crud"><i class="fa fa-check"></i><b>13.2</b> Conceito de CRUD</a></li>
+<li class="chapter" data-level="13.3" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#o-padr%C3%A3o-de-design-de-sistemas-mvc-model-view-controller"><i class="fa fa-check"></i><b>13.3</b> O padrão de Design de Sistemas MVC (Model View Controller)</a></li>
+<li class="chapter" data-level="13.4" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#construindo-uma-aplica%C3%A7%C3%A3o-crud-para-interfacear-com-a-tabela-pessoa"><i class="fa fa-check"></i><b>13.4</b> Construindo uma aplicação CRUD para interfacear com a tabela “Pessoa”</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#representa%C3%A7%C3%A3o-gr%C3%A1fica-no-modelo-f%C3%ADsico-relacional"><i class="fa fa-check"></i><b>13.4.1</b> Representação gráfica no modelo Físico-Relacional</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#cria%C3%A7%C3%A3o-de-uma-aplica%C3%A7%C3%A3o-crud"><i class="fa fa-check"></i><b>13.5</b> Criação de uma aplicação CRUD</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#resultado-final"><i class="fa fa-check"></i><b>13.5.1</b> Resultado final:</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#feito-2"><i class="fa fa-check"></i><b>13.6</b> Feito</a></li>
+<li class="chapter" data-level="13.7" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exerc%C3%ADcios-3"><i class="fa fa-check"></i><b>13.7</b> Exercícios</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#banco-de-dados-utilizado-nos-exemplos-de-aplica%C3%A7%C3%B5es-abaixo"><i class="fa fa-check"></i><b>13.7.1</b> Banco de Dados utilizado nos exemplos de aplicações abaixo</a></li>
+</ul></li>
+<li class="chapter" data-level="13.8" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-01"><i class="fa fa-check"></i><b>13.8</b> Exemplo 01</a></li>
+<li class="chapter" data-level="13.9" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-02---servidor-de-aplica%C3%A7%C3%A3o-python"><i class="fa fa-check"></i><b>13.9</b> Exemplo 02 - SERVIDOR DE APLICAÇÃO PYTHON</a>
+<ul>
+<li class="chapter" data-level="13.9.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#servidor-python"><i class="fa fa-check"></i><b>13.9.1</b> Servidor python</a></li>
+<li class="chapter" data-level="13.9.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#cliente-html-conex%C3%A3o-restful"><i class="fa fa-check"></i><b>13.9.2</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+<li class="chapter" data-level="13.10" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-03---servidor-de-aplica%C3%A7%C3%A3o-perl"><i class="fa fa-check"></i><b>13.10</b> Exemplo 03 - SERVIDOR DE APLICAÇÃO PERL</a>
+<ul>
+<li class="chapter" data-level="13.10.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#servidor-perl"><i class="fa fa-check"></i><b>13.10.1</b> Servidor Perl</a></li>
+<li class="chapter" data-level="13.10.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#cliente-html-conex%C3%A3o-restful-1"><i class="fa fa-check"></i><b>13.10.2</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+<li class="chapter" data-level="13.11" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-04---servidor-de-aplica%C3%A7%C3%A3o-java"><i class="fa fa-check"></i><b>13.11</b> Exemplo 04 - SERVIDOR DE APLICAÇÃO JAVA</a></li>
+<li class="chapter" data-level="13.12" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-05---servidor-de-aplica%C3%A7%C3%A3o-c"><i class="fa fa-check"></i><b>13.12</b> Exemplo 05 - SERVIDOR DE APLICAÇÃO C++</a>
+<ul>
+<li class="chapter" data-level="13.12.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#criando-o-arquivo-c-do-servidor"><i class="fa fa-check"></i><b>13.12.1</b> Criando o arquivo C++ do servidor</a></li>
+<li class="chapter" data-level="13.12.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#ferramenta-de-compila%C3%A7%C3%A3o-cmake"><i class="fa fa-check"></i><b>13.12.2</b> Ferramenta de compilação CMAKE</a></li>
+<li class="chapter" data-level="13.12.3" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#cliente-html-conex%C3%A3o-restful-2"><i class="fa fa-check"></i><b>13.12.3</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="banco-de-dados-estatístico---cliente-rstudio.html"><a href="banco-de-dados-estatístico---cliente-rstudio.html"><i class="fa fa-check"></i><b>14</b> Banco de Dados Estatístico - Cliente Rstudio</a></li>
+<li class="chapter" data-level="15" data-path="banco-de-dados-estatístico---cliente-rstudio-1.html"><a href="banco-de-dados-estatístico---cliente-rstudio-1.html"><i class="fa fa-check"></i><b>15</b> Banco de Dados Estatístico - Cliente Rstudio</a></li>
+<li class="chapter" data-level="16" data-path="banco-de-dados---análise-de-dados-parte-01.html"><a href="banco-de-dados---análise-de-dados-parte-01.html"><i class="fa fa-check"></i><b>16</b> Banco de Dados - Análise de Dados Parte 01</a></li>
+<li class="chapter" data-level="17" data-path="banco-de-dados---análise-de-dados-parte-01-1.html"><a href="banco-de-dados---análise-de-dados-parte-01-1.html"><i class="fa fa-check"></i><b>17</b> Banco de Dados - Análise de Dados Parte 01</a></li>
+<li class="chapter" data-level="18" data-path="banco-de-dados---análise-de-dados-parte-02.html"><a href="banco-de-dados---análise-de-dados-parte-02.html"><i class="fa fa-check"></i><b>18</b> Banco de Dados - Análise de Dados Parte 02</a></li>
+<li class="chapter" data-level="19" data-path="banco-de-dados---análise-de-dados-parte-02-1.html"><a href="banco-de-dados---análise-de-dados-parte-02-1.html"><i class="fa fa-check"></i><b>19</b> Banco de Dados - Análise de Dados Parte 02</a></li>
+<li class="chapter" data-level="20" data-path="banco-de-dados---análise-de-dados-parte-03.html"><a href="banco-de-dados---análise-de-dados-parte-03.html"><i class="fa fa-check"></i><b>20</b> Banco de Dados - Análise de Dados Parte 03</a></li>
+<li class="chapter" data-level="21" data-path="banco-de-dados---análise-de-dados-parte-03-1.html"><a href="banco-de-dados---análise-de-dados-parte-03-1.html"><i class="fa fa-check"></i><b>21</b> Banco de Dados - Análise de Dados Parte 03</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com Biblioteca R bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ADS - Banco de dados e No-SQL - 2026 - Anotações de aula</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="administração-e-gerenciamento-de-bancos-de-dados" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Slide 6</span> Administração e Gerenciamento de Bancos de Dados<a href="administração-e-gerenciamento-de-bancos-de-dados.html#administra%C3%A7%C3%A3o-e-gerenciamento-de-bancos-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="section-5" class="section level4 unnumbered hasAnchor">
+<h4>25/08/2025<a href="administração-e-gerenciamento-de-bancos-de-dados.html#section-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="professor-miguél-suares-2" class="section level4 unnumbered hasAnchor">
+<h4>Professor Miguél Suares<a href="administração-e-gerenciamento-de-bancos-de-dados.html#professor-migu%C3%A9l-suares-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="administração-e-gerenciamento-de-banco-de-dados" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Administração e Gerenciamento de Banco de Dados:<a href="administração-e-gerenciamento-de-bancos-de-dados.html#administra%C3%A7%C3%A3o-e-gerenciamento-de-banco-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Por que administração e gerenciamento são fundamentais</p>
+<ul>
+<li><p>Integridade e consistência</p></li>
+<li><p>Garantir que as regras de negócio (restrições, chaves, relacionamentos) sejam sempre respeitadas.</p></li>
+<li><p>Evitar dados duplicados ou incoerentes.</p></li>
+<li><p>Disponibilidade e recuperação</p></li>
+<li><p>Planejar backup e restore; criar políticas de alta disponibilidade e contingência para falhas ou desastres.</p></li>
+<li><p>Segurança e controle de acesso</p></li>
+<li><p>Definir quem pode ver, inserir, alterar ou excluir dados.</p></li>
+<li><p>Atender requisitos de LGPD/privacidade e normas corporativas.</p></li>
+<li><p>Desempenho e escalabilidade</p></li>
+<li><p>Monitorar consultas lentas, criar índices adequados, ajustar parâmetros do SGBD para suportar crescimento do volume de dados.</p></li>
+<li><p>Manutenção e evolução</p></li>
+<li><p>Atualizar versões, aplicar patches, revisar modelos de dados à medida que a aplicação muda.</p></li>
+</ul>
+</div>
+<div id="papel-do-dba-database-administrator" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Papel do DBA (Database Administrator)<a href="administração-e-gerenciamento-de-bancos-de-dados.html#papel-do-dba-database-administrator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O DBA é o profissional responsável por orquestrar tudo isso.Principais atribuições:</p>
+<ul>
+<li><p>Projeto físico do banco (estrutura de tabelas, índices, partições).</p></li>
+<li><p>Gestão de usuários e permissões – criação de contas, papéis (roles), políticas de segurança.</p></li>
+<li><p>Backup e recuperação – políticas de backup, testes de restauração.</p></li>
+<li><p>Monitoramento de desempenho – tuning de consultas, manutenção de índices, análise de logs.</p></li>
+<li><p>Planejamento de capacidade – prever crescimento, escalabilidade e uso de recursos.</p></li>
+<li><p>Atualizações e patches – manter o SGBD seguro e estável.</p></li>
+</ul>
+<p>Sem administração e gerenciamento adequados, um banco de dados vira um “depósito de riscos”: falhas, lentidão, vazamento de informações ou perda definitiva de dados. O DBA atua como guardião da informação, garantindo que ela esteja correta, segura, disponível e performática, sustentando todas as operações da organização.</p>
+</div>
+<div id="usuários-grupos-e-esquemas-de-bancos-de-dados" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Usuários, Grupos e Esquemas de Bancos de Dados<a href="administração-e-gerenciamento-de-bancos-de-dados.html#usu%C3%A1rios-grupos-e-esquemas-de-bancos-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="usuários" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Usuários<a href="administração-e-gerenciamento-de-bancos-de-dados.html#usu%C3%A1rios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O que são ? Contas individuais que representam pessoas, aplicações ou serviços que acessam o banco.Cada usuário possui um nome de login e, geralmente, uma senha ou outro método de autenticação.</p>
+<div id="funções-principal" class="section level4 hasAnchor" number="6.3.1.1">
+<h4><span class="header-section-number">6.3.1.1</span> Funções principal<a href="administração-e-gerenciamento-de-bancos-de-dados.html#fun%C3%A7%C3%B5es-principal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>Conectar-se ao SGBD.</p></li>
+<li><p>Executar operações de leitura, escrita ou administração conforme os privilégios concedidos.</p></li>
+</ul>
+</div>
+<div id="privilégios" class="section level4 hasAnchor" number="6.3.1.2">
+<h4><span class="header-section-number">6.3.1.2</span> Privilégios:<a href="administração-e-gerenciamento-de-bancos-de-dados.html#privil%C3%A9gios" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Podem ser específicos (ex.: SELECT em uma tabela) ou globais (ex.: CREATE DATABASE).</p>
+<p>São a base do controle de acesso.</p>
+</div>
+</div>
+<div id="esquemas" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Esquemas<a href="administração-e-gerenciamento-de-bancos-de-dados.html#esquemas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O que são ? Um esquema é um container lógico de objetos do banco de dados. Ele organiza tabelas, views, funções, procedures, índices, triggers etc.</p>
+<div id="por-que-usar" class="section level4 hasAnchor" number="6.3.2.1">
+<h4><span class="header-section-number">6.3.2.1</span> Por que usar<a href="administração-e-gerenciamento-de-bancos-de-dados.html#por-que-usar" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>Facilita a organização (por projeto, por aplicação, por departamento).</p></li>
+<li><p>Permite gestão de permissões mais granular: você pode conceder privilégios em nível de esquema.</p></li>
+<li><p>Evita conflitos de nomes, pois objetos com o mesmo nome podem existir em esquemas diferentes.</p></li>
+</ul>
+</div>
+</div>
+<div id="grupos-ou-roles" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Grupos ou Roles<a href="administração-e-gerenciamento-de-bancos-de-dados.html#grupos-ou-roles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O que são ? Papéis coletivos que agrupam permissões e, muitas vezes, usuários.</p>
+<p>No MySQL: CREATE ROLE …</p>
+<p>No PostgreSQL: roles podem ser usuários ou grupos.</p>
+<div id="vantagens" class="section level4 hasAnchor" number="6.3.3.1">
+<h4><span class="header-section-number">6.3.3.1</span> Vantagens<a href="administração-e-gerenciamento-de-bancos-de-dados.html#vantagens" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>Gerenciamento simplificado: conceda privilégios ao grupo e depois apenas adicione/remova usuários.</p></li>
+<li><p>Consistência: garante que todos de uma equipe tenham as mesmas permissões.</p></li>
+<li><p>Escalabilidade: ao entrar um novo membro, basta associá-lo ao role, sem revisar dezenas de tabelas.</p></li>
+</ul>
+</div>
+</div>
+<div id="sistema-de-gerenciamento-de-banco-de-dados-s.g.b.d." class="section level3 hasAnchor" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> Sistema de Gerenciamento de Banco de Dados (S.G.B.D.)<a href="administração-e-gerenciamento-de-bancos-de-dados.html#sistema-de-gerenciamento-de-banco-de-dados-s.g.b.d." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O Sistema de Gerenciamento de Banco de Dados cuida não só de como as informações são armazenadas, mas também quem pode acessa-las, sob quais condições.</p>
+<p><img src="media/01-SGBD.jpg" /></p>
+</div>
+<div id="criação-de-usuários-no-mysql" class="section level3 hasAnchor" number="6.3.5">
+<h3><span class="header-section-number">6.3.5</span> Criação de usuários no MySQL<a href="administração-e-gerenciamento-de-bancos-de-dados.html#cria%C3%A7%C3%A3o-de-usu%C3%A1rios-no-mysql" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Podemos criar um novo usuário no SGBD MySQL através do seguinte comando SQL-DCL:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb40-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb40-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;nome_login&#39;</span>@<span class="st">&#39;host&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;senha&#39;</span> <span class="kw">COMMENT</span> <span class="st">&#39;descrição&#39;</span>;</span></code></pre></div>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Parte</th>
+<th align="center">Função</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">‘nome_login’</td>
+<td align="center">Nome de login do novo usuário.</td>
+</tr>
+<tr class="even">
+<td align="center">‘host’</td>
+<td align="center">Origem permitida de conexão.</td>
+</tr>
+<tr class="odd">
+<td align="center">IDENTIFIED BY ‘senha’</td>
+<td align="center">Define a senha inicial.</td>
+</tr>
+<tr class="even">
+<td align="center">COMMENT ‘descrição’</td>
+<td align="center">(Opcional) Uma anotação de texto para identificar o usuário.</td>
+</tr>
+</tbody>
+</table>
+<p>Exemplo 1:</p>
+<p>Crie o usuário do aluno “Bruno Marques”. O usuário deve ser o RA do aluno e a sua senha deve ser <em>unip</em>.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb41-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb41-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;f362bf0&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span> <span class="st">&#39;Bruno Antonio Marques&#39;</span>;</span></code></pre></div>
+<p>Exemplo 2:</p>
+<p>Crie os usuários de todos os alunos da sala. O usuário deve ser o RA do aluno e a sua senha deve ser <em>unip</em>.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb42-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-1" tabindex="-1"></a></span>
+<span id="cb42-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-2" tabindex="-1"></a><span class="co">-- turma TI2P40</span></span>
+<span id="cb42-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-3" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-4" tabindex="-1"></a><span class="co">-- usuários no MySQL</span></span>
+<span id="cb42-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-5" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-6" tabindex="-1"></a><span class="kw">DROP</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="st">&#39;f362bf0&#39;</span>@<span class="st">&#39;%&#39;</span>; <span class="co">-- apaga o &#39;Bruno Antonio Marques&#39;;</span></span>
+<span id="cb42-7"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-7" tabindex="-1"></a><span class="kw">DROP</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="st">&#39;r536fa6&#39;</span>@<span class="st">&#39;%&#39;</span>; <span class="co">-- apaga o &#39;Caio Cesar Balbino Da Silva&#39;;</span></span>
+<span id="cb42-8"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-8" tabindex="-1"></a><span class="kw">DROP</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="st">&#39;h756960&#39;</span>@<span class="st">&#39;%&#39;</span>; <span class="co">-- apaga o &#39;Heder Rodrigues Da Silva&#39;;</span></span>
+<span id="cb42-9"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-9" tabindex="-1"></a><span class="kw">DROP</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="st">&#39;r8133g7&#39;</span>@<span class="st">&#39;%&#39;</span>; <span class="co">-- apaga o &#39;Ítalo Kevin Rodrigues Da Silva&#39;;</span></span>
+<span id="cb42-10"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-10" tabindex="-1"></a><span class="kw">DROP</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="st">&#39;r837aa0&#39;</span>@<span class="st">&#39;%&#39;</span>; <span class="co">-- apaga o &#39;Lucas Souza Rodrigues&#39;;</span></span>
+<span id="cb42-11"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-11" tabindex="-1"></a><span class="kw">DROP</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="st">&#39;h714419&#39;</span>@<span class="st">&#39;%&#39;</span>; <span class="co">-- apaga o &#39;Marcos Paulo Cordeiro Goes&#39;;</span></span>
+<span id="cb42-12"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-12" tabindex="-1"></a><span class="kw">DROP</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="st">&#39;r854124&#39;</span>@<span class="st">&#39;%&#39;</span>; <span class="co">-- apaga o &#39;Ramon Borges De Holanda&#39;;</span></span>
+<span id="cb42-13"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-13" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-14" tabindex="-1"></a></span>
+<span id="cb42-15"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-15" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;f362bf0&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span>  <span class="st">&#39;Bruno Antonio Marques&#39;</span>;</span>
+<span id="cb42-16"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-16" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;r536fa6&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span>  <span class="st">&#39;Caio Cesar Balbino Da Silva&#39;</span>;</span>
+<span id="cb42-17"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-17" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;h756960&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span>  <span class="st">&#39;Heder Rodrigues Da Silva&#39;</span>;</span>
+<span id="cb42-18"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-18" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;r8133g7&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span>  <span class="st">&#39;Ítalo Kevin Rodrigues Da Silva&#39;</span>;</span>
+<span id="cb42-19"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-19" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;r837aa0&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span>  <span class="st">&#39;Lucas Souza Rodrigues&#39;</span>;</span>
+<span id="cb42-20"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-20" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;h714419&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span>  <span class="st">&#39;Marcos Paulo Cordeiro Goes&#39;</span>;</span>
+<span id="cb42-21"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-21" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;r854124&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span>  <span class="st">&#39;Ramon Borges De Holanda&#39;</span>;</span>
+<span id="cb42-22"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-22" tabindex="-1"></a></span>
+<span id="cb42-23"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-23" tabindex="-1"></a><span class="co">-- turma TI1P40</span></span>
+<span id="cb42-24"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-24" tabindex="-1"></a></span>
+<span id="cb42-25"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-25" tabindex="-1"></a><span class="kw">DROP</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="st">&#39;n0296a6&#39;</span>@<span class="st">&#39;%&#39;</span>; <span class="co">-- apaga o &#39;Bryan Lucena Barbosa Da Silva&#39;;</span></span>
+<span id="cb42-26"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-26" tabindex="-1"></a><span class="kw">DROP</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="st">&#39;h788986&#39;</span>@<span class="st">&#39;%&#39;</span>; <span class="co">-- apaga o &#39;Igor Soares Lima Da Cunha&#39;;</span></span>
+<span id="cb42-27"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-27" tabindex="-1"></a><span class="kw">DROP</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="st">&#39;h77gii5&#39;</span>@<span class="st">&#39;%&#39;</span>; <span class="co">-- apaga o &#39;Jessica Cristina De S Silva&#39;;</span></span>
+<span id="cb42-28"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-28" tabindex="-1"></a><span class="kw">DROP</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="st">&#39;f3648i0&#39;</span>@<span class="st">&#39;%&#39;</span>; <span class="co">-- apaga o &#39;Maysa Kelly Dos Santos Freitas&#39;;</span></span>
+<span id="cb42-29"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-29" tabindex="-1"></a></span>
+<span id="cb42-30"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-30" tabindex="-1"></a></span>
+<span id="cb42-31"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-31" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;n0296a6&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span>  <span class="st">&#39;Bryan Lucena Barbosa Da Silva&#39;</span>;</span>
+<span id="cb42-32"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-32" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;h788986&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span>  <span class="st">&#39;Igor Soares Lima Da Cunha&#39;</span>;</span>
+<span id="cb42-33"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-33" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;h77gii5&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span>  <span class="st">&#39;Jessica Cristina De S Silva&#39;</span>;</span>
+<span id="cb42-34"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb42-34" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">&#39;f3648i0&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;unip&#39;</span> <span class="kw">COMMENT</span>  <span class="st">&#39;Maysa Kelly Dos Santos Freitas&#39;</span>;</span></code></pre></div>
+</div>
+<div id="criação-de-esquemas-de-banco-de-dados-no-mysql" class="section level3 hasAnchor" number="6.3.6">
+<h3><span class="header-section-number">6.3.6</span> Criação de Esquemas de Banco de Dados no MySQL<a href="administração-e-gerenciamento-de-bancos-de-dados.html#cria%C3%A7%C3%A3o-de-esquemas-de-banco-de-dados-no-mysql" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>No MySQL, schema e database são sinônimos. É o “contêiner” onde ficam tabelas, views, procedures, usuários com permissões etc.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb43-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb43-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> [<span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span>] nome_do_schema  [OPTIONS];</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th>CREATE DATABASE: cria um novo banco.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IF NOT EXISTS: evita erro caso o schema já exista.</td>
+</tr>
+<tr class="even">
+<td>nome_do_schema: nome do banco.</td>
+</tr>
+<tr class="odd">
+<td>[OPTIONS]: parâmetros opcionais como CHARACTER SET ou COLLATE</td>
+</tr>
+</tbody>
+</table>
+<p>Exemplo 1:</p>
+<p>Crie um esquema de Banco de Dados onde chamado 11-rondonia para guardar a tabela “Cidades”;</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb44-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb44-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">11</span><span class="op">-</span>rondonia`;</span></code></pre></div>
+<p>Exemplo 2:</p>
+<p>Crie um esquema de Banco de Dados de todas as Unidades da Federação para guardar tabelas “Cidades” dentro de cada uma:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb45-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-1" tabindex="-1"></a><span class="co">-- Script para criar um esquema (database) para cada UF brasileira</span></span>
+<span id="cb45-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-2" tabindex="-1"></a><span class="co">-- Nome do esquema: &lt;código IBGE&gt;-&lt;nome_uf&gt;</span></span>
+<span id="cb45-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-3" tabindex="-1"></a><span class="co">-- Ordenado pelo código IBGE</span></span>
+<span id="cb45-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-4" tabindex="-1"></a><span class="co">-- Compatível com MySQL 8</span></span>
+<span id="cb45-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-5" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-6" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">11</span><span class="op">-</span>rondonia`;</span>
+<span id="cb45-7"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-7" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">12</span><span class="op">-</span>acre`;</span>
+<span id="cb45-8"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-8" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">13</span><span class="op">-</span>amazonas`;</span>
+<span id="cb45-9"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-9" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">14</span><span class="op">-</span>roraima`;</span>
+<span id="cb45-10"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-10" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">15</span><span class="op">-</span>para`;</span>
+<span id="cb45-11"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-11" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">16</span><span class="op">-</span>amapa`;</span>
+<span id="cb45-12"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-12" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">17</span><span class="op">-</span>tocantins`;</span>
+<span id="cb45-13"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-13" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">21</span><span class="op">-</span>maranhao`;</span>
+<span id="cb45-14"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-14" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">22</span><span class="op">-</span>piaui`;</span>
+<span id="cb45-15"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-15" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">23</span><span class="op">-</span>ceara`;</span>
+<span id="cb45-16"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-16" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">24</span><span class="op">-</span>rio_grande_do_norte`;</span>
+<span id="cb45-17"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-17" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">25</span><span class="op">-</span>paraiba`;</span>
+<span id="cb45-18"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-18" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">26</span><span class="op">-</span>pernambuco`;</span>
+<span id="cb45-19"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-19" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">27</span><span class="op">-</span>alagoas`;</span>
+<span id="cb45-20"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-20" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">28</span><span class="op">-</span>sergipe`;</span>
+<span id="cb45-21"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-21" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">29</span><span class="op">-</span>bahia`;</span>
+<span id="cb45-22"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-22" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">31</span><span class="op">-</span>minas_gerais`;</span>
+<span id="cb45-23"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-23" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">32</span><span class="op">-</span>espiritosanto`;</span>
+<span id="cb45-24"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-24" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">33</span><span class="op">-</span>rio_de_janeiro`;</span>
+<span id="cb45-25"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-25" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">35</span><span class="op">-</span>sao_paulo`;</span>
+<span id="cb45-26"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-26" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">41</span><span class="op">-</span>parana`;</span>
+<span id="cb45-27"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-27" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">42</span><span class="op">-</span>santa_catarina`;</span>
+<span id="cb45-28"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-28" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">43</span><span class="op">-</span>rio_grande_do_sul`;</span>
+<span id="cb45-29"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-29" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">50</span><span class="op">-</span>mato_grosso_do_sul`;</span>
+<span id="cb45-30"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-30" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">51</span><span class="op">-</span>mato_grosso`;</span>
+<span id="cb45-31"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-31" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">52</span><span class="op">-</span>goias`;</span>
+<span id="cb45-32"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb45-32" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `<span class="dv">53</span><span class="op">-</span>distrito_federal`;</span></code></pre></div>
+</div>
+<div id="criando-de-grupos-de-permissões-no-mysql" class="section level3 hasAnchor" number="6.3.7">
+<h3><span class="header-section-number">6.3.7</span> Criando de Grupos de Permissões no MySQL:<a href="administração-e-gerenciamento-de-bancos-de-dados.html#criando-de-grupos-de-permiss%C3%B5es-no-mysql" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>No MySQL, roles (funções ou papéis) são grupos de permissões que você define uma vez e pode atribuir a vários usuários. Eles funcionam como “grupos de acesso”, facilitando o gerenciamento de privilégios. Em vez de conceder privilégios individualmente a cada usuário, você define tudo no role. Se precisar incluir um novo privilégio (ex.: UPDATE) para todos que já têm o role, basta atualizar o role uma vez.</p>
+<p>Como criar uma regra no MySQL utilizando SQL-DCL</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb46-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb46-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">ROLE</span> <span class="st">&#39;nome_grupo&#39;</span>;</span></code></pre></div>
+<p>onde, obviamente, <em>nome_grupo</em> é o nome do grupo a ser criado.</p>
+<p>Exemplo 1:</p>
+<p>Crie um grupo chamado <em>norte</em> para associar todas as unidades da federação da região norte do Brasil:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb47-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb47-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">ROLE</span> <span class="st">&#39;norte&#39;</span>;</span></code></pre></div>
+<p>Exemplo 2:</p>
+<p>Crie um grupos para associar todas as unidades da federação de todas as regiões do Brasil:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb48-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-1" tabindex="-1"></a><span class="co">-- ===========================================</span></span>
+<span id="cb48-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-2" tabindex="-1"></a><span class="co">-- Criação de roles para as 5 regiões do Brasil</span></span>
+<span id="cb48-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-3" tabindex="-1"></a><span class="co">-- ===========================================</span></span>
+<span id="cb48-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-4" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-5" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">ROLE</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb48-6"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-6" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">ROLE</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb48-7"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-7" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">ROLE</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb48-8"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-8" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">ROLE</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb48-9"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-9" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">ROLE</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb48-10"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-10" tabindex="-1"></a></span>
+<span id="cb48-11"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-11" tabindex="-1"></a><span class="co">-- ===========================================</span></span>
+<span id="cb48-12"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-12" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb48-13"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-13" tabindex="-1"></a><span class="co">Concedendo privilégios de leitura (SELECT) a cada grupo criado</span></span>
+<span id="cb48-14"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-14" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb48-15"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-15" tabindex="-1"></a><span class="co">-- ===========================================</span></span>
+<span id="cb48-16"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-16" tabindex="-1"></a></span>
+<span id="cb48-17"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-17" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> <span class="op">*</span>.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb48-18"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-18" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> <span class="op">*</span>.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb48-19"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-19" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> <span class="op">*</span>.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb48-20"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-20" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> <span class="op">*</span>.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb48-21"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-21" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> <span class="op">*</span>.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb48-22"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-22" tabindex="-1"></a></span>
+<span id="cb48-23"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-23" tabindex="-1"></a><span class="co">-- ===========================================</span></span>
+<span id="cb48-24"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-24" tabindex="-1"></a><span class="co">-- Para atribuir um role a um usuário:</span></span>
+<span id="cb48-25"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-25" tabindex="-1"></a><span class="co">-- ===========================================</span></span>
+<span id="cb48-26"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-26" tabindex="-1"></a><span class="co">-- GRANT &#39;norte&#39; TO &#39;usuario_exemplo&#39;@&#39;%&#39;;</span></span>
+<span id="cb48-27"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb48-27" tabindex="-1"></a><span class="co">-- SET DEFAULT ROLE &#39;norte&#39; TO &#39;usuario_exemplo&#39;@&#39;%&#39;;</span></span></code></pre></div>
+</div>
+</div>
+<div id="fazendo-tudo-funcionar-colocando-usuários-em-grupos-e-concedendo-a-estes-acesso-a-esquemas-de-banco-de-dados" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Fazendo tudo funcionar: Colocando usuários em grupos e concedendo a estes acesso a Esquemas de Banco de Dados:<a href="administração-e-gerenciamento-de-bancos-de-dados.html#fazendo-tudo-funcionar-colocando-usu%C3%A1rios-em-grupos-e-concedendo-a-estes-acesso-a-esquemas-de-banco-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="associando-os-esquemas-que-representam-cada-estado-a-cada-grupo-que-representa-cada-regição" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Associando os esquemas que representam cada estado a cada grupo (que representa cada regição):<a href="administração-e-gerenciamento-de-bancos-de-dados.html#associando-os-esquemas-que-representam-cada-estado-a-cada-grupo-que-representa-cada-regi%C3%A7%C3%A3o" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb49"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb49-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-1" tabindex="-1"></a><span class="co">-- ================================================</span></span>
+<span id="cb49-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-2" tabindex="-1"></a><span class="co">-- Associação dos esquemas (databases) aos roles</span></span>
+<span id="cb49-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-3" tabindex="-1"></a><span class="co">-- Roles criadas previamente:</span></span>
+<span id="cb49-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-4" tabindex="-1"></a><span class="co">--   norte, nordeste, centro_oeste, sudeste, sul</span></span>
+<span id="cb49-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-5" tabindex="-1"></a><span class="co">-- ================================================</span></span>
+<span id="cb49-6"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-6" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-7" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt;&gt;&gt; REGIÃO NORTE &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></span>
+<span id="cb49-8"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-8" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-9" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">11</span><span class="op">-</span>rondonia`.<span class="op">*</span>       <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb49-10"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-10" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">12</span><span class="op">-</span>acre`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb49-11"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-11" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">13</span><span class="op">-</span>amazonas`.<span class="op">*</span>       <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb49-12"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-12" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">14</span><span class="op">-</span>roraima`.<span class="op">*</span>        <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb49-13"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-13" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">15</span><span class="op">-</span>para`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb49-14"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-14" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">16</span><span class="op">-</span>amapa`.<span class="op">*</span>          <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb49-15"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-15" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">17</span><span class="op">-</span>tocantins`.<span class="op">*</span>      <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb49-16"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-16" tabindex="-1"></a></span>
+<span id="cb49-17"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-17" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt;&gt;&gt; REGIÃO NORDESTE &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></span>
+<span id="cb49-18"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-18" tabindex="-1"></a></span>
+<span id="cb49-19"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-19" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">21</span><span class="op">-</span>maranhao`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb49-20"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-20" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">22</span><span class="op">-</span>piaui`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb49-21"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-21" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">23</span><span class="op">-</span>ceara`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb49-22"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-22" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">24</span><span class="op">-</span>rio_grande_do_norte`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb49-23"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-23" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">25</span><span class="op">-</span>paraiba`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb49-24"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-24" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">26</span><span class="op">-</span>pernambuco`.<span class="op">*</span>          <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb49-25"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-25" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">27</span><span class="op">-</span>alagoas`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb49-26"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-26" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">28</span><span class="op">-</span>sergipe`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb49-27"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-27" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">29</span><span class="op">-</span>bahia`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb49-28"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-28" tabindex="-1"></a></span>
+<span id="cb49-29"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-29" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt;&gt;&gt; REGIÃO CENTRO_OESTE &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></span>
+<span id="cb49-30"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-30" tabindex="-1"></a></span>
+<span id="cb49-31"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-31" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">50</span><span class="op">-</span>mato_grosso_do_sul`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb49-32"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-32" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">51</span><span class="op">-</span>mato_grosso`.<span class="op">*</span>       <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb49-33"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-33" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">52</span><span class="op">-</span>goias`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb49-34"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-34" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">53</span><span class="op">-</span>distrito_federal`.<span class="op">*</span>  <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb49-35"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-35" tabindex="-1"></a></span>
+<span id="cb49-36"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-36" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt;&gt;&gt; REGIÃO SUDESTE &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></span>
+<span id="cb49-37"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-37" tabindex="-1"></a></span>
+<span id="cb49-38"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-38" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">31</span><span class="op">-</span>minas_gerais`.<span class="op">*</span>   <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb49-39"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-39" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">32</span><span class="op">-</span>espiritosanto`.<span class="op">*</span>  <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb49-40"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-40" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">33</span><span class="op">-</span>rio_de_janeiro`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb49-41"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-41" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">35</span><span class="op">-</span>sao_paulo`.<span class="op">*</span>      <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb49-42"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-42" tabindex="-1"></a></span>
+<span id="cb49-43"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-43" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt;&gt;&gt; REGIÃO SUL &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></span>
+<span id="cb49-44"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-44" tabindex="-1"></a></span>
+<span id="cb49-45"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-45" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">41</span><span class="op">-</span>parana`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb49-46"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-46" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">42</span><span class="op">-</span>santa_catarina`.<span class="op">*</span>    <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb49-47"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb49-47" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> `<span class="dv">43</span><span class="op">-</span>rio_grande_do_sul`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span></code></pre></div>
+</div>
+<div id="associando-associando-alunos-a-cada-grupo-região" class="section level3 hasAnchor" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Associando associando alunos a cada grupo (região):<a href="administração-e-gerenciamento-de-bancos-de-dados.html#associando-associando-alunos-a-cada-grupo-regi%C3%A3o" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Role (grupo)</th>
+<th align="center">Usuários (login)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">norte</td>
+<td align="center">f362bf0, r536fa6</td>
+</tr>
+<tr class="even">
+<td align="center">nordeste</td>
+<td align="center">h756960, r8133g7</td>
+</tr>
+<tr class="odd">
+<td align="center">centro_oeste</td>
+<td align="center">r837aa0, h714419</td>
+</tr>
+<tr class="even">
+<td align="center">sudeste</td>
+<td align="center">r854124, n0296a6</td>
+</tr>
+<tr class="odd">
+<td align="center">sul</td>
+<td align="center">h788986, h77gii5, f3648i0</td>
+</tr>
+</tbody>
+</table>
+<div id="região-norte" class="section level4 hasAnchor" number="6.4.2.1">
+<h4><span class="header-section-number">6.4.2.1</span> Região Norte<a href="administração-e-gerenciamento-de-bancos-de-dados.html#regi%C3%A3o-norte" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/aula_04-Exemplo-01-grupos-01.svg" /><!-- --></p>
+<p><img src="images/aula_04-Exemplo-01-grupos-02.svg" /><!-- --></p>
+<p><img src="images/aula_04-Exemplo-01-grupos-03.svg" /><!-- --></p>
+<p><img src="images/aula_04-Exemplo-01-grupos-04.svg" /><!-- --></p>
+</div>
+<div id="região-nordeste" class="section level4 hasAnchor" number="6.4.2.2">
+<h4><span class="header-section-number">6.4.2.2</span> Região Nordeste<a href="administração-e-gerenciamento-de-bancos-de-dados.html#regi%C3%A3o-nordeste" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/aula_04-Exemplo-01-grupos-05.svg" /><!-- --></p>
+<p><img src="images/aula_04-Exemplo-01-grupos-06.svg" /><!-- --></p>
+<p><img src="images/aula_04-Exemplo-01-grupos-07.svg" /><!-- --></p>
+<p><img src="images/aula_04-Exemplo-01-grupos-08.svg" /><!-- --></p>
+<p><img src="images/aula_04-Exemplo-01-grupos-09.svg" /><!-- --></p>
+</div>
+<div id="região-centro-oeste" class="section level4 hasAnchor" number="6.4.2.3">
+<h4><span class="header-section-number">6.4.2.3</span> Região Centro-Oeste<a href="administração-e-gerenciamento-de-bancos-de-dados.html#regi%C3%A3o-centro-oeste" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/aula_04-Exemplo-01-grupos-10.svg" /><!-- --></p>
+<p><img src="images/aula_04-Exemplo-01-grupos-11.svg" /><!-- --></p>
+</div>
+<div id="região-sudeste" class="section level4 hasAnchor" number="6.4.2.4">
+<h4><span class="header-section-number">6.4.2.4</span> Região Sudeste<a href="administração-e-gerenciamento-de-bancos-de-dados.html#regi%C3%A3o-sudeste" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/aula_04-Exemplo-01-grupos-12.svg" /><!-- --></p>
+<p><img src="images/aula_04-Exemplo-01-grupos-13.svg" /><!-- --></p>
+</div>
+<div id="região-sul" class="section level4 hasAnchor" number="6.4.2.5">
+<h4><span class="header-section-number">6.4.2.5</span> Região Sul<a href="administração-e-gerenciamento-de-bancos-de-dados.html#regi%C3%A3o-sul" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/aula_04-Exemplo-01-grupos-15.svg" /><!-- --></p>
+<p><img src="images/aula_04-Exemplo-01-grupos-16.svg" /><!-- --></p>
+</div>
+</div>
+<div id="associando-usuários-aos-grupos" class="section level3 hasAnchor" number="6.4.3">
+<h3><span class="header-section-number">6.4.3</span> Associando usuários aos grupos<a href="administração-e-gerenciamento-de-bancos-de-dados.html#associando-usu%C3%A1rios-aos-grupos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb50"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb50-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-1" tabindex="-1"></a><span class="co">-- =========================================</span></span>
+<span id="cb50-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-2" tabindex="-1"></a><span class="co">-- Associação de usuários aos roles (grupos)</span></span>
+<span id="cb50-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-3" tabindex="-1"></a><span class="co">-- =========================================</span></span>
+<span id="cb50-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-4" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-5" tabindex="-1"></a><span class="co">-- Grupo Norte</span></span>
+<span id="cb50-6"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-6" tabindex="-1"></a><span class="kw">GRANT</span> <span class="st">&#39;norte&#39;</span> <span class="kw">TO</span> <span class="st">&#39;f362bf0&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb50-7"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-7" tabindex="-1"></a><span class="kw">GRANT</span> <span class="st">&#39;norte&#39;</span> <span class="kw">TO</span> <span class="st">&#39;r536fa6&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb50-8"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-8" tabindex="-1"></a></span>
+<span id="cb50-9"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-9" tabindex="-1"></a><span class="co">-- Grupo Nordeste</span></span>
+<span id="cb50-10"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-10" tabindex="-1"></a><span class="kw">GRANT</span> <span class="st">&#39;nordeste&#39;</span> <span class="kw">TO</span> <span class="st">&#39;h756960&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb50-11"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-11" tabindex="-1"></a><span class="kw">GRANT</span> <span class="st">&#39;nordeste&#39;</span> <span class="kw">TO</span> <span class="st">&#39;r8133g7&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb50-12"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-12" tabindex="-1"></a></span>
+<span id="cb50-13"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-13" tabindex="-1"></a><span class="co">-- Grupo Centro-Oeste</span></span>
+<span id="cb50-14"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-14" tabindex="-1"></a><span class="kw">GRANT</span> <span class="st">&#39;centro_oeste&#39;</span> <span class="kw">TO</span> <span class="st">&#39;r837aa0&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb50-15"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-15" tabindex="-1"></a><span class="kw">GRANT</span> <span class="st">&#39;centro_oeste&#39;</span> <span class="kw">TO</span> <span class="st">&#39;h714419&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb50-16"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-16" tabindex="-1"></a></span>
+<span id="cb50-17"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-17" tabindex="-1"></a><span class="co">-- Grupo Sudeste</span></span>
+<span id="cb50-18"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-18" tabindex="-1"></a><span class="kw">GRANT</span> <span class="st">&#39;sudeste&#39;</span> <span class="kw">TO</span> <span class="st">&#39;r854124&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb50-19"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-19" tabindex="-1"></a><span class="kw">GRANT</span> <span class="st">&#39;sudeste&#39;</span> <span class="kw">TO</span> <span class="st">&#39;n0296a6&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb50-20"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-20" tabindex="-1"></a></span>
+<span id="cb50-21"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-21" tabindex="-1"></a><span class="co">-- Grupo Sul</span></span>
+<span id="cb50-22"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-22" tabindex="-1"></a><span class="kw">GRANT</span> <span class="st">&#39;sul&#39;</span> <span class="kw">TO</span> <span class="st">&#39;h788986&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb50-23"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-23" tabindex="-1"></a><span class="kw">GRANT</span> <span class="st">&#39;sul&#39;</span> <span class="kw">TO</span> <span class="st">&#39;h77gii5&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb50-24"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-24" tabindex="-1"></a><span class="kw">GRANT</span> <span class="st">&#39;sul&#39;</span> <span class="kw">TO</span> <span class="st">&#39;f3648i0&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb50-25"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-25" tabindex="-1"></a></span>
+<span id="cb50-26"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-26" tabindex="-1"></a><span class="co">-- (Opcional) Definir cada role como padrão para o usuário</span></span>
+<span id="cb50-27"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-27" tabindex="-1"></a><span class="kw">SET</span> <span class="kw">DEFAULT</span> <span class="kw">ROLE</span> <span class="kw">ALL</span> <span class="kw">TO</span></span>
+<span id="cb50-28"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-28" tabindex="-1"></a>    <span class="st">&#39;f362bf0&#39;</span>@<span class="st">&#39;%&#39;</span>,</span>
+<span id="cb50-29"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-29" tabindex="-1"></a>    <span class="st">&#39;r536fa6&#39;</span>@<span class="st">&#39;%&#39;</span>,</span>
+<span id="cb50-30"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-30" tabindex="-1"></a>    <span class="st">&#39;h756960&#39;</span>@<span class="st">&#39;%&#39;</span>,</span>
+<span id="cb50-31"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-31" tabindex="-1"></a>    <span class="st">&#39;r8133g7&#39;</span>@<span class="st">&#39;%&#39;</span>,</span>
+<span id="cb50-32"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-32" tabindex="-1"></a>    <span class="st">&#39;r837aa0&#39;</span>@<span class="st">&#39;%&#39;</span>,</span>
+<span id="cb50-33"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-33" tabindex="-1"></a>    <span class="st">&#39;h714419&#39;</span>@<span class="st">&#39;%&#39;</span>,</span>
+<span id="cb50-34"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-34" tabindex="-1"></a>    <span class="st">&#39;r854124&#39;</span>@<span class="st">&#39;%&#39;</span>,</span>
+<span id="cb50-35"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-35" tabindex="-1"></a>    <span class="st">&#39;n0296a6&#39;</span>@<span class="st">&#39;%&#39;</span>,</span>
+<span id="cb50-36"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-36" tabindex="-1"></a>    <span class="st">&#39;h788986&#39;</span>@<span class="st">&#39;%&#39;</span>,</span>
+<span id="cb50-37"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-37" tabindex="-1"></a>    <span class="st">&#39;h77gii5&#39;</span>@<span class="st">&#39;%&#39;</span>,</span>
+<span id="cb50-38"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb50-38" tabindex="-1"></a>    <span class="st">&#39;f3648i0&#39;</span>@<span class="st">&#39;%&#39;</span>;</span></code></pre></div>
+</div>
+<div id="concedendo-privilégios-aos-grupos" class="section level3 hasAnchor" number="6.4.4">
+<h3><span class="header-section-number">6.4.4</span> Concedendo privilégios aos grupos:<a href="administração-e-gerenciamento-de-bancos-de-dados.html#concedendo-privil%C3%A9gios-aos-grupos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb51"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb51-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-1" tabindex="-1"></a><span class="co">-- ============================================</span></span>
+<span id="cb51-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-2" tabindex="-1"></a><span class="co">-- NORTE lê os demais grupos (Nordeste, Centro-Oeste, Sudeste, Sul)</span></span>
+<span id="cb51-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-3" tabindex="-1"></a><span class="co">-- ============================================</span></span>
+<span id="cb51-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-4" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">21</span><span class="op">-</span>maranhao`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-5" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">22</span><span class="op">-</span>piaui`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-6"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-6" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">23</span><span class="op">-</span>ceara`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-7"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-7" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">24</span><span class="op">-</span>rio_grande_do_norte`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-8"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-8" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">25</span><span class="op">-</span>paraiba`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-9"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-9" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">26</span><span class="op">-</span>pernambuco`.<span class="op">*</span>          <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-10"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-10" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">27</span><span class="op">-</span>alagoas`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-11"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-11" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">28</span><span class="op">-</span>sergipe`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-12"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-12" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">29</span><span class="op">-</span>bahia`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-13"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-13" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">50</span><span class="op">-</span>mato_grosso_do_sul`.<span class="op">*</span>  <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-14"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-14" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">51</span><span class="op">-</span>mato_grosso`.<span class="op">*</span>        <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-15"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-15" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">52</span><span class="op">-</span>goias`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-16"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-16" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">53</span><span class="op">-</span>distrito_federal`.<span class="op">*</span>   <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-17"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-17" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">31</span><span class="op">-</span>minas_gerais`.<span class="op">*</span>       <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-18"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-18" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">32</span><span class="op">-</span>espiritosanto`.<span class="op">*</span>      <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-19"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-19" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">33</span><span class="op">-</span>rio_de_janeiro`.<span class="op">*</span>     <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-20"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-20" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">35</span><span class="op">-</span>sao_paulo`.<span class="op">*</span>          <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-21"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-21" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">41</span><span class="op">-</span>parana`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-22"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-22" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">42</span><span class="op">-</span>santa_catarina`.<span class="op">*</span>     <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-23"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-23" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">43</span><span class="op">-</span>rio_grande_do_sul`.<span class="op">*</span>  <span class="kw">TO</span> <span class="st">&#39;norte&#39;</span>;</span>
+<span id="cb51-24"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-24" tabindex="-1"></a></span>
+<span id="cb51-25"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-25" tabindex="-1"></a><span class="co">-- ============================================</span></span>
+<span id="cb51-26"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-26" tabindex="-1"></a><span class="co">-- NORDESTE lê os demais grupos (Norte, Centro-Oeste, Sudeste, Sul)</span></span>
+<span id="cb51-27"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-27" tabindex="-1"></a><span class="co">-- ============================================</span></span>
+<span id="cb51-28"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-28" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">11</span><span class="op">-</span>rondonia`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-29"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-29" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">12</span><span class="op">-</span>acre`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-30"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-30" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">13</span><span class="op">-</span>amazonas`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-31"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-31" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">14</span><span class="op">-</span>roraima`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-32"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-32" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">15</span><span class="op">-</span>para`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-33"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-33" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">16</span><span class="op">-</span>amapa`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-34"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-34" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">17</span><span class="op">-</span>tocantins`.<span class="op">*</span>          <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-35"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-35" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">50</span><span class="op">-</span>mato_grosso_do_sul`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-36"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-36" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">51</span><span class="op">-</span>mato_grosso`.<span class="op">*</span>       <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-37"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-37" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">52</span><span class="op">-</span>goias`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-38"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-38" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">53</span><span class="op">-</span>distrito_federal`.<span class="op">*</span>  <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-39"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-39" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">31</span><span class="op">-</span>minas_gerais`.<span class="op">*</span>      <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-40"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-40" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">32</span><span class="op">-</span>espiritosanto`.<span class="op">*</span>     <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-41"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-41" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">33</span><span class="op">-</span>rio_de_janeiro`.<span class="op">*</span>    <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-42"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-42" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">35</span><span class="op">-</span>sao_paulo`.<span class="op">*</span>         <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-43"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-43" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">41</span><span class="op">-</span>parana`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-44"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-44" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">42</span><span class="op">-</span>santa_catarina`.<span class="op">*</span>    <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-45"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-45" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">43</span><span class="op">-</span>rio_grande_do_sul`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;nordeste&#39;</span>;</span>
+<span id="cb51-46"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-46" tabindex="-1"></a></span>
+<span id="cb51-47"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-47" tabindex="-1"></a><span class="co">-- ============================================</span></span>
+<span id="cb51-48"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-48" tabindex="-1"></a><span class="co">-- CENTRO-OESTE lê os demais grupos (Norte, Nordeste, Sudeste, Sul)</span></span>
+<span id="cb51-49"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-49" tabindex="-1"></a><span class="co">-- ============================================</span></span>
+<span id="cb51-50"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-50" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">11</span><span class="op">-</span>rondonia`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-51"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-51" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">12</span><span class="op">-</span>acre`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-52"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-52" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">13</span><span class="op">-</span>amazonas`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-53"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-53" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">14</span><span class="op">-</span>roraima`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-54"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-54" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">15</span><span class="op">-</span>para`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-55"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-55" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">16</span><span class="op">-</span>amapa`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-56"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-56" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">17</span><span class="op">-</span>tocantins`.<span class="op">*</span>          <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-57"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-57" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">21</span><span class="op">-</span>maranhao`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-58"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-58" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">22</span><span class="op">-</span>piaui`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-59"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-59" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">23</span><span class="op">-</span>ceara`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-60"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-60" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">24</span><span class="op">-</span>rio_grande_do_norte`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-61"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-61" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">25</span><span class="op">-</span>paraiba`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-62"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-62" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">26</span><span class="op">-</span>pernambuco`.<span class="op">*</span>         <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-63"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-63" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">27</span><span class="op">-</span>alagoas`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-64"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-64" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">28</span><span class="op">-</span>sergipe`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-65"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-65" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">29</span><span class="op">-</span>bahia`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-66"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-66" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">31</span><span class="op">-</span>minas_gerais`.<span class="op">*</span>       <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-67"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-67" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">32</span><span class="op">-</span>espiritosanto`.<span class="op">*</span>      <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-68"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-68" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">33</span><span class="op">-</span>rio_de_janeiro`.<span class="op">*</span>     <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-69"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-69" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">35</span><span class="op">-</span>sao_paulo`.<span class="op">*</span>          <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-70"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-70" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">41</span><span class="op">-</span>parana`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-71"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-71" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">42</span><span class="op">-</span>santa_catarina`.<span class="op">*</span>     <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-72"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-72" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">43</span><span class="op">-</span>rio_grande_do_sul`.<span class="op">*</span>  <span class="kw">TO</span> <span class="st">&#39;centro_oeste&#39;</span>;</span>
+<span id="cb51-73"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-73" tabindex="-1"></a></span>
+<span id="cb51-74"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-74" tabindex="-1"></a><span class="co">-- ============================================</span></span>
+<span id="cb51-75"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-75" tabindex="-1"></a><span class="co">-- SUDESTE lê os demais grupos (Norte, Nordeste, Centro-Oeste, Sul)</span></span>
+<span id="cb51-76"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-76" tabindex="-1"></a><span class="co">-- ============================================</span></span>
+<span id="cb51-77"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-77" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">11</span><span class="op">-</span>rondonia`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-78"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-78" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">12</span><span class="op">-</span>acre`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-79"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-79" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">13</span><span class="op">-</span>amazonas`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-80"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-80" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">14</span><span class="op">-</span>roraima`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-81"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-81" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">15</span><span class="op">-</span>para`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-82"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-82" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">16</span><span class="op">-</span>amapa`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-83"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-83" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">17</span><span class="op">-</span>tocantins`.<span class="op">*</span>          <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-84"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-84" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">21</span><span class="op">-</span>maranhao`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-85"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-85" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">22</span><span class="op">-</span>piaui`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-86"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-86" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">23</span><span class="op">-</span>ceara`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-87"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-87" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">24</span><span class="op">-</span>rio_grande_do_norte`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-88"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-88" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">25</span><span class="op">-</span>paraiba`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-89"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-89" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">26</span><span class="op">-</span>pernambuco`.<span class="op">*</span>         <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-90"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-90" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">27</span><span class="op">-</span>alagoas`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-91"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-91" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">28</span><span class="op">-</span>sergipe`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-92"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-92" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">29</span><span class="op">-</span>bahia`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-93"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-93" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">50</span><span class="op">-</span>mato_grosso_do_sul`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-94"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-94" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">51</span><span class="op">-</span>mato_grosso`.<span class="op">*</span>       <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-95"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-95" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">52</span><span class="op">-</span>goias`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-96"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-96" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">53</span><span class="op">-</span>distrito_federal`.<span class="op">*</span>  <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-97"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-97" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">41</span><span class="op">-</span>parana`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-98"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-98" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">42</span><span class="op">-</span>santa_catarina`.<span class="op">*</span>    <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-99"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-99" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">43</span><span class="op">-</span>rio_grande_do_sul`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;sudeste&#39;</span>;</span>
+<span id="cb51-100"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-100" tabindex="-1"></a></span>
+<span id="cb51-101"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-101" tabindex="-1"></a><span class="co">-- ============================================</span></span>
+<span id="cb51-102"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-102" tabindex="-1"></a><span class="co">-- SUL lê os demais grupos (Norte, Nordeste, Centro-Oeste, Sudeste)</span></span>
+<span id="cb51-103"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-103" tabindex="-1"></a><span class="co">-- ============================================</span></span>
+<span id="cb51-104"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-104" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">11</span><span class="op">-</span>rondonia`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-105"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-105" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">12</span><span class="op">-</span>acre`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-106"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-106" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">13</span><span class="op">-</span>amazonas`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-107"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-107" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">14</span><span class="op">-</span>roraima`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-108"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-108" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">15</span><span class="op">-</span>para`.<span class="op">*</span>               <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-109"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-109" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">16</span><span class="op">-</span>amapa`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-110"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-110" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">17</span><span class="op">-</span>tocantins`.<span class="op">*</span>          <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-111"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-111" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">21</span><span class="op">-</span>maranhao`.<span class="op">*</span>           <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-112"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-112" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">22</span><span class="op">-</span>piaui`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-113"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-113" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">23</span><span class="op">-</span>ceara`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-114"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-114" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">24</span><span class="op">-</span>rio_grande_do_norte`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-115"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-115" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">25</span><span class="op">-</span>paraiba`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-116"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-116" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">26</span><span class="op">-</span>pernambuco`.<span class="op">*</span>         <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-117"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-117" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">27</span><span class="op">-</span>alagoas`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-118"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-118" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">28</span><span class="op">-</span>sergipe`.<span class="op">*</span>            <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-119"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-119" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">29</span><span class="op">-</span>bahia`.<span class="op">*</span>              <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-120"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-120" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">50</span><span class="op">-</span>mato_grosso_do_sul`.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-121"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-121" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">51</span><span class="op">-</span>mato_grosso`.<span class="op">*</span>       <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-122"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-122" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">52</span><span class="op">-</span>goias`.<span class="op">*</span>             <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-123"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-123" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">53</span><span class="op">-</span>distrito_federal`.<span class="op">*</span>  <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-124"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-124" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">31</span><span class="op">-</span>minas_gerais`.<span class="op">*</span>      <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-125"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-125" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">32</span><span class="op">-</span>espiritosanto`.<span class="op">*</span>     <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-126"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-126" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">33</span><span class="op">-</span>rio_de_janeiro`.<span class="op">*</span>    <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span>
+<span id="cb51-127"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb51-127" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> `<span class="dv">35</span><span class="op">-</span>sao_paulo`.<span class="op">*</span>         <span class="kw">TO</span> <span class="st">&#39;sul&#39;</span>;</span></code></pre></div>
+</div>
+<div id="exemplo-no-mysql" class="section level3 hasAnchor" number="6.4.5">
+<h3><span class="header-section-number">6.4.5</span> Exemplo no MySQL<a href="administração-e-gerenciamento-de-bancos-de-dados.html#exemplo-no-mysql" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Exemplo 01</p>
+<p>Considere o cenário: um administrador de banco de dados irá criar uma tabela chamada <strong>clientes</strong> com cpf, nome e data_nascimento. Essa tabela deverá ficar no esquema <strong>compras</strong> e será acessada com <strong>todos os privilégios</strong> pelo usuário <strong>aluno</strong>. Considere que nosso SGBD é o MySQL 9. faça passo-a-passo os códigos SQL para que o ambiente descrito seja gerado.</p>
+<div id="passo-1---criar-o-esquema-de-banco-de-dados-compras" class="section level4 hasAnchor" number="6.4.5.1">
+<h4><span class="header-section-number">6.4.5.1</span> Passo 1 - Criar o esquema de Banco de Dados “compras”<a href="administração-e-gerenciamento-de-bancos-de-dados.html#passo-1---criar-o-esquema-de-banco-de-dados-compras" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb52"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb52-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb52-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> compras</span>
+<span id="cb52-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb52-2" tabindex="-1"></a>  <span class="kw">DEFAULT</span> <span class="dt">CHARACTER</span> <span class="kw">SET</span> utf8mb4</span>
+<span id="cb52-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb52-3" tabindex="-1"></a>  <span class="kw">DEFAULT</span> COLLATE utf8mb4_0900_ai_ci;</span></code></pre></div>
+</div>
+<div id="passo-2---criar-o-usuário-aluno" class="section level4 hasAnchor" number="6.4.5.2">
+<h4><span class="header-section-number">6.4.5.2</span> Passo 2 - Criar o usuário “aluno”<a href="administração-e-gerenciamento-de-bancos-de-dados.html#passo-2---criar-o-usu%C3%A1rio-aluno" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb53"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb53-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb53-1" tabindex="-1"></a><span class="co">-- Apenas local:</span></span>
+<span id="cb53-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb53-2" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> <span class="st">&#39;aluno&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;TroqueEstaSenha!2025&#39;</span>;</span>
+<span id="cb53-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb53-3" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb53-4" tabindex="-1"></a><span class="co">-- (Opcional) Acesso pela rede/WAN:</span></span>
+<span id="cb53-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb53-5" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> <span class="st">&#39;aluno&#39;</span>@<span class="st">&#39;%&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;TroqueEstaSenha!2025&#39;</span>;</span></code></pre></div>
+</div>
+<div id="passo-2---conceder-ao-usuário-aluno-privilégios-sobre-todas-os-objetos-tabelas-views-gatilhos-índices-do-esquema-compras" class="section level4 hasAnchor" number="6.4.5.3">
+<h4><span class="header-section-number">6.4.5.3</span> Passo 2 - Conceder ao usuário “aluno” privilégios sobre todas os objetos (tabelas, views, gatilhos, índices) do esquema “compras”<a href="administração-e-gerenciamento-de-bancos-de-dados.html#passo-2---conceder-ao-usu%C3%A1rio-aluno-privil%C3%A9gios-sobre-todas-os-objetos-tabelas-views-gatilhos-%C3%ADndices-do-esquema-compras" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb54"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb54-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb54-1" tabindex="-1"></a><span class="co">-- Para acesso local:</span></span>
+<span id="cb54-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb54-2" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> compras.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;aluno&#39;</span>@<span class="st">&#39;localhost&#39;</span>;</span>
+<span id="cb54-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb54-3" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb54-4" tabindex="-1"></a><span class="co">-- (Opcional) Para acesso via rede:</span></span>
+<span id="cb54-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb54-5" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> compras.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;aluno&#39;</span>@<span class="st">&#39;%&#39;</span>;</span>
+<span id="cb54-6"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb54-6" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb54-7" tabindex="-1"></a><span class="co">-- Tornar os privilégios efetivos (costume; no MySQL moderno aplica na hora):</span></span>
+<span id="cb54-8"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb54-8" tabindex="-1"></a><span class="kw">FLUSH</span> <span class="kw">PRIVILEGES</span>;</span></code></pre></div>
+</div>
+<div id="passo-3---criar-a-tabela-clientes-dentro-do-esquema-compras" class="section level4 hasAnchor" number="6.4.5.4">
+<h4><span class="header-section-number">6.4.5.4</span> Passo 3 - Criar a tabela “clientes” dentro do esquema “compras”<a href="administração-e-gerenciamento-de-bancos-de-dados.html#passo-3---criar-a-tabela-clientes-dentro-do-esquema-compras" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb55"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb55-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb55-1" tabindex="-1"></a><span class="kw">USE</span> compras;</span>
+<span id="cb55-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb55-2" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb55-3" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> clientes (</span>
+<span id="cb55-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb55-4" tabindex="-1"></a>  cpf            <span class="dt">CHAR</span>(<span class="dv">11</span>)     <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb55-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb55-5" tabindex="-1"></a>  nome           <span class="dt">VARCHAR</span>(<span class="dv">120</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb55-6"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb55-6" tabindex="-1"></a>  data_nascimento <span class="dt">DATE</span>        <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb55-7"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb55-7" tabindex="-1"></a>  <span class="kw">CONSTRAINT</span> pk_clientes <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (cpf)</span>
+<span id="cb55-8"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb55-8" tabindex="-1"></a>) ENGINE<span class="op">=</span>InnoDB;</span></code></pre></div>
+</div>
+</div>
+<div id="exemplo-no-postgresql" class="section level3 hasAnchor" number="6.4.6">
+<h3><span class="header-section-number">6.4.6</span> Exemplo no PostGreSQL<a href="administração-e-gerenciamento-de-bancos-de-dados.html#exemplo-no-postgresql" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Exemplo 03</p>
+<p>Considere o cenário: um administrador de banco de dados irá criar uma tabela chamada <strong>clientes</strong> com cpf, nome e data_nascimento. Essa tabela deverá ficar no esquema <strong>compras</strong> e será acessada com <strong>todos os privilégios</strong> pelo usuário <strong>aluno</strong>. Considere que nosso SGBD é o Postgresql 15. faça passo-a-passo os códigos SQL para que o ambiente descrito seja gerado.</p>
+<div id="passo-0---crie-um-banco-de-dados-sistema_compras" class="section level4 hasAnchor" number="6.4.6.1">
+<h4><span class="header-section-number">6.4.6.1</span> Passo 0 - Crie um Banco de Dados “sistema_compras”<a href="administração-e-gerenciamento-de-bancos-de-dados.html#passo-0---crie-um-banco-de-dados-sistema_compras" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb56"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb56-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb56-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> sistema_compras</span>
+<span id="cb56-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb56-2" tabindex="-1"></a>    <span class="kw">WITH</span> OWNER <span class="op">=</span> postgres</span>
+<span id="cb56-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb56-3" tabindex="-1"></a>    ENCODING <span class="op">=</span> <span class="st">&#39;UTF8&#39;</span></span>
+<span id="cb56-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb56-4" tabindex="-1"></a>    LC_COLLATE <span class="op">=</span> <span class="st">&#39;pt_BR.UTF-8&#39;</span></span>
+<span id="cb56-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb56-5" tabindex="-1"></a>    LC_CTYPE <span class="op">=</span> <span class="st">&#39;pt_BR.UTF-8&#39;</span></span>
+<span id="cb56-6"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb56-6" tabindex="-1"></a>    TEMPLATE <span class="op">=</span> template0;</span></code></pre></div>
+</div>
+<div id="passo-1---criar-o-esquema-de-banco-de-dados-compras-1" class="section level4 hasAnchor" number="6.4.6.2">
+<h4><span class="header-section-number">6.4.6.2</span> Passo 1 - Criar o esquema de Banco de Dados “compras”<a href="administração-e-gerenciamento-de-bancos-de-dados.html#passo-1---criar-o-esquema-de-banco-de-dados-compras-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb57"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb57-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb57-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">SCHEMA</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> compras <span class="kw">AUTHORIZATION</span> postgres;</span></code></pre></div>
+</div>
+<div id="passo-2---criar-o-usuário-aluno-1" class="section level4 hasAnchor" number="6.4.6.3">
+<h4><span class="header-section-number">6.4.6.3</span> Passo 2 - Criar o usuário “aluno”<a href="administração-e-gerenciamento-de-bancos-de-dados.html#passo-2---criar-o-usu%C3%A1rio-aluno-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb58"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb58-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb58-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">ROLE</span> aluno <span class="kw">WITH</span></span>
+<span id="cb58-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb58-2" tabindex="-1"></a>    LOGIN</span>
+<span id="cb58-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb58-3" tabindex="-1"></a>    <span class="kw">PASSWORD</span> <span class="st">&#39;TroqueEstaSenha!2025&#39;</span></span>
+<span id="cb58-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb58-4" tabindex="-1"></a>    NOSUPERUSER</span>
+<span id="cb58-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb58-5" tabindex="-1"></a>    NOCREATEDB</span>
+<span id="cb58-6"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb58-6" tabindex="-1"></a>    NOCREATEROLE</span>
+<span id="cb58-7"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb58-7" tabindex="-1"></a>    INHERIT;</span></code></pre></div>
+</div>
+<div id="passo-3---conceder-ao-usuário-aluno-privilégios-sobre-todas-os-objetos-tabelas-views-gatilhos-índices-do-esquema-compras" class="section level4 hasAnchor" number="6.4.6.4">
+<h4><span class="header-section-number">6.4.6.4</span> Passo 3 - Conceder ao usuário “aluno” privilégios sobre todas os objetos (tabelas, views, gatilhos, índices) do esquema “compras”<a href="administração-e-gerenciamento-de-bancos-de-dados.html#passo-3---conceder-ao-usu%C3%A1rio-aluno-privil%C3%A9gios-sobre-todas-os-objetos-tabelas-views-gatilhos-%C3%ADndices-do-esquema-compras" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb59"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb59-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb59-1" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">USAGE</span> <span class="kw">ON</span> <span class="kw">SCHEMA</span> compras <span class="kw">TO</span> aluno;</span>
+<span id="cb59-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb59-2" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">CREATE</span> <span class="kw">ON</span> <span class="kw">SCHEMA</span> compras <span class="kw">TO</span> aluno;</span></code></pre></div>
+</div>
+<div id="passo-4---criar-a-tabela-clientes-dentro-do-esquema-compras" class="section level4 hasAnchor" number="6.4.6.5">
+<h4><span class="header-section-number">6.4.6.5</span> Passo 4 - Criar a tabela “clientes” dentro do esquema “compras”<a href="administração-e-gerenciamento-de-bancos-de-dados.html#passo-4---criar-a-tabela-clientes-dentro-do-esquema-compras" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb60"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb60-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb60-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> compras.clientes (</span>
+<span id="cb60-2"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb60-2" tabindex="-1"></a>    cpf            <span class="dt">CHAR</span>(<span class="dv">11</span>)     <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb60-3"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb60-3" tabindex="-1"></a>    nome           <span class="dt">VARCHAR</span>(<span class="dv">120</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb60-4"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb60-4" tabindex="-1"></a>    data_nascimento <span class="dt">DATE</span>        <span class="kw">NOT</span> <span class="kw">NULL</span></span>
+<span id="cb60-5"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb60-5" tabindex="-1"></a>);</span></code></pre></div>
+</div>
+<div id="passo-5---conceder-privilégios-da-tabela-clientes-do-esquema-compras-para-o-usuário-aluno" class="section level4 hasAnchor" number="6.4.6.6">
+<h4><span class="header-section-number">6.4.6.6</span> Passo 5 - Conceder privilégios da tabela “clientes” do esquema “compras” para o usuário “aluno”<a href="administração-e-gerenciamento-de-bancos-de-dados.html#passo-5---conceder-privil%C3%A9gios-da-tabela-clientes-do-esquema-compras-para-o-usu%C3%A1rio-aluno" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb61"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb61-1"><a href="administração-e-gerenciamento-de-bancos-de-dados.html#cb61-1" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> <span class="kw">TABLE</span> compras.clientes <span class="kw">TO</span> aluno;</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="feito" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Feito<a href="administração-e-gerenciamento-de-bancos-de-dados.html#feito" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modelagem-de-bancos-de-dados-parte-02.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="administração-e-gerenciamento-de-bancos-de-dados-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/miguel7penteado/2025-2sem-GTI-BancoDeDados/edit/main/05-aula05/05-2026-03-17_Administracao_Gerenciamento-aula-01.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["2026-ADS-1sem-BancoDeDados.pdf", "2026-ADS-1sem-BancoDeDados.epub", "2026-ADS-1sem-BancoDeDados.word", "2026-ADS-1sem-BancoDeDados.html"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
