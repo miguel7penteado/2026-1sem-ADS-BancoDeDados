@@ -1,0 +1,12 @@
+# Banco de Dados: Uma Aplicação CRUD
+
+#### 24/03/2026 {.unnumbered}
+
+#### Professor Miguél Suares {.unnumbered}
+
+
+## Feito
+
+```{r Executa_pagina_aula_05_, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+rmarkdown::render("06-2026-03-24_Administracao_Gerenciamento-aula-02.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
+```

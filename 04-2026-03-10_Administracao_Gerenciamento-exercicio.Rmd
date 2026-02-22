@@ -1,8 +1,0 @@
-# Administração e Gerenciamento de Bancos de Dados
-#### 25/08/2025 {.unnumbered}
-#### Professor Miguél Suares {.unnumbered}
-
-
-```{plantuml Exemplo-02-continuação, plantuml.path="images"}
-
-```

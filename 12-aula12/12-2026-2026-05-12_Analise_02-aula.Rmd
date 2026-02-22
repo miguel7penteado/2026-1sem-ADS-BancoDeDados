@@ -1,0 +1,217 @@
+# Banco de Dados - Análise de Dados Parte 02
+#### 20/10/2025 {.unnumbered}
+#### Professor Miguél Suares {.unnumbered}
+
+```{r exemplo-teste-01, eval=FALSE, engine='tikz', include=FALSE}
+\usetikzlibrary{arrows,positioning,shapes,fit,calc}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\begin{tikzpicture}
+[
+  every node/.style={on grid},
+  setA/.style={fill=blue ,circle,inner  sep=3pt},
+  setB/.style={fill=green,circle,inner  sep=3pt},
+  setC/.style={fill=red,rectangle,inner sep=3pt},
+  every fit/.style={draw,fill=blue!25,ellipse,text width=25pt},
+  >=latex
+]
+
+% Conjunto Montadoras
+\node [setA,              label  = left:$Fulano$]    (a) {};
+\node [setA,below = of a, label  = left:$Beltrano$]  (b) {};
+\node [setA,below = of b, label  = left:$Ciclano$]   (c) {};
+
+\node [above      = of a, anchor = south] {$Funcionarios$};
+
+% Conjunto Veiculos
+\node[setB,inner sep=3pt,right  = 4 cm of a, label=right:$\text{RH}$]        (x) {};
+\node[setB,inner sep=3pt,below  =      of x, label=right:$\text{FINANÇAS}$]  (y) {};
+\node[setB,inner sep=3pt,below  =      of y, label=right:$\text{DIRETORIA}$] (z) {};
+
+\node[above                     =      of x, anchor = south] {$Departamentos$};
+
+
+
+% the arrows
+%\draw[->,shorten >= 3pt] (a) -- node[label=above:$f(Corsa)$]  {} (x);
+%\draw[->,shorten >= 3pt] (b) -- node[label=above:$g(Fiesta)$] {} (y);
+%\draw[->,shorten >= 3pt] (c) -- node[label=above:$h(Gol)$]    {} (z);
+%\draw[->,shorten <= 3pt] (x) -- node[label=above:$i(Fulano)$] {} (m);
+%\draw[->,shorten <= 3pt] (y) -- node[label=above:$j(Beltrano)$] {} (n);
+%\draw[->,shorten <= 3pt] (z) -- node[label=above:$k(Ciclano)$] {} (p);
+
+%\draw[->] (n) -- node[label=above:$j(j(Beltrano))$] {} (y);
+
+% the boxes around the sets
+\begin{pgfonlayer}{background}
+\node[fit= (a)  (c) ] {};
+\node[fit= (x) (z)  ] {};
+%\node[fit= (m) (p)  ] {};
+\end{pgfonlayer}
+\end{tikzpicture}
+
+```
+
+
+
+================================================================================
+
+```{r exemplo-teste-02, eval=FALSE, engine='tikz', include=FALSE}
+\usetikzlibrary{arrows,positioning,shapes,fit,calc}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\begin{tikzpicture}[
+  every node/.style={on grid},
+  setA/.style={fill=blue!50,circle,inner sep=3pt},
+  setB/.style={fill=green!50,circle,inner sep=3pt},
+  >=latex
+]
+
+% Conjunto Funcionários
+\node [setA,              label=left:$Fulano$]   (a) {};
+\node [setA,below=of a,   label=left:$Beltrano$] (b) {};
+\node [setA,below=of b,   label=left:$Ciclano$]  (c) {};
+
+% Conjunto Departamentos
+\node [setB,right=4cm of a, label=right:$\text{RH}$        ] (x) {};
+\node [setB,below=of     x, label=right:$\text{Finanças}$  ] (y) {};
+\node [setB,below=of     y, label=right:$\text{Diretoria}$ ] (z) {};
+
+% As setas (funções)
+\draw[->,shorten >=3pt] (a) -- node[above] {$trabalha(\text{RH})$}        (x);
+\draw[->,shorten >=3pt] (b) -- node[above] {$trabalha(\text{Finanças})$}  (y);
+\draw[->,shorten >=3pt] (c) -- node[above] {$trabalha(\text{Diretoria})$} (z);
+
+% Os conjuntos
+\begin{pgfonlayer}{background}
+  \node[fit=(a) (c), ellipse, draw, fill=blue!10,  label=above:{Funcionários}] {};
+  \node[fit=(x) (z), ellipse, draw, fill=green!10, label=above:{Departamentos}] {};
+\end{pgfonlayer}
+
+\end{tikzpicture}
+
+
+```
+
+================================================================================
+
+```{r ex1, engine='tikz', echo=FALSE, fig.cap="Diagrama de Montadoras, Veículos e Proprietários"}
+\usetikzlibrary{arrows,positioning,shapes,fit,calc}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+
+
+\begin{tikzpicture}
+[
+  every node/.style={on grid},
+  setA/.style={fill=blue,               circle,  inner sep=3pt },
+  setB/.style={fill=green!70!black,     circle,  inner sep=3pt },
+  setC/.style={fill=red!70!black,       circle,  inner sep=3pt },
+  every fit/.style={draw, fill=gray!10, ellipse, inner sep=12pt},
+  >=latex
+]
+
+
+% --- Conjunto A (Países) ---
+\begin{scope}[node distance=1cm and 6cm]
+  \node [setA, label=left:Brasil]    (a1) {};
+  \node [setA, below=of a1, label=left:Argentina] (a2) {};
+  \node [setA, below=of a2, label=left:Chile]     (a3) {};
+  \node [above=1.5cm of a1, font=\bfseries]            {Países};
+\end{scope}
+
+% --- Conjunto B (Capitais) ---
+\begin{scope}[node distance=1cm and 6cm]
+  \node [setB, right=of a1, label=right:Brasília]       (b1) {};
+  \node [setB, below=of b1, label=right:{Buenos Aires}] (b2) {};
+  \node [setB, below=of b2, label=right:{Santiago}]     (b3) {};
+  \node [above=1.5cm of b1, font=\bfseries] {Capitais};
+\end{scope}
+
+% --- As Setas (Mapeamento) ---
+\draw[->, shorten >= 3pt, shorten <= 3pt, thick, gray!80] (a1) -- (b1);
+\draw[->, shorten >= 3pt, shorten <= 3pt, thick, gray!80] (a2) -- (b2);
+\draw[->, shorten >= 3pt, shorten <= 3pt, thick, gray!80] (a3) -- (b3);
+
+
+% --- Conjunto C (layout: c1 ao lado de c2; c3 abaixo do par) ---
+% --- Conjunto C: C = A x B (todos os pares ordenados) ---
+
+% Âncoras e deslocamentos para ficar "quase encostado"
+\def\dx{1.5pt}      % distância do c1 até a vírgula e da vírgula até c2
+\def\dy{5mm}        % espaçamento vertical entre linhas (pares)
+
+% Título
+%\node [below=3cm of b1, font=\bfseries] (titleC) {C = A \times B};
+
+% Linha 1: (Brasil, Brasília)
+\node [setC, below=4cm of a3, xshift=3cm, label=left:Brasil, fill=blue] (cA11) {};
+\node [font=\bfseries] (cComma11) at ([xshift=\dx] cA11.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Brasília, fill=blue] (cB11) at (cComma11.east) {};
+
+% Linha 2: (Brasil, Buenos Aires)
+\node [setC, below=\dy of cA11, label=left:Brasil] (cA12) {};
+\node [font=\bfseries] (cComma12) at ([xshift=\dx] cA12.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:{Buenos Aires}] (cB12) at (cComma12.east) {};
+
+% Linha 3: (Brasil, Santiago)
+\node [setC, below=\dy of cA12, label=left:Brasil] (cA13) {};
+\node [font=\bfseries] (cComma13) at ([xshift=\dx] cA13.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Santiago] (cB13) at (cComma13.east) {};
+
+% Linha 4: (Argentina, Brasília)
+\node [setC, below=\dy of cA13, label=left:Argentina] (cA21) {};
+\node [font=\bfseries] (cComma21) at ([xshift=\dx] cA21.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Brasília] (cB21) at (cComma21.east) {};
+
+% Linha 5: (Argentina, Buenos Aires)
+\node [setC, below=\dy of cA21, label=left:Argentina, fill=blue] (cA22) {};
+\node [font=\bfseries] (cComma22) at ([xshift=\dx] cA22.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:{Buenos Aires}, fill=blue] (cB22) at (cComma22.east) {};
+
+% Linha 6: (Argentina, Santiago)
+\node [setC, below=\dy of cA22, label=left:Argentina] (cA23) {};
+\node [font=\bfseries] (cComma23) at ([xshift=\dx] cA23.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Santiago] (cB23) at (cComma23.east) {};
+
+% Linha 7: (Chile, Brasília)
+\node [setC, below=\dy of cA23, label=left:Chile] (cA31) {};
+\node [font=\bfseries] (cComma31) at ([xshift=\dx] cA31.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Brasília] (cB31) at (cComma31.east) {};
+
+% Linha 8: (Chile, Buenos Aires)
+\node [setC, below=\dy of cA31, label=left:Chile] (cA32) {};
+\node [font=\bfseries] (cComma32) at ([xshift=\dx] cA32.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:{Buenos Aires}] (cB32) at (cComma32.east) {};
+
+% Linha 9: (Chile, Santiago)
+\node [setC, below=\dy of cA32, label=left:Chile, fill=blue] (cA33) {};
+\node [font=\bfseries] (cComma33) at ([xshift=\dx] cA33.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Santiago, fill=blue] (cB33) at (cComma33.east) {};
+
+\node [above=1.5cm of cA11, xshift=-\dx, font=\bfseries] (titleC) {Países X Capitais};
+
+
+% --- Camada de Fundo (Elipses) ---
+\begin{pgfonlayer}{background}
+  \node[fit=(a1) (a2) (a3)] {};
+  \node[fit=(b1) (b2) (b3)] {};
+  \node[fit= (titleC) (cComma11) (cComma12) (cComma13) (cComma21) (cComma22)  (cComma23)  (cComma31)  (cComma32) (cComma33) ] {};
+\end{pgfonlayer}
+
+\end{tikzpicture}
+
+
+```
+
+
+
+```{r teste-03, eval=FALSE, include=FALSE}
+rmarkdown::render("12-2026-2026-05-12_Analise_02-aula.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
+```

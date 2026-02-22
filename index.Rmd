@@ -1,5 +1,5 @@
 ---
-title: "GTI - Banco de dados - 2026 - Anotações de aula"
+title: "ADS - Banco de dados e No-SQL - 2026 - Anotações de aula"
 author: "Professor Miguél Suares"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -224,7 +224,7 @@ Enter into the ‘bin’ directory;
 
 Log into the database:
 
-``` powershell
+``` cmd
 psql.exe –username=postgres
 ```
 
@@ -241,3 +241,9 @@ CREATE EXTENSION adminpack;
 ```
 
 Reference: <https://feilerdev.wordpress.com/2017/12/05/installing-postgresql-on-windows-using-zip-archive-without-the-installer/>
+
+```{r indice, eval=FALSE, include=FALSE}
+rmarkdown::render("index.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
+```
+
+

@@ -33,15 +33,30 @@ Baixe o [plantuml.jar](https://github.com/plantuml/plantuml/releases/download/v1
 
 #### sugestão de diretório no windows
 
-```cmd
+``` cmd
 mkdir   
-
 ```
 
 #### sugestão de diretório no linux (versões tradicionais)
 
-## Pacotes R para instalar
+## Pacotes R para instalar para gerar esse material
+
+Instalação pelo método padrão:
+
+``` {#instalar_pacotes .R}
+
+install.packages(c('triebeard','urltools','httpcode','rsvg','crul','magick','magickGUI','pdftools'))
+
+options(repos = c( rkrug = 'https://rkrug.r-universe.dev', CRAN = 'https://cloud.r-project.org'))
+
+install.packages('plantuml')
+
+```
+
+Instalação pelo pacote devtools:
 
 ```r
+install.packages(c('triebeard','urltools','httpcode','rsvg','crul','magick','magickGUI','pdftools'))
+
 devtools::install_github("rkrug/plantuml")
 ```

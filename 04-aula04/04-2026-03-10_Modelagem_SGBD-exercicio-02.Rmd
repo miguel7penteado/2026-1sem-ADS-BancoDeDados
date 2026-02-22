@@ -1,0 +1,16 @@
+---
+output: 
+  html_document: 
+    highlight: tango
+    theme: cerulean
+    toc_depth: 4
+    number_sections: true
+  pdf_document: 
+    toc: true
+    toc_depth: 4
+  word_document: 
+    toc: true
+    toc_depth: 4
+---
+
+## Exercícios RESOLVIDOS
