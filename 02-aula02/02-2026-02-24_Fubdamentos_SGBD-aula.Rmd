@@ -481,7 +481,7 @@ Nasce o conceito de Banco de Dados Relacional e os conceitos que irão criar a l
 Considere:
 
 | Terminologia Relacional | Banco de Dados | Origem Matemática |
-|:------------------:|:------------:|:-------------------------------------:|
+|:-----------------:|:---------------:|:----------------------------------:|
 | RELAÇÃO | **TABELA** | CONJUNTO ou SUBCONJUNTO |
 | ATRIBUTO | **COLUNAS** | Não aparece explicitamente |
 | TUPLA | **LINHA** | ELEMENTO DO CONJUNTO OU PAR ORDENADO |
@@ -515,7 +515,8 @@ Seja R ⊆ A × A.
 ∀x ∈ A, (x,x) ∈ R
 ```
 
-Exemplo: Em um cadastro de produtos, o produto Teclado tem a mesma categoria que o produto Teclado (ele mesmo). Consequentemente, em uma tabela do Banco de Dados, o valor da coluna "CategoriaID" de um registro é sempre igual ao "CategoriaID" dele mesmo.
+#### Exemplo "Cadastro de Produtos - Popriedade "Reflexiva" da Relação:
+Em um cadastro de produtos, o produto Teclado tem a mesma categoria que o produto Teclado (ele mesmo). Consequentemente, em uma tabela do Banco de Dados, o valor da coluna "CategoriaID" de um registro é sempre igual ao "CategoriaID" dele mesmo.
 
 ![](media/20-teclado-1.jpg){width="255"}
 
@@ -527,7 +528,8 @@ Exemplo: Em um cadastro de produtos, o produto Teclado tem a mesma categoria que
 Se (x,y) ∈ R então (y,x) ∈ R
 ```
 
-Exemplo: Se o **Teclado** (1) **é equivalente** ao **Mouse** (2) (ambos são da categoria **Eletrônicos**), então o **Mouse** (2) **é equivalente** ao **Teclado** (1). Consequentemente, no Banco de Dados, **Teclado.CategoriaID** = **Mouse.CategoriaID.**
+#### Exemplo: "Cadastro de Produtos - Popriedade "Simétrica" da Relação:
+Se o **Teclado** (1) **é equivalente** ao **Mouse** (2) (ambos são da categoria **Eletrônicos**), então o **Mouse** (2) **é equivalente** ao **Teclado** (1). Consequentemente, no Banco de Dados, **Teclado.CategoriaID** = **Mouse.CategoriaID.**
 
 ![](media/21-teclado-mouse.jpg){width="327"}
 
@@ -541,10 +543,11 @@ Essa propriedade é utilizada para fazer "pareamento" entre tabelas.
 Se (x,y) ∈ R e (y,z) ∈ R então (x,z) ∈ R
 ```
 
-Exemplo: Se **Teclado** (1) **é equivalente** ao **Mouse** (2) e **Mouse** (2) **é equivalente** ao **Monitor** (3), então obrigatoriamente **Teclado** (1) **é equivalente** ao **Monitor** (3), **pois todos são da categoria "Eletrônicos"**.
+#### Exemplo: "Cadastro de Produtos - Popriedade "Transitiva" da Relação:
+Se **Teclado** (1) **é equivalente** ao **Mouse** (2) e **Mouse** (2) **é equivalente** ao **Monitor** (3), então obrigatoriamente **Teclado** (1) **é equivalente** ao **Monitor** (3), **pois todos são da categoria "Eletrônicos"**.
 
 |  |  |  |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | ![](media/21-teclado-mouse.jpg) | ![](media/22-mouse-monitor.jpg) | ![](media/23-teclado-monitor.jpg) |
 
 Isso garante que todos os elementos de uma categoria formem um grupo fechado e coeso.
@@ -557,7 +560,8 @@ Isso garante que todos os elementos de uma categoria formem um grupo fechado e c
 Se (x,y) ∈ R e (y,x) ∈ R então x = y
 ```
 
-Exemplo: Se o **João é gerente da Maria**, a **Maria NÃO PODE ser gerente do João**. Em uma tabela de funcionários, o Banco de dados garante HIERARQUIA na regra de negócio.
+#### Exemplo: "Cadastro de Funcionários - Popriedade "Anti-Simétrica" da Relação:
+Se o **João é gerente da Maria**, a **Maria NÃO PODE ser gerente do João**. Em uma tabela de funcionários, o Banco de dados garante HIERARQUIA na regra de negócio.
 
 ![](media/24-joao-maria.jpg){width="467"}
 
@@ -569,7 +573,8 @@ Uma relação é de equivalência se é:
 -   Simétrica
 -   Transitiva
 
-Exemplo: Tenho uma tabela de produtos. Todos os produtos estão classificados em categorias. Prove nesta tabela que 2 produtos são equivalentes.
+#### Exemplo: "Cadastro de Produtos - "Teste de Relação e Equivalência":
+Tenho uma tabela de produtos. Todos os produtos estão classificados em categorias. Prove nesta tabela que 2 produtos são equivalentes.
 
 |                   |                     |                          |
 |-------------------|---------------------|--------------------------|
@@ -587,7 +592,7 @@ Exemplo: Tenho uma tabela de produtos. Todos os produtos estão classificados em
 | 11                | Mesa                | 4 (Móveis)               |
 | 12                | Sofá                | 4 (Móveis)               |
 
-Resolução:
+##### Resolução:
 
 "Dois produtos são equivalentes se pertencerem à mesma categoria."
 
@@ -597,11 +602,17 @@ Para provar isso, é preciso testar as 3 propriedades de relações (Reflexiva, 
 
 Tomarei como exemplo "Cadeira, Mesa, Sofá". Analisarei segundo a caracteristica comum "categoria":
 
-1) - Reflexiva - Cadeira é da mesma categoria que cadeira ? Sim - OK
+1)  
 
-2) - Simétrica - Cadeira é da mesma categoria que mesa e Mesa é da mesma categoria que Cadeira ? Sim - OK
+    -   Reflexiva - Cadeira é da mesma categoria que cadeira ? Sim - OK
 
-3) - Transitiva - Cadeira é da mesma categoria que mesa; Mesa é da mesma categira que sofá; portanto cadeira é da mesma categoria que sofá ? Sim - OK
+2)  
+
+    -   Simétrica - Cadeira é da mesma categoria que mesa e Mesa é da mesma categoria que Cadeira ? Sim - OK
+
+3)  
+
+    -   Transitiva - Cadeira é da mesma categoria que mesa; Mesa é da mesma categira que sofá; portanto cadeira é da mesma categoria que sofá ? Sim - OK
 
 Considerando que cadeira, mesa e sofá atendem as propriedades "Reflexiva", "Simétrica" e "Transitiva", então "Cadeira, Mesa, Sofá" constituem a mesma classe de equivalencia.
 
@@ -615,33 +626,248 @@ A classe de equivalência de x é:
 [x] = { y ∈ A | y ~ x }
 ```
 
-Exemplo em Banco de Dados:
+Exemplo em uma relação de Banco de Dados formada pelo `conjunto A Produtos` e pelo
+`conjunto B Categorias`:
 
-Relação:
+R ⊆ A × B :
 
-```         
-x ~ y  ⟺  x mod 3 = y mod 3
+```{r aula02-exemplo-05, engine='tikz', echo=FALSE, fig.cap="Produtos X Categorias"}
+\usetikzlibrary{arrows,positioning,shapes,fit,calc}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\begin{tikzpicture}
+[
+ every node/.style={on grid},
+  setA/.style={fill=blue!60,            circle,  inner sep=3pt},
+  setB/.style={                         circle,  inner sep=3pt},
+  setC/.style={fill=red!70!black,       circle,  inner sep=3pt },
+  every fit/.style={draw, fill=gray!10, ellipse, inner sep=10pt, minimum width=8cm,
+    minimum height=3cm},
+  >=latex
+]
+
+% --- Conjunto A (Produtos) ---
+\begin{scope}[node distance=0.9cm and 7.5cm]
+  \node [setA, label=left:Teclado]     (a1)  {};
+  \node [setA, below=of a1, label=left:Mouse]       (a2)  {};
+  \node [setA, below=of a2, label=left:Monitor]     (a3)  {};
+  \node [setA, below=of a3, label=left:Camisa]      (a4)  {};
+  \node [setA, below=of a4, label=left:Calça]       (a5)  {};
+  \node [setA, below=of a5, label=left:Tênis]       (a6)  {};
+  \node [setA, below=of a6, label=left:Livro SQL]   (a7)  {};
+  \node [setA, below=of a7, label=left:Livro Java]  (a8)  {};
+  \node [setA, below=of a8, label=left:Livro Redes] (a9)  {};
+  \node [setA, below=of a9, label=left:Cadeira]     (a10) {};
+  \node [setA, below=of a10,label=left:Mesa]        (a11) {};
+  \node [setA, below=of a11,label=left:Sofá]        (a12) {};
+
+  \node [above=3cm of a1, font=\bfseries, align=center]
+  {Conjunto A\\Produtos de venda};
+\end{scope}
+
+% --- Conjunto B (Categorias com cores diferentes) ---
+\begin{scope}[node distance=1.4cm and 7.5cm]
+  \node [setB, fill=blue!70, right=9cm of a1, label=right:Eletrônicos] (b1) {};
+  \node [setB, fill=green!70!black, below=of b1, label=right:Vestuário]   (b2) {};
+  \node [setB, fill=purple!70, below=of b2, label=right:Livraria]    (b3) {};
+  \node [setB, fill=red!70, below=of b3, label=right:Móveis]      (b4) {};
+
+  \node [above=2cm of b1, font=\bfseries, align=center]
+  {Conjunto B\\Categorias};
+\end{scope}
+
+% --- Relação real R ⊆ A×B ---
+
+% Eletrônicos (azul)
+\draw[->,shorten >=3pt, thick, blue] (a1) -- node[near start , above, sloped, text=blue] {$f(\text{Teclado})=\text{Eletrônicos}$} (b1);
+\draw[->,shorten >=3pt, thick, blue] (a2) -- node[near start , above, sloped, text=blue] {$f(\text{Mouse})=\text{Eletrônicos}$} (b1);
+\draw[->,shorten >=3pt, thick, blue] (a3) -- node[near start , above, sloped, text=blue] {$f(\text{Monitor})=\text{Eletrônicos}$} (b1);
+
+% Vestuário (verde)
+\draw[->,shorten >=3pt, thick, green!70!black] (a4) -- node[near start , above, sloped, text=green] {$f(\text{Camisa})=\text{Vestuário}$} (b2);
+\draw[->,shorten >=3pt, thick, green!70!black] (a5) -- node[near start , above, sloped, text=green] {$f(\text{Calça})=\text{Vestuário}$} (b2);
+\draw[->,shorten >=3pt, thick, green!70!black] (a6) -- node[near start , above, sloped, text=green] {$f(\text{Tênis})=\text{Vestuário}$} (b2);
+
+% Livraria (roxo)
+\draw[->,shorten >=3pt, thick, purple] (a7) -- node[near start , above, sloped, text=purple] {$f(\text{Livro SQL})=\text{Livraria}$} (b3);
+\draw[->,shorten >=3pt, thick, purple] (a8) -- node[near start , above, sloped, text=purple] {$f(\text{Livro JAVA})=\text{Livraria}$} (b3);
+\draw[->,shorten >=3pt, thick, purple] (a9) -- node[near start , above, sloped, text=purple] {$f(\text{Livro REDES})=\text{Livraria}$} (b3);
+
+% Móveis (vermelho)
+\draw[->,shorten >=3pt, thick, red] (a10) -- node[near start , above, sloped, text=red] {$f(\text{Cadeira})=\text{Móveis}$} (b4);
+\draw[->,shorten >=3pt, thick, red] (a11) -- node[near start , above, sloped, text=red] {$f(\text{Mesa})=\text{Móveis}$} (b4);
+\draw[->,shorten >=3pt, thick, red] (a12) -- node[near start , above, sloped, text=red] {$f(\text{Sofá})=\text{Móveis}$} (b4);
+
+
+% --- Conjunto C (layout: lista de pares ordenados de R) ---
+% Aqui mostramos explicitamente os pares (produto, categoria) pertencentes a R.
+\def\dx{1.5pt}
+\def\dy{8.0mm}
+
+
+\node [below=4cm of b4, yshift=-2cm] (anchorC) {};
+
+
+% Linha 1: (Teclado, Eletrônicos)
+\node [setC, below=0cm of anchorC, xshift=-0.5cm, label=left:Teclado, fill=blue!80] (cA1) {};
+\node [font=\bfseries] (cComma1) at ([xshift=\dx] cA1.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Eletr\^onicos, fill=blue!80] (cB1) at (cComma1.east) {};
+
+% Linha 2: (Mouse, Eletrônicos)
+\node [setC, below=\dy of cA1, label=left:Mouse, fill=blue!80] (cA2) {};
+\node [font=\bfseries] (cComma2) at ([xshift=\dx] cA2.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Eletr\^onicos, fill=blue!80] (cB2) at (cComma2.east) {};
+
+% Linha 3: (Monitor, Eletrônicos)
+\node [setC, below=\dy of cA2, label=left:Monitor, fill=blue!80] (cA3) {};
+\node [font=\bfseries] (cComma3) at ([xshift=\dx] cA3.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Eletr\^onicos, fill=blue!80] (cB3) at (cComma3.east) {};
+
+% Linha 4: (Camisa, Vestuário)
+\node [setC, below=\dy of cA3, label=left:Camisa, fill=green!70!black] (cA4) {};
+\node [font=\bfseries] (cComma4) at ([xshift=\dx] cA4.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Vestu\'ario, fill=green!70!black] (cB4) at (cComma4.east) {};
+
+% Linha 5: (Calça, Vestuário)
+\node [setC, below=\dy of cA4, label=left:Cal\c ca, fill=green!70!black] (cA5) {};
+\node [font=\bfseries] (cComma5) at ([xshift=\dx] cA5.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Vestu\'ario, fill=green!70!black] (cB5) at (cComma5.east) {};
+
+% Linha 6: (Tênis, Vestuário)
+\node [setC, below=\dy of cA5, label=left:T\^enis, fill=green!70!black] (cA6) {};
+\node [font=\bfseries] (cComma6) at ([xshift=\dx] cA6.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Vestu\'ario, fill=green!70!black] (cB6) at (cComma6.east) {};
+
+% Linha 7: (Livro SQL, Livraria)
+\node [setC, below=\dy of cA6, label=left:Livro SQL, fill=purple!80] (cA7) {};
+\node [font=\bfseries] (cComma7) at ([xshift=\dx] cA7.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Livraria, fill=purple!80] (cB7) at (cComma7.east) {};
+
+% Linha 8: (Livro Java, Livraria)
+\node [setC, below=\dy of cA7, label=left:Livro Java, fill=purple!80] (cA8) {};
+\node [font=\bfseries] (cComma8) at ([xshift=\dx] cA8.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Livraria, fill=purple!80] (cB8) at (cComma8.east) {};
+
+% Linha 9: (Livro Redes, Livraria)
+\node [setC, below=\dy of cA8, label=left:Livro Redes, fill=purple!80] (cA9) {};
+\node [font=\bfseries] (cComma9) at ([xshift=\dx] cA9.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Livraria, fill=purple!80] (cB9) at (cComma9.east) {};
+
+% Linha 10: (Cadeira, Móveis)
+\node [setC, below=\dy of cA9, label=left:Cadeira, fill=red!80] (cA10) {};
+\node [font=\bfseries] (cComma10) at ([xshift=\dx] cA10.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:M\'oveis, fill=red!80] (cB10) at (cComma10.east) {};
+
+% Linha 11: (Mesa, Móveis)
+\node [setC, below=\dy of cA10, label=left:Mesa, fill=red!80] (cA11) {};
+\node [font=\bfseries] (cComma11) at ([xshift=\dx] cA11.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:M\'oveis, fill=red!80] (cB11) at (cComma11.east) {};
+
+% Linha 12: (Sofá, Móveis)
+\node [setC, below=\dy of cA11, label=left:Sof\'a, fill=red!80] (cA12) {};
+\node [font=\bfseries] (cComma12) at ([xshift=\dx] cA12.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:M\'oveis, fill=red!80] (cB12) at (cComma12.east) {};
+
+% --- Fundo ---
+\begin{pgfonlayer}{background}
+  \node[fit=(a1) (a12), draw, fill=gray!10, ellipse, inner sep=8pt] {};
+  \node[fit=(b1) (b4),  draw, fill=gray!10, ellipse, inner sep=8pt] {};
+  \node[fit=(cComma1) (cComma2) (cComma3) (cComma4) (cComma5) (cComma6) 
+                 (cComma7) (cComma8) (cComma9) (cComma10) (cComma11) (cComma12)] {};
+  \node[fit=(cA1) (cA12) (cB1) (cB12) (cComma1) (cComma12), name=fitC] {};
+\end{pgfonlayer}
+
+\node[above=6mm of fitC.north, font=\bfseries, align=center] (titleC)
+{Conjunto C\\ $R \subseteq A \times B$};
+
+
+\end{tikzpicture}
 ```
 
-Classes:
 
--   [0] = {0,3,6,9,...}
--   [1] = {1,4,7,...}
--   [2] = {2,5,8,...}
+Chamamos de *Classes de Equivalência* todas as *relações de equivalência* que se
+formam dentro da Relação.
 
-### Relações de Equivalência e Normalização
+São as "panelinhas" que se formam dentro do conjunto.
 
-Dependências funcionais induzem partições do conjunto de tuplas.
+No nosso exemplo temas as seguintes Classes de Equivalência:
 
-Quando:
+| Classe | Categoria   | Pares Ordenados                                                                     |
+| ------ | ----------- | ----------------------------------------------------------------------------------- |
+| 1      | Eletrônicos | 1. (Teclado, Eletrônicos)<br>2. (Mouse, Eletrônicos)<br>3. (Monitor, Eletrônicos)   |
+| 2      | Vestuário   | 1. (Camisa, Vestuário)<br>2. (Calça, Vestuário)<br>3. (Tênis, Vestuário)            |
+| 3      | Livraria    | 1. (Livro SQL, Livraria)<br>2. (Livro Java, Livraria)<br>3. (Livro Redes, Livraria) |
+| 4      | Móveis      | 1. (Cadeira, Móveis)<br>2. (Mesa, Móveis)<br>3. (Sofá, Móveis)                      |
 
-```         
-A → B
-```
+Observações importantes:
 
-Significa que valores iguais de A geram classes de equivalência nas tuplas.
+1-As classes são *disjuntas*;
+2-A *união das quatro classes* é exatamente a relação $ R $;
+3-Cada *par ordenado* pertence a uma *única classe*;
 
-## 5. Conceito de Fecho
+
+## 5. Dependências Funcionais
+
+São os atributos de uma relação (colunas de uma tabela) cujos valores determinam
+ os valores de outras colunas.
+
+Exemplo: Imagine a Relação (Tabela) chamada *CursoProgramacao*.
+
+| ID_Aluno | Nome_Aluno     | Cod_Curso | Nome_Curso      | ID_Instrutor | Nota_Final |
+|----------|----------------|-----------|-----------------|--------------|------------|
+| 10       | Alan Turing    | SQL-01    | Banco de Dados  | 500          | 9.5        |
+| 20       | Ada Lovelace   | PY-02     | Python Avançado | 600          | 10.0       |
+| 10       | Alan Turing    | PY-02     | Python Avançado | 600          | 8.0        |
+| 30       | Grace Hopper   | SQL-01    | Banco de Dados  | 500          | 9.0        |
+| 40       | Linus Torvalds | JS-03     | JavaScript      | 700          | 7.5        |
+
+Considere as seguintes *Regras de Negócio*
+
+- Cada aluno tem apenas um nome oficial.
+
+- Cada código de curso pertence a apenas um nome de curso.
+
+- Cada curso é ministrado por apenas um instrutor específico (um instrutor não muda de curso).
+
+- Um aluno pode fazer vários cursos, e terá uma nota diferente para cada um.
+
+Tendo estas informações identifique as DEPENDÊNCIAS FUNCIONAIS dos atributos da 
+tabela.
+
+Quais são os atributos da tabela?
+
+| ID_Aluno | Nome_Aluno | Cod_Curso | Nome_Curso | ID_Instrutor | Nota_Final |
+|----------|------------|-----------|------------|--------------|------------|
+
+1) Quais destes atributos o valor identificam unicamente o valor de outro atributo?
+
+| Atributo1 | Dependência Funcional |   Atributo2   | Resultado |
+|:---------:|:---------------------:|:-------------:|:---------:|
+|  ID_Aluno |        determina      |   Nome_Aluno  |     ?     |
+| Cod_Curso |        determina      |   Nome_Curso  |     ?     |
+| Cod_Curso |        determina      |  ID_Instrutor |     ?     |
+|  ID_Aluno |        determina      |   Nota_Final  |     ?     |
+
+2) Qual é a combinação de colunas necessária para determinar a *Nota_Final*?
+
+### Resolução
+
+1) Quais destes atributos o valor identificam unicamente o valor de outro atributo?
+
+| Atributo1 | Dependência Funcional |   Atributo2   | Resultado | Comentário                                                                                                     |
+|:---------:|:---------------------:|:-------------:|:---------:|----------------------------------------------------------------------------------------------------------------|
+|  ID_Aluno |       determina       |   Nome_Aluno  |    SIM    | ID_Aluno valendo "10" determina Nome_Aluno "Alan Turing"                                                       |
+| Cod_Curso |        determina      |   Nome_Curso  |    SIM    | Cod_Curso valendo "SQL-01" determina Nome_Curso "Banco de Dados"                                               |
+| Cod_Curso |        determina      |  ID_Instrutor |    SIM    | Pela regra de negócio #3, Cod_Curso determina ID_Instrutor. Aqui temos um caso especial de Dependência Parcial |
+|  ID_Aluno |        determina      |   Nota_Final  |    NÃO    | Olhe o Alan Turing (ID 10). Ele tem nota 9.5 e nota 8.0. ID_Aluno sozinho não determina a nota do aluno.       |
+
+2) Qual é a combinação de colunas necessária para determinar a *Nota_Final*?
+
+Eu preciso saber QUEM (Aluno) e em QUAL MATÉRIA (Curso) para te dar a nota exata. A combinação dos atributos {ID_Aluno, Cod_Curso} determinam Nota_Final! Esta é um caso de *Dependência Total*. 
+
+## 6. Conceito de Fecho
 
 Dado conjunto de atributos X e conjunto de dependências funcionais F:
 
@@ -697,6 +923,22 @@ X → Y
 
 X deve ser superchave.
 
+
+### Relações de Equivalência e Normalização
+
+Dependências funcionais induzem partições do conjunto de tuplas.
+
+Quando:
+
+```         
+A → B
+```
+
+Significa que valores iguais de A geram classes de equivalência nas tuplas.
+
+
+
+
 ## Conexão Final — A Base Matemática do SGBD
 
 | Conceito Matemático     | Aplicação em BD            |
@@ -712,3 +954,10 @@ X deve ser superchave.
 ```{r impressao-01, eval=FALSE, include=FALSE}
 rmarkdown::render("02-2026-02-24_Fubdamentos_SGBD-aula.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
 ```
+
+
+```{r impressao-02, eval=FALSE, include=FALSE}
+rmarkdown::render("02-2026-02-24_Fubdamentos_SGBD-aula.Rmd", output_dir="docs", output_file ="temporario.docx" , output_format = "word_document") ; utils::browseURL("docs/temporario.docx")
+```
+
+

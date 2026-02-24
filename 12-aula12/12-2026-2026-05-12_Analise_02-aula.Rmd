@@ -99,7 +99,7 @@
 
 ================================================================================
 
-```{r ex1, engine='tikz', echo=FALSE, fig.cap="Diagrama de Montadoras, Veículos e Proprietários"}
+```{r ex1, engine='tikz', eval=FALSE, echo=FALSE, fig.cap="Diagrama de Montadoras, Veículos e Proprietários"}
 \usetikzlibrary{arrows,positioning,shapes,fit,calc}
 
 \pgfdeclarelayer{background}
@@ -208,6 +208,178 @@
 \end{tikzpicture}
 
 
+```
+
+
+```{r ex2, engine='tikz', eval=FALSE, echo=FALSE, fig.cap="Diagrama Produtos x categorias"}
+\usetikzlibrary{arrows,positioning,shapes,fit,calc}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\begin{tikzpicture}
+[
+  every node/.style={on grid},
+  setA/.style={fill=blue!60, circle, inner sep=3pt},
+  setB/.style={circle, inner sep=3pt},
+  >=latex
+]
+
+% --- Conjunto A (Produtos) ---
+\begin{scope}[node distance=0.9cm and 7.5cm]
+  \node [setA, label=left:Teclado]     (a1)  {};
+  \node [setA, below=of a1, label=left:Mouse]       (a2)  {};
+  \node [setA, below=of a2, label=left:Monitor]     (a3)  {};
+  \node [setA, below=of a3, label=left:Camisa]      (a4)  {};
+  \node [setA, below=of a4, label=left:Calça]       (a5)  {};
+  \node [setA, below=of a5, label=left:Tênis]       (a6)  {};
+  \node [setA, below=of a6, label=left:Livro SQL]   (a7)  {};
+  \node [setA, below=of a7, label=left:Livro Java]  (a8)  {};
+  \node [setA, below=of a8, label=left:Livro Redes] (a9)  {};
+  \node [setA, below=of a9, label=left:Cadeira]     (a10) {};
+  \node [setA, below=of a10,label=left:Mesa]        (a11) {};
+  \node [setA, below=of a11,label=left:Sofá]        (a12) {};
+
+  \node [above=1.3cm of a1, font=\bfseries, align=center]
+  {Conjunto A\\Produtos de venda};
+\end{scope}
+
+% --- Conjunto B (Categorias com cores diferentes) ---
+\begin{scope}[node distance=1.4cm and 7.5cm]
+  \node [setB, fill=blue!70, right=of a1, label=right:Eletrônicos] (b1) {};
+  \node [setB, fill=green!70!black, below=of b1, label=right:Vestuário]   (b2) {};
+  \node [setB, fill=purple!70, below=of b2, label=right:Livraria]    (b3) {};
+  \node [setB, fill=red!70, below=of b3, label=right:Móveis]      (b4) {};
+
+  \node [above=1.3cm of b1, font=\bfseries, align=center]
+  {Conjunto B\\Categorias};
+\end{scope}
+
+% --- Relação real R ⊆ A×B ---
+
+% Eletrônicos (azul)
+\draw[<->,shorten >=3pt, thick, blue] (a1) -- (b1);
+\draw[<->,shorten >=3pt, thick, blue] (a2) -- (b1);
+\draw[<->,shorten >=3pt, thick, blue] (a3) -- (b1);
+
+% Vestuário (verde)
+\draw[<->,shorten >=3pt, thick, green!70!black] (a4) -- (b2);
+\draw[<->,shorten >=3pt, thick, green!70!black] (a5) -- (b2);
+\draw[<->,shorten >=3pt, thick, green!70!black] (a6) -- (b2);
+
+% Livraria (roxo)
+\draw[<->,shorten >=3pt, thick, purple] (a7) -- (b3);
+\draw[<->,shorten >=3pt, thick, purple] (a8) -- (b3);
+\draw[<->,shorten >=3pt, thick, purple] (a9) -- (b3);
+
+% Móveis (vermelho)
+\draw[<->,shorten >=3pt, thick, red] (a10) -- (b4);
+\draw[<->,shorten >=3pt, thick, red] (a11) -- (b4);
+\draw[<->,shorten >=3pt, thick, red] (a12) -- (b4);
+
+% --- Fundo ---
+\begin{pgfonlayer}{background}
+  \node[fit=(a1) (a12), draw, fill=gray!10, ellipse, inner sep=8pt] {};
+  \node[fit=(b1) (b4),  draw, fill=gray!10, ellipse, inner sep=8pt] {};
+\end{pgfonlayer}
+
+\end{tikzpicture}
+```
+
+```{r ex3, engine='tikz', echo=FALSE, fig.cap="Diagrama Produtos x categorias"}
+\usetikzlibrary{arrows,positioning,shapes,fit,calc}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\begin{tikzpicture}
+[
+  % scale=0.5,
+  % transform shape,
+  every node/.style={on grid},
+  setA/.style={fill=blue,               circle,  inner sep=2pt },
+  setB/.style={fill=green!70!black,     circle,  inner sep=2pt },
+  setC/.style={fill=red!70!black,       circle,  inner sep=2pt },
+  every fit/.style={draw, fill=gray!10, ellipse, inner sep=8pt},
+  >=latex
+]
+
+
+
+% --- Conjunto C (layout: lista de pares ordenados de R) ---
+% Aqui mostramos explicitamente os pares (produto, categoria) pertencentes a R.
+\def\dx{1.5pt}
+\def\dy{5.2mm}
+
+\node [ xshift=3.6cm, font=\bfseries] (titleC) {$R \subseteq A \times B$};
+
+% Linha 1: (Teclado, Eletrônicos)
+\node [setC, below=1cm of titleC, xshift=-1.0cm, label=left:Teclado, fill=blue!80] (cA1) {};
+\node [font=\bfseries] (cComma1) at ([xshift=\dx] cA1.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Eletr\^onicos, fill=blue!80] (cB1) at (cComma1.east) {};
+
+% Linha 2: (Mouse, Eletrônicos)
+\node [setC, below=\dy of cA1, label=left:Mouse, fill=blue!80] (cA2) {};
+\node [font=\bfseries] (cComma2) at ([xshift=\dx] cA2.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Eletr\^onicos, fill=blue!80] (cB2) at (cComma2.east) {};
+
+% Linha 3: (Monitor, Eletrônicos)
+\node [setC, below=\dy of cA2, label=left:Monitor, fill=blue!80] (cA3) {};
+\node [font=\bfseries] (cComma3) at ([xshift=\dx] cA3.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Eletr\^onicos, fill=blue!80] (cB3) at (cComma3.east) {};
+
+% Linha 4: (Camisa, Vestuário)
+\node [setC, below=\dy of cA3, label=left:Camisa, fill=green!70!black] (cA4) {};
+\node [font=\bfseries] (cComma4) at ([xshift=\dx] cA4.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Vestu\'ario, fill=green!70!black] (cB4) at (cComma4.east) {};
+
+% Linha 5: (Calça, Vestuário)
+\node [setC, below=\dy of cA4, label=left:Cal\c ca, fill=green!70!black] (cA5) {};
+\node [font=\bfseries] (cComma5) at ([xshift=\dx] cA5.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Vestu\'ario, fill=green!70!black] (cB5) at (cComma5.east) {};
+
+% Linha 6: (Tênis, Vestuário)
+\node [setC, below=\dy of cA5, label=left:T\^enis, fill=green!70!black] (cA6) {};
+\node [font=\bfseries] (cComma6) at ([xshift=\dx] cA6.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Vestu\'ario, fill=green!70!black] (cB6) at (cComma6.east) {};
+
+% Linha 7: (Livro SQL, Livraria)
+\node [setC, below=\dy of cA6, label=left:Livro SQL, fill=purple!80] (cA7) {};
+\node [font=\bfseries] (cComma7) at ([xshift=\dx] cA7.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Livraria, fill=purple!80] (cB7) at (cComma7.east) {};
+
+% Linha 8: (Livro Java, Livraria)
+\node [setC, below=\dy of cA7, label=left:Livro Java, fill=purple!80] (cA8) {};
+\node [font=\bfseries] (cComma8) at ([xshift=\dx] cA8.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Livraria, fill=purple!80] (cB8) at (cComma8.east) {};
+
+% Linha 9: (Livro Redes, Livraria)
+\node [setC, below=\dy of cA8, label=left:Livro Redes, fill=purple!80] (cA9) {};
+\node [font=\bfseries] (cComma9) at ([xshift=\dx] cA9.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:Livraria, fill=purple!80] (cB9) at (cComma9.east) {};
+
+% Linha 10: (Cadeira, Móveis)
+\node [setC, below=\dy of cA9, label=left:Cadeira, fill=red!80] (cA10) {};
+\node [font=\bfseries] (cComma10) at ([xshift=\dx] cA10.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:M\'oveis, fill=red!80] (cB10) at (cComma10.east) {};
+
+% Linha 11: (Mesa, Móveis)
+\node [setC, below=\dy of cA10, label=left:Mesa, fill=red!80] (cA11) {};
+\node [font=\bfseries] (cComma11) at ([xshift=\dx] cA11.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:M\'oveis, fill=red!80] (cB11) at (cComma11.east) {};
+
+% Linha 12: (Sofá, Móveis)
+\node [setC, below=\dy of cA11, label=left:Sof\'a, fill=red!80] (cA12) {};
+\node [font=\bfseries] (cComma12) at ([xshift=\dx] cA12.east) {,};
+\node [setC, anchor=west, xshift=-\dx, label=right:M\'oveis, fill=red!80] (cB12) at (cComma12.east) {};
+
+% --- Camada de Fundo (Elipses) ---
+\begin{pgfonlayer}{background}
+  \node[fit=(titleC) (cComma1) (cComma2) (cComma3) (cComma4) (cComma5) (cComma6)
+                 (cComma7) (cComma8) (cComma9) (cComma10) (cComma11) (cComma12)] {};
+\end{pgfonlayer}
+
+\end{tikzpicture}
 ```
 
 
