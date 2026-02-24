@@ -15,6 +15,7 @@ leitores-de-formato-de-arquivo-epub-para-smartphone
 android
 moon-reader
 livros-texto-da-disciplina
+fundamentos-matemáticos-para-a-ciência-da-computação-matemática-discreta-e-suas-aplicações-da-autora-judith-l.-gersting
 introdução-a-sistemas-de-bancos-de-dados-do-autor-christopher-john-date
 projeto-de-bancos-de-dados-do-autor-carlos-alberto-heuser
 calendário-das-aulas
@@ -83,7 +84,8 @@ normalização
 bcnf
 relações-de-equivalência-e-normalização
 conexão-final-a-base-matemática-do-sgbd
-exercícios
+referências
+exercícios---aula-02
 modelagem-de-bancos-de-dados-parte-01
 introdução-visitando-a-teoria-de-bancos-de-dados
 modelo-matemático-de-um-banco-de-dados
@@ -117,7 +119,7 @@ cardinalidade-do-modelo-lógico-e-a-criação-de-chaves-estrangeiras-no-modelo-f
 normalização-em-bancos-de-dados-relaionais
 tabela-desnormalizada
 tabela-normalizada
-referências
+referências-1
 exercícios-resolvidos
 passo-1--
 passo-2
@@ -132,7 +134,7 @@ passo-1---2
 passo-2-2
 passo-3-2
 passo-5---faça-o-código-sql-do-diagrama-acima
-exercícios-1
+exercícios
 lista-de-exercícios-modelo-entidade-relacionamento-mer
 exercício-1-cliente-e-cpf-11
 exercício-2-cliente-e-pedidos-1n
@@ -209,7 +211,7 @@ feito
 administração-e-gerenciamento-de-bancos-de-dados-1
 banco-de-dados-uma-aplicação-crud
 feito-1
-exercícios-2
+exercícios-1
 banco-de-dados-mysql-mariadb
 banco-de-dados-mysql-mariadb-1
 banco-de-dados-postgres
@@ -235,7 +237,7 @@ passo-2---pressionar-o-botão-inserir
 passo-3---verificar-se-o-dbgrid-do-cliente-espelhando-a-linha-da-tabela-pessoas-no-esquema-pessoasdb-do-sqbg-mysql
 passo-4---verificar-na-tabela-pessoas-a-linha-que-o-cliente-preencheu-através-da-api-da-aplicação-clienteservidor
 feito-2
-exercícios-3
+exercícios-2
 banco-de-dados-utilizado-nos-exemplos-de-aplicações-abaixo
 exemplo-01
 exemplo-02---servidor-de-aplicação-python

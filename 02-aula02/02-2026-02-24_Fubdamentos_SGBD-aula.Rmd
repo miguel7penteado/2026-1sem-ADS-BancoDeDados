@@ -83,16 +83,25 @@ Base matemática do modelo:
 
 Agora entramos na base formal que sustenta os SGBDs.
 
+Os conceitos a seguir estão no **Capítulo 5** do livro *"**Fundamentos matemáticos para a ciência da computação Matemática Discreta e Suas Aplicações**" da autora "**Judith L. Gersting**"*
+
+![Fundamentos matemáticos para a ciência da computação Matemática Discreta e Suas Aplicações" da autora "Judith L. Gersting](images/livro0-Judith_Gersting.jpg){width="252"}
+
 ## 1. Conceito de Relação
 
 Codd queria utilizar a Matemática, mais específicamente, a teoria de conjuntos para criar um Sistema de Banco de Dados. A Matemática trataria de garantir a consistência dos dados armazenados.
 
-| Operação           | Símbolo | Descrição                                  |
-|--------------------|---------|--------------------------------------------|
-| União              | ∪       | Elementos que pertencem a A ou B           |
-| Interseção         | ∩       | Elementos comuns a A e B                   |
-| Diferença          | −       | Elementos de A que não pertencem a B       |
-| Produto Cartesiano | ×       | Conjunto de todos os pares ordenados (a,b) |
++--------------------+-------------+--------------------------------------------+
+| Operação           | Símbolo     | Descrição                                  |
++====================+=============+============================================+
+| União              | ∪           | Elementos que pertencem a A ou B           |
++--------------------+-------------+--------------------------------------------+
+| Interseção         | ∩           | Elementos comuns a A e B                   |
++--------------------+-------------+--------------------------------------------+
+| Diferença          | −           | Elementos de A que não pertencem a B       |
++--------------------+-------------+--------------------------------------------+
+| Produto Cartesiano | ×           | Conjunto de todos os pares ordenados (a,b) |
++--------------------+-------------+--------------------------------------------+
 
 Inicialmente a idéia era associar conjuntos de dados e garantir a consistência da informação. Assim nasceu o conceito de **RELAÇÃO**
 
@@ -480,11 +489,15 @@ Nasce o conceito de Banco de Dados Relacional e os conceitos que irão criar a l
 
 Considere:
 
-| Terminologia Relacional | Banco de Dados | Origem Matemática |
-|:-----------------:|:---------------:|:----------------------------------:|
-| RELAÇÃO | **TABELA** | CONJUNTO ou SUBCONJUNTO |
-| ATRIBUTO | **COLUNAS** | Não aparece explicitamente |
-| TUPLA | **LINHA** | ELEMENTO DO CONJUNTO OU PAR ORDENADO |
++-------------------------+----------------+--------------------------------------+
+| Terminologia Relacional | Banco de Dados | Origem Matemática                    |
++:=======================:+:==============:+:====================================:+
+| RELAÇÃO                 | **TABELA**     | CONJUNTO ou SUBCONJUNTO              |
++-------------------------+----------------+--------------------------------------+
+| ATRIBUTO                | **COLUNAS**    | Não aparece explicitamente           |
++-------------------------+----------------+--------------------------------------+
+| TUPLA                   | **LINHA**      | ELEMENTO DO CONJUNTO OU PAR ORDENADO |
++-------------------------+----------------+--------------------------------------+
 
 ## 2. Operações Relacionais
 
@@ -516,6 +529,7 @@ Seja R ⊆ A × A.
 ```
 
 #### Exemplo "Cadastro de Produtos - Popriedade "Reflexiva" da Relação:
+
 Em um cadastro de produtos, o produto Teclado tem a mesma categoria que o produto Teclado (ele mesmo). Consequentemente, em uma tabela do Banco de Dados, o valor da coluna "CategoriaID" de um registro é sempre igual ao "CategoriaID" dele mesmo.
 
 ![](media/20-teclado-1.jpg){width="255"}
@@ -529,6 +543,7 @@ Se (x,y) ∈ R então (y,x) ∈ R
 ```
 
 #### Exemplo: "Cadastro de Produtos - Popriedade "Simétrica" da Relação:
+
 Se o **Teclado** (1) **é equivalente** ao **Mouse** (2) (ambos são da categoria **Eletrônicos**), então o **Mouse** (2) **é equivalente** ao **Teclado** (1). Consequentemente, no Banco de Dados, **Teclado.CategoriaID** = **Mouse.CategoriaID.**
 
 ![](media/21-teclado-mouse.jpg){width="327"}
@@ -544,11 +559,12 @@ Se (x,y) ∈ R e (y,z) ∈ R então (x,z) ∈ R
 ```
 
 #### Exemplo: "Cadastro de Produtos - Popriedade "Transitiva" da Relação:
+
 Se **Teclado** (1) **é equivalente** ao **Mouse** (2) e **Mouse** (2) **é equivalente** ao **Monitor** (3), então obrigatoriamente **Teclado** (1) **é equivalente** ao **Monitor** (3), **pois todos são da categoria "Eletrônicos"**.
 
-|  |  |  |
-|------------------------|------------------------|------------------------|
++---------------------------------+---------------------------------+-----------------------------------+
 | ![](media/21-teclado-mouse.jpg) | ![](media/22-mouse-monitor.jpg) | ![](media/23-teclado-monitor.jpg) |
++---------------------------------+---------------------------------+-----------------------------------+
 
 Isso garante que todos os elementos de uma categoria formem um grupo fechado e coeso.
 
@@ -561,6 +577,7 @@ Se (x,y) ∈ R e (y,x) ∈ R então x = y
 ```
 
 #### Exemplo: "Cadastro de Funcionários - Popriedade "Anti-Simétrica" da Relação:
+
 Se o **João é gerente da Maria**, a **Maria NÃO PODE ser gerente do João**. Em uma tabela de funcionários, o Banco de dados garante HIERARQUIA na regra de negócio.
 
 ![](media/24-joao-maria.jpg){width="467"}
@@ -574,6 +591,7 @@ Uma relação é de equivalência se é:
 -   Transitiva
 
 #### Exemplo: "Cadastro de Produtos - "Teste de Relação e Equivalência":
+
 Tenho uma tabela de produtos. Todos os produtos estão classificados em categorias. Prove nesta tabela que 2 produtos são equivalentes.
 
 |                   |                     |                          |
@@ -626,8 +644,7 @@ A classe de equivalência de x é:
 [x] = { y ∈ A | y ~ x }
 ```
 
-Exemplo em uma relação de Banco de Dados formada pelo `conjunto A Produtos` e pelo
-`conjunto B Categorias`:
+Exemplo em uma relação de Banco de Dados formada pelo `conjunto A Produtos` e pelo `conjunto B Categorias`:
 
 R ⊆ A × B :
 
@@ -786,86 +803,97 @@ R ⊆ A × B :
 \end{tikzpicture}
 ```
 
-
-Chamamos de *Classes de Equivalência* todas as *relações de equivalência* que se
-formam dentro da Relação.
+Chamamos de *Classes de Equivalência* todas as *relações de equivalência* que se formam dentro da Relação.
 
 São as "panelinhas" que se formam dentro do conjunto.
 
 No nosso exemplo temas as seguintes Classes de Equivalência:
 
-| Classe | Categoria   | Pares Ordenados                                                                     |
-| ------ | ----------- | ----------------------------------------------------------------------------------- |
-| 1      | Eletrônicos | 1. (Teclado, Eletrônicos)<br>2. (Mouse, Eletrônicos)<br>3. (Monitor, Eletrônicos)   |
-| 2      | Vestuário   | 1. (Camisa, Vestuário)<br>2. (Calça, Vestuário)<br>3. (Tênis, Vestuário)            |
-| 3      | Livraria    | 1. (Livro SQL, Livraria)<br>2. (Livro Java, Livraria)<br>3. (Livro Redes, Livraria) |
-| 4      | Móveis      | 1. (Cadeira, Móveis)<br>2. (Mesa, Móveis)<br>3. (Sofá, Móveis)                      |
++--------+-------------+--------------------------------------------------------------------------------------+
+| Classe | Categoria   | Pares Ordenados                                                                      |
++========+=============+======================================================================================+
+| 1      | Eletrônicos | 1\. (Teclado, Eletrônicos)<br>2. (Mouse, Eletrônicos)<br>3. (Monitor, Eletrônicos)   |
++--------+-------------+--------------------------------------------------------------------------------------+
+| 2      | Vestuário   | 1\. (Camisa, Vestuário)<br>2. (Calça, Vestuário)<br>3. (Tênis, Vestuário)            |
++--------+-------------+--------------------------------------------------------------------------------------+
+| 3      | Livraria    | 1\. (Livro SQL, Livraria)<br>2. (Livro Java, Livraria)<br>3. (Livro Redes, Livraria) |
++--------+-------------+--------------------------------------------------------------------------------------+
+| 4      | Móveis      | 1\. (Cadeira, Móveis)<br>2. (Mesa, Móveis)<br>3. (Sofá, Móveis)                      |
++--------+-------------+--------------------------------------------------------------------------------------+
 
 Observações importantes:
 
-1-As classes são *disjuntas*;
-2-A *união das quatro classes* é exatamente a relação $ R $;
-3-Cada *par ordenado* pertence a uma *única classe*;
-
+1-As classes são *disjuntas*; 2-A *união das quatro classes* é exatamente a relação \$ R \$; 3-Cada *par ordenado* pertence a uma *única classe*;
 
 ## 5. Dependências Funcionais
 
-São os atributos de uma relação (colunas de uma tabela) cujos valores determinam
- os valores de outras colunas.
+São os atributos de uma relação (colunas de uma tabela) cujos valores determinam os valores de outras colunas.
 
 Exemplo: Imagine a Relação (Tabela) chamada *CursoProgramacao*.
 
++----------+----------------+-----------+-----------------+--------------+------------+
 | ID_Aluno | Nome_Aluno     | Cod_Curso | Nome_Curso      | ID_Instrutor | Nota_Final |
-|----------|----------------|-----------|-----------------|--------------|------------|
++==========+================+===========+=================+==============+============+
 | 10       | Alan Turing    | SQL-01    | Banco de Dados  | 500          | 9.5        |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 20       | Ada Lovelace   | PY-02     | Python Avançado | 600          | 10.0       |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 10       | Alan Turing    | PY-02     | Python Avançado | 600          | 8.0        |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 30       | Grace Hopper   | SQL-01    | Banco de Dados  | 500          | 9.0        |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 40       | Linus Torvalds | JS-03     | JavaScript      | 700          | 7.5        |
++----------+----------------+-----------+-----------------+--------------+------------+
 
 Considere as seguintes *Regras de Negócio*
 
-- Cada aluno tem apenas um nome oficial.
+-   Cada aluno tem apenas um nome oficial.
 
-- Cada código de curso pertence a apenas um nome de curso.
+-   Cada código de curso pertence a apenas um nome de curso.
 
-- Cada curso é ministrado por apenas um instrutor específico (um instrutor não muda de curso).
+-   Cada curso é ministrado por apenas um instrutor específico (um instrutor não muda de curso).
 
-- Um aluno pode fazer vários cursos, e terá uma nota diferente para cada um.
+-   Um aluno pode fazer vários cursos, e terá uma nota diferente para cada um.
 
-Tendo estas informações identifique as DEPENDÊNCIAS FUNCIONAIS dos atributos da 
-tabela.
+Tendo estas informações identifique as DEPENDÊNCIAS FUNCIONAIS dos atributos da tabela.
 
 Quais são os atributos da tabela?
 
++----------+------------+-----------+------------+--------------+------------+
 | ID_Aluno | Nome_Aluno | Cod_Curso | Nome_Curso | ID_Instrutor | Nota_Final |
-|----------|------------|-----------|------------|--------------|------------|
++==========+============+===========+============+==============+============+
++----------+------------+-----------+------------+--------------+------------+
 
-1) Quais destes atributos o valor identificam unicamente o valor de outro atributo?
+1)  Quais destes atributos o valor identificam unicamente o valor de outro atributo?
 
-| Atributo1 | Dependência Funcional |   Atributo2   | Resultado |
-|:---------:|:---------------------:|:-------------:|:---------:|
-|  ID_Aluno |        determina      |   Nome_Aluno  |     ?     |
-| Cod_Curso |        determina      |   Nome_Curso  |     ?     |
-| Cod_Curso |        determina      |  ID_Instrutor |     ?     |
-|  ID_Aluno |        determina      |   Nota_Final  |     ?     |
+| Atributo1 | Dependência Funcional |  Atributo2   | Resultado |
+|:---------:|:---------------------:|:------------:|:---------:|
+| ID_Aluno  |       determina       |  Nome_Aluno  |     ?     |
+| Cod_Curso |       determina       |  Nome_Curso  |     ?     |
+| Cod_Curso |       determina       | ID_Instrutor |     ?     |
+| ID_Aluno  |       determina       |  Nota_Final  |     ?     |
 
-2) Qual é a combinação de colunas necessária para determinar a *Nota_Final*?
+2)  Qual é a combinação de colunas necessária para determinar a *Nota_Final*?
 
 ### Resolução
 
-1) Quais destes atributos o valor identificam unicamente o valor de outro atributo?
+1)  Quais destes atributos o valor identificam unicamente o valor de outro atributo?
 
-| Atributo1 | Dependência Funcional |   Atributo2   | Resultado | Comentário                                                                                                     |
-|:---------:|:---------------------:|:-------------:|:---------:|----------------------------------------------------------------------------------------------------------------|
-|  ID_Aluno |       determina       |   Nome_Aluno  |    SIM    | ID_Aluno valendo "10" determina Nome_Aluno "Alan Turing"                                                       |
-| Cod_Curso |        determina      |   Nome_Curso  |    SIM    | Cod_Curso valendo "SQL-01" determina Nome_Curso "Banco de Dados"                                               |
-| Cod_Curso |        determina      |  ID_Instrutor |    SIM    | Pela regra de negócio #3, Cod_Curso determina ID_Instrutor. Aqui temos um caso especial de Dependência Parcial |
-|  ID_Aluno |        determina      |   Nota_Final  |    NÃO    | Olhe o Alan Turing (ID 10). Ele tem nota 9.5 e nota 8.0. ID_Aluno sozinho não determina a nota do aluno.       |
++-----------+-----------------------+--------------+-----------+----------------------------------------------------------------------------------------------------------------+
+| Atributo1 | Dependência Funcional | Atributo2    | Resultado | Comentário                                                                                                     |
++:=========:+:=====================:+:============:+:=========:+================================================================================================================+
+| ID_Aluno  | determina             | Nome_Aluno   | SIM       | ID_Aluno valendo "10" determina Nome_Aluno "Alan Turing"                                                       |
++-----------+-----------------------+--------------+-----------+----------------------------------------------------------------------------------------------------------------+
+| Cod_Curso | determina             | Nome_Curso   | SIM       | Cod_Curso valendo "SQL-01" determina Nome_Curso "Banco de Dados"                                               |
++-----------+-----------------------+--------------+-----------+----------------------------------------------------------------------------------------------------------------+
+| Cod_Curso | determina             | ID_Instrutor | SIM       | Pela regra de negócio #3, Cod_Curso determina ID_Instrutor. Aqui temos um caso especial de Dependência Parcial |
++-----------+-----------------------+--------------+-----------+----------------------------------------------------------------------------------------------------------------+
+| ID_Aluno  | determina             | Nota_Final   | NÃO       | Olhe o Alan Turing (ID 10). Ele tem nota 9.5 e nota 8.0. ID_Aluno sozinho não determina a nota do aluno.       |
++-----------+-----------------------+--------------+-----------+----------------------------------------------------------------------------------------------------------------+
 
-2) Qual é a combinação de colunas necessária para determinar a *Nota_Final*?
+2)  Qual é a combinação de colunas necessária para determinar a *Nota_Final*?
 
-Eu preciso saber QUEM (Aluno) e em QUAL MATÉRIA (Curso) para te dar a nota exata. A combinação dos atributos {ID_Aluno, Cod_Curso} determinam Nota_Final! Esta é um caso de *Dependência Total*. 
+Eu preciso saber QUEM (Aluno) e em QUAL MATÉRIA (Curso) para te dar a nota exata. A combinação dos atributos {ID_Aluno, Cod_Curso} determinam Nota_Final! Esta é um caso de *Dependência Total*.
 
 ## 6. Conceito de Fecho
 
@@ -923,7 +951,6 @@ X → Y
 
 X deve ser superchave.
 
-
 ### Relações de Equivalência e Normalização
 
 Dependências funcionais induzem partições do conjunto de tuplas.
@@ -936,28 +963,35 @@ A → B
 
 Significa que valores iguais de A geram classes de equivalência nas tuplas.
 
-
-
-
 ## Conexão Final — A Base Matemática do SGBD
 
++-------------------------+----------------------------+
 | Conceito Matemático     | Aplicação em BD            |
-|-------------------------|----------------------------|
++=========================+============================+
 | Relação                 | Tabela                     |
++-------------------------+----------------------------+
 | Produto cartesiano      | Combinação de domínios     |
++-------------------------+----------------------------+
 | Relação de equivalência | Particionamento por chave  |
++-------------------------+----------------------------+
 | Fecho                   | Descoberta de dependências |
++-------------------------+----------------------------+
 | Transitiva              | Análise de dependências    |
++-------------------------+----------------------------+
 | Antissimétrica          | Ordem parcial              |
++-------------------------+----------------------------+
 | Álgebra relacional      | SQL                        |
++-------------------------+----------------------------+
+
+## Referências:
+
+*GERSTING, Judith L.* Fundamentos matemáticos para a ciência da computação: matemática discreta e suas aplicações. 7. ed. Rio de Janeiro: LTC, *2017*. Tradução e revisão técnica de Valéria de Magalhães Iório. 884 p. ISBN 978-85-216-3259-7
+
 
 ```{r impressao-01, eval=FALSE, include=FALSE}
 rmarkdown::render("02-2026-02-24_Fubdamentos_SGBD-aula.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
 ```
 
-
 ```{r impressao-02, eval=FALSE, include=FALSE}
 rmarkdown::render("02-2026-02-24_Fubdamentos_SGBD-aula.Rmd", output_dir="docs", output_file ="temporario.docx" , output_format = "word_document") ; utils::browseURL("docs/temporario.docx")
 ```
-
-
