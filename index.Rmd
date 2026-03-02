@@ -240,7 +240,7 @@ Estas anotações são apenas lembretes das aulas expostas em sala, durante a di
 
 Nota técnica: fazendo servidor postgresql funcionar no windows, versão sem instalador:
 
-# Postgres (Zip Version) Windows Starting Guide
+# Postgres (Zip Version) Windows Starting Guide {.unnumbered}
 
 Download postgresql from <https://www.enterprisedb.com/download-postgresql-binaries>;
 

@@ -26,7 +26,6 @@ maio-de-2026
 junho-de-2026
 alunos-2026---1o-semestre
 campus-chácara-santo-antônio
-postgres-zip-version-windows-starting-guide
 aula-inaugural
 disciplina-banco-de-dados
 sobre-o-professor
@@ -116,9 +115,6 @@ representação-no-der-2
 entidade-dominante-e-entidade-subordinada
 definições
 cardinalidade-do-modelo-lógico-e-a-criação-de-chaves-estrangeiras-no-modelo-físico-relacional
-normalização-em-bancos-de-dados-relaionais
-tabela-desnormalizada
-tabela-normalizada
 referências-1
 exercícios-resolvidos
 passo-1--

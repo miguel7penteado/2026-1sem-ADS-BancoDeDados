@@ -8,7 +8,7 @@ output:
 
 # Modelagem de Bancos de Dados parte 01
 
-#### 18/08/2025 {.unnumbered}
+#### 03/03/2026 {.unnumbered}
 
 #### Professor Miguél Suares {.unnumbered}
 
@@ -206,8 +206,8 @@ relationship PERTENCE {
 }
 
 
-FUNCIONARIOS  -1- PERTENCE
-PERTENCE      -N- DEPARTAMENTOS
+FUNCIONARIOS  -N- PERTENCE
+PERTENCE      -1- DEPARTAMENTOS
 
 @endchen
 ```
@@ -344,8 +344,8 @@ relationship PERTENCE {
 }
 
 
-FUNCIONARIOS  -1- PERTENCE
-PERTENCE      -N- DEPARTAMENTOS
+FUNCIONARIOS  -N- PERTENCE
+PERTENCE      -1- DEPARTAMENTOS
 
 @endchen
 ```
@@ -888,90 +888,6 @@ POSSUEM         -N- ITEMS_PEDIDO
 ## CARDINALIDADE DO MODELO LÓGICO E A CRIAÇÃO DE CHAVES ESTRANGEIRAS NO MODELO FÍSICO-RELACIONAL
 
 Vai ser a cardinalidade que irá ditar em quais tabelas criaremos chaves estrangeiras.
-
-## Normalização em Bancos de Dados Relaionais
-
-### Tabela Desnormalizada
-
-![](images/5-bi/01-montadora.jpg){width="343"}
-
-Considere a tabela Veículos abaixo:
-
-|  Modelo   | Montadora  |
-|:---------:|:----------:|
-|  Strada   |    Fiat    |
-|   Mobi    |    Fiat    |
-|   Pulse   |    Fiat    |
-|   Onix    | Chevrolet  |
-|  Tracker  | Chevrolet  |
-| Onix Plus | Chevrolet  |
-|   Polo    | Volkswagen |
-|   Nivus   | Volkswagen |
-|  T-Cross  | Volkswagen |
-|   HB20    |  Hyundai   |
-|   Creta   |  Hyundai   |
-
-Separamos o conjunto de elemntos *Montadoras* e *Modelos*.
-
-| MontadoraID | Montadora  |
-|:-----------:|:----------:|
-|      1      |    Fiat    |
-|      2      | Chevrolet  |
-|      3      | Volkswagen |
-|      4      |  Hyundai   |
-
-| ModeloID |  Modelo   |
-|:--------:|:---------:|
-|   101    |  Strada   |
-|   102    |   Mobi    |
-|   103    |   Pulse   |
-|   201    |   Onix    |
-|   202    |  Tracker  |
-|   203    | Onix Plus |
-|   301    |   Polo    |
-|   302    |   Nivus   |
-|   303    |  T-Cross  |
-|   401    |   HB20    |
-|   402    |   Creta   |
-
-> O processo de fragmentar agrupamentos complexos de dados e simplifica-los a fim de minimizar redundâncias e economizar espaço no Banco de Dados Relacional é chamado de **NORMALIZAÇÃO.** [[1] - LAUDON, Kenneth C.; LAUDON, Jane P. \*Sistemas de informação gerenciais\*. 11. ed. São Paulo: Pearson Education do Brasil, 2010. p. 180.]
-
-Mas Como indicar que cada elemento da tabela "Modelo" está associado a um elemento da tabela "Montadora" ?
-
-### Tabela Normalizada
-
-Considere as tabelas abaixo:
-
-| MontadoraID | Montadora  |
-|:-----------:|:----------:|
-|      1      |    Fiat    |
-|      2      | Chevrolet  |
-|      3      | Volkswagen |
-|      4      |  Hyundai   |
-
-| ModeloID |  Modelo   | MontadoraID |
-|:--------:|:---------:|:-----------:|
-|   101    |  Strada   |      1      |
-|   102    |   Mobi    |      1      |
-|   103    |   Pulse   |      1      |
-|   201    |   Onix    |      2      |
-|   202    |  Tracker  |      2      |
-|   203    | Onix Plus |      2      |
-|   301    |   Polo    |      3      |
-|   302    |   Nivus   |      3      |
-|   303    |  T-Cross  |      3      |
-|   401    |   HB20    |      4      |
-|   402    |   Creta   |      4      |
-
-Repare que:
-
--   É possível identificar que não existem montadoras repetidas na tabela "Montadoras";
-
--   É possível identificar que não existem modelos repetidos na tabela "Montadoras";
-
-A coluna (atributo) **ModeloID** é a **chave primária** da tabela **Modelos.** A coluna (atributo) **MontadoraID** é a **chave primária** da tabela **Montadoras.**
-
-Na tabela **Modelos**, a coluna **MontadoraID**, acrescentada a tabela Modelos representa a ligação de cada elemento da tabela Modelos e Montadoras. Essa coluna "importada" da tabela Montadoras para a tabela Modelos se chama **chave estrangeira**.
 
 ## Referências
 

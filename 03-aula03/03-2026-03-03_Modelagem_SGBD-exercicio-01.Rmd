@@ -1873,6 +1873,8 @@ ALTER TABLE PARTICIPAM ADD PRIMARY KEY (id_funcionario, id_projeto);
 
 ------------------------------------------------------------------------
 
-
+```{r aula-03-exercicios, eval=FALSE, include=FALSE}
+rmarkdown::render("03-2026-03-03_Modelagem_SGBD-exercicio-01.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
+```
 
 
