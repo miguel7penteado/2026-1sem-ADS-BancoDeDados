@@ -102,7 +102,7 @@ relacionamento-11-um-para-um
 representação-no-der
 relacionamento-1n-um-para-muitos
 representação-no-der-1
-relacionamento-nn-muitos-para-muitos
+relacionamento-nm-muitos-para-muitos
 representação-no-der-2
 entidade-dominante-e-entidade-subordinada
 definições

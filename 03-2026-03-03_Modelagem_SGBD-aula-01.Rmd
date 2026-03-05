@@ -703,7 +703,7 @@ Ela é fundamental para entender as regras de negócio do banco de dados e deve 
 
 1.  **Um para Um (1:1)**\
 2.  **Um para Muitos (1:N)**\
-3.  **Muitos para Muitos (N:N)**
+3.  **Muitos para Muitos (N:M)**
 
 A seguir, vamos detalhar cada caso.
 
@@ -778,7 +778,7 @@ COMPRA   -N- PASSAGENS
 @endchen
 ```
 
-### Relacionamento N:N (Muitos para Muitos)
+### Relacionamento N:M (Muitos para Muitos)
 
 Exemplo:
 
