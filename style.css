@@ -477,3 +477,25 @@ div.sourceCode + p.caption, pre + p.caption{
   a{ color: #000; text-decoration: none; }
   img, pre, .sourceCode pre{ box-shadow: none; }
 }
+
+/* Fix: cabeçalho de tabela opaco/invisível (GitBook/Bookdown) */
+.page-inner table thead,
+.page-inner table thead tr,
+.page-inner table thead th {
+  opacity: 1 !important;
+  color: #111827 !important;      /* texto bem visível */
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+.page-inner table thead th {
+  background: #e5e7eb !important; /* um pouco mais contrastante que #f3f4f6 */
+  font-weight: 800 !important;
+}
+
+/* Se você usa kableExtra/Bootstrap, isso ajuda também */
+.page-inner table.table thead th,
+.page-inner table.table thead td {
+  opacity: 1 !important;
+  color: #111827 !important;
+}

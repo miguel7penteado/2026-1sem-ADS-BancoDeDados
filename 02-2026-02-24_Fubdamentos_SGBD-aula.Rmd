@@ -10,13 +10,13 @@ output:
 
 #### 24/02/2026 {.unnumbered}
 
-#### Professor Miguel Suares {.unnumbered}
+#### Professor Miguél Suares {.unnumbered}
 
 ## Parte I — Linha do Tempo dos SGBDs
 
->>> Onde posso obter a apresentação de sildes dessa aula ?
-
-
+> > > Onde posso obter a apresentação de sildes dessa aula ?
+> > >
+> > > ![](02-aula02/media/00-qr-code_aula02-pptx.jpg){width="338"}
 
 ### O Início do Modelo Relacional
 
@@ -27,7 +27,7 @@ output:
 -   Matemático da IBM
 -   1970: Publica o artigo:
 
-> **“A Relational Model of Data for Large Shared Data Banks”** (Um modelo relacional de dados para grandes bancos de dados compartilhados)
+> [**“A Relational Model of Data for Large Shared Data Banks”**](https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf) (Um modelo relacional de dados para grandes bancos de dados compartilhados)
 
 Base matemática do modelo:
 
@@ -40,15 +40,17 @@ Base matemática do modelo:
 -   1970–1974: Desenvolvimento do **System R**
 -   1974: Criação da linguagem **SQL**
 
-### Raymond F. Boyce
-
-![](02-aula02/media/05-Boyce.jpg)
-
-### Donald D. Chamberlin
++-----------------------------------+-------------------------------------------------------------+
+| ### Raymond F. Boyce (SQL)        | ### Donald D. Chamberlin (SQL)                              |
++===================================+=============================================================+
+| ![](02-aula02/media/05-Boyce.jpg) | ![](02-aula02/media/05-Donald_Chamberlain.jpg){width="342"} |
++-----------------------------------+-------------------------------------------------------------+
 
 ### Modelo Entidade-Relacionamento
 
-### Peter Chen
+### Prof Peter Chen
+
+![](02-aula02/media/05-Peter_Chen.jpg){width="214"}
 
 ![](02-aula02/media/modelagem.jpg)
 
@@ -66,14 +68,13 @@ Base matemática do modelo:
 
 ### Décadas de Consolidação
 
-#### 1980
+#### 1980 - Grandes Sistemas de Gerênciamento de Banco de Dados COMERCIAIS
 
 -   IBM DB2
 -   Oracle
--   Sybase
--   Postgres
+-   Sybase/Microsoft SQL SERVER
 
-#### 1990
+#### 1990 -  Sistemas de Gerênciamento de Banco de Dados "POPULARES"
 
 -   PostgreSQL
 -   MySQL
@@ -96,12 +97,17 @@ Os conceitos a seguir estão no **Capítulo 5** do livro *"**Fundamentos matemá
 
 Codd queria utilizar a Matemática, mais específicamente, a teoria de conjuntos para criar um Sistema de Banco de Dados. A Matemática trataria de garantir a consistência dos dados armazenados.
 
-| Operação           | Símbolo | Descrição                                  |
-|--------------------|---------|--------------------------------------------|
-| União              | ∪       | Elementos que pertencem a A ou B           |
-| Interseção         | ∩       | Elementos comuns a A e B                   |
-| Diferença          | −       | Elementos de A que não pertencem a B       |
-| Produto Cartesiano | ×       | Conjunto de todos os pares ordenados (a,b) |
++--------------------+---------------+--------------------------------------------+
+| Operação           | Símbolo       | Descrição                                  |
++====================+===============+============================================+
+| União              | ∪             | Elementos que pertencem a A ou B           |
++--------------------+---------------+--------------------------------------------+
+| Interseção         | ∩             | Elementos comuns a A e B                   |
++--------------------+---------------+--------------------------------------------+
+| Diferença          | −             | Elementos de A que não pertencem a B       |
++--------------------+---------------+--------------------------------------------+
+| Produto Cartesiano | ×             | Conjunto de todos os pares ordenados (a,b) |
++--------------------+---------------+--------------------------------------------+
 
 Inicialmente a idéia era associar conjuntos de dados e garantir a consistência da informação. Assim nasceu o conceito de **RELAÇÃO**
 
@@ -489,11 +495,15 @@ Nasce o conceito de Banco de Dados Relacional e os conceitos que irão criar a l
 
 Considere:
 
-| Terminologia Relacional | Banco de Dados | Origem Matemática |
-|:--------------------:|:----------------:|:------------------------------:|
-| RELAÇÃO | **TABELA** | CONJUNTO ou SUBCONJUNTO |
-| ATRIBUTO | **COLUNAS** | Não aparece explicitamente |
-| TUPLA | **LINHA** | ELEMENTO DO CONJUNTO OU PAR ORDENADO |
++-------------------------+----------------+--------------------------------------+
+| Terminologia Relacional | Banco de Dados | Origem Matemática                    |
++:=======================:+:==============:+:====================================:+
+| RELAÇÃO                 | **TABELA**     | CONJUNTO ou SUBCONJUNTO              |
++-------------------------+----------------+--------------------------------------+
+| ATRIBUTO                | **COLUNAS**    | Não aparece explicitamente           |
++-------------------------+----------------+--------------------------------------+
+| TUPLA                   | **LINHA**      | ELEMENTO DO CONJUNTO OU PAR ORDENADO |
++-------------------------+----------------+--------------------------------------+
 
 ## 2. Operações Relacionais
 
@@ -558,9 +568,9 @@ Se (x,y) ∈ R e (y,z) ∈ R então (x,z) ∈ R
 
 Se **Teclado** (1) **é equivalente** ao **Mouse** (2) e **Mouse** (2) **é equivalente** ao **Monitor** (3), então obrigatoriamente **Teclado** (1) **é equivalente** ao **Monitor** (3), **pois todos são da categoria "Eletrônicos"**.
 
-|  |  |  |
-|-----------------------|-----------------------|-------------------------|
++-------------------------------------------+-------------------------------------------+---------------------------------------------+
 | ![](02-aula02/media/21-teclado-mouse.jpg) | ![](02-aula02/media/22-mouse-monitor.jpg) | ![](02-aula02/media/23-teclado-monitor.jpg) |
++-------------------------------------------+-------------------------------------------+---------------------------------------------+
 
 Isso garante que todos os elementos de uma categoria formem um grupo fechado e coeso.
 
@@ -616,17 +626,11 @@ Para provar isso, é preciso testar as 3 propriedades de relações (Reflexiva, 
 
 Tomarei como exemplo "Cadeira, Mesa, Sofá". Analisarei segundo a caracteristica comum "categoria":
 
-1)  
+-   Reflexiva - Cadeira é da mesma categoria que cadeira ? Sim - OK
 
-    -   Reflexiva - Cadeira é da mesma categoria que cadeira ? Sim - OK
+-   Simétrica - Cadeira é da mesma categoria que mesa e Mesa é da mesma categoria que Cadeira ? Sim - OK
 
-2)  
-
-    -   Simétrica - Cadeira é da mesma categoria que mesa e Mesa é da mesma categoria que Cadeira ? Sim - OK
-
-3)  
-
-    -   Transitiva - Cadeira é da mesma categoria que mesa; Mesa é da mesma categira que sofá; portanto cadeira é da mesma categoria que sofá ? Sim - OK
+-   Transitiva - Cadeira é da mesma categoria que mesa; Mesa é da mesma categira que sofá; portanto cadeira é da mesma categoria que sofá ? Sim - OK
 
 Considerando que cadeira, mesa e sofá atendem as propriedades "Reflexiva", "Simétrica" e "Transitiva", então "Cadeira, Mesa, Sofá" constituem a mesma classe de equivalencia.
 
@@ -805,12 +809,17 @@ São as "panelinhas" que se formam dentro do conjunto.
 
 No nosso exemplo temas as seguintes Classes de Equivalência:
 
-| Classe | Categoria | Pares Ordenados |
-|---------------|---------------|-------------------------------------------|
-| 1 | Eletrônicos | 1\. (Teclado, Eletrônicos)<br>2. (Mouse, Eletrônicos)<br>3. (Monitor, Eletrônicos) |
-| 2 | Vestuário | 1\. (Camisa, Vestuário)<br>2. (Calça, Vestuário)<br>3. (Tênis, Vestuário) |
-| 3 | Livraria | 1\. (Livro SQL, Livraria)<br>2. (Livro Java, Livraria)<br>3. (Livro Redes, Livraria) |
-| 4 | Móveis | 1\. (Cadeira, Móveis)<br>2. (Mesa, Móveis)<br>3. (Sofá, Móveis) |
++-----------+-------------+--------------------------------------------------------------------------------------+
+| Classe    | Categoria   | Pares Ordenados                                                                      |
++===========+=============+======================================================================================+
+| 1         | Eletrônicos | 1\. (Teclado, Eletrônicos)<br>2. (Mouse, Eletrônicos)<br>3. (Monitor, Eletrônicos)   |
++-----------+-------------+--------------------------------------------------------------------------------------+
+| 2         | Vestuário   | 1\. (Camisa, Vestuário)<br>2. (Calça, Vestuário)<br>3. (Tênis, Vestuário)            |
++-----------+-------------+--------------------------------------------------------------------------------------+
+| 3         | Livraria    | 1\. (Livro SQL, Livraria)<br>2. (Livro Java, Livraria)<br>3. (Livro Redes, Livraria) |
++-----------+-------------+--------------------------------------------------------------------------------------+
+| 4         | Móveis      | 1\. (Cadeira, Móveis)<br>2. (Mesa, Móveis)<br>3. (Sofá, Móveis)                      |
++-----------+-------------+--------------------------------------------------------------------------------------+
 
 Observações importantes:
 
@@ -822,13 +831,19 @@ São os atributos de uma relação (colunas de uma tabela) cujos valores determi
 
 Exemplo: Imagine a Relação (Tabela) chamada *CursoProgramacao*.
 
++----------+----------------+-----------+-----------------+--------------+------------+
 | ID_Aluno | Nome_Aluno     | Cod_Curso | Nome_Curso      | ID_Instrutor | Nota_Final |
-|------------|------------|------------|------------|------------|------------|
++==========+================+===========+=================+==============+============+
 | 10       | Alan Turing    | SQL-01    | Banco de Dados  | 500          | 9.5        |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 20       | Ada Lovelace   | PY-02     | Python Avançado | 600          | 10.0       |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 10       | Alan Turing    | PY-02     | Python Avançado | 600          | 8.0        |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 30       | Grace Hopper   | SQL-01    | Banco de Dados  | 500          | 9.0        |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 40       | Linus Torvalds | JS-03     | JavaScript      | 700          | 7.5        |
++----------+----------------+-----------+-----------------+--------------+------------+
 
 Considere as seguintes *Regras de Negócio*
 
@@ -844,9 +859,11 @@ Tendo estas informações identifique as DEPENDÊNCIAS FUNCIONAIS dos atributos 
 
 Quais são os atributos da tabela?
 
++----------+------------+-----------+------------+--------------+------------+
 | ID_Aluno | Nome_Aluno | Cod_Curso | Nome_Curso | ID_Instrutor | Nota_Final |
-|----------|------------|-----------|------------|--------------|------------|
++==========+============+===========+============+==============+============+
 |          |            |           |            |              |            |
++----------+------------+-----------+------------+--------------+------------+
 
 1)  Quais destes atributos o valor identificam unicamente o valor de outro atributo?
 
@@ -863,12 +880,17 @@ Quais são os atributos da tabela?
 
 1)  Quais destes atributos o valor identificam unicamente o valor de outro atributo?
 
-| Atributo1 | Dependência Funcional | Atributo2 | Resultado | Comentário |
-|:---------:|:---------:|:---------:|:---------:|----------------------------|
-| ID_Aluno | determina | Nome_Aluno | SIM | ID_Aluno valendo "10" determina Nome_Aluno "Alan Turing" |
-| Cod_Curso | determina | Nome_Curso | SIM | Cod_Curso valendo "SQL-01" determina Nome_Curso "Banco de Dados" |
-| Cod_Curso | determina | ID_Instrutor | SIM | Pela regra de negócio #3, Cod_Curso determina ID_Instrutor. Aqui temos um caso especial de Dependência Parcial |
-| ID_Aluno | determina | Nota_Final | NÃO | Olhe o Alan Turing (ID 10). Ele tem nota 9.5 e nota 8.0. ID_Aluno sozinho não determina a nota do aluno. |
++-----------+-----------------------+--------------+-----------+----------------------------------------------------------------------------------------------------------------+
+| Atributo1 | Dependência Funcional | Atributo2    | Resultado | Comentário                                                                                                     |
++:=========:+:=====================:+:============:+:=========:+================================================================================================================+
+| ID_Aluno  | determina             | Nome_Aluno   | SIM       | ID_Aluno valendo "10" determina Nome_Aluno "Alan Turing"                                                       |
++-----------+-----------------------+--------------+-----------+----------------------------------------------------------------------------------------------------------------+
+| Cod_Curso | determina             | Nome_Curso   | SIM       | Cod_Curso valendo "SQL-01" determina Nome_Curso "Banco de Dados"                                               |
++-----------+-----------------------+--------------+-----------+----------------------------------------------------------------------------------------------------------------+
+| Cod_Curso | determina             | ID_Instrutor | SIM       | Pela regra de negócio #3, Cod_Curso determina ID_Instrutor. Aqui temos um caso especial de Dependência Parcial |
++-----------+-----------------------+--------------+-----------+----------------------------------------------------------------------------------------------------------------+
+| ID_Aluno  | determina             | Nota_Final   | NÃO       | Olhe o Alan Turing (ID 10). Ele tem nota 9.5 e nota 8.0. ID_Aluno sozinho não determina a nota do aluno.       |
++-----------+-----------------------+--------------+-----------+----------------------------------------------------------------------------------------------------------------+
 
 2)  Qual é a combinação de colunas necessária para determinar a *Nota_Final*?
 
@@ -894,53 +916,6 @@ Então:
 ```         
 A⁺ = {A, B, C}
 ```
-
-## 6. Normalização
-
-Processo de organização de relações para:
-
--   Eliminar redundância
--   Evitar anomalias
--   Garantir consistência
-
-### 1ª Forma Normal (1FN)
-
--   Atributos atômicos
--   Sem grupos repetitivos
-
-### 2ª Forma Normal (2FN)
-
--   1FN
--   Sem dependência parcial de chave composta
-
-### 3ª Forma Normal (3FN)
-
--   2FN
--   Sem dependência transitiva
-
-### BCNF
-
-Forma mais forte que 3FN:
-
-Para toda dependência:
-
-```         
-X → Y
-```
-
-X deve ser superchave.
-
-### Relações de Equivalência e Normalização
-
-Dependências funcionais induzem partições do conjunto de tuplas.
-
-Quando:
-
-```         
-A → B
-```
-
-Significa que valores iguais de A geram classes de equivalência nas tuplas.
 
 ## Conexão Final — A Base Matemática do SGBD
 

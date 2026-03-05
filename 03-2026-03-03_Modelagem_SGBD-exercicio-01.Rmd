@@ -180,10 +180,9 @@ MINISTRA    -N- DISCIPLINAS
 @endchen
 ```
 
+#### Passo #5 - Crie o código SQL referente ao diagrama que você desenhou:
 
-#### Passo  #5 - Crie o código SQL referente ao diagrama que você desenhou:
-
-```SQL
+``` sql
 /* =========================================================
    Passo 1️- CRIAR TABELAS (somente colunas, sem PK nem FK)
    ========================================================= */
@@ -246,7 +245,6 @@ ALTER TABLE CURSOS      ADD CONSTRAINT fk_cursos_universidade      FOREIGN KEY (
 ALTER TABLE PROFESSORES ADD CONSTRAINT fk_professores_universidade FOREIGN KEY (CNPJ) REFERENCES UNIVERSIDADES (CNPJ);
 
 ALTER TABLE DISCIPLINAS ADD CONSTRAINT fk_disciplinas_professor    FOREIGN KEY (cpf)  REFERENCES PROFESSORES (cpf);
-
 ```
 
 ------------------------------------------------------------------------
@@ -348,9 +346,9 @@ PEDIDOS  -N- CLIENTES
 @endchen
 ```
 
-#### Passo  #5 - Crie o código SQL referente ao diagrama que você desenhou:
+#### Passo #5 - Crie o código SQL referente ao diagrama que você desenhou:
 
-```SQL
+``` sql
 
 -- CRIAR AS TABELAS
 
@@ -380,7 +378,6 @@ ALTER TABLE Cliente ADD COLUMN numero_cpf CHAR(11);
 -- CRIAR AS CHAVES ESTRANGEIRAS
 
 ALTER TABLE Cliente ADD CONSTRAINT fk_cliente_cpf FOREIGN KEY (numero_cpf) REFERENCES CPF (numero_cpf);
-
 ```
 
 ------------------------------------------------------------------------
@@ -506,7 +503,7 @@ RECEITAM  -N- PACIENTES
 
 #### Passo #5 - Faça o código SQL do diagrama acima
 
-```SQL
+``` sql
 
 /* =========================================================
    Passo 1- TABELAS (apenas colunas, sem PK ou FK)
@@ -533,7 +530,7 @@ CREATE TABLE MEDICOS
     crm             CHAR(15)
 );
 
-/* As próximas tabelas representam os relacionamentos N:N
+/* As próximas tabelas representam os relacionamentos N:M
    com atributos próprios (tabelas de junção) */
 CREATE TABLE REGISTRAM 
 (
@@ -611,7 +608,6 @@ ALTER TABLE REGISTRAM ADD PRIMARY KEY (cnpj, cpf);
 ALTER TABLE CONSULTAM ADD PRIMARY KEY (crm, cpf, data_consulta, hora);
 
 ALTER TABLE RECEITAM  ADD PRIMARY KEY (crm, cpf, medicacao);
-
 ```
 
 ------------------------------------------------------------------------
@@ -621,7 +617,8 @@ ALTER TABLE RECEITAM  ADD PRIMARY KEY (crm, cpf, medicacao);
 ### 📝 Lista de Exercícios – Modelo Entidade-Relacionamento (MER)
 
 #### Exercício 1 – Cliente e CPF (1:1)
-Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).\
 Cada **Cliente** possui exatamente **um CPF**, e cada CPF só pode estar associado a um único Cliente.\
 - Identifique entidades, atributos e relacionamento.\
 - Represente o MER com cardinalidade 1:1.
@@ -653,7 +650,8 @@ relacionamento1 -0- entidade2
 ------------------------------------------------------------------------
 
 #### Exercício 2 – Cliente e Pedidos (1:N)
-Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).\
 Um **Cliente** pode fazer **vários Pedidos**, mas cada Pedido pertence a apenas um Cliente.\
 - Liste as entidades e atributos.\
 - Defina o relacionamento e a cardinalidade.\
@@ -685,8 +683,9 @@ relacionamento1 -0- entidade2
 
 ------------------------------------------------------------------------
 
-#### Exercício 3 – Alunos e Disciplinas (N:N)
-Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+#### Exercício 3 – Alunos e Disciplinas (N:M)
+
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).\
 Um **Aluno** pode se matricular em várias **Disciplinas**, e cada Disciplina pode ter vários Alunos.\
 - Identifique entidades e atributos. - Qual entidade associativa deve ser criada? - Desenhe o DER com a entidade associativa.
 
@@ -717,7 +716,8 @@ relacionamento1 -0- entidade2
 ------------------------------------------------------------------------
 
 #### Exercício 4 – Funcionário e Dependentes (Entidade Fraca)
-Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).\
 Cada **Funcionário** pode ter **vários Dependentes**. Um Dependente não existe sem um Funcionário.\
 - Identifique a entidade forte e a entidade fraca.\
 - Defina atributos e chaves.\
@@ -748,9 +748,8 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-```SQL
+``` sql
 -- Coloque aqui o código SQL criar as tabelas:
-
 
 
 ```
@@ -758,7 +757,8 @@ relacionamento1 -0- entidade2
 ------------------------------------------------------------------------
 
 #### Exercício 5 – Pedido e Itens de Pedido (Entidade Associativa + Fraca)
-Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).\
 Um **Pedido** contém vários **Itens**, mas cada Item está sempre vinculado a apenas um Pedido.\
 - Qual entidade é dominante e qual é subordinada?\
 - Identifique atributos das duas entidades.\
@@ -789,9 +789,8 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-```SQL
+``` sql
 -- Coloque aqui o código SQL criar as tabelas:
-
 
 
 ```
@@ -799,7 +798,8 @@ relacionamento1 -0- entidade2
 ------------------------------------------------------------------------
 
 #### Exercício 6 – Médicos e Consultas (1:N)
-Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).\
 Um **Médico** pode realizar várias **Consultas**, mas cada Consulta está associada a apenas um Médico.\
 - Identifique entidades e atributos.\
 - Desenhe o DER.\
@@ -830,18 +830,17 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-```SQL
+``` sql
 -- Coloque aqui o código SQL criar as tabelas:
-
 
 
 ```
 
-
 ------------------------------------------------------------------------
 
 #### Exercício 7 – Professor e Departamento (1:1)
-Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).\
 Cada **Professor** dirige apenas **um Departamento**, e cada Departamento tem apenas um Professor responsável.\
 - Identifique entidades, atributos e relacionamento.\
 - Defina cardinalidade 1:1 no DER.
@@ -871,17 +870,17 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-```SQL
+``` sql
 -- Coloque aqui o código SQL criar as tabelas:
-
 
 
 ```
 
 ------------------------------------------------------------------------
 
-#### Exercício 8 – Livros e Autores (N:N)
-Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+#### Exercício 8 – Livros e Autores (N:M)
+
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).\
 Um **Livro** pode ter vários **Autores**, e cada Autor pode escrever vários Livros.\
 - Identifique as entidades e atributos.\
 - Qual entidade associativa deve ser criada?\
@@ -912,9 +911,8 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-```SQL
+``` sql
 -- Coloque aqui o código SQL criar as tabelas:
-
 
 
 ```
@@ -922,12 +920,12 @@ relacionamento1 -0- entidade2
 ------------------------------------------------------------------------
 
 #### Exercício 9 – Biblioteca (Entidades Fortes e Fracas)
-Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
+
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).\
 Um **Livro** pode ter vários **Exemplares**. Um Exemplar só existe se estiver associado a um Livro.\
 - Identifique entidades fortes e fracas.\
 - Defina atributos (Livro: título, ano; Exemplar: código_exemplar, status).\
 - Monte o DER com a dependência existencial.
-
 
 ```{plantuml exercicio-09, plantuml.path="images"}
 @startchen
@@ -954,22 +952,22 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-```SQL
+``` sql
 -- Coloque aqui o código SQL criar as tabelas:
-
 
 
 ```
 
 ------------------------------------------------------------------------
 
-#### Exercício 10 – Empresa, Funcionário e Projeto (Misto 1:N e N:N)
-Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.). \
--   Uma **Empresa** possui vários **Funcionários**.\
--   Cada **Funcionário** pode participar de vários **Projetos**, e cada Projeto pode ter vários Funcionários.\
--   Identifique todas as entidades, atributos e relacionamentos.\
--   Determine cardinalidades corretas (Empresa–Funcionário 1:N, Funcionário–Projeto N:N).\
--   Crie o DER completo.
+#### Exercício 10 – Empresa, Funcionário e Projeto (Misto 1:N e N:M)
+
+Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).\
+- Uma **Empresa** possui vários **Funcionários**.\
+- Cada **Funcionário** pode participar de vários **Projetos**, e cada Projeto pode ter vários Funcionários.\
+- Identifique todas as entidades, atributos e relacionamentos.\
+- Determine cardinalidades corretas (Empresa–Funcionário 1:N, Funcionário–Projeto N:M).\
+- Crie o DER completo.
 
 ```{plantuml exercicio-10, plantuml.path="images"}
 @startchen
@@ -1009,9 +1007,8 @@ relacionamento2 -0- entidade3
 @endchen
 ```
 
-```SQL
+``` sql
 -- Coloque aqui o código SQL criar as tabelas:
-
 
 
 ```
@@ -1057,7 +1054,7 @@ POSSUI   -1- CPFS
 
 ##### Exercício 1 - SQL referênte ao diagrama anterior
 
-```SQL
+``` sql
 /* =========================================================
    TRANSFORMA AS ENTIDADES EM TABELAS E ATRIBUTOS EM COLUNAS
    ========================================================= */
@@ -1092,9 +1089,7 @@ ALTER TABLE CLIENTES   ADD COLUMN numero_cpf CHAR(11);
    ========================================================= */
 
 ALTER TABLE CLIENTES ADD CONSTRAINT fk_clientes_cpfs FOREIGN KEY (numero_cpf) EFERENCES CPFS (numero_cpf);
-
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -1127,7 +1122,7 @@ FAZEM    -N- PEDIDOS
 
 ##### Exercício 2 - SQL referênte ao diagrama anterior
 
-```SQL
+``` sql
 /* =========================================================
    Criar tabelas (sem PK ou FK)
    ========================================================= */
@@ -1165,7 +1160,6 @@ ALTER TABLE PEDIDOS ADD COLUMN cpf_cliente CHAR(11);
 
 ALTER TABLE PEDIDOS ADD CONSTRAINT fk_pedidos_clientes  FOREIGN KEY (cpf_cliente) REFERENCES CLIENTES (cpf);
 
-
 ```
 
 ------------------------------------------------------------------------
@@ -1198,7 +1192,7 @@ MATRICULA -N- DISCIPLINAS
 
 ##### Exercício 3 - SQL referênte ao diagrama anterior
 
-```SQL
+``` sql
 /* =========================================================
    Criar tabelas (sem PK ou FK)
    ========================================================= */
@@ -1215,7 +1209,7 @@ CREATE TABLE DISCIPLINAS
     nome VARCHAR(255)
 );
 
-/* Tabela para o relacionamento N:N */
+/* Tabela para o relacionamento N:M */
 
 CREATE TABLE MATRICULA 
 (
@@ -1252,7 +1246,6 @@ ALTER TABLE MATRICULA ADD CONSTRAINT fk_matricula_disciplina FOREIGN KEY (id_dis
    ========================================================= */
 
 ALTER TABLE MATRICULA ADD PRIMARY KEY (id_aluno, id_disciplina);
-
 ```
 
 ------------------------------------------------------------------------
@@ -1287,7 +1280,7 @@ POSSUI      -N- DEPENDENTES
 
 ##### Exercício 4 - SQL referênte ao diagrama anterior
 
-```SQL
+``` sql
 /* =========================================================
    Criar tabelas (sem PK ou FK)
    ========================================================= */
@@ -1329,7 +1322,6 @@ ALTER TABLE DEPENDENTES ADD COLUMN id_funcionario INT;
 
 ALTER TABLE DEPENDENTES ADD CONSTRAINT fk_dependentes_funcionarios FOREIGN KEY (id_funcionario) REFERENCES FUNCIONARIOS  (id_funcionario);
 
-
 ```
 
 ------------------------------------------------------------------------
@@ -1364,7 +1356,7 @@ CONTEM  -N- ITENS
 
 ##### Exercício 5 - SQL referênte ao diagrama anterior
 
-```SQL
+``` sql
 /* =========================================================
    Criar tabelas (sem PK ou FK)
    ========================================================= */
@@ -1405,7 +1397,6 @@ ALTER TABLE ITENS ADD COLUMN id_pedido INT;
 
 ALTER TABLE ITENS ADD CONSTRAINT fk_itens_pedidos FOREIGN KEY (id_pedido) REFERENCES PEDIDOS (id_pedido);
 
-
 ```
 
 ------------------------------------------------------------------------
@@ -1440,7 +1431,7 @@ REALIZA  -N- CONSULTAS
 
 ##### Exercício 6 - SQL referênte ao diagrama anterior
 
-```SQL
+``` sql
 /* =========================================================
    Criar tabelas (sem PK ou FK)
    ========================================================= */
@@ -1480,7 +1471,6 @@ ALTER TABLE CONSULTAS ADD COLUMN id_medico INT;
    ========================================================= */
 
 ALTER TABLE CONSULTAS ADD CONSTRAINT fk_consultas_medicos FOREIGN KEY (id_medico) REFERENCES MEDICOS (id_medico);
-
 ```
 
 ------------------------------------------------------------------------
@@ -1515,7 +1505,7 @@ DIRIGE       -1- DEPARTAMENTOS
 
 ##### Exercício 7 - SQL referênte ao diagrama anterior
 
-```SQL
+``` sql
 /* =========================================================
    Criar tabelas (sem PK ou FK)
    ========================================================= */
@@ -1555,7 +1545,6 @@ ALTER TABLE DEPARTAMENTOS ADD COLUMN id_professor INT;
    ========================================================= */
 
 ALTER TABLE DEPARTAMENTOS ADD CONSTRAINT fk_departamentos_professores FOREIGN KEY (id_professor) REFERENCES PROFESSORES (id_professor);
-
 ```
 
 ------------------------------------------------------------------------
@@ -1578,7 +1567,7 @@ entity AUTORES {
   nacionalidade
 }
 
-' Entidade associativa para o relacionamento N:N '
+' Entidade associativa para o relacionamento N:M '
 
 entity ESCREVEM {
   data_participacao
@@ -1596,7 +1585,7 @@ ESCREVE -N- AUTORES
 
 ##### Exercício 8 - SQL referênte ao diagrama anterior
 
-```SQL
+``` sql
 
 /* =========================================================
    Criar tabelas (sem PK ou FK)
@@ -1616,7 +1605,7 @@ CREATE TABLE AUTORES
     nacionalidade VARCHAR(100)
 );
 
-/* Tabela para relacionamento N:N com atributos */
+/* Tabela para relacionamento N:M com atributos */
 
 CREATE TABLE ESCREVEM 
 (
@@ -1650,7 +1639,6 @@ ALTER TABLE ESCREVEM ADD CONSTRAINT fk_escrevem_autores  FOREIGN KEY (id_autor) 
    ========================================================= */
 
 ALTER TABLE ESCREVEM  ADD PRIMARY KEY (id_livro, id_autor);
-
 ```
 
 ------------------------------------------------------------------------
@@ -1684,7 +1672,7 @@ POSSUI    -N- EXEMPLARES
 
 ##### Exercício 9 - SQL referênte ao diagrama anterior
 
-```SQL
+``` sql
 /* =========================================================
    Criar tabelas (sem PK ou FK)
    ========================================================= */
@@ -1729,7 +1717,6 @@ ALTER TABLE EXEMPLARES ADD CONSTRAINT fk_exemplares_livros FOREIGN KEY (id_livro
 
 ALTER TABLE EXEMPLARES ADD PRIMARY KEY (id_livro, codigo_exemplar);
 
-
 ```
 
 ------------------------------------------------------------------------
@@ -1766,7 +1753,7 @@ entity PROJETOS {
 }
 
 ' =========================                            '
-' Entidade associativa para Funcionário–Projeto (N:N)  '
+' Entidade associativa para Funcionário–Projeto (N:M)  '
 ' =========================                            '
 
 entity PARTICIPAM {
@@ -1800,7 +1787,7 @@ TRABALHA_EM  -N- PROJETOS
 
 ##### Exercício 10 - SQL referênte ao diagrama anterior
 
-```SQL
+``` sql
 /* =========================================================
    Criar tabelas (sem PK ou FK)
    ========================================================= */
@@ -1850,7 +1837,7 @@ ALTER TABLE PROJETOS ADD PRIMARY KEY (id_projeto);
 
 ALTER TABLE FUNCIONARIOS  ADD COLUMN id_empresa INT;
 
--- Relacionamento FUNCIONARIOS N:N PROJETOS
+-- Relacionamento FUNCIONARIOS N:M PROJETOS
 ALTER TABLE PARTICIPAM ADD COLUMN id_funcionario INT, ADD COLUMN id_projeto INT;
 
 /* =========================================================
@@ -1868,7 +1855,6 @@ ALTER TABLE PARTICIPAM ADD CONSTRAINT fk_participam_projetos FOREIGN KEY (id_pro
 
 ALTER TABLE PARTICIPAM ADD PRIMARY KEY (id_funcionario, id_projeto);
 
-
 ```
 
 ------------------------------------------------------------------------
@@ -1876,5 +1862,3 @@ ALTER TABLE PARTICIPAM ADD PRIMARY KEY (id_funcionario, id_projeto);
 ```{r aula-03-exercicios, eval=FALSE, include=FALSE}
 rmarkdown::render("03-2026-03-03_Modelagem_SGBD-exercicio-01.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
 ```
-
-

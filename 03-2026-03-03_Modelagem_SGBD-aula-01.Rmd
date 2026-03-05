@@ -14,7 +14,7 @@ output:
 
 ## Introdução: Visitando a teoria de Bancos de Dados
 
-![](media/01-banco-de-dados.jpg)
+![](03-aula03/media/livro1-CJ-Date.jpg){width="375"}
 
 > **Banco de Dados** Um banco de dados é uma coleção compartilhada de dados logicamente relacionados, projetada para atender às necessidades informacionais de uma organização. - *DATE, C. J. An Introduction to Database Systems. 8. ed. Boston: Addison-Wesley, 2003*.
 
@@ -28,7 +28,9 @@ Ou seja, alguns pontos-chave da definição de Date:
 
 -   "Projetada para atender necessidades ..." → o banco existe para suportar os processos de uma organização (consultas, relatórios, controle, tomada de decisão).
 
-![](media/07-tabela_relacional.jpg)
+![](03-aula03/media/07-tabela_relacional.jpg)
+
+![](03-aula03/media/livro2-Silberchatz_Koth.jpg)
 
 > **Banco de Dados Relacional** Um banco de dados relacional é um banco de dados baseado em um modelo de dados relacional, no qual os dados são representados como um conjunto de relações (tabelas), e cada relação consiste em tuplas (linhas) e atributos (colunas). - *SILBERSCHATZ, Abraham; KORTH, Henry F.; SUDARSHAN, S. Database System Concepts. 6. ed. New York: McGraw-Hill, 2010.*
 
@@ -106,7 +108,7 @@ Considere um Banco de Dados para representar, com consistência Matemática os f
 
 > Um **banco de dados relacional** é um banco de dados no qual todos os dados são representados por meio de **relações (matematicamente, conjuntos de tuplas)**, e todas as operações sobre os dados são baseadas em operadores formais do cálculo relacional e da álgebra relacional. - *A Relational Model of Data for Large Shared Data Banks” (Communications of the ACM, vol. 13, n. 6, pp. 377–387, 1970).*
 
-[![Professor Edgar Frank Codd - Universidade do Tenessi](media/01-codd.jpg){width="352"}](https://buttondown.com/jaffray/archive/in-codd-we-trust-or-not/)
+[![Professor Edgar Frank Codd - Universidade do Tenessi](03-aula03/media/01-codd.jpg){width="230"}](https://buttondown.com/jaffray/archive/in-codd-we-trust-or-not/)
 
 ### Então para podemos relacionar estes dois conjuntos (Funcionários e Departamentos) utilizando a Teoria das Funções
 
@@ -282,15 +284,15 @@ $$
 
 A ferramenta que irá criar as estruturas Físicas (tabelas, colunas, chaves) dentro do Banco de Dados é o Sistema de Gerenciamento de Banco de Dados através da linguagem **SQL**.
 
-![](media/06-modelo_fisico.jpg)
+![](03-aula03/media/06-modelo_fisico.jpg)
 
 ### Interagindo com o Modelo Físico - A linguagem SQL (Structured Query Language)
 
 A linguagem SQL foi criada nos laboratórios da IBM em 1974, como interface de manipulação ao Bando de Dados Relacional System-R , atualmente denominado IBM DB2. Os criadores foram engenheiros de sistemas que sucederam o professor Edgard Frank Codd no projeto de Banco de Dados Relacional: **Donald Chamberlain** e **Raymond Boyce**.
 
-|  |  |
-|----|----|
-| ![Donald Chamberlain - Criador da linguagem SQL nos laboratórios da IBM](media/04-Donald_Chamberlain.jpg) | ![Raymond Boyce - Criador da linguagem SQL nos laboratórios da IBM](media/04-Raymond_Boyce.jpg){width="239"} |
++---------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+| ![Donald Chamberlain - Criador da linguagem SQL nos laboratórios da IBM](03-aula03/media/04-Donald_Chamberlain.jpg) | ![Raymond Boyce - Criador da linguagem SQL nos laboratórios da IBM](03-aula03/media/04-Raymond_Boyce.jpg){width="240"} |
++---------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
 
 A lingauem SQL é a ponte com o mundo exterior para um Sistema de Gerenciamento de Banco de Dados (SGBD). Os conjunto de comandos da linguagem SQL são divididos em 3 grandes grupos:
 
@@ -509,12 +511,15 @@ Vamos agora converter a representação matemática para uma representação ló
 
 O modelo Entidade Relacionamento consistem em traduzir elementos morfológicos da gramática da língua portuguesa em um texto para um modelo de Banco de dados utilizando a com a seguinte regra de montagem:
 
-|  |  |  |  |
-|----|----|----|----|
++-------------------------------+--------------------------------------+----------------------------------+---------------------------------------------+
 | Classe morfológica da palavra | CORRESPONDÊNCIA NO MODELO MATEMÁTICO | CORRESPONDÊNCIA NO MODELO LÓGICO | CORRESPONDÊNCIA NO MODELO FÍSICO-RELACIONAL |
-| `Substantivos` | `CONJUNTOS` | `ENTIDADES` | `TABELAS` |
-| **`Adjetivos`** | N/A | **`ATRIBUTO`** | **`COLUNAS`** |
-| **`Verbos`** | Idéia de "funções y=f(x) " | **`RELACIONAMENTOS`** | **`CHAVE ESTRANGEIRA`** |
++-------------------------------+--------------------------------------+----------------------------------+---------------------------------------------+
+| `Substantivos`                | `CONJUNTOS`                          | `ENTIDADES`                      | `TABELAS`                                   |
++-------------------------------+--------------------------------------+----------------------------------+---------------------------------------------+
+| **`Adjetivos`**               | N/A                                  | **`ATRIBUTO`**                   | **`COLUNAS`**                               |
++-------------------------------+--------------------------------------+----------------------------------+---------------------------------------------+
+| **`Verbos`**                  | Idéia de "funções y=f(x) "           | **`RELACIONAMENTOS`**            | **`CHAVE ESTRANGEIRA`**                     |
++-------------------------------+--------------------------------------+----------------------------------+---------------------------------------------+
 
 Tomando como exemplo a revenda de carros:
 
