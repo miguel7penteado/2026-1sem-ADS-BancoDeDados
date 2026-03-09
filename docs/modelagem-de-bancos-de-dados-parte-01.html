@@ -23,7 +23,7 @@
 <meta name="author" content="Professor Miguél Suares" />
 
 
-<meta name="date" content="2026-03-05" />
+<meta name="date" content="2026-03-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -515,19 +515,13 @@ RELACIONAMENTO                  &amp;  \quad CHAVE-ESTRANGEIRA    &amp; \quad VE
 <p>A linguagem SQL foi criada nos laboratórios da IBM em 1974, como interface de manipulação ao Bando de Dados Relacional System-R , atualmente denominado IBM DB2. Os criadores foram engenheiros de sistemas que sucederam o professor Edgard Frank Codd no projeto de Banco de Dados Relacional: <strong>Donald Chamberlain</strong> e <strong>Raymond Boyce</strong>.</p>
 <table>
 <colgroup>
-<col width="49%" />
+<col width="50%" />
 <col width="50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="float">
-<img src="03-aula03/media/04-Donald_Chamberlain.jpg" alt="Donald Chamberlain - Criador da linguagem SQL nos laboratórios da IBM" />
-<div class="figcaption">Donald Chamberlain - Criador da linguagem SQL nos laboratórios da IBM</div>
-</div></td>
-<td><div class="float">
-<img src="03-aula03/media/04-Raymond_Boyce.jpg" width="240" alt="Raymond Boyce - Criador da linguagem SQL nos laboratórios da IBM" />
-<div class="figcaption">Raymond Boyce - Criador da linguagem SQL nos laboratórios da IBM</div>
-</div></td>
+<td><img src="03-aula03/media/04-Donald_Chamberlain.jpg" alt="Donald Chamberlain - Criador da linguagem SQL nos laboratórios da IBM" /></td>
+<td><img src="03-aula03/media/04-Raymond_Boyce.jpg" width="240" alt="Raymond Boyce - Criador da linguagem SQL nos laboratórios da IBM" /></td>
 </tr>
 </tbody>
 </table>
@@ -634,12 +628,12 @@ Figure 3.5: Diagrama de Montadoras, Veículos e Proprietários
 <div id="modelo-entidade-relacionamento-1" class="section level4 hasAnchor" number="3.5.2.1">
 <h4><span class="header-section-number">3.5.2.1</span> Modelo Entidade Relacionamento<a href="modelagem-de-bancos-de-dados-parte-01.html#modelo-entidade-relacionamento-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>O modelo Entidade Relacionamento consistem em traduzir elementos morfológicos da gramática da língua portuguesa em um texto para um modelo de Banco de dados utilizando a com a seguinte regra de montagem:</p>
-<table style="width:99%;">
+<table>
 <colgroup>
-<col width="20%" />
 <col width="25%" />
-<col width="22%" />
-<col width="29%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -916,24 +910,27 @@ Ex.: ItemPedido, Dependente, Parcela.</p></li>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Considere uma Universidade que possui vários Cursos. Cada curso tem um nome, uma duração em semestres e um coordenador. A universidade possui Professores, cada um com um nome, título e CPF. Um professor pode ministrar várias disciplinas, e cada disciplina pertence a um único curso.</td>
+<td><img src="03-aula03/media/exercicio-01.jpg" /></td>
 </tr>
 <tr class="even">
+<td>Considere uma Universidade que possui vários Cursos. Cada curso tem um nome, uma duração em semestres e um coordenador. A universidade possui Professores, cada um com um nome, título e CPF. Um professor pode ministrar várias disciplinas, e cada disciplina pertence a um único curso.</td>
+</tr>
+<tr class="odd">
 <td><ol style="list-style-type: lower-alpha">
 <li>Identifique as entidades</li>
 </ol></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><ol start="2" style="list-style-type: lower-alpha">
 <li>Identifique os atributos de cada Entidade</li>
 </ol></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><ol start="3" style="list-style-type: lower-alpha">
 <li>Identifique os relacionamentos entre as Entidades</li>
 </ol></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><ol start="5" style="list-style-type: lower-alpha">
 <li>Faça o diagrama DEM (Diagrama Entidade Relacionamento) contendo as entidades, atributos e relacionamentos que você mapeou.</li>
 </ol></td>
@@ -1091,24 +1088,27 @@ Ex.: ItemPedido, Dependente, Parcela.</p></li>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Um Cliente faz Pedidos em um sistema de e-commerce. Cada cliente tem um nome, endereço e telefone. Os pedidos possuem uma data, um valor total e podem conter vários Produtos. Cada produto tem um nome, uma descrição e um preço.</td>
+<td><img src="03-aula03/media/exercicio-02-e_commerce.jpg" /></td>
 </tr>
 <tr class="even">
+<td>Um Cliente faz Pedidos em um sistema de e-commerce. Cada cliente tem um nome, endereço e telefone. Os pedidos possuem uma data, um valor total e podem conter vários Produtos. Cada produto tem um nome, uma descrição e um preço.</td>
+</tr>
+<tr class="odd">
 <td><ol style="list-style-type: lower-alpha">
 <li>Identifique as <strong>entidades</strong></li>
 </ol></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><ol start="2" style="list-style-type: lower-alpha">
 <li>Identifique os <strong>atributos</strong> de cada Entidade</li>
 </ol></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><ol start="3" style="list-style-type: lower-alpha">
 <li>Identifique os <strong>relacionamentos</strong> entre as Entidades</li>
 </ol></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><ol start="5" style="list-style-type: lower-alpha">
 <li>Faça o <strong>diagrama DEM (Diagrama Entidade Relacionamento)</strong> contendo as entidades, atributos e relacionamentos que você mapeou.</li>
 </ol></td>
@@ -1219,24 +1219,27 @@ Ex.: ItemPedido, Dependente, Parcela.</p></li>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Um Hospital registra Pacientes, cada um com nome, idade, endereço e telefone. Os pacientes podem realizar várias Consultas com Médicos. Cada médico possui um CRM, um nome e uma especialidade. Durante a consulta, o médico pode prescrever Receitas, que possuem medicação e dosagem.</td>
+<td><img src="03-aula03/media/exercicio-03.jpg" /></td>
 </tr>
 <tr class="even">
+<td>Um Hospital registra Pacientes, cada um com nome, idade, endereço e telefone. Os pacientes podem realizar várias Consultas com Médicos. Cada médico possui um CRM, um nome e uma especialidade. Durante a consulta, o médico pode prescrever Receitas, que possuem medicação e dosagem.</td>
+</tr>
+<tr class="odd">
 <td><ol style="list-style-type: lower-alpha">
 <li>Identifique as <strong>entidades</strong></li>
 </ol></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><ol start="2" style="list-style-type: lower-alpha">
 <li>Identifique os <strong>atributos</strong> de cada Entidade</li>
 </ol></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><ol start="3" style="list-style-type: lower-alpha">
 <li>Identifique os <strong>relacionamentos</strong> entre as Entidades</li>
 </ol></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><ol start="5" style="list-style-type: lower-alpha">
 <li>Faça o <strong>diagrama DEM (Diagrama Entidade Relacionamento) contendo as entidades, atributos e relacionamentos</strong> que você mapeou.</li>
 </ol></td>
@@ -1434,8 +1437,9 @@ Ex.: ItemPedido, Dependente, Parcela.</p></li>
 <h3><span class="header-section-number">3.10.2</span> 📝 Lista de Exercícios – Modelo Entidade-Relacionamento (MER)<a href="#lista-de-exerc%C3%ADcios-modelo-entidade-relacionamento-mer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="exercício-1-cliente-e-cpf-11" class="section level4 hasAnchor" number="3.10.2.1">
 <h4><span class="header-section-number">3.10.2.1</span> Exercício 1 – Cliente e CPF (1:1)<a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcio-1-cliente-e-cpf-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
-Cada <strong>Cliente</strong> possui exatamente <strong>um CPF</strong>, e cada CPF só pode estar associado a um único Cliente.<br />
+<p><img src="03-aula03/media/exercicio-01-resolver.jpg" /></p>
+<p>Considere um projeto de Banco de Dados de uma escola. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
+Cada <strong>Diretor</strong> gerencia exatamente <strong>uma Escola</strong>, e cada <strong>Escola</strong> só pode estar associada a um único <strong>Diretor</strong>. Com base nestas informações:<br />
 - Identifique entidades, atributos e relacionamento.<br />
 - Represente o MER com cardinalidade 1:1.</p>
 <p><img src="images/exercicio-01.svg" /><!-- --></p>
@@ -1443,6 +1447,7 @@ Cada <strong>Cliente</strong> possui exatamente <strong>um CPF</strong>, e cada 
 </div>
 <div id="exercício-2-cliente-e-pedidos-1n" class="section level4 hasAnchor" number="3.10.2.2">
 <h4><span class="header-section-number">3.10.2.2</span> Exercício 2 – Cliente e Pedidos (1:N)<a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcio-2-cliente-e-pedidos-1n" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="03-aula03/media/exercicio-02-resolver.jpg" /></p>
 <p>Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
 Um <strong>Cliente</strong> pode fazer <strong>vários Pedidos</strong>, mas cada Pedido pertence a apenas um Cliente.<br />
 - Liste as entidades e atributos.<br />
@@ -1453,6 +1458,7 @@ Um <strong>Cliente</strong> pode fazer <strong>vários Pedidos</strong>, mas cad
 </div>
 <div id="exercício-3-alunos-e-disciplinas-nm" class="section level4 hasAnchor" number="3.10.2.3">
 <h4><span class="header-section-number">3.10.2.3</span> Exercício 3 – Alunos e Disciplinas (N:M)<a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcio-3-alunos-e-disciplinas-nm" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="03-aula03/media/exercicio-03-resolver.jpg" /></p>
 <p>Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
 Um <strong>Aluno</strong> pode se matricular em várias <strong>Disciplinas</strong>, e cada Disciplina pode ter vários Alunos.<br />
 - Identifique entidades e atributos. - Qual entidade associativa deve ser criada? - Desenhe o DER com a entidade associativa.</p>
@@ -1461,77 +1467,78 @@ Um <strong>Aluno</strong> pode se matricular em várias <strong>Disciplinas</str
 </div>
 <div id="exercício-4-funcionário-e-dependentes-entidade-fraca" class="section level4 hasAnchor" number="3.10.2.4">
 <h4><span class="header-section-number">3.10.2.4</span> Exercício 4 – Funcionário e Dependentes (Entidade Fraca)<a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcio-4-funcion%C3%A1rio-e-dependentes-entidade-fraca" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
+<p><img src="03-aula03/media/exercicio-04-resolver.jpg" /></p>
+<p>Considere um projeto de Banco de Dados. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
 Cada <strong>Funcionário</strong> pode ter <strong>vários Dependentes</strong>. Um Dependente não existe sem um Funcionário.<br />
 - Identifique a entidade forte e a entidade fraca.<br />
 - Defina atributos e chaves.<br />
 - Monte o DER indicando a dependência existencial.</p>
 <p><img src="images/exercicio-04.svg" /><!-- --></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb20-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb20-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span>
-<span id="cb20-2"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb20-2" tabindex="-1"></a></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb20-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb20-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span></code></pre></div>
 <hr />
 </div>
 <div id="exercício-5-pedido-e-itens-de-pedido-entidade-associativa-fraca" class="section level4 hasAnchor" number="3.10.2.5">
 <h4><span class="header-section-number">3.10.2.5</span> Exercício 5 – Pedido e Itens de Pedido (Entidade Associativa + Fraca)<a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcio-5-pedido-e-itens-de-pedido-entidade-associativa-fraca" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="03-aula03/media/exercicio-05-resolver.jpg" /></p>
 <p>Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
 Um <strong>Pedido</strong> contém vários <strong>Itens</strong>, mas cada Item está sempre vinculado a apenas um Pedido.<br />
 - Qual entidade é dominante e qual é subordinada?<br />
 - Identifique atributos das duas entidades.<br />
 - Represente o DER com cardinalidade 1:N.</p>
 <p><img src="images/exercicio-05.svg" /><!-- --></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb21-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb21-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span>
-<span id="cb21-2"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb21-2" tabindex="-1"></a></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb21-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb21-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span></code></pre></div>
 <hr />
 </div>
 <div id="exercício-6-médicos-e-consultas-1n" class="section level4 hasAnchor" number="3.10.2.6">
 <h4><span class="header-section-number">3.10.2.6</span> Exercício 6 – Médicos e Consultas (1:N)<a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcio-6-m%C3%A9dicos-e-consultas-1n" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="03-aula03/media/exercicio-06-resolver.jpg" /></p>
 <p>Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
 Um <strong>Médico</strong> pode realizar várias <strong>Consultas</strong>, mas cada Consulta está associada a apenas um Médico.<br />
 - Identifique entidades e atributos.<br />
 - Desenhe o DER.<br />
 - Indique as cardinalidades.</p>
 <p><img src="images/exercicio-06.svg" /><!-- --></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb22-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb22-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span>
-<span id="cb22-2"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb22-2" tabindex="-1"></a></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb22-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb22-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span></code></pre></div>
 <hr />
 </div>
 <div id="exercício-7-professor-e-departamento-11" class="section level4 hasAnchor" number="3.10.2.7">
 <h4><span class="header-section-number">3.10.2.7</span> Exercício 7 – Professor e Departamento (1:1)<a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcio-7-professor-e-departamento-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="03-aula03/media/exercicio-07-resolver.jpg" /></p>
 <p>Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
 Cada <strong>Professor</strong> dirige apenas <strong>um Departamento</strong>, e cada Departamento tem apenas um Professor responsável.<br />
 - Identifique entidades, atributos e relacionamento.<br />
 - Defina cardinalidade 1:1 no DER.</p>
 <p><img src="images/exercicio-07.svg" /><!-- --></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb23-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb23-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span>
-<span id="cb23-2"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb23-2" tabindex="-1"></a></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb23-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb23-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span></code></pre></div>
 <hr />
 </div>
 <div id="exercício-8-livros-e-autores-nm" class="section level4 hasAnchor" number="3.10.2.8">
 <h4><span class="header-section-number">3.10.2.8</span> Exercício 8 – Livros e Autores (N:M)<a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcio-8-livros-e-autores-nm" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="03-aula03/media/exercicio-08-resolver.jpg" /></p>
 <p>Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
 Um <strong>Livro</strong> pode ter vários <strong>Autores</strong>, e cada Autor pode escrever vários Livros.<br />
 - Identifique as entidades e atributos.<br />
 - Qual entidade associativa deve ser criada?<br />
 - Monte o DER em notação conceitual.</p>
 <p><img src="images/exercicio-08.svg" /><!-- --></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb24-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb24-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span>
-<span id="cb24-2"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb24-2" tabindex="-1"></a></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb24-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb24-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span></code></pre></div>
 <hr />
 </div>
 <div id="exercício-9-biblioteca-entidades-fortes-e-fracas" class="section level4 hasAnchor" number="3.10.2.9">
 <h4><span class="header-section-number">3.10.2.9</span> Exercício 9 – Biblioteca (Entidades Fortes e Fracas)<a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcio-9-biblioteca-entidades-fortes-e-fracas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="03-aula03/media/exercicio-09-resolver.jpg" /></p>
 <p>Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
 Um <strong>Livro</strong> pode ter vários <strong>Exemplares</strong>. Um Exemplar só existe se estiver associado a um Livro.<br />
 - Identifique entidades fortes e fracas.<br />
 - Defina atributos (Livro: título, ano; Exemplar: código_exemplar, status).<br />
 - Monte o DER com a dependência existencial.</p>
 <p><img src="images/exercicio-09.svg" /><!-- --></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb25-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb25-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span>
-<span id="cb25-2"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb25-2" tabindex="-1"></a></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb25-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb25-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span></code></pre></div>
 <hr />
 </div>
 <div id="exercício-10-empresa-funcionário-e-projeto-misto-1n-e-nm" class="section level4 hasAnchor" number="3.10.2.10">
 <h4><span class="header-section-number">3.10.2.10</span> Exercício 10 – Empresa, Funcionário e Projeto (Misto 1:N e N:M)<a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcio-10-empresa-funcion%C3%A1rio-e-projeto-misto-1n-e-nm" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="03-aula03/media/exercicio-10-resolver.jpg" /></p>
 <p>Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).<br />
 - Uma <strong>Empresa</strong> possui vários <strong>Funcionários</strong>.<br />
 - Cada <strong>Funcionário</strong> pode participar de vários <strong>Projetos</strong>, e cada Projeto pode ter vários Funcionários.<br />
@@ -1539,8 +1546,7 @@ Um <strong>Livro</strong> pode ter vários <strong>Exemplares</strong>. Um Exemp
 - Determine cardinalidades corretas (Empresa–Funcionário 1:N, Funcionário–Projeto N:M).<br />
 - Crie o DER completo.</p>
 <p><img src="images/exercicio-10.svg" /><!-- --></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb26-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb26-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span>
-<span id="cb26-2"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb26-2" tabindex="-1"></a></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb26-1"><a href="modelagem-de-bancos-de-dados-parte-01.html#cb26-1" tabindex="-1"></a><span class="co">-- Coloque aqui o código SQL criar as tabelas:</span></span></code></pre></div>
 <hr />
 </div>
 <div id="tarefas-propostas-para-cada-exercício" class="section level4 hasAnchor" number="3.10.2.11">
