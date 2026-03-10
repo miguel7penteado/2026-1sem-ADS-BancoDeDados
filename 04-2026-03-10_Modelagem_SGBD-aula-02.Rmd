@@ -32,21 +32,23 @@ Grupo \ TCL         &  \quad \ Transaction \ Control \ Language  & \quad Criar \
 \end{array}
 $$
 
+## SQL e MODELAGEM
+
 ### SQL - DDL (DATA DEFINION LANGUAGE) - Construindo estruturas no Banco de Dados
 
 ![](04-aula04/media/01-SQL-DDL.jpg)
 
 #### Comandos SQL-DDL
 
-+---------------------------+---------------------------------------+
-| Comando                   | Função                                |
-+===========================+=======================================+
-| `CREATE`                  | cria objetos                          |
-+---------------------------+---------------------------------------+
-| `ALTER`                   | modifica estrutura                    |
-+---------------------------+---------------------------------------+
-| `DROP`                    | remove objetos                        |
-+---------------------------+---------------------------------------+
++-----------------------+-----------------------------------+
+| Comando               | Função                            |
++=======================+===================================+
+| `CREATE`              | cria objetos                      |
++-----------------------+-----------------------------------+
+| `ALTER`               | modifica estrutura                |
++-----------------------+-----------------------------------+
+| `DROP`                | remove objetos                    |
++-----------------------+-----------------------------------+
 
 ##### Exemplo - Criando uma tabela com comando CREATE
 
@@ -72,7 +74,7 @@ ADD email VARCHAR(100);
 DROP TABLE aluno;
 ```
 
-## 
+## SQL e TRATAMENTO DE DADOS
 
 ### SQL - DML (DATA MANIPULATION LANGUAGE) - Inserindo dados nas estruturas do Banco de Dados
 
@@ -252,6 +254,257 @@ $\pi_{\ id \rightarrow cpf, nome,nascimento}(Funcionario)$
 
 SELECT id AS cpf, nome, nascimento FROM Funcionarios;
 ```
+
+## SQL - USO AVANÇADO DE MANIPULAÇÃO DE DADOS:
+
+### Operação de Junção JOIN
+
+A Operação JOIN possui alguns refinamentos:
+
+| Tipo       | Resultado                        |
+|------------|----------------------------------|
+| INNER JOIN | apenas registros correspondentes |
+| LEFT JOIN  | todos da esquerda                |
+| RIGHT JOIN | todos da direita                 |
+| FULL JOIN  | todos de ambas                   |
+
+Para demonstra-los, vamos tomar duas Relações (tabelas) como exemplo:
+
+```{plantuml Aula-04-sql-avancado, plantuml.path="images"}
+@startchen
+
+left to right direction
+
+entity CLIENTES {
+  nome 
+  id_cliente <<key>> 
+}
+
+entity PEDIDOS {
+  valor 
+  id_pedido <<key>> 
+}
+
+relationship FAZ {
+
+}
+
+
+CLIENTES      -1- FAZ
+FAZ           -N- PEDIDOS
+
+@endchen
+```
+
+##### Tabela CLIENTES
+
+| id_cliente | nome   |
+|------------|--------|
+| 1          | Ana    |
+| 2          | Carlos |
+| 3          | Maria  |
+
+##### Tabela PEDIDOS
+
++--------------+--------------+---------------------------------+
+| id_pedido    | id_cliente   | valor                           |
++==============+==============+=================================+
+| 101          | 1            | 200                             |
++--------------+--------------+---------------------------------+
+| 102          | 1            | 150                             |
++--------------+--------------+---------------------------------+
+| 103          | 2            | 300                             |
++--------------+--------------+---------------------------------+
+
+#### JUNÇÃO SIMPLES (JOIN)
+
+O **JOIN** combina dados de duas ou mais tabelas. A junção é baseada em uma **condição de relacionamento**.
+
+``` sql
+SELECT colunas
+FROM tabela1
+JOIN tabela2
+ON condição;
+```
+
+#### JUNÇÃO INTERNA (INNER JOIN)
+
+O **INNER JOIN** retorna apenas registros que possuem correspondência nas duas tabelas.
+
+``` sql
+SELECT cliente.nome, pedido.valor
+FROM cliente
+INNER JOIN pedido
+ON cliente.id_cliente = pedido.id_cliente;
+```
+
+Saída:
+
+| nome   | valor |
+|--------|-------|
+| Ana    | 200   |
+| Ana    | 150   |
+| Carlos | 300   |
+
+#### JUNÇÃO A ESQUERDA (LEFT JOIN)
+
+O **LEFT JOIN** retorna todos os registros da tabela da esquerda. Mesmo que não exista correspondência na outra tabela.
+
+``` sql
+SELECT cliente.nome, pedido.valor
+FROM cliente
+LEFT JOIN pedido
+ON cliente.id_cliente = pedido.id_cliente;
+```
+
+Saída:
+
+| nome   | valor |
+|--------|-------|
+| Ana    | 200   |
+| Ana    | 150   |
+| Carlos | 300   |
+| Maria  | NULL  |
+
+#### JUNÇÃO A DIREITA (RIGHT JOIN)
+
+O **RIGHT JOIN** retorna todos os registros da tabela da direita.
+
+``` sql
+SELECT cliente.nome, pedido.valor
+FROM cliente
+RIGHT JOIN pedido
+ON cliente.id_cliente = pedido.id_cliente;
+```
+
+Saída:
+
+| nome   | valor |
+|--------|-------|
+| Ana    | 200   |
+| Ana    | 150   |
+| Carlos | 300   |
+
+#### JUNÇÃO COMPLETO (FULL JOIN)
+
+Retorna **todos os registros das duas tabelas (esquerda e direita)**.
+
+``` sql
+SELECT cliente.nome, pedido.valor
+FROM cliente
+FULL JOIN pedido
+ON cliente.id_cliente = pedido.id_cliente;
+```
+
+Saída:
+
+| nome   | valor |
+|--------|-------|
+| Ana    | 200   |
+| Ana    | 150   |
+| Carlos | 300   |
+| Maria  | NULL  |
+
+### Operação de AGRUPAMENTO de dados GROUP BY
+
+Considere ainda as RELAÇÕES (tabelas) do exemplo anterior, CLIENTES e PEDIDOS:
+
+Para demonstra-los, vamos tomar duas Relações (tabelas) como exemplo:
+
+```{plantuml Aula-04-sql-avancado-2, plantuml.path="images"}
+@startchen
+
+left to right direction
+
+entity CLIENTES {
+  nome 
+  id_cliente <<key>> 
+}
+
+entity PEDIDOS {
+  valor 
+  id_pedido <<key>> 
+}
+
+relationship FAZ {
+
+}
+
+
+CLIENTES      -1- FAZ
+FAZ           -N- PEDIDOS
+
+@endchen
+```
+
+##### Tabela CLIENTES
+
+| id_cliente | nome   |
+|------------|--------|
+| 1          | Ana    |
+| 2          | Carlos |
+| 3          | Maria  |
+
+##### Tabela PEDIDOS
+
++--------------+--------------+---------------------------------+
+| id_pedido    | id_cliente   | valor                           |
++==============+==============+=================================+
+| 101          | 1            | 200                             |
++--------------+--------------+---------------------------------+
+| 102          | 1            | 150                             |
++--------------+--------------+---------------------------------+
+| 103          | 2            | 300                             |
++--------------+--------------+---------------------------------+
+
+O comando **GROUP BY** é usado para **agrupar registros**.
+
+``` sql
+SELECT id_cliente, COUNT(*) AS total_pedidos
+FROM pedido
+GROUP BY id_cliente;
+```
+
+Normalmente é utilizado junto com **funções de agregação**.
+
+| Função  | Descrição        |
+|---------|------------------|
+| COUNT() | contar registros |
+| SUM()   | soma             |
+| AVG()   | média            |
+| MAX()   | maior valor      |
+| MIN()   | menor valor      |
+
+Saída:
+
+| id_cliente | total_pedidos |
+|------------|---------------|
+| 1          | 2             |
+| 2          | 1             |
+
+### Operação de filtragem de grupos de dados HAVING
+
+O comando **HAVING** é usado para **filtrar grupos**. Diferença importante com o **WHERE**:
+
+| Comando | Atua sobre |
+|---------|------------|
+| WHERE   | linhas     |
+| HAVING  | grupos     |
+
+Exemplo 1 - Considerando as tabelas do pedido anterior, selecione os clientes com **mais de um pedido:**
+
+``` sql
+SELECT id_cliente, COUNT(*) AS total
+FROM pedido
+GROUP BY id_cliente
+HAVING COUNT(*) > 1;
+```
+
+Saída:
+
+| id_cliente | total_pedidos |
+|------------|---------------|
+| 1          | 2             |
 
 ## REFRÊNCIAS:
 
