@@ -291,9 +291,9 @@ A ferramenta que irá criar as estruturas Físicas (tabelas, colunas, chaves) de
 
 A linguagem SQL foi criada nos laboratórios da IBM em 1974, como interface de manipulação ao Bando de Dados Relacional System-R , atualmente denominado IBM DB2. Os criadores foram engenheiros de sistemas que sucederam o professor Edgard Frank Codd no projeto de Banco de Dados Relacional: **Donald Chamberlain** e **Raymond Boyce**.
 
-|  |  |
-|----|----|
++---------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
 | ![Donald Chamberlain - Criador da linguagem SQL nos laboratórios da IBM](03-aula03/media/04-Donald_Chamberlain.jpg) | ![Raymond Boyce - Criador da linguagem SQL nos laboratórios da IBM](03-aula03/media/04-Raymond_Boyce.jpg){width="240"} |
++---------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
 
 A lingauem SQL é a ponte com o mundo exterior para um Sistema de Gerenciamento de Banco de Dados (SGBD). Os conjunto de comandos da linguagem SQL são divididos em 3 grandes grupos:
 
@@ -512,12 +512,15 @@ Vamos agora converter a representação matemática para uma representação ló
 
 O modelo Entidade Relacionamento consistem em traduzir elementos morfológicos da gramática da língua portuguesa em um texto para um modelo de Banco de dados utilizando a com a seguinte regra de montagem:
 
-|  |  |  |  |
-|----|----|----|----|
++-------------------------------+--------------------------------------+----------------------------------+---------------------------------------------+
 | Classe morfológica da palavra | CORRESPONDÊNCIA NO MODELO MATEMÁTICO | CORRESPONDÊNCIA NO MODELO LÓGICO | CORRESPONDÊNCIA NO MODELO FÍSICO-RELACIONAL |
-| `Substantivos` | `CONJUNTOS` | `ENTIDADES` | `TABELAS` |
-| **`Adjetivos`** | N/A | **`ATRIBUTO`** | **`COLUNAS`** |
-| **`Verbos`** | Idéia de "funções y=f(x) " | **`RELACIONAMENTOS`** | **`CHAVE ESTRANGEIRA`** |
++-------------------------------+--------------------------------------+----------------------------------+---------------------------------------------+
+| `Substantivos`                | `CONJUNTOS`                          | `ENTIDADES`                      | `TABELAS`                                   |
++-------------------------------+--------------------------------------+----------------------------------+---------------------------------------------+
+| **`Adjetivos`**               | N/A                                  | **`ATRIBUTO`**                   | **`COLUNAS`**                               |
++-------------------------------+--------------------------------------+----------------------------------+---------------------------------------------+
+| **`Verbos`**                  | Idéia de "funções y=f(x) "           | **`RELACIONAMENTOS`**            | **`CHAVE ESTRANGEIRA`**                     |
++-------------------------------+--------------------------------------+----------------------------------+---------------------------------------------+
 
 Tomando como exemplo a revenda de carros:
 

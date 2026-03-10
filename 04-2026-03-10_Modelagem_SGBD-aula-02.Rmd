@@ -4,6 +4,259 @@ output:
     highlight: tango
     theme: cerulean
     fig_caption: true
+    css: style.css
 ---
 
 # Modelagem de Bancos de Dados parte 02
+
+## Linguagem S.Q.L.
+
+A linguagem SQL foi criada nos laboratórios da IBM em 1974, como interface de manipulação ao Bando de Dados Relacional System-R , atualmente denominado IBM DB2. Os criadores foram engenheiros de sistemas que sucederam o professor Edgard Frank Codd no projeto de Banco de Dados Relacional: **Donald Chamberlain** e **Raymond Boyce**.
+
++---------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+| ![Donald Chamberlain - Criador da linguagem SQL nos laboratórios da IBM](04-aula04/media/04-Donald_Chamberlain.jpg) | ![Raymond Boyce - Criador da linguagem SQL nos laboratórios da IBM](04-aula04/media/04-Raymond_Boyce.jpg){width="238"} |
++---------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+
+A lingauem SQL é a ponte com o mundo exterior para um Sistema de Gerenciamento de Banco de Dados (SGBD). Os conjunto de comandos da linguagem SQL são divididos em 3 grandes grupos:
+
+$$
+\begin{array}{c| c | c}
+\textbf{GRUPO}    & \textbf{ Comandos}   & \textbf{Finalidade} \\ 
+\hline 
+Grupo \ DDL         &  \quad \ Data \ Definion \ Language        & \quad Criar \ estruturas \ de \ dados \\
+Grupo \ DML         &  \quad \ Data \ Manipulation \ Language    & \quad Manipular \ dados \ armazenados \\
+Grupo \ DCL         &  \quad \ Data \ Control \ Language         & \quad Criar \ Regras \ para \ os \ dados \\
+Grupo \ TCL         &  \quad \ Transaction \ Control \ Language  & \quad Criar \ Transações \ para \ os \ dados \\
+\hline
+\textbf{Subconjunto SQL }    & \textbf{ Significado }    & \textbf{ Conjunto Completo }
+\end{array}
+$$
+
+### SQL - DDL (DATA DEFINION LANGUAGE) - Construindo estruturas no Banco de Dados
+
+![](04-aula04/media/01-SQL-DDL.jpg)
+
+#### Comandos SQL-DDL
+
++---------------------------+---------------------------------------+
+| Comando                   | Função                                |
++===========================+=======================================+
+| `CREATE`                  | cria objetos                          |
++---------------------------+---------------------------------------+
+| `ALTER`                   | modifica estrutura                    |
++---------------------------+---------------------------------------+
+| `DROP`                    | remove objetos                        |
++---------------------------+---------------------------------------+
+
+##### Exemplo - Criando uma tabela com comando CREATE
+
+``` sql
+CREATE TABLE aluno (
+    id INTEGER PRIMARY KEY,
+    nome VARCHAR(100),
+    idade INTEGER,
+    curso VARCHAR(50)
+);
+```
+
+##### Exemplo - Criando uma tabela com comando ALTER
+
+``` sql
+ALTER TABLE aluno
+ADD email VARCHAR(100);
+```
+
+##### Exemplo - Criando uma tabela com comando DROP
+
+``` sql
+DROP TABLE aluno;
+```
+
+## 
+
+### SQL - DML (DATA MANIPULATION LANGUAGE) - Inserindo dados nas estruturas do Banco de Dados
+
+A **DML** é responsável por **manipular os dados armazenados nas tabelas**. Também é responsável por implementar as operações de Algebra Relacional propostas por Codd que vão operacionalizar os dados armazenados:
+
+| Comando  | Função          |
+|----------|-----------------|
+| `INSERT` | inserir dados   |
+| `UPDATE` | atualizar dados |
+| `DELETE` | remover dados   |
+
+##### Exemplo - Inseriondo dados em uma tabela
+
+``` sql
+INSERT INTO aluno (id, nome, idade, curso) VALUES (1, 'Ana', 21, 'Computação');
+```
+
+##### Exemplo - Atualizando dados em uma tabela com UPDATE
+
+``` sql
+UPDATE aluno SET idade = 22 WHERE id = 1;
+```
+
+##### Exemplo - Apagando dados com o comando DELETE
+
+``` sql
+DELETE FROM aluno WHERE id = 1;
+```
+
+## Algebra Relacional
+
+Segundo Abraham Silberschatz no livro *Database System Concepts*:
+
+> > Álgebra Relacional é uma coleção de operações que recebem uma ou duas relações como entrada e produzem uma nova relação como resultado.
+
+São basicamente 8 operações herdadas da Teoria do Conjuntos:
+
++--------------------+---------------------+-------------------------------------------------+
+| Álgebra Relacional | Significado         | SQL equivalente                                 |
++====================+=====================+=================================================+
+| `σ condição (R)`   | seleção de linhas   | `SELECT * FROM R WHERE condição`                |
++--------------------+---------------------+-------------------------------------------------+
+| `π atributos (R)`  | projeção de colunas | `SELECT atributos FROM R`                       |
++--------------------+---------------------+-------------------------------------------------+
+| `R ∪ S`            | união               | `SELECT ... FROM R UNION SELECT ... FROM S`     |
++--------------------+---------------------+-------------------------------------------------+
+| `R − S`            | diferença           | `SELECT ... FROM R EXCEPT SELECT ... FROM S`    |
++--------------------+---------------------+-------------------------------------------------+
+| `R ∩ S`            | interseção          | `SELECT ... FROM R INTERSECT SELECT ... FROM S` |
++--------------------+---------------------+-------------------------------------------------+
+| `R × S`            | produto cartesiano  | `SELECT * FROM R CROSS JOIN S`                  |
++--------------------+---------------------+-------------------------------------------------+
+| `R ⋈ condição S`   | junção              | `SELECT * FROM R JOIN S ON condição`            |
++--------------------+---------------------+-------------------------------------------------+
+| `ρ novo_nome (R)`  | renomeação          | `FROM R AS novo_nome`                           |
++--------------------+---------------------+-------------------------------------------------+
+
+### Operação `SELEÇÃO` ( letra sigma σ )
+
+A `*SELEÇÃO*` filtra linhas da tabela de acordo com uma condição lógica. Ela não altera as colunas, apenas escolhe quais tuplas permanecem na relação. Equivale a um filtro de linhas.
+
+$\sigma_{salario > 3000}(Funcionario)$
+
+Exemplo 1 -
+
+``` sql
+SELECT * FROM Funcionarios WHERE salario > 3000;
+```
+
+### Operação `PROJEÇÃO` ( letra PI π )
+
+A `PROJEÇÃO` seleciona colunas da tabela. Ela remove atributos que não são desejados. Equivale a um filtro de colunas.
+
+Exemplo 2 -
+
+$\pi_{nome, salario}(Funcionario)$
+
+``` sql
+SELECT nome, salario FROM Funcionario;
+```
+
+### Operação `UNIÃO` ( ∪ )
+
+A `*UNIÃO*` combina as tuplas de duas relações. Para isso, as relações precisam ser compatíveis, ou seja:
+
+-   A)mesmo número de atributos;
+-   B)mesmos domínios (tipos) de dados;
+
+\$ R \cup S \$
+
+Exemplo 3 -
+
+``` sql
+SELECT coluna1, coluna2 FROM R
+UNION
+SELECT coluna1, coluna2 FROM S;
+```
+
+### Operação `DIFERENÇA` ( - )
+
+A `*DIFERENÇA*` entre duas relações R e S retorna as tuplas (linhas) que estão em uma relação mas não estão na outra.
+
+$R - S$
+
+Exemplo 4 -
+
+``` sql
+SELECT coluna1, coluna2 FROM R
+EXCEPT
+SELECT coluna1, coluna2 FROM S;
+```
+
+### Operação `INTERSECÇÃO` ( ∩ )
+
+A `*INTERSECÇÃO*` entre duas relações R e S retorna apenas as tuplas que aparecem nas duas relações ao mesmo tempo.
+
+$R \cap S$
+
+Exemplo 5 -
+
+``` sql
+SELECT coluna1, coluna2 FROM R
+INTERSECT
+SELECT coluna1, coluna2 FROM S;
+```
+
+### Operação `PRODUTO CARTESIANO` ( × )
+
+O `*PRODUTO CARTESIANO*` entre duas relações R e S combina cada tupla de uma relação com todas as tuplas de outra relação.
+
+Exemplo 6 -
+
+$R \times S$
+
+``` sql
+  SELECT * FROM R CROSS JOIN S;
+```
+
+### Operação `JUNÇÃO NATURAL` ( ⋈ )
+
+A `*JUNÇÃO NATURAL*` combina duas relações com base em uma condição entre atributos de ambas;
+
+$Funcionario \bowtie_{Funcionarios.depto\_id = Departamentos.id} Departamento$
+
+Exemplo 7 -
+
+``` sql
+
+SELECT * FROM 
+    Funcionarios
+  JOIN 
+    Departamentos
+  ON 
+    Funcionarios.depto_id = Departamentos.id;
+```
+
+### Operação `RENOMEAÇÃO` (letra rô ρ)
+
+A `*RENOMEAÇÃO*` permite renomear uma relação ou atributos.
+
+#### renomeação de tabela
+
+$\rho_{F}(Funcionario)$
+
+Exemplo 8 -
+
+``` sql
+
+SELECT * FROM Funcionarios AS F;
+```
+
+#### renomeação de atributo
+
+$\pi_{\ id \rightarrow cpf, nome,nascimento}(Funcionario)$
+
+``` sql
+
+SELECT id AS cpf, nome, nascimento FROM Funcionarios;
+```
+
+## REFRÊNCIAS:
+
+SILBERSCHATZ, Abraham; KORTH, Henry F.; SUDARSHAN, S. Database System Concepts. 7. ed. New York: McGraw-Hill Education, 2019.
+
+```{r aula-04, eval=FALSE, include=FALSE}
+rmarkdown::render("04-2026-03-10_Modelagem_SGBD-aula-02.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
+```
