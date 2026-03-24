@@ -78,7 +78,7 @@ Criar o **`MODELO ENTIDADE RELACIONAMENTO (M.E.R.)`** - Converter SUBSTANTIVO em
 
 Criar um DIAGRAMA ENTIDADE-RELACIONAMENTO (D.E.R.) com as informações levantadas:
 
-```{plantuml exercicio01-01, plantuml.path="images"}
+```{plantuml exemplo03-01-01, plantuml.path="images"}
 @startchen
 
 entity UNIVERSIDADES {
@@ -88,7 +88,7 @@ entity UNIVERSIDADES {
 @endchen
 ```
 
-```{plantuml exercicio01-02, plantuml.path="images"}
+```{plantuml exemplo03-01-02, plantuml.path="images"}
 @startchen
 entity CURSOS {
   nome
@@ -99,7 +99,7 @@ entity CURSOS {
 @endchen
 ```
 
-```{plantuml exercicio01-03, plantuml.path="images"}
+```{plantuml exemplo03-01-03, plantuml.path="images"}
 @startchen
 entity PROFESSORES {
   cpf <<KEY>>
@@ -109,7 +109,7 @@ entity PROFESSORES {
 @endchen
 ```
 
-```{plantuml exercicio01-04, plantuml.path="images"}
+```{plantuml exemplo03-01-04, plantuml.path="images"}
 @startchen
 entity DISCIPLINAS {
   nome
@@ -125,7 +125,7 @@ Identificar os Relacionamentos:
 
 -   [universidade-`POSSUI`-curso] ; [universidade-`POSSUI`-professores]; [professor-`MINISTRA`-disciplina] ; [disciplina-`PERTENCE`-curso]
 
-```{plantuml exercicio01-05, plantuml.path="images"}
+```{plantuml exemplo03-01-05, plantuml.path="images"}
 @startchen
 
 
@@ -183,77 +183,12 @@ MINISTRA    -N- DISCIPLINAS
 @endchen
 ```
 
-#### Passo #5 - Crie o código SQL referente ao diagrama que você desenhou:
 
-``` sql
-/* =========================================================
-   Passo 1️- CRIAR TABELAS (somente colunas, sem PK nem FK)
-   ========================================================= */
-CREATE TABLE UNIVERSIDADES 
-(
-    nome            VARCHAR(255),
-    CNPJ            VARCHAR(14)
-);
-
-CREATE TABLE CURSOS 
-(
-    nome            VARCHAR(255),
-    duracao         INT,
-    coordenador     VARCHAR(255),
-    codigo_curso    INTEGER
-);
-
-CREATE TABLE PROFESSORES 
-(
-    cpf             VARCHAR(11),
-    nome            VARCHAR(255),
-    titulo          VARCHAR(255)
-);
-
-CREATE TABLE DISCIPLINAS 
-(
-    nome                VARCHAR(255),
-    codigo_disciplina   INTEGER
-);
-
-/* =========================================================
-   Passo 2- ADICIONAR CHAVES PRIMÁRIAS
-   ========================================================= */
-ALTER TABLE UNIVERSIDADES ADD PRIMARY KEY (CNPJ);
-
-ALTER TABLE CURSOS        ADD PRIMARY KEY (codigo_curso);
-
-ALTER TABLE PROFESSORES   ADD PRIMARY KEY (cpf);
-
-ALTER TABLE DISCIPLINAS   ADD PRIMARY KEY (codigo_disciplina);
-
-/* =========================================================
-   Passo 3- CRIAR COLUNAS PARA FUTURAS CHAVES ESTRANGEIRAS
-   -- Sempre no lado N de cada relacionamento
-   ========================================================= */
--- UNIVERSIDADES (1) —— (N) CURSOS  → CURSOS precisa de CNPJ
-ALTER TABLE CURSOS   ADD COLUMN CNPJ VARCHAR(14);
-
--- UNIVERSIDADES (1) —— (N) PROFESSORES → PROFESSORES precisa de CNPJ
-ALTER TABLE PROFESSORES  ADD COLUMN CNPJ VARCHAR(14);
-
--- PROFESSORES (1) —— (N) DISCIPLINAS → DISCIPLINAS precisa de cpf
-ALTER TABLE DISCIPLINAS ADD COLUMN cpf VARCHAR(11);
-
-/* =========================================================
-   Passo 4- CRIAR AS CHAVES ESTRANGEIRAS
-   ========================================================= */
-ALTER TABLE CURSOS      ADD CONSTRAINT fk_cursos_universidade      FOREIGN KEY (CNPJ) REFERENCES UNIVERSIDADES (CNPJ);
-
-ALTER TABLE PROFESSORES ADD CONSTRAINT fk_professores_universidade FOREIGN KEY (CNPJ) REFERENCES UNIVERSIDADES (CNPJ);
-
-ALTER TABLE DISCIPLINAS ADD CONSTRAINT fk_disciplinas_professor    FOREIGN KEY (cpf)  REFERENCES PROFESSORES (cpf);
-```
 
 ------------------------------------------------------------------------
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Exercício 2 — Um Projeto de e-commerce                                                                                                                                                                                             |
+| Exemplo 2 — Um Projeto de e-commerce                                                                                                                                                                                             |
 +====================================================================================================================================================================================================================================+
 | ![](03-aula03/media/exercicio-02-e_commerce.jpg)                                                                                                                                                                                   |
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -316,7 +251,7 @@ Normalmente apenas as ENTIDADES levam atributos. Quando aparece um relacionament
 
 Criar um DIAGRAMA ENTIDADE-RELACIONAMENTO (D.E.R.) com as informações levantadas:
 
-```{plantuml exercicio02-01, plantuml.path="images"}
+```{plantuml exemplo03-02-01, plantuml.path="images"}
 @startchen
 
 
@@ -351,39 +286,7 @@ PEDIDOS  -N- CLIENTES
 @endchen
 ```
 
-#### Passo #5 - Crie o código SQL referente ao diagrama que você desenhou:
 
-``` sql
-
--- CRIAR AS TABELAS
-
-CREATE TABLE Cliente 
-(
-    id_cliente INT,
-    nome VARCHAR(255)
-);
-
-CREATE TABLE CPF 
-(
-    numero_cpf CHAR(11)
-);
-
--- ADICIONAR AS CHAVES PRIMÁRIAS
-
-ALTER TABLE Cliente ADD PRIMARY KEY (id_cliente);
-
-ALTER TABLE CPF ADD PRIMARY KEY (numero_cpf);
-
-
--- O relacionamento é 1:1. Podemos escolher um dos lados para armazenar a chave.
--- Aqui vamos seguir o diagrama, colocando a chave estrangeira de CPF em Cliente.
-
-ALTER TABLE Cliente ADD COLUMN numero_cpf CHAR(11);
-
--- CRIAR AS CHAVES ESTRANGEIRAS
-
-ALTER TABLE Cliente ADD CONSTRAINT fk_cliente_cpf FOREIGN KEY (numero_cpf) REFERENCES CPF (numero_cpf);
-```
 
 ------------------------------------------------------------------------
 
@@ -457,7 +360,7 @@ Criar o **`MODELO ENTIDADE RELACIONAMENTO (M.E.R.)`** - Converter SUBSTANTIVO em
 
 Criar um DIAGRAMA ENTIDADE-RELACIONAMENTO (D.E.R.) com as informações levantadas:
 
-```{plantuml exercicio03-01, plantuml.path="images"}
+```{plantuml exemplo03-03-01, plantuml.path="images"}
 @startchen
 
 
@@ -508,114 +411,7 @@ RECEITAM  -N- PACIENTES
 @endchen
 ```
 
-#### Passo #5 - Faça o código SQL do diagrama acima
 
-``` sql
-
-/* =========================================================
-   Passo 1- TABELAS (apenas colunas, sem PK ou FK)
-   ========================================================= */
-CREATE TABLE HOSPITAIS 
-(
-    nome    VARCHAR(255),
-    cnpj    CHAR(14)
-);
-
-CREATE TABLE PACIENTES 
-(
-    nome        VARCHAR(255),
-    idade       INT,
-    endereco    VARCHAR(255),
-    telefone    VARCHAR(20),
-    cpf         CHAR(11)
-);
-
-CREATE TABLE MEDICOS 
-(
-    nome            VARCHAR(255),
-    especialidade   VARCHAR(255),
-    crm             CHAR(15)
-);
-
-/* As próximas tabelas representam os relacionamentos N:M
-   com atributos próprios (tabelas de junção) */
-CREATE TABLE REGISTRAM 
-(
-    -- sem colunas de FK por enquanto
-);
-
-CREATE TABLE CONSULTAM 
-(
-    data_consulta   DATE,
-    hora            TIME,
-    sala            VARCHAR(50)
-);
-
-CREATE TABLE RECEITAM 
-(
-    medicacao       VARCHAR(255),
-    dosagem         VARCHAR(100)
-);
-
-/* =========================================================
-   Passo 2- ADICIONAR CHAVES PRIMÁRIAS
-   ========================================================= */
-ALTER TABLE HOSPITAIS  ADD PRIMARY KEY (cnpj);
-
-ALTER TABLE PACIENTES  ADD PRIMARY KEY (cpf);
-
-ALTER TABLE MEDICOS    ADD PRIMARY KEY (crm);
-
-/* Para tabelas de relacionamento com atributos, a PK será composta
-   (as FKs a serem criadas formarão a chave primária). Faremos isso depois
-   de adicionar as colunas de FK. */
-
-/* =========================================================
-   Passo 3- CRIAR COLUNAS PARA FUTURAS CHAVES ESTRANGEIRAS
-   ========================================================= */
--- REGISTRAM: HOSPITAIS (1) —— (N) PACIENTES
-ALTER TABLE REGISTRAM ADD COLUMN cnpj CHAR(14), ADD COLUMN cpf  CHAR(11);
-
--- CONSULTAM: MEDICOS (N) —— (N) PACIENTES
-ALTER TABLE CONSULTAM ADD COLUMN crm  CHAR(15), ADD COLUMN cpf  CHAR(11);
-
--- RECEITAM: MEDICOS (N) —— (N) PACIENTES
-ALTER TABLE RECEITAM  ADD COLUMN crm  CHAR(15), ADD COLUMN cpf  CHAR(11);
-
-/* =========================================================
-   Passo 4- CRIAR CHAVES ESTRANGEIRAS
-   ========================================================= */
-ALTER TABLE REGISTRAM
-    ADD CONSTRAINT fk_registram_hospitais
-        FOREIGN KEY (cnpj)
-        REFERENCES HOSPITAIS (cnpj),
-    ADD CONSTRAINT fk_registram_pacientes
-        FOREIGN KEY (cpf)
-        REFERENCES PACIENTES (cpf);
-
-ALTER TABLE CONSULTAM
-    ADD CONSTRAINT fk_consultam_medicos
-        FOREIGN KEY (crm)
-        REFERENCES MEDICOS (crm),
-    ADD CONSTRAINT fk_consultam_pacientes
-        FOREIGN KEY (cpf)
-        REFERENCES PACIENTES (cpf);
-
-ALTER TABLE RECEITAM
-    ADD CONSTRAINT fk_receitam_medicos
-        FOREIGN KEY (crm)
-        REFERENCES MEDICOS (crm),
-    ADD CONSTRAINT fk_receitam_pacientes
-        FOREIGN KEY (cpf)
-        REFERENCES PACIENTES (cpf);
-
-/* Definir chaves primárias compostas para tabelas de relacionamento */
-ALTER TABLE REGISTRAM ADD PRIMARY KEY (cnpj, cpf);
-
-ALTER TABLE CONSULTAM ADD PRIMARY KEY (crm, cpf, data_consulta, hora);
-
-ALTER TABLE RECEITAM  ADD PRIMARY KEY (crm, cpf, medicacao);
-```
 
 ------------------------------------------------------------------------
 
@@ -632,7 +428,7 @@ Cada **Diretor** gerencia exatamente **uma Escola**, e cada **Escola** só pode 
 - Identifique entidades, atributos e relacionamento.\
 - Represente o MER com cardinalidade 1:1.
 
-```{plantuml exercicio-01, plantuml.path="images"}
+```{plantuml exercicios03-01, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -668,7 +464,7 @@ Um **Cliente** pode fazer **vários Pedidos**, mas cada Pedido pertence a apenas
 - Defina o relacionamento e a cardinalidade.\
 - Monte o DER.
 
-```{plantuml exercicio-02, plantuml.path="images"}
+```{plantuml exercicios03-02, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -702,7 +498,7 @@ Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Ent
 Um **Aluno** pode se matricular em várias **Disciplinas**, e cada Disciplina pode ter vários Alunos.\
 - Identifique entidades e atributos. - Qual entidade associativa deve ser criada? - Desenhe o DER com a entidade associativa.
 
-```{plantuml exercicio-03, plantuml.path="images"}
+```{plantuml exercicios03-03, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -738,7 +534,7 @@ Cada **Funcionário** pode ter **vários Dependentes**. Um Dependente não exist
 - Defina atributos e chaves.\
 - Monte o DER indicando a dependência existencial.
 
-```{plantuml exercicio-04, plantuml.path="images"}
+```{plantuml exercicios03-04, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -763,9 +559,6 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-``` sql
--- Coloque aqui o código SQL criar as tabelas:
-```
 
 ------------------------------------------------------------------------
 
@@ -779,7 +572,7 @@ Um **Pedido** contém vários **Itens**, mas cada Item está sempre vinculado a 
 - Identifique atributos das duas entidades.\
 - Represente o DER com cardinalidade 1:N.
 
-```{plantuml exercicio-05, plantuml.path="images"}
+```{plantuml exercicios03-05, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -804,9 +597,6 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-``` sql
--- Coloque aqui o código SQL criar as tabelas:
-```
 
 ------------------------------------------------------------------------
 
@@ -820,7 +610,7 @@ Um **Médico** pode realizar várias **Consultas**, mas cada Consulta está asso
 - Desenhe o DER.\
 - Indique as cardinalidades.
 
-```{plantuml exercicio-06, plantuml.path="images"}
+```{plantuml exercicios03-06, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -845,9 +635,6 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-``` sql
--- Coloque aqui o código SQL criar as tabelas:
-```
 
 ------------------------------------------------------------------------
 
@@ -860,7 +647,7 @@ Cada **Professor** dirige apenas **um Departamento**, e cada Departamento tem ap
 - Identifique entidades, atributos e relacionamento.\
 - Defina cardinalidade 1:1 no DER.
 
-```{plantuml exercicio-07, plantuml.path="images"}
+```{plantuml exercicios03-07, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -885,9 +672,6 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-``` sql
--- Coloque aqui o código SQL criar as tabelas:
-```
 
 ------------------------------------------------------------------------
 
@@ -901,7 +685,7 @@ Um **Livro** pode ter vários **Autores**, e cada Autor pode escrever vários Li
 - Qual entidade associativa deve ser criada?\
 - Monte o DER em notação conceitual.
 
-```{plantuml exercicio-08, plantuml.path="images"}
+```{plantuml exercicios03-08, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -926,9 +710,6 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-``` sql
--- Coloque aqui o código SQL criar as tabelas:
-```
 
 ------------------------------------------------------------------------
 
@@ -942,7 +723,7 @@ Um **Livro** pode ter vários **Exemplares**. Um Exemplar só existe se estiver 
 - Defina atributos (Livro: título, ano; Exemplar: código_exemplar, status).\
 - Monte o DER com a dependência existencial.
 
-```{plantuml exercicio-09, plantuml.path="images"}
+```{plantuml exercicios03-09, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -967,9 +748,6 @@ relacionamento1 -0- entidade2
 @endchen
 ```
 
-``` sql
--- Coloque aqui o código SQL criar as tabelas:
-```
 
 ------------------------------------------------------------------------
 
@@ -984,7 +762,7 @@ Considere um projeto de Banco de Dados.Faça a modelagem utilizando o Modelo Ent
 - Determine cardinalidades corretas (Empresa–Funcionário 1:N, Funcionário–Projeto N:M).\
 - Crie o DER completo.
 
-```{plantuml exercicio-10, plantuml.path="images"}
+```{plantuml exercicios03-10, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -1022,9 +800,6 @@ relacionamento2 -0- entidade3
 @endchen
 ```
 
-``` sql
--- Coloque aqui o código SQL criar as tabelas:
-```
 
 ------------------------------------------------------------------------
 
@@ -1042,7 +817,7 @@ relacionamento2 -0- entidade3
 
 #### Exercício #1
 
-```{plantuml exercicio-01-resposta, plantuml.path="images"}
+```{plantuml exercicios03-01-resposta, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -1065,50 +840,13 @@ GERENCIA   -1- ESCOLAS
 @endchen
 ```
 
-##### Exercício 1 - SQL referênte ao diagrama anterior
 
-``` sql
-/* =========================================================
-   TRANSFORMA AS ENTIDADES EM TABELAS E ATRIBUTOS EM COLUNAS
-   ========================================================= */
-CREATE TABLE CLIENTES 
-(
-    id_cliente INTEGER,
-    nome VARCHAR(255)
-);
-
-CREATE TABLE CPFS
-(
-    numero_cpf CHAR(11)
-);
-
-/* =========================================================
-   Definir chaves primárias
-   ========================================================= */
-ALTER TABLE CLIENTES ADD PRIMARY KEY (id_cliente);
-
-ALTER TABLE CPFS ADD PRIMARY KEY (numero_cpf);
-
-/* =========================================================
-    Criar coluna para futura chave estrangeira
-   ========================================================= */
--- Relacionamento 1:1 (um cliente possui um CPF)
--- Vamos colocar a FK na tabela CLIENTES
-
-ALTER TABLE CLIENTES   ADD COLUMN numero_cpf CHAR(11);
-
-/* =========================================================
-    Criar chave estrangeira
-   ========================================================= */
-
-ALTER TABLE CLIENTES ADD CONSTRAINT fk_clientes_cpfs FOREIGN KEY (numero_cpf) EFERENCES CPFS (numero_cpf);
-```
 
 ------------------------------------------------------------------------
 
 #### Exercício #2
 
-```{plantuml exercicio-02-resposta, plantuml.path="images"}
+```{plantuml exercicios03-02-resposta, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -1135,50 +873,13 @@ FAZEM    -N- PEDIDOS
 
 ##### Exercício 2 - SQL referênte ao diagrama anterior
 
-``` sql
-/* =========================================================
-   Criar tabelas (sem PK ou FK)
-   ========================================================= */
-CREATE TABLE CLIENTES 
-(
-    cpf CHAR(11),
-    nome VARCHAR(255)
-);
 
-CREATE TABLE PEDIDOS 
-(
-    cod_pedido INT,
-    data DATE,
-    valor_total DECIMAL(10,2)
-);
-
-/* =========================================================
-   Definir chaves primárias
-   ========================================================= */
-
-ALTER TABLE CLIENTES  ADD PRIMARY KEY (cpf);
-
-ALTER TABLE PEDIDOS   ADD PRIMARY KEY (cod_pedido);
-
-/* =========================================================
-   Criar coluna para futura chave estrangeira
-   ========================================================= */
--- Relacionamento CLIENTES 1:N PEDIDOS 
-
-ALTER TABLE PEDIDOS ADD COLUMN cpf_cliente CHAR(11);
-
-/* =========================================================
-   Criar chave estrangeira
-   ========================================================= */
-
-ALTER TABLE PEDIDOS ADD CONSTRAINT fk_pedidos_clientes  FOREIGN KEY (cpf_cliente) REFERENCES CLIENTES (cpf);
-```
 
 ------------------------------------------------------------------------
 
 #### Exercício #3
 
-```{plantuml exercicio-03-resposta, plantuml.path="images"}
+```{plantuml exercicios03-03-resposta, plantuml.path="images"}
 @startchen
 left to right direction
 
@@ -1204,67 +905,13 @@ MATRICULA -N- DISCIPLINAS
 
 ##### Exercício 3 - SQL referênte ao diagrama anterior
 
-``` sql
-/* =========================================================
-   Criar tabelas (sem PK ou FK)
-   ========================================================= */
 
-CREATE TABLE ALUNOS 
-(
-    id_aluno INT,
-    nome VARCHAR(255)
-);
-
-CREATE TABLE DISCIPLINAS 
-(
-    id_disciplina INT,
-    nome VARCHAR(255)
-);
-
-/* Tabela para o relacionamento N:M */
-
-CREATE TABLE MATRICULA 
-(
-    semestre VARCHAR(10)
-);
-
-/* =========================================================
-   Definir chaves primárias
-   ========================================================= */
-
-ALTER TABLE ALUNOS  ADD PRIMARY KEY (id_aluno);
-
-ALTER TABLE DISCIPLINAS ADD PRIMARY KEY (id_disciplina);
-
-/* A PK da tabela MATRICULA será composta pelas FKs */
--- Definiremos depois de criar as colunas de FK
-
-/* =========================================================
-   Criar colunas para futuras chaves estrangeiras (lado N)
-   ========================================================= */
-
-ALTER TABLE MATRICULA ADD COLUMN id_aluno INT, ADD COLUMN id_disciplina INT;
-
-/* =========================================================
-   Criar chaves estrangeiras
-   ========================================================= */
-
-ALTER TABLE MATRICULA ADD CONSTRAINT fk_matricula_aluno FOREIGN KEY (id_aluno) REFERENCES ALUNOS (id_aluno);
-
-ALTER TABLE MATRICULA ADD CONSTRAINT fk_matricula_disciplina FOREIGN KEY (id_disciplina) REFERENCES DISCIPLINAS (id_disciplina);
-
-/* =========================================================
-   Definir chave primária composta da tabela MATRICULA
-   ========================================================= */
-
-ALTER TABLE MATRICULA ADD PRIMARY KEY (id_aluno, id_disciplina);
-```
 
 ------------------------------------------------------------------------
 
 #### Exercício #4
 
-```{plantuml exercicio-04-resposta, plantuml.path="images"}
+```{plantuml exercicios03-04-resposta, plantuml.path="images"}
 @startchen
 
 entity FUNCIONARIOS {
@@ -1292,54 +939,13 @@ POSSUI      -N- DEPENDENTES
 
 ##### Exercício 4 - SQL referênte ao diagrama anterior
 
-``` sql
-/* =========================================================
-   Criar tabelas (sem PK ou FK)
-   ========================================================= */
-CREATE TABLE FUNCIONARIOS 
-(
-    id_funcionario INT,
-    nome VARCHAR(255),
-    cargo VARCHAR(100),
-    salario DECIMAL(10,2)
-);
 
-CREATE TABLE DEPENDENTES 
-(
-    id_dependente INT,
-    nome VARCHAR(255),
-    parentesco VARCHAR(50),
-    data_nascimento DATE
-);
-
-/* =========================================================
-   Definir chaves primárias
-   ========================================================= */
-
-ALTER TABLE FUNCIONARIOS ADD PRIMARY KEY (id_funcionario);
-
-ALTER TABLE DEPENDENTES ADD PRIMARY KEY (id_dependente);
-
-/* =========================================================
-   Criar coluna para futura chave estrangeira
-   ========================================================= */
-
--- Relacionamento FUNCIONARIOS 1:N DEPENDENTES
-
-ALTER TABLE DEPENDENTES ADD COLUMN id_funcionario INT;
-
-/* =========================================================
-   Criar chave estrangeira
-   ========================================================= */
-
-ALTER TABLE DEPENDENTES ADD CONSTRAINT fk_dependentes_funcionarios FOREIGN KEY (id_funcionario) REFERENCES FUNCIONARIOS  (id_funcionario);
-```
 
 ------------------------------------------------------------------------
 
 #### Exercício #5
 
-```{plantuml exercicio-05-resposta, plantuml.path="images"}
+```{plantuml exercicios03-05-resposta, plantuml.path="images"}
 @startchen
 
 entity PEDIDOS {
@@ -1367,53 +973,12 @@ CONTEM  -N- ITENS
 
 ##### Exercício 5 - SQL referênte ao diagrama anterior
 
-``` sql
-/* =========================================================
-   Criar tabelas (sem PK ou FK)
-   ========================================================= */
-CREATE TABLE PEDIDOS 
-(
-    id_pedido INT,
-    data_pedido DATE,
-    valor_total DECIMAL(10,2),
-    status VARCHAR(50)
-);
-
-CREATE TABLE ITENS 
-(
-    id_item INT,
-    descricao VARCHAR(255),
-    quantidade INT,
-    preco_unitario DECIMAL(10,2)
-);
-
-/* =========================================================
-   Definir chaves primárias
-   ========================================================= */
-ALTER TABLE PEDIDOS ADD PRIMARY KEY (id_pedido);
-
-ALTER TABLE ITENS ADD PRIMARY KEY (id_item);
-
-/* =========================================================
-   Criar coluna para futura chave estrangeira
-   ========================================================= */
-
--- Relacionamento PEDIDOS 1:N ITENS
-
-ALTER TABLE ITENS ADD COLUMN id_pedido INT;
-
-/* =========================================================
-   Criar chave estrangeira
-   ========================================================= */
-
-ALTER TABLE ITENS ADD CONSTRAINT fk_itens_pedidos FOREIGN KEY (id_pedido) REFERENCES PEDIDOS (id_pedido);
-```
 
 ------------------------------------------------------------------------
 
 #### Exercício #6
 
-```{plantuml exercicio-06-resposta, plantuml.path="images"}
+```{plantuml exercicios03-06-resposta, plantuml.path="images"}
 @startchen
 
 entity MEDICOS {
@@ -1441,53 +1006,13 @@ REALIZA  -N- CONSULTAS
 
 ##### Exercício 6 - SQL referênte ao diagrama anterior
 
-``` sql
-/* =========================================================
-   Criar tabelas (sem PK ou FK)
-   ========================================================= */
-CREATE TABLE MEDICOS 
-(
-    id_medico INT,
-    nome VARCHAR(255),
-    especialidade VARCHAR(100),
-    crm VARCHAR(20)
-);
 
-CREATE TABLE CONSULTAS 
-(
-    id_consulta INT,
-    data_consulta DATE,
-    hora TIME,
-    observacoes VARCHAR(255)
-);
-
-/* =========================================================
-   Definir chaves primárias
-   ========================================================= */
-
-ALTER TABLE MEDICOS ADD PRIMARY KEY (id_medico);
-
-ALTER TABLE CONSULTAS ADD PRIMARY KEY (id_consulta);
-
-/* =========================================================
-   Criar coluna para futura chave estrangeira
-   ========================================================= */
--- Relacionamento MEDICOS 1:N CONSULTAS
-
-ALTER TABLE CONSULTAS ADD COLUMN id_medico INT;
-
-/* =========================================================
-   Criar chave estrangeira
-   ========================================================= */
-
-ALTER TABLE CONSULTAS ADD CONSTRAINT fk_consultas_medicos FOREIGN KEY (id_medico) REFERENCES MEDICOS (id_medico);
-```
 
 ------------------------------------------------------------------------
 
 #### Exercício #7
 
-```{plantuml exercicio-07-resposta, plantuml.path="images"}
+```{plantuml exercicios03-07-resposta, plantuml.path="images"}
 @startchen
 
 entity PROFESSORES {
@@ -1515,53 +1040,13 @@ DIRIGE       -1- DEPARTAMENTOS
 
 ##### Exercício 7 - SQL referênte ao diagrama anterior
 
-``` sql
-/* =========================================================
-   Criar tabelas (sem PK ou FK)
-   ========================================================= */
-CREATE TABLE PROFESSORES 
-(
-    id_professor INT,
-    nome VARCHAR(255),
-    titulacao VARCHAR(100),
-    email VARCHAR(255)
-);
 
-CREATE TABLE DEPARTAMENTOS 
-(
-    id_departamento INT,
-    nome VARCHAR(255),
-    localizacao VARCHAR(255),
-    telefone VARCHAR(20)
-);
-
-/* =========================================================
-   Definir chaves primárias
-   ========================================================= */
-ALTER TABLE PROFESSORES ADD PRIMARY KEY (id_professor);
-
-ALTER TABLE DEPARTAMENTOS ADD PRIMARY KEY (id_departamento);
-
-/* =========================================================
-   Criar coluna para futura chave estrangeira
-   ========================================================= */
--- Relacionamento 1:1 entre PROFESSORES e DEPARTAMENTOS
--- Aqui vamos colocar a FK em DEPARTAMENTOS, vinculando ao professor responsável
-
-ALTER TABLE DEPARTAMENTOS ADD COLUMN id_professor INT;
-
-/* =========================================================
-   Criar chave estrangeira
-   ========================================================= */
-
-ALTER TABLE DEPARTAMENTOS ADD CONSTRAINT fk_departamentos_professores FOREIGN KEY (id_professor) REFERENCES PROFESSORES (id_professor);
-```
 
 ------------------------------------------------------------------------
 
 #### Exercício #8
 
-```{plantuml exercicio-08-resposta, plantuml.path="images"}
+```{plantuml exercicios03-08-resposta, plantuml.path="images"}
 @startchen
 
 entity LIVROS {
@@ -1595,67 +1080,12 @@ ESCREVE -N- AUTORES
 
 ##### Exercício 8 - SQL referênte ao diagrama anterior
 
-``` sql
-
-/* =========================================================
-   Criar tabelas (sem PK ou FK)
-   ========================================================= */
-CREATE TABLE LIVROS 
-(
-    id_livro INT,
-    titulo VARCHAR(255),
-    ano_publicacao INT,
-    editora VARCHAR(255)
-);
-
-CREATE TABLE AUTORES 
-(
-    id_autor INT,
-    nome VARCHAR(255),
-    nacionalidade VARCHAR(100)
-);
-
-/* Tabela para relacionamento N:M com atributos */
-
-CREATE TABLE ESCREVEM 
-(
-    data_participacao DATE,
-    ordem_autoria INT
-);
-
-/* =========================================================
-   Definir chaves primárias
-   ========================================================= */
-ALTER TABLE LIVROS ADD PRIMARY KEY (id_livro);
-
-ALTER TABLE AUTORES ADD PRIMARY KEY (id_autor);
-
-/* =========================================================
-   Criar colunas para futuras chaves estrangeiras
-   ========================================================= */
-
-ALTER TABLE ESCREVEM ADD COLUMN id_livro INT, ADD COLUMN id_autor INT;
-
-/* =========================================================
-   Criar chaves estrangeiras
-   =====================================
-
-ALTER TABLE ESCREVEM ADD CONSTRAINT fk_escrevem_livros   FOREIGN KEY (id_livro) REFERENCES LIVROS (id_livro);
-
-ALTER TABLE ESCREVEM ADD CONSTRAINT fk_escrevem_autores  FOREIGN KEY (id_autor) REFERENCES AUTORES (id_autor);
-
-/* =========================================================
-   Definir chave primária composta da tabela ESCREVEM
-   ========================================================= */
-
-ALTER TABLE ESCREVEM  ADD PRIMARY KEY (id_livro, id_autor);
-```
 
 ------------------------------------------------------------------------
 
 #### Exercício #9
 
-```{plantuml exercicio-09-resposta, plantuml.path="images"}
+```{plantuml exercicios03-09-resposta, plantuml.path="images"}
 @startchen
 
 entity LIVROS {
@@ -1682,57 +1112,12 @@ POSSUI    -N- EXEMPLARES
 
 ##### Exercício 9 - SQL referênte ao diagrama anterior
 
-``` sql
-/* =========================================================
-   Criar tabelas (sem PK ou FK)
-   ========================================================= */
-
-CREATE TABLE LIVROS 
-(
-    id_livro INT,
-    titulo VARCHAR(255),
-    ano INT
-);
-
-CREATE TABLE EXEMPLARES 
-(
-    codigo_exemplar INT,
-    status VARCHAR(50)
-);
-
-/* =========================================================
-   Definir chaves primárias
-   ========================================================= */
-
-ALTER TABLE LIVROS ADD PRIMARY KEY (id_livro);
-
-/* A chave primária de EXEMPLARES será composta depois, usando FK + codigo_exemplar */
-
-/* =========================================================
-   Criar coluna para futura chave estrangeira
-   ========================================================= */
--- Relacionamento LIVROS 1:N EXEMPLARES
-
-ALTER TABLE EXEMPLARES ADD COLUMN id_livro INT;
-
-/* =========================================================
-   Criar chave estrangeira
-   ========================================================= */
-
-ALTER TABLE EXEMPLARES ADD CONSTRAINT fk_exemplares_livros FOREIGN KEY (id_livro) REFERENCES LIVROS (id_livro);
-
-/* =========================================================
-   Definir chave primária composta da tabela EXEMPLARES
-   ========================================================= */
-
-ALTER TABLE EXEMPLARES ADD PRIMARY KEY (id_livro, codigo_exemplar);
-```
 
 ------------------------------------------------------------------------
 
 #### Exercício #10
 
-```{plantuml exercicio-10-resposta, plantuml.path="images"}
+```{plantuml exercicios03-10-resposta, plantuml.path="images"}
 @startchen
 
 ' ========================= '
@@ -1796,77 +1181,10 @@ TRABALHA_EM  -N- PROJETOS
 
 ##### Exercício 10 - SQL referênte ao diagrama anterior
 
-``` sql
-/* =========================================================
-   Criar tabelas (sem PK ou FK)
-   ========================================================= */
-CREATE TABLE EMPRESAS (
-    id_empresa INT,
-    nome VARCHAR(255),
-    cnpj CHAR(14),
-    endereco VARCHAR(255)
-);
 
-CREATE TABLE FUNCIONARIOS (
-    id_funcionario INT,
-    nome VARCHAR(255),
-    cargo VARCHAR(100),
-    salario DECIMAL(10,2)
-);
-
-CREATE TABLE PROJETOS (
-    id_projeto INT,
-    nome VARCHAR(255),
-    data_inicio DATE,
-    data_fim DATE,
-    descricao VARCHAR(255)
-);
-
-CREATE TABLE PARTICIPAM (
-    data_inicio DATE,
-    data_fim DATE,
-    papel VARCHAR(100)
-);
-
-/* =========================================================
-   Definir chaves primárias
-   ========================================================= */
-ALTER TABLE EMPRESAS ADD PRIMARY KEY (id_empresa);
-
-ALTER TABLE FUNCIONARIOS ADD PRIMARY KEY (id_funcionario);
-
-ALTER TABLE PROJETOS ADD PRIMARY KEY (id_projeto);
-
-/* A tabela PARTICIPAM terá PK composta, definida depois */
-
-/* =========================================================
-   Criar colunas para futuras chaves estrangeiras
-   ========================================================= */
--- Relacionamento EMPRESAS 1:N FUNCIONARIOS
-
-ALTER TABLE FUNCIONARIOS  ADD COLUMN id_empresa INT;
-
--- Relacionamento FUNCIONARIOS N:M PROJETOS
-ALTER TABLE PARTICIPAM ADD COLUMN id_funcionario INT, ADD COLUMN id_projeto INT;
-
-/* =========================================================
-   Criar chaves estrangeiras
-   ========================================================= */
-ALTER TABLE FUNCIONARIOS ADD CONSTRAINT fk_funcionarios_empresas FOREIGN KEY (id_empresa) REFERENCES EMPRESAS (id_empresa);
-
-ALTER TABLE PARTICIPAM ADD CONSTRAINT fk_participam_funcionarios FOREIGN KEY (id_funcionario) REFERENCES FUNCIONARIOS (id_funcionario);
-
-ALTER TABLE PARTICIPAM ADD CONSTRAINT fk_participam_projetos FOREIGN KEY (id_projeto) REFERENCES PROJETOS (id_projeto);
-
-/* =========================================================
-   Definir chave primária composta da tabela PARTICIPAM
-   ========================================================= */
-
-ALTER TABLE PARTICIPAM ADD PRIMARY KEY (id_funcionario, id_projeto);
-```
 
 ------------------------------------------------------------------------
 
-```{r aula-03-exercicios, eval=FALSE, include=FALSE}
+```{r 03-Modelagem-01-exercicios-html, eval=FALSE, include=FALSE}
 rmarkdown::render("03-2026-03-03_Modelagem_SGBD-exercicio-01.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
 ```

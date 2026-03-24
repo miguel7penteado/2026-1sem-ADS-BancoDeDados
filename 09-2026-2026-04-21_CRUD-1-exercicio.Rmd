@@ -1154,3 +1154,14 @@ carregarPessoas();
 </body>
 </html>
 ```
+
+
+
+```{r 09-CRUD-01-exercício-html, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+
+rmarkdown::render("09-2026-2026-04-21_CRUD-1-exercicio.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; 
+
+utils::browseURL("docs/temporario.html")
+
+```
+

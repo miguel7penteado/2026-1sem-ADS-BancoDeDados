@@ -905,6 +905,6 @@ Vai ser a cardinalidade que irá ditar em quais tabelas criaremos chaves estrang
 
 **CODD**, E. F. **A Relational Model of Data for Large Shared Data Banks.** Communications of the ACM, New York, v. 13, n. 6, p. 377–387, 1970.
 
-```{r aula-03, eval=FALSE, include=FALSE}
+```{r 03-Modelagem-01-aula-html, eval=FALSE, include=FALSE}
 rmarkdown::render("03-2026-03-03_Modelagem_SGBD-aula-01.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
 ```

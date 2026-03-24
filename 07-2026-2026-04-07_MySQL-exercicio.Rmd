@@ -1,3 +1,11 @@
 # Banco de Dados: MySQL (MariaDB)
 #### 08/09/2025 {.unnumbered}
 #### Professor Miguél Suares {.unnumbered}
+
+```{r 07-MySQL-01-exercicio-html, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+
+rmarkdown::render("07-2026-2026-04-07_MySQL-exercicio.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; 
+
+utils::browseURL("docs/temporario.html")
+
+```

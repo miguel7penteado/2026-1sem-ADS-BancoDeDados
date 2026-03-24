@@ -97,12 +97,17 @@ Os conceitos a seguir estão no **Capítulo 5** do livro *"**Fundamentos matemá
 
 Codd queria utilizar a Matemática, mais específicamente, a teoria de conjuntos para criar um Sistema de Banco de Dados. A Matemática trataria de garantir a consistência dos dados armazenados.
 
-| Operação           | Símbolo | Descrição                                  |
-|--------------------|---------|--------------------------------------------|
-| União              | ∪       | Elementos que pertencem a A ou B           |
-| Interseção         | ∩       | Elementos comuns a A e B                   |
-| Diferença          | −       | Elementos de A que não pertencem a B       |
-| Produto Cartesiano | ×       | Conjunto de todos os pares ordenados (a,b) |
++--------------------+-------------+--------------------------------------------+
+| Operação           | Símbolo     | Descrição                                  |
++====================+=============+============================================+
+| União              | ∪           | Elementos que pertencem a A ou B           |
++--------------------+-------------+--------------------------------------------+
+| Interseção         | ∩           | Elementos comuns a A e B                   |
++--------------------+-------------+--------------------------------------------+
+| Diferença          | −           | Elementos de A que não pertencem a B       |
++--------------------+-------------+--------------------------------------------+
+| Produto Cartesiano | ×           | Conjunto de todos os pares ordenados (a,b) |
++--------------------+-------------+--------------------------------------------+
 
 Inicialmente a idéia era associar conjuntos de dados e garantir a consistência da informação. Assim nasceu o conceito de **RELAÇÃO**
 
@@ -559,9 +564,9 @@ Se (x,y) ∈ R e (y,z) ∈ R então (x,z) ∈ R
 
 Se **Teclado** (1) **é equivalente** ao **Mouse** (2) e **Mouse** (2) **é equivalente** ao **Monitor** (3), então obrigatoriamente **Teclado** (1) **é equivalente** ao **Monitor** (3), **pois todos são da categoria "Eletrônicos"**.
 
-|  |  |  |
-|----|----|----|
++-------------------------------------------+-------------------------------------------+---------------------------------------------+
 | ![](02-aula02/media/21-teclado-mouse.jpg) | ![](02-aula02/media/22-mouse-monitor.jpg) | ![](02-aula02/media/23-teclado-monitor.jpg) |
++-------------------------------------------+-------------------------------------------+---------------------------------------------+
 
 Isso garante que todos os elementos de uma categoria formem um grupo fechado e coeso.
 
@@ -800,12 +805,17 @@ São as "panelinhas" que se formam dentro do conjunto.
 
 No nosso exemplo temas as seguintes Classes de Equivalência:
 
-| Classe | Categoria | Pares Ordenados |
-|----|----|----|
-| 1 | Eletrônicos | 1\. (Teclado, Eletrônicos)<br>2. (Mouse, Eletrônicos)<br>3. (Monitor, Eletrônicos) |
-| 2 | Vestuário | 1\. (Camisa, Vestuário)<br>2. (Calça, Vestuário)<br>3. (Tênis, Vestuário) |
-| 3 | Livraria | 1\. (Livro SQL, Livraria)<br>2. (Livro Java, Livraria)<br>3. (Livro Redes, Livraria) |
-| 4 | Móveis | 1\. (Cadeira, Móveis)<br>2. (Mesa, Móveis)<br>3. (Sofá, Móveis) |
++----------------------+----------------------+--------------------------------------------------------------------------------------+
+| Classe               | Categoria            | Pares Ordenados                                                                      |
++======================+======================+======================================================================================+
+| 1                    | Eletrônicos          | 1\. (Teclado, Eletrônicos)<br>2. (Mouse, Eletrônicos)<br>3. (Monitor, Eletrônicos)   |
++----------------------+----------------------+--------------------------------------------------------------------------------------+
+| 2                    | Vestuário            | 1\. (Camisa, Vestuário)<br>2. (Calça, Vestuário)<br>3. (Tênis, Vestuário)            |
++----------------------+----------------------+--------------------------------------------------------------------------------------+
+| 3                    | Livraria             | 1\. (Livro SQL, Livraria)<br>2. (Livro Java, Livraria)<br>3. (Livro Redes, Livraria) |
++----------------------+----------------------+--------------------------------------------------------------------------------------+
+| 4                    | Móveis               | 1\. (Cadeira, Móveis)<br>2. (Mesa, Móveis)<br>3. (Sofá, Móveis)                      |
++----------------------+----------------------+--------------------------------------------------------------------------------------+
 
 Observações importantes:
 
@@ -817,13 +827,19 @@ São os atributos de uma relação (colunas de uma tabela) cujos valores determi
 
 Exemplo: Imagine a Relação (Tabela) chamada *CursoProgramacao*.
 
++----------+----------------+-----------+-----------------+--------------+------------+
 | ID_Aluno | Nome_Aluno     | Cod_Curso | Nome_Curso      | ID_Instrutor | Nota_Final |
-|----------|----------------|-----------|-----------------|--------------|------------|
++==========+================+===========+=================+==============+============+
 | 10       | Alan Turing    | SQL-01    | Banco de Dados  | 500          | 9.5        |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 20       | Ada Lovelace   | PY-02     | Python Avançado | 600          | 10.0       |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 10       | Alan Turing    | PY-02     | Python Avançado | 600          | 8.0        |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 30       | Grace Hopper   | SQL-01    | Banco de Dados  | 500          | 9.0        |
++----------+----------------+-----------+-----------------+--------------+------------+
 | 40       | Linus Torvalds | JS-03     | JavaScript      | 700          | 7.5        |
++----------+----------------+-----------+-----------------+--------------+------------+
 
 Considere as seguintes *Regras de Negócio*
 
@@ -839,9 +855,11 @@ Tendo estas informações identifique as DEPENDÊNCIAS FUNCIONAIS dos atributos 
 
 Quais são os atributos da tabela?
 
++----------+------------+-----------+------------+--------------+------------+
 | ID_Aluno | Nome_Aluno | Cod_Curso | Nome_Curso | ID_Instrutor | Nota_Final |
-|----------|------------|-----------|------------|--------------|------------|
++==========+============+===========+============+==============+============+
 |          |            |           |            |              |            |
++----------+------------+-----------+------------+--------------+------------+
 
 1)  Quais destes atributos o valor identificam unicamente o valor de outro atributo?
 
@@ -858,12 +876,17 @@ Quais são os atributos da tabela?
 
 1)  Quais destes atributos o valor identificam unicamente o valor de outro atributo?
 
-| Atributo1 | Dependência Funcional | Atributo2 | Resultado | Comentário |
-|:--:|:--:|:--:|:--:|----|
-| ID_Aluno | determina | Nome_Aluno | SIM | ID_Aluno valendo "10" determina Nome_Aluno "Alan Turing" |
-| Cod_Curso | determina | Nome_Curso | SIM | Cod_Curso valendo "SQL-01" determina Nome_Curso "Banco de Dados" |
-| Cod_Curso | determina | ID_Instrutor | SIM | Pela regra de negócio #3, Cod_Curso determina ID_Instrutor. Aqui temos um caso especial de Dependência Parcial |
-| ID_Aluno | determina | Nota_Final | NÃO | Olhe o Alan Turing (ID 10). Ele tem nota 9.5 e nota 8.0. ID_Aluno sozinho não determina a nota do aluno. |
++-------------+-----------------------+--------------+-------------+----------------------------------------------------------------------------------------------------------------+
+| Atributo1   | Dependência Funcional | Atributo2    | Resultado   | Comentário                                                                                                     |
++:===========:+:=====================:+:============:+:===========:+================================================================================================================+
+| ID_Aluno    | determina             | Nome_Aluno   | SIM         | ID_Aluno valendo "10" determina Nome_Aluno "Alan Turing"                                                       |
++-------------+-----------------------+--------------+-------------+----------------------------------------------------------------------------------------------------------------+
+| Cod_Curso   | determina             | Nome_Curso   | SIM         | Cod_Curso valendo "SQL-01" determina Nome_Curso "Banco de Dados"                                               |
++-------------+-----------------------+--------------+-------------+----------------------------------------------------------------------------------------------------------------+
+| Cod_Curso   | determina             | ID_Instrutor | SIM         | Pela regra de negócio #3, Cod_Curso determina ID_Instrutor. Aqui temos um caso especial de Dependência Parcial |
++-------------+-----------------------+--------------+-------------+----------------------------------------------------------------------------------------------------------------+
+| ID_Aluno    | determina             | Nota_Final   | NÃO         | Olhe o Alan Turing (ID 10). Ele tem nota 9.5 e nota 8.0. ID_Aluno sozinho não determina a nota do aluno.       |
++-------------+-----------------------+--------------+-------------+----------------------------------------------------------------------------------------------------------------+
 
 2)  Qual é a combinação de colunas necessária para determinar a *Nota_Final*?
 
@@ -906,10 +929,10 @@ A⁺ = {A, B, C}
 
 *GERSTING, Judith L.* Fundamentos matemáticos para a ciência da computação: matemática discreta e suas aplicações. 7. ed. Rio de Janeiro: LTC, *2017*. Tradução e revisão técnica de Valéria de Magalhães Iório. 884 p. ISBN 978-85-216-3259-7
 
-```{r impressao-01, eval=FALSE, include=FALSE}
+```{r 02-Fundamentos-01-html, eval=FALSE, include=FALSE}
 rmarkdown::render("02-2026-02-24_Fubdamentos_SGBD-aula.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
 ```
 
-```{r impressao-02, eval=FALSE, include=FALSE}
+```{r 02-Fundamentos-01-doc, eval=FALSE, include=FALSE}
 rmarkdown::render("02-2026-02-24_Fubdamentos_SGBD-aula.Rmd", output_dir="docs", output_file ="temporario.docx" , output_format = "word_document") ; utils::browseURL("docs/temporario.docx")
 ```

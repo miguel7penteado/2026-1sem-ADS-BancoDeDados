@@ -14,3 +14,1697 @@ output:
 ---
 
 ## Exercícios RESOLVIDOS
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Exercício 1 — Universidade                                                                                                                                                                                                                                                                 |
++============================================================================================================================================================================================================================================================================================+
+| ![](04-aula04/media/exercicio-01.jpg)                                                                                                                                                                                                                                                      |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Considere uma Universidade que possui vários Cursos. Cada curso tem um nome, uma duração em semestres e um coordenador. A universidade possui Professores, cada um com um nome, título e CPF. Um professor pode ministrar várias disciplinas, e cada disciplina pertence a um único curso. |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados                                                                                                                                         |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+DIAGRAMA ENTIDADE-RELACIONAMENTO (D.E.R.) com as informações levantadas:
+
+```{plantuml exemplo04-01-01, plantuml.path="images"}
+@startchen
+
+
+entity UNIVERSIDADES {
+  nome
+  CNPJ <<KEY>>
+}
+
+entity CURSOS {
+  nome
+  duracao
+  coordenador
+  codigo_curso <<KEY>>
+}
+
+
+entity PROFESSORES {
+  cpf <<key>>
+  nome
+  titulo
+}
+
+entity DISCIPLINAS {
+  nome
+  codigo_disciplina <<KEY>>
+}
+
+relationship OFERECE {
+  
+}
+
+
+relationship POSSUI {
+  
+}
+
+
+
+relationship MINISTRA {
+  
+}
+
+UNIVERSIDADES -1- OFERECE
+OFERECE       -N- CURSOS
+
+UNIVERSIDADES -1- POSSUI
+POSSUI        -N- PROFESSORES
+
+
+PROFESSORES -1- MINISTRA
+MINISTRA    -N- DISCIPLINAS
+
+
+
+@endchen
+```
+
+#### Criando o código SQL referente ao diagrama apresentado:
+
+``` sql
+/* =========================================================
+   Passo 1️- CRIAR TABELAS (somente colunas, sem PK nem FK)
+   ========================================================= */
+CREATE TABLE UNIVERSIDADES 
+(
+    nome            VARCHAR(255),
+    CNPJ            VARCHAR(14)
+);
+
+CREATE TABLE CURSOS 
+(
+    nome            VARCHAR(255),
+    duracao         INT,
+    coordenador     VARCHAR(255),
+    codigo_curso    INTEGER
+);
+
+CREATE TABLE PROFESSORES 
+(
+    cpf             VARCHAR(11),
+    nome            VARCHAR(255),
+    titulo          VARCHAR(255)
+);
+
+CREATE TABLE DISCIPLINAS 
+(
+    nome                VARCHAR(255),
+    codigo_disciplina   INTEGER
+);
+
+/* =========================================================
+   Passo 2- ADICIONAR CHAVES PRIMÁRIAS
+   ========================================================= */
+ALTER TABLE UNIVERSIDADES ADD PRIMARY KEY (CNPJ);
+
+ALTER TABLE CURSOS        ADD PRIMARY KEY (codigo_curso);
+
+ALTER TABLE PROFESSORES   ADD PRIMARY KEY (cpf);
+
+ALTER TABLE DISCIPLINAS   ADD PRIMARY KEY (codigo_disciplina);
+
+/* =========================================================
+   Passo 3- CRIAR COLUNAS PARA FUTURAS CHAVES ESTRANGEIRAS
+   -- Sempre no lado N de cada relacionamento
+   ========================================================= */
+-- UNIVERSIDADES (1) —— (N) CURSOS  → CURSOS precisa de CNPJ
+ALTER TABLE CURSOS   ADD COLUMN CNPJ VARCHAR(14);
+
+-- UNIVERSIDADES (1) —— (N) PROFESSORES → PROFESSORES precisa de CNPJ
+ALTER TABLE PROFESSORES  ADD COLUMN CNPJ VARCHAR(14);
+
+-- PROFESSORES (1) —— (N) DISCIPLINAS → DISCIPLINAS precisa de cpf
+ALTER TABLE DISCIPLINAS ADD COLUMN cpf VARCHAR(11);
+
+/* =========================================================
+   Passo 4- CRIAR AS CHAVES ESTRANGEIRAS
+   ========================================================= */
+ALTER TABLE CURSOS      ADD CONSTRAINT fk_cursos_universidade      FOREIGN KEY (CNPJ) REFERENCES UNIVERSIDADES (CNPJ);
+
+ALTER TABLE PROFESSORES ADD CONSTRAINT fk_professores_universidade FOREIGN KEY (CNPJ) REFERENCES UNIVERSIDADES (CNPJ);
+
+ALTER TABLE DISCIPLINAS ADD CONSTRAINT fk_disciplinas_professor    FOREIGN KEY (cpf)  REFERENCES PROFESSORES (cpf);
+```
+
+------------------------------------------------------------------------
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Exercício 2 — Um Projeto de e-commerce                                                                                                                                                                                             |
++====================================================================================================================================================================================================================================+
+| ![](04-aula04/media/exercicio-02-e_commerce.jpg)                                                                                                                                                                                   |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Um Cliente faz Pedidos em um sistema de e-commerce. Cada cliente tem um nome, endereço e telefone. Os pedidos possuem uma data, um valor total e podem conter vários Produtos. Cada produto tem um nome, uma descrição e um preço. |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados                                                                                 |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+DIAGRAMA ENTIDADE-RELACIONAMENTO (D.E.R.) apresentado:
+
+```{plantuml exemplo04-02-01, plantuml.path="images"}
+@startchen
+
+
+entity CLIENTES {
+  nome
+  endereco
+  telefone
+  cpf <<key>>
+}
+
+
+
+entity PRODUTOS {
+  nome
+  descricao
+  preco
+  cod_produto <<key>>
+}
+
+relationship PEDIDOS {
+  data << key >>
+  valor_total
+}
+
+
+
+PRODUTOS -N- PEDIDOS
+PEDIDOS  -N- CLIENTES
+
+
+
+@endchen
+```
+
+#### Criando o código SQL referente ao diagrama apresentado:
+
+``` sql
+
+-- CRIAR AS TABELAS
+
+CREATE TABLE Cliente 
+(
+    id_cliente INT,
+    nome VARCHAR(255)
+);
+
+CREATE TABLE CPF 
+(
+    numero_cpf CHAR(11)
+);
+
+-- ADICIONAR AS CHAVES PRIMÁRIAS
+
+ALTER TABLE Cliente ADD PRIMARY KEY (id_cliente);
+
+ALTER TABLE CPF ADD PRIMARY KEY (numero_cpf);
+
+
+-- O relacionamento é 1:1. Podemos escolher um dos lados para armazenar a chave.
+-- Aqui vamos seguir o diagrama, colocando a chave estrangeira de CPF em Cliente.
+
+ALTER TABLE Cliente ADD COLUMN numero_cpf CHAR(11);
+
+-- CRIAR AS CHAVES ESTRANGEIRAS
+
+ALTER TABLE Cliente ADD CONSTRAINT fk_cliente_cpf FOREIGN KEY (numero_cpf) REFERENCES CPF (numero_cpf);
+```
+
+------------------------------------------------------------------------
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Exercício 3 — Hospital                                                                                                                                                                                                                                                                  |
++=========================================================================================================================================================================================================================================================================================+
+| ![](04-aula04/media/exercicio-03.jpg)                                                                                                                                                                                                                                                   |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Um Hospital registra Pacientes, cada um com nome, idade, endereço e telefone. Os pacientes podem realizar várias Consultas com Médicos. Cada médico possui um CRM, um nome e uma especialidade. Durante a consulta, o médico pode prescrever Receitas, que possuem medicação e dosagem. |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Identifique as **entidades**                                                                                                                                                                                                                                                        |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+DIAGRAMA ENTIDADE-RELACIONAMENTO (D.E.R.) apresentado:
+
+```{plantuml exemplo04-03-01, plantuml.path="images"}
+@startchen
+
+
+entity HOSPITAIS {
+  nome
+  cnpj <<key>>
+}
+
+entity PACIENTES {
+  nome
+  idade
+  endereco
+  telefone
+  cpf <<key>>
+}
+
+
+entity MEDICOS {
+  nome
+  especialidade
+  crm <<key>>
+}
+
+relationship REGISTRAM {
+  
+}
+
+relationship CONSULTAM {
+  data
+  hora
+  sala
+}
+
+relationship RECEITAM {
+  medicacao
+  dosagem
+}
+
+HOSPITAIS -1- REGISTRAM
+REGISTRAM -N- PACIENTES
+
+MEDICOS   -N- CONSULTAM
+CONSULTAM -N- PACIENTES
+
+MEDICOS   -N- RECEITAM
+RECEITAM  -N- PACIENTES
+
+@endchen
+```
+
+#### Criando o código SQL referente ao diagrama apresentado:
+
+``` sql
+
+/* =========================================================
+   Passo 1- TABELAS (apenas colunas, sem PK ou FK)
+   ========================================================= */
+CREATE TABLE HOSPITAIS 
+(
+    nome    VARCHAR(255),
+    cnpj    CHAR(14)
+);
+
+CREATE TABLE PACIENTES 
+(
+    nome        VARCHAR(255),
+    idade       INT,
+    endereco    VARCHAR(255),
+    telefone    VARCHAR(20),
+    cpf         CHAR(11)
+);
+
+CREATE TABLE MEDICOS 
+(
+    nome            VARCHAR(255),
+    especialidade   VARCHAR(255),
+    crm             CHAR(15)
+);
+
+/* As próximas tabelas representam os relacionamentos N:M
+   com atributos próprios (tabelas de junção) */
+CREATE TABLE REGISTRAM 
+(
+    -- sem colunas de FK por enquanto
+);
+
+CREATE TABLE CONSULTAM 
+(
+    data_consulta   DATE,
+    hora            TIME,
+    sala            VARCHAR(50)
+);
+
+CREATE TABLE RECEITAM 
+(
+    medicacao       VARCHAR(255),
+    dosagem         VARCHAR(100)
+);
+
+/* =========================================================
+   Passo 2- ADICIONAR CHAVES PRIMÁRIAS
+   ========================================================= */
+ALTER TABLE HOSPITAIS  ADD PRIMARY KEY (cnpj);
+
+ALTER TABLE PACIENTES  ADD PRIMARY KEY (cpf);
+
+ALTER TABLE MEDICOS    ADD PRIMARY KEY (crm);
+
+/* Para tabelas de relacionamento com atributos, a PK será composta
+   (as FKs a serem criadas formarão a chave primária). Faremos isso depois
+   de adicionar as colunas de FK. */
+
+/* =========================================================
+   Passo 3- CRIAR COLUNAS PARA FUTURAS CHAVES ESTRANGEIRAS
+   ========================================================= */
+-- REGISTRAM: HOSPITAIS (1) —— (N) PACIENTES
+ALTER TABLE REGISTRAM ADD COLUMN cnpj CHAR(14), ADD COLUMN cpf  CHAR(11);
+
+-- CONSULTAM: MEDICOS (N) —— (N) PACIENTES
+ALTER TABLE CONSULTAM ADD COLUMN crm  CHAR(15), ADD COLUMN cpf  CHAR(11);
+
+-- RECEITAM: MEDICOS (N) —— (N) PACIENTES
+ALTER TABLE RECEITAM  ADD COLUMN crm  CHAR(15), ADD COLUMN cpf  CHAR(11);
+
+/* =========================================================
+   Passo 4- CRIAR CHAVES ESTRANGEIRAS
+   ========================================================= */
+ALTER TABLE REGISTRAM
+    ADD CONSTRAINT fk_registram_hospitais
+        FOREIGN KEY (cnpj)
+        REFERENCES HOSPITAIS (cnpj),
+    ADD CONSTRAINT fk_registram_pacientes
+        FOREIGN KEY (cpf)
+        REFERENCES PACIENTES (cpf);
+
+ALTER TABLE CONSULTAM
+    ADD CONSTRAINT fk_consultam_medicos
+        FOREIGN KEY (crm)
+        REFERENCES MEDICOS (crm),
+    ADD CONSTRAINT fk_consultam_pacientes
+        FOREIGN KEY (cpf)
+        REFERENCES PACIENTES (cpf);
+
+ALTER TABLE RECEITAM
+    ADD CONSTRAINT fk_receitam_medicos
+        FOREIGN KEY (crm)
+        REFERENCES MEDICOS (crm),
+    ADD CONSTRAINT fk_receitam_pacientes
+        FOREIGN KEY (cpf)
+        REFERENCES PACIENTES (cpf);
+
+/* Definir chaves primárias compostas para tabelas de relacionamento */
+ALTER TABLE REGISTRAM ADD PRIMARY KEY (cnpj, cpf);
+
+ALTER TABLE CONSULTAM ADD PRIMARY KEY (crm, cpf, data_consulta, hora);
+
+ALTER TABLE RECEITAM  ADD PRIMARY KEY (crm, cpf, medicacao);
+```
+
+------------------------------------------------------------------------
+
+### Exercícios
+
+### 📝 Lista de Exercícios – Modelo Entidade-Relacionamento (MER)
+
+#### Exercício 1 – Cliente e CPF (1:1)
+
+![](04-aula04/media/exercicio-01-resolver.jpg)
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Considere um projeto de Banco de Dados de uma escola. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```{plantuml exercicio-04-01, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity DIRETORES {
+  id_cliente <<key>>
+  nome
+}
+
+entity ESCOLAS {
+  numero_cpf
+}
+
+relationship GERENCIA {
+
+}
+
+DIRETORES -1- GERENCIA
+GERENCIA   -1- ESCOLAS
+
+@endchen
+```
+
+``` sql
+-- Coloque aqui o código SQL criar as tabelas:
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 2 – Cliente e Pedidos (1:N)
+
+![](04-aula04/media/exercicio-02-resolver.jpg)
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Considere um projeto de Banco de Dados de uma escola. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```{plantuml exercicio04-02, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity CLIENTES {
+  cpf << key >>
+  nome
+}
+
+entity PEDIDOS {
+  cod_pedido << key >>
+  data
+  valor_total
+}
+
+relationship FAZEM {
+
+}
+
+CLIENTES -1- FAZEM
+FAZEM    -N- PEDIDOS
+
+
+@endchen
+```
+
+``` sql
+-- Coloque aqui o código SQL criar as tabelas:
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 3 – Alunos e Disciplinas (N:M)
+
+![](04-aula04/media/exercicio-03-resolver.jpg)
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Considere um projeto de Banco de Dados de uma escola. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```{plantuml exercicio04-03, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity ALUNOS {
+  id_aluno << key >>
+  nome
+}
+
+entity DISCIPLINAS {
+  id_disciplina << key >>
+  nome
+}
+
+relationship MATRICULA {
+  semestre
+}
+
+ALUNOS -N- MATRICULA
+MATRICULA -N- DISCIPLINAS
+
+
+@endchen
+```
+
+``` sql
+-- Coloque aqui o código SQL criar as tabelas:
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 4 – Funcionário e Dependentes (Entidade Fraca)
+
+![](04-aula04/media/exercicio-04-resolver.jpg)
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Considere um projeto de Banco de Dados de uma escola. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```{plantuml exercicio04-04, plantuml.path="images"}
+@startchen
+
+entity FUNCIONARIOS {
+  id_funcionario <<key>>
+  nome
+  cargo
+  salario
+}
+
+entity DEPENDENTES {
+  id_dependente <<key>>
+  nome
+  parentesco
+  data_nascimento
+}
+
+relationship POSSUI {
+}
+
+FUNCIONARIOS -1- POSSUI
+POSSUI      -N- DEPENDENTES
+
+
+@endchen
+```
+
+``` sql
+-- Coloque aqui o código SQL criar as tabelas:
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 5 – Pedido e Itens de Pedido (Entidade Associativa + Fraca)
+
+![](04-aula04/media/exercicio-05-resolver.jpg)
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Considere um projeto de Banco de Dados de uma escola. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```{plantuml exercicio04-05, plantuml.path="images"}
+@startchen
+
+entity PEDIDOS {
+  id_pedido <<key>>
+  data_pedido
+  valor_total
+  status
+}
+
+entity ITENS {
+  id_item <<key>>
+  descricao
+  quantidade
+  preco_unitario
+}
+
+relationship CONTEM {
+}
+
+PEDIDOS -1- CONTEM
+CONTEM  -N- ITENS
+
+@endchen
+```
+
+``` sql
+-- Coloque aqui o código SQL criar as tabelas:
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 6 – Médicos e Consultas (1:N)
+
+![](04-aula04/media/exercicio-06-resolver.jpg)
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Considere um projeto de Banco de Dados de uma escola. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```{plantuml exercicio04-06, plantuml.path="images"}
+@startchen
+
+entity MEDICOS {
+  id_medico <<key>>
+  nome
+  especialidade
+  crm
+}
+
+entity CONSULTAS {
+  id_consulta <<key>>
+  data_consulta
+  hora
+  observacoes
+}
+
+relationship REALIZA {
+}
+
+MEDICOS  -1- REALIZA
+REALIZA  -N- CONSULTAS
+
+
+@endchen
+```
+
+``` sql
+-- Coloque aqui o código SQL criar as tabelas:
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 7 – Professor e Departamento (1:1)
+
+![](04-aula04/media/exercicio-07-resolver.jpg)
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Considere um projeto de Banco de Dados de uma escola. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```{plantuml exercicio04-07, plantuml.path="images"}
+@startchen
+
+entity PROFESSORES {
+  id_professor <<key>>
+  nome
+  titulacao
+  email
+}
+
+entity DEPARTAMENTOS {
+  id_departamento <<key>>
+  nome
+  localizacao
+  telefone
+}
+
+relationship DIRIGE {
+}
+
+PROFESSORES  -1- DIRIGE
+DIRIGE       -1- DEPARTAMENTOS
+
+
+@endchen
+```
+
+``` sql
+-- Coloque aqui o código SQL criar as tabelas:
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 8 – Livros e Autores (N:M)
+
+![](04-aula04/media/exercicio-08-resolver.jpg)
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Considere um projeto de Banco de Dados de uma escola. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```{plantuml exercicio04-08, plantuml.path="images"}
+@startchen
+
+entity LIVROS {
+  id_livro <<key>>
+  titulo
+  ano_publicacao
+  editora
+}
+
+entity AUTORES {
+  id_autor <<key>>
+  nome
+  nacionalidade
+}
+
+' Entidade associativa para o relacionamento N:M '
+
+entity ESCREVEM {
+  data_participacao
+  ordem_autoria
+}
+
+relationship ESCREVE {
+}
+
+LIVROS  -N- ESCREVE
+ESCREVE -N- AUTORES
+
+
+@endchen
+```
+
+``` sql
+-- Coloque aqui o código SQL criar as tabelas:
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 9 – Biblioteca (Entidades Fortes e Fracas)
+
+![](04-aula04/media/exercicio-09-resolver.jpg)
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Considere um projeto de Banco de Dados de uma escola. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```{plantuml exercicio04-09, plantuml.path="images"}
+@startchen
+
+entity LIVROS {
+  id_livro <<key>>
+  titulo
+  ano
+}
+
+' Entidade fraca: depende de LIVROS '
+
+entity EXEMPLARES {
+  codigo_exemplar <<partial key>>
+  status
+}
+
+relationship POSSUI {
+}
+
+LIVROS    -1- POSSUI
+POSSUI    -N- EXEMPLARES
+
+@endchen
+```
+
+``` sql
+-- Coloque aqui o código SQL criar as tabelas:
+```
+
+------------------------------------------------------------------------
+
+#### Exercício 10 – Empresa, Funcionário e Projeto (Misto 1:N e N:M)
+
+![](04-aula04/media/exercicio-10-resolver.jpg)
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Considere um projeto de Banco de Dados de uma escola. Faça a modelagem utilizando o Modelo Entidade-Relacionamento de Peter Chen (M.E.R.).         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| a)  Com base no Diagrama Entidade-Relacionamento faça o código SQL que implementa o modelo físico em um Sistema de Gerenciamento de Banco de Dados |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+```{plantuml exercicio04-10, plantuml.path="images"}
+@startchen
+
+' ========================= '
+' Entidades                 '
+' ========================= '
+
+entity EMPRESAS {
+  id_empresa <<key>>
+  nome
+  cnpj
+  endereco
+}
+
+entity FUNCIONARIOS {
+  id_funcionario <<key>>
+  nome
+  cargo
+  salario
+}
+
+entity PROJETOS {
+  id_projeto <<key>>
+  nome
+  data_inicio
+  data_fim
+  descricao
+}
+
+' =========================                            '
+' Entidade associativa para Funcionário–Projeto (N:M)  '
+' =========================                            '
+
+entity PARTICIPAM {
+  data_inicio
+  data_fim
+  papel
+}
+
+' ========================= '
+' Relacionamentos           '
+' ========================= '
+
+relationship POSSUI {
+}
+
+relationship TRABALHA_EM {
+}
+
+' ========================= '
+' Cardinalidades            '
+' ========================= '
+
+EMPRESAS    -1- POSSUI
+POSSUI      -N- FUNCIONARIOS
+
+FUNCIONARIOS -N- TRABALHA_EM
+TRABALHA_EM  -N- PROJETOS
+
+@endchen
+```
+
+``` sql
+-- Coloque aqui o código SQL criar as tabelas:
+```
+
+------------------------------------------------------------------------
+
+### Respostas dos Exercícios:
+
+#### Exercício #1
+
+```{plantuml exercicio04-01-resposta, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity DIRETORES {
+  id_cliente <<key>>
+  nome
+}
+
+entity ESCOLAS {
+  numero_cpf
+}
+
+relationship GERENCIA {
+
+}
+
+DIRETORES -1- GERENCIA
+GERENCIA   -1- ESCOLAS
+
+@endchen
+```
+
+##### Exercício 1 - SQL referênte ao diagrama anterior
+
+``` sql
+/* =========================================================
+   TRANSFORMA AS ENTIDADES EM TABELAS E ATRIBUTOS EM COLUNAS
+   ========================================================= */
+CREATE TABLE CLIENTES 
+(
+    id_cliente INTEGER,
+    nome VARCHAR(255)
+);
+
+CREATE TABLE CPFS
+(
+    numero_cpf CHAR(11)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+ALTER TABLE CLIENTES ADD PRIMARY KEY (id_cliente);
+
+ALTER TABLE CPFS ADD PRIMARY KEY (numero_cpf);
+
+/* =========================================================
+    Criar coluna para futura chave estrangeira
+   ========================================================= */
+-- Relacionamento 1:1 (um cliente possui um CPF)
+-- Vamos colocar a FK na tabela CLIENTES
+
+ALTER TABLE CLIENTES   ADD COLUMN numero_cpf CHAR(11);
+
+/* =========================================================
+    Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE CLIENTES ADD CONSTRAINT fk_clientes_cpfs FOREIGN KEY (numero_cpf) EFERENCES CPFS (numero_cpf);
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #2
+
+```{plantuml exercicio04-02-resposta, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity CLIENTES {
+  cpf << key >>
+  nome
+}
+
+entity PEDIDOS {
+  cod_pedido << key >>
+  data
+  valor_total
+}
+
+relationship FAZEM {
+
+}
+
+CLIENTES -1- FAZEM
+FAZEM    -N- PEDIDOS
+
+@endchen
+```
+
+##### Exercício 2 - SQL referênte ao diagrama anterior
+
+``` sql
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE CLIENTES 
+(
+    cpf CHAR(11),
+    nome VARCHAR(255)
+);
+
+CREATE TABLE PEDIDOS 
+(
+    cod_pedido INT,
+    data DATE,
+    valor_total DECIMAL(10,2)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+
+ALTER TABLE CLIENTES  ADD PRIMARY KEY (cpf);
+
+ALTER TABLE PEDIDOS   ADD PRIMARY KEY (cod_pedido);
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+-- Relacionamento CLIENTES 1:N PEDIDOS 
+
+ALTER TABLE PEDIDOS ADD COLUMN cpf_cliente CHAR(11);
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE PEDIDOS ADD CONSTRAINT fk_pedidos_clientes  FOREIGN KEY (cpf_cliente) REFERENCES CLIENTES (cpf);
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #3
+
+```{plantuml exercicio04-03-resposta, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity ALUNOS {
+  id_aluno << key >>
+  nome
+}
+
+entity DISCIPLINAS {
+  id_disciplina << key >>
+  nome
+}
+
+relationship MATRICULA {
+  semestre
+}
+
+ALUNOS -N- MATRICULA
+MATRICULA -N- DISCIPLINAS
+
+@endchen
+```
+
+##### Exercício 3 - SQL referênte ao diagrama anterior
+
+``` sql
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+
+CREATE TABLE ALUNOS 
+(
+    id_aluno INT,
+    nome VARCHAR(255)
+);
+
+CREATE TABLE DISCIPLINAS 
+(
+    id_disciplina INT,
+    nome VARCHAR(255)
+);
+
+/* Tabela para o relacionamento N:M */
+
+CREATE TABLE MATRICULA 
+(
+    semestre VARCHAR(10)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+
+ALTER TABLE ALUNOS  ADD PRIMARY KEY (id_aluno);
+
+ALTER TABLE DISCIPLINAS ADD PRIMARY KEY (id_disciplina);
+
+/* A PK da tabela MATRICULA será composta pelas FKs */
+-- Definiremos depois de criar as colunas de FK
+
+/* =========================================================
+   Criar colunas para futuras chaves estrangeiras (lado N)
+   ========================================================= */
+
+ALTER TABLE MATRICULA ADD COLUMN id_aluno INT, ADD COLUMN id_disciplina INT;
+
+/* =========================================================
+   Criar chaves estrangeiras
+   ========================================================= */
+
+ALTER TABLE MATRICULA ADD CONSTRAINT fk_matricula_aluno FOREIGN KEY (id_aluno) REFERENCES ALUNOS (id_aluno);
+
+ALTER TABLE MATRICULA ADD CONSTRAINT fk_matricula_disciplina FOREIGN KEY (id_disciplina) REFERENCES DISCIPLINAS (id_disciplina);
+
+/* =========================================================
+   Definir chave primária composta da tabela MATRICULA
+   ========================================================= */
+
+ALTER TABLE MATRICULA ADD PRIMARY KEY (id_aluno, id_disciplina);
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #4
+
+```{plantuml exercicio04-04-resposta, plantuml.path="images"}
+@startchen
+
+entity FUNCIONARIOS {
+  id_funcionario <<key>>
+  nome
+  cargo
+  salario
+}
+
+entity DEPENDENTES {
+  id_dependente <<key>>
+  nome
+  parentesco
+  data_nascimento
+}
+
+relationship POSSUI {
+}
+
+FUNCIONARIOS -1- POSSUI
+POSSUI      -N- DEPENDENTES
+
+@endchen
+```
+
+##### Exercício 4 - SQL referênte ao diagrama anterior
+
+``` sql
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE FUNCIONARIOS 
+(
+    id_funcionario INT,
+    nome VARCHAR(255),
+    cargo VARCHAR(100),
+    salario DECIMAL(10,2)
+);
+
+CREATE TABLE DEPENDENTES 
+(
+    id_dependente INT,
+    nome VARCHAR(255),
+    parentesco VARCHAR(50),
+    data_nascimento DATE
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+
+ALTER TABLE FUNCIONARIOS ADD PRIMARY KEY (id_funcionario);
+
+ALTER TABLE DEPENDENTES ADD PRIMARY KEY (id_dependente);
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+
+-- Relacionamento FUNCIONARIOS 1:N DEPENDENTES
+
+ALTER TABLE DEPENDENTES ADD COLUMN id_funcionario INT;
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE DEPENDENTES ADD CONSTRAINT fk_dependentes_funcionarios FOREIGN KEY (id_funcionario) REFERENCES FUNCIONARIOS  (id_funcionario);
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #5
+
+```{plantuml exercicio04-05-resposta, plantuml.path="images"}
+@startchen
+
+entity PEDIDOS {
+  id_pedido <<key>>
+  data_pedido
+  valor_total
+  status
+}
+
+entity ITENS {
+  id_item <<key>>
+  descricao
+  quantidade
+  preco_unitario
+}
+
+relationship CONTEM {
+}
+
+PEDIDOS -1- CONTEM
+CONTEM  -N- ITENS
+
+@endchen
+```
+
+##### Exercício 5 - SQL referênte ao diagrama anterior
+
+``` sql
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE PEDIDOS 
+(
+    id_pedido INT,
+    data_pedido DATE,
+    valor_total DECIMAL(10,2),
+    status VARCHAR(50)
+);
+
+CREATE TABLE ITENS 
+(
+    id_item INT,
+    descricao VARCHAR(255),
+    quantidade INT,
+    preco_unitario DECIMAL(10,2)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+ALTER TABLE PEDIDOS ADD PRIMARY KEY (id_pedido);
+
+ALTER TABLE ITENS ADD PRIMARY KEY (id_item);
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+
+-- Relacionamento PEDIDOS 1:N ITENS
+
+ALTER TABLE ITENS ADD COLUMN id_pedido INT;
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE ITENS ADD CONSTRAINT fk_itens_pedidos FOREIGN KEY (id_pedido) REFERENCES PEDIDOS (id_pedido);
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #6
+
+```{plantuml exercicio04-06-resposta, plantuml.path="images"}
+@startchen
+
+entity MEDICOS {
+  id_medico <<key>>
+  nome
+  especialidade
+  crm
+}
+
+entity CONSULTAS {
+  id_consulta <<key>>
+  data_consulta
+  hora
+  observacoes
+}
+
+relationship REALIZA {
+}
+
+MEDICOS  -1- REALIZA
+REALIZA  -N- CONSULTAS
+
+@endchen
+```
+
+##### Exercício 6 - SQL referênte ao diagrama anterior
+
+``` sql
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE MEDICOS 
+(
+    id_medico INT,
+    nome VARCHAR(255),
+    especialidade VARCHAR(100),
+    crm VARCHAR(20)
+);
+
+CREATE TABLE CONSULTAS 
+(
+    id_consulta INT,
+    data_consulta DATE,
+    hora TIME,
+    observacoes VARCHAR(255)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+
+ALTER TABLE MEDICOS ADD PRIMARY KEY (id_medico);
+
+ALTER TABLE CONSULTAS ADD PRIMARY KEY (id_consulta);
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+-- Relacionamento MEDICOS 1:N CONSULTAS
+
+ALTER TABLE CONSULTAS ADD COLUMN id_medico INT;
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE CONSULTAS ADD CONSTRAINT fk_consultas_medicos FOREIGN KEY (id_medico) REFERENCES MEDICOS (id_medico);
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #7
+
+```{plantuml exercicio04-07-resposta, plantuml.path="images"}
+@startchen
+
+entity PROFESSORES {
+  id_professor <<key>>
+  nome
+  titulacao
+  email
+}
+
+entity DEPARTAMENTOS {
+  id_departamento <<key>>
+  nome
+  localizacao
+  telefone
+}
+
+relationship DIRIGE {
+}
+
+PROFESSORES  -1- DIRIGE
+DIRIGE       -1- DEPARTAMENTOS
+
+@endchen
+```
+
+##### Exercício 7 - SQL referênte ao diagrama anterior
+
+``` sql
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE PROFESSORES 
+(
+    id_professor INT,
+    nome VARCHAR(255),
+    titulacao VARCHAR(100),
+    email VARCHAR(255)
+);
+
+CREATE TABLE DEPARTAMENTOS 
+(
+    id_departamento INT,
+    nome VARCHAR(255),
+    localizacao VARCHAR(255),
+    telefone VARCHAR(20)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+ALTER TABLE PROFESSORES ADD PRIMARY KEY (id_professor);
+
+ALTER TABLE DEPARTAMENTOS ADD PRIMARY KEY (id_departamento);
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+-- Relacionamento 1:1 entre PROFESSORES e DEPARTAMENTOS
+-- Aqui vamos colocar a FK em DEPARTAMENTOS, vinculando ao professor responsável
+
+ALTER TABLE DEPARTAMENTOS ADD COLUMN id_professor INT;
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE DEPARTAMENTOS ADD CONSTRAINT fk_departamentos_professores FOREIGN KEY (id_professor) REFERENCES PROFESSORES (id_professor);
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #8
+
+```{plantuml exercicio04-08-resposta, plantuml.path="images"}
+@startchen
+
+entity LIVROS {
+  id_livro <<key>>
+  titulo
+  ano_publicacao
+  editora
+}
+
+entity AUTORES {
+  id_autor <<key>>
+  nome
+  nacionalidade
+}
+
+' Entidade associativa para o relacionamento N:M '
+
+entity ESCREVEM {
+  data_participacao
+  ordem_autoria
+}
+
+relationship ESCREVE {
+}
+
+LIVROS  -N- ESCREVE
+ESCREVE -N- AUTORES
+
+@endchen
+```
+
+##### Exercício 8 - SQL referênte ao diagrama anterior
+
+``` sql
+
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE LIVROS 
+(
+    id_livro INT,
+    titulo VARCHAR(255),
+    ano_publicacao INT,
+    editora VARCHAR(255)
+);
+
+CREATE TABLE AUTORES 
+(
+    id_autor INT,
+    nome VARCHAR(255),
+    nacionalidade VARCHAR(100)
+);
+
+/* Tabela para relacionamento N:M com atributos */
+
+CREATE TABLE ESCREVEM 
+(
+    data_participacao DATE,
+    ordem_autoria INT
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+ALTER TABLE LIVROS ADD PRIMARY KEY (id_livro);
+
+ALTER TABLE AUTORES ADD PRIMARY KEY (id_autor);
+
+/* =========================================================
+   Criar colunas para futuras chaves estrangeiras
+   ========================================================= */
+
+ALTER TABLE ESCREVEM ADD COLUMN id_livro INT, ADD COLUMN id_autor INT;
+
+/* =========================================================
+   Criar chaves estrangeiras
+   =====================================
+
+ALTER TABLE ESCREVEM ADD CONSTRAINT fk_escrevem_livros   FOREIGN KEY (id_livro) REFERENCES LIVROS (id_livro);
+
+ALTER TABLE ESCREVEM ADD CONSTRAINT fk_escrevem_autores  FOREIGN KEY (id_autor) REFERENCES AUTORES (id_autor);
+
+/* =========================================================
+   Definir chave primária composta da tabela ESCREVEM
+   ========================================================= */
+
+ALTER TABLE ESCREVEM  ADD PRIMARY KEY (id_livro, id_autor);
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #9
+
+```{plantuml exercicio04-09-resposta, plantuml.path="images"}
+@startchen
+
+entity LIVROS {
+  id_livro <<key>>
+  titulo
+  ano
+}
+
+' Entidade fraca: depende de LIVROS '
+
+entity EXEMPLARES {
+  codigo_exemplar <<partial key>>
+  status
+}
+
+relationship POSSUI {
+}
+
+LIVROS    -1- POSSUI
+POSSUI    -N- EXEMPLARES
+
+@endchen
+```
+
+##### Exercício 9 - SQL referênte ao diagrama anterior
+
+``` sql
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+
+CREATE TABLE LIVROS 
+(
+    id_livro INT,
+    titulo VARCHAR(255),
+    ano INT
+);
+
+CREATE TABLE EXEMPLARES 
+(
+    codigo_exemplar INT,
+    status VARCHAR(50)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+
+ALTER TABLE LIVROS ADD PRIMARY KEY (id_livro);
+
+/* A chave primária de EXEMPLARES será composta depois, usando FK + codigo_exemplar */
+
+/* =========================================================
+   Criar coluna para futura chave estrangeira
+   ========================================================= */
+-- Relacionamento LIVROS 1:N EXEMPLARES
+
+ALTER TABLE EXEMPLARES ADD COLUMN id_livro INT;
+
+/* =========================================================
+   Criar chave estrangeira
+   ========================================================= */
+
+ALTER TABLE EXEMPLARES ADD CONSTRAINT fk_exemplares_livros FOREIGN KEY (id_livro) REFERENCES LIVROS (id_livro);
+
+/* =========================================================
+   Definir chave primária composta da tabela EXEMPLARES
+   ========================================================= */
+
+ALTER TABLE EXEMPLARES ADD PRIMARY KEY (id_livro, codigo_exemplar);
+```
+
+------------------------------------------------------------------------
+
+#### Exercício #10
+
+```{plantuml exercicio04-10-resposta, plantuml.path="images"}
+@startchen
+
+' ========================= '
+' Entidades                 '
+' ========================= '
+
+entity EMPRESAS {
+  id_empresa <<key>>
+  nome
+  cnpj
+  endereco
+}
+
+entity FUNCIONARIOS {
+  id_funcionario <<key>>
+  nome
+  cargo
+  salario
+}
+
+entity PROJETOS {
+  id_projeto <<key>>
+  nome
+  data_inicio
+  data_fim
+  descricao
+}
+
+' =========================                            '
+' Entidade associativa para Funcionário–Projeto (N:M)  '
+' =========================                            '
+
+entity PARTICIPAM {
+  data_inicio
+  data_fim
+  papel
+}
+
+' ========================= '
+' Relacionamentos           '
+' ========================= '
+
+relationship POSSUI {
+}
+
+relationship TRABALHA_EM {
+}
+
+' ========================= '
+' Cardinalidades            '
+' ========================= '
+
+EMPRESAS    -1- POSSUI
+POSSUI      -N- FUNCIONARIOS
+
+FUNCIONARIOS -N- TRABALHA_EM
+TRABALHA_EM  -N- PROJETOS
+
+@endchen
+```
+
+##### Exercício 10 - SQL referênte ao diagrama anterior
+
+``` sql
+/* =========================================================
+   Criar tabelas (sem PK ou FK)
+   ========================================================= */
+CREATE TABLE EMPRESAS (
+    id_empresa INT,
+    nome VARCHAR(255),
+    cnpj CHAR(14),
+    endereco VARCHAR(255)
+);
+
+CREATE TABLE FUNCIONARIOS (
+    id_funcionario INT,
+    nome VARCHAR(255),
+    cargo VARCHAR(100),
+    salario DECIMAL(10,2)
+);
+
+CREATE TABLE PROJETOS (
+    id_projeto INT,
+    nome VARCHAR(255),
+    data_inicio DATE,
+    data_fim DATE,
+    descricao VARCHAR(255)
+);
+
+CREATE TABLE PARTICIPAM (
+    data_inicio DATE,
+    data_fim DATE,
+    papel VARCHAR(100)
+);
+
+/* =========================================================
+   Definir chaves primárias
+   ========================================================= */
+ALTER TABLE EMPRESAS ADD PRIMARY KEY (id_empresa);
+
+ALTER TABLE FUNCIONARIOS ADD PRIMARY KEY (id_funcionario);
+
+ALTER TABLE PROJETOS ADD PRIMARY KEY (id_projeto);
+
+/* A tabela PARTICIPAM terá PK composta, definida depois */
+
+/* =========================================================
+   Criar colunas para futuras chaves estrangeiras
+   ========================================================= */
+-- Relacionamento EMPRESAS 1:N FUNCIONARIOS
+
+ALTER TABLE FUNCIONARIOS  ADD COLUMN id_empresa INT;
+
+-- Relacionamento FUNCIONARIOS N:M PROJETOS
+ALTER TABLE PARTICIPAM ADD COLUMN id_funcionario INT, ADD COLUMN id_projeto INT;
+
+/* =========================================================
+   Criar chaves estrangeiras
+   ========================================================= */
+ALTER TABLE FUNCIONARIOS ADD CONSTRAINT fk_funcionarios_empresas FOREIGN KEY (id_empresa) REFERENCES EMPRESAS (id_empresa);
+
+ALTER TABLE PARTICIPAM ADD CONSTRAINT fk_participam_funcionarios FOREIGN KEY (id_funcionario) REFERENCES FUNCIONARIOS (id_funcionario);
+
+ALTER TABLE PARTICIPAM ADD CONSTRAINT fk_participam_projetos FOREIGN KEY (id_projeto) REFERENCES PROJETOS (id_projeto);
+
+/* =========================================================
+   Definir chave primária composta da tabela PARTICIPAM
+   ========================================================= */
+
+ALTER TABLE PARTICIPAM ADD PRIMARY KEY (id_funcionario, id_projeto);
+```
+
+------------------------------------------------------------------------
+
+```{r 04-Modelagem-02-exercicios-html, eval=FALSE, include=FALSE}
+rmarkdown::render("04-2026-03-10_Modelagem_SGBD-exercicio-02.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; utils::browseURL("docs/temporario.html")
+```

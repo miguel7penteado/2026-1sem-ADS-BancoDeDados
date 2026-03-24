@@ -4,3 +4,10 @@
 
 #### Professor Miguél Suares {.unnumbered}
 
+```{r 13-Análise-03-exercicio-html, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+
+rmarkdown::render("13-2026-2026-05-26_Analise_03-exercicio.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; 
+
+utils::browseURL("docs/temporario.html")
+
+```
