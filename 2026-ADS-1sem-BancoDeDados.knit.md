@@ -4123,11 +4123,9 @@ GRANT ALL PRIVILEGES ON TABLE compras.clientes TO aluno;
 
 <!--chapter:end:07-2026-2026-04-07_MySQL-exercicio.Rmd-->
 
-# Banco de Dados: Postgres
+# Prática SQL - PostgreSQL
 #### 14/04/2026 {.unnumbered}
 #### Professor Miguél Suares {.unnumbered}
-
-# Prática SQL - PostgreSQL
 
 
 ## Usuários dos alunos
@@ -4276,12 +4274,646 @@ victor_flohr_fagundes_r941je0
 
 
 
+
+
+
 <!--chapter:end:08-2026-2026-04-14_Postgres-aula.Rmd-->
 
-# Banco de Dados: Postgres
-#### 22/09/2025 {.unnumbered}
-#### Professor Miguél Suares {.unnumbered}
+## Exercícios de Prospecção de LEADS com dados:
 
+Leads são clientes potenciais que demonstraram interesse em um produto ou serviço e forneceram informações de contato (como nome e e-mail) em troca de valor, como materiais educativos ou ofertas. Eles são essenciais para o marketing digital, pois representam oportunidades de negócio que podem ser nutridas até a compra.
+
+------------------------------------------------------------------------
+
+### Parte 1 - Aquecimento e Filtros Geográficos
+
+*O objetivo aqui é FILTRAGEM de dados: reduzir o universo de busca para regiões onde a empresa possui logística.*
+
+#### ** Exercício 01. O Filtro Regional - Alegebra relacional - Operação de Seleção $\sigma$ ) **
+* **Cenário:** Uma empresa de logística quer vender frete barato para novos negócios em São Paulo.
+Utilizando SQL DML (Data Manipulation Language) e as operações de Algebra Relacional, gere um RELATÓRIO contendo as seguintes informações: Selecione todas as empresas onde o `estado` seja 'SP' e a `data_atividade` seja posterior a '2024-01-01'.
+
+```SQL
+
+SELECT 
+    cnpj, 
+    razao_social, 
+    nome, 
+    data_atividade, 
+    estado
+FROM 
+    public.cnpj_brasil
+WHERE 
+    estado = 'SP' 
+    AND CAST(data_atividade AS DATE) > '2024-01-01';
+```
+
+USANDO SQL SALVE AGORA O RELATÓRIO DESTE EXERCÍCIO NO SEU ESQUEMA (DIRETÓRIO NO BANCO DE DADOS)
+
+```SQL
+
+SELECT 
+    cnpj, 
+    razao_social, 
+    nome, 
+    data_atividade, 
+    estado
+INTO
+	seu_esquema.relatorio_exercicio1
+FROM 
+    public.cnpj_brasil
+WHERE 
+    estado = 'SP' 
+    AND CAST(data_atividade AS DATE) > '2024-01-01';
+
+```
+
+SALVE SEU SQL NO SEU GITHUB E FAÇA PULL REQUEST
+
+
+#### ** Exercício 02. Otimizando a Visualização - Alegebra relacional - Operação de Projeção $\pi$ **
+* **Cenário:** O time de vendas precisa de uma lista telefônica simples, sem o "lixo" dos campos de sócios.
+Utilizando SQL DML (Data Manipulation Language) e as operações de Algebra Relacional,  gere um RELATÓRIO contendo as seguintes informações:Da tabela total, extraia apenas as colunas `cnpj`, `razao_social`, `ddd1` e `telefone1`.
+
+OBS: 
+
+- pegue apenas 1000 registros para não sentar o servidor;
+- ordene por ordem alfabética o nome das empresas no relatório;
+
+```SQL
+
+SELECT 
+    ___________, 
+    ___________, 
+    ___________, 
+    ___________
+FROM 
+    public._________     limit 1000
+	ORDER BY   ______________ ;
+	
+```
+
+USANDO SQL SALVE AGORA O RELATÓRIO DESTE EXERCÍCIO NO SEU ESQUEMA (DIRETÓRIO NO BANCO DE DADOS)
+
+```SQL
+
+SELECT 
+    ___________, 
+    ___________, 
+    ___________, 
+    ___________
+INTO
+    __________.________________
+FROM 
+    public._________     limit 1000
+	ORDER BY   ______________ ;
+	
+```
+
+SALVE SEU SQL NO SEU GITHUB E FAÇA PULL REQUEST
+
+#### ** Exercício 03.  O Lead Premium Seleção - Alegebra relacional - Operação de SELEÇÃO Composta $\sigma$ **
+* **Cenário:** Buscamos apenas empresas de grande porte em capitais para oferecer planos de saúde corporativos.
+Utilizando SQL DML (Data Manipulation Language) e as operações de Algebra Relacional,  gere um RELATÓRIO contendo as seguintes informações:Filtre registros onde `capital` seja 'SIM' **E** `porte` indique grandes empresas (ex: '05'), excluindo as que possuem o status 'BAIXADA'.
+
+OBS: 
+
+- pegue apenas 1000 registros para não sentar o servidor;
+- ordene por ordem alfabética o nome das empresas no relatório;
+
+```SQL
+
+SELECT 
+    _____________, 
+    _____________, 
+    _____________, 
+    _____________, 
+    _____________ 
+FROM 
+     public._________
+WHERE 
+    __________ =  ________ AND 
+	__________ =  ________ AND 
+	__________ <> ________    ORDER BY   ______________ limit 1000;
+
+
+```
+
+USANDO SQL SALVE AGORA O RELATÓRIO DESTE EXERCÍCIO NO SEU ESQUEMA (DIRETÓRIO NO BANCO DE DADOS)
+
+```SQL
+
+SELECT 
+    _____________, 
+    _____________, 
+    _____________, 
+    _____________, 
+    _____________
+INTO
+    __________.________________
+FROM 
+     public._________
+WHERE 
+    __________ =  ________ AND 
+	__________ =  ________ AND 
+	__________ <> ________     ORDER BY   ______________ limit 1000;
+
+```
+
+SALVE SEU SQL NO SEU GITHUB E FAÇA PULL REQUEST
+
+------------------------------------------------------------------------
+
+### Parte 2 -  Segmentação por Ramo e Nicho
+
+*O objetivo aqui é GARIMPAGEM de dados: NA REGRA DE NEGÓCIO DO CLIENTE quem realmente precisa do produto ? *
+
+#### ** Exercício 04.  O Lead Premium Seleção - Alegebra relacional - OPERAÇÃO DE SELEÇÃO $\sigma$ - Prospecção por Setor (Ramo de Atividade)**
+* **Cenário:** Uma empresa de software para restaurantes quer focar no seu nicho.
+Utilizando SQL DML (Data Manipulation Language) e as operações de Algebra Relacional,  gere um RELATÓRIO contendo as seguintes informações:Selecione `nome`, `cidade` e `whats1` de todas as empresas cujo `desc_ramo` contenha a palavra "RESTAURANTE".
+
+OBS: 
+
+- pegue apenas 1000 registros para não sentar o servidor;
+- ordene por ordem alfabética o nome das empresas no relatório;
+
+```SQL
+
+SELECT 
+    ______________,
+    ______________,
+    ______________
+FROM 
+    public._________
+WHERE 
+    _____________ LIKE '%________________%'  ORDER BY   ______________ limit 1000;
+  
+```
+
+USANDO SQL SALVE AGORA O RELATÓRIO DESTE EXERCÍCIO NO SEU ESQUEMA (DIRETÓRIO NO BANCO DE DADOS)
+
+```SQL
+
+SELECT 
+    ______________,
+    ______________,
+    ______________
+INTO
+    __________.________________	
+FROM 
+    public._________
+WHERE 
+    _____________ LIKE '%________________%' ORDER BY   ______________ limit 1000;
+
+```
+
+
+
+#### ** Exercício 05.   - Alegebra relacional - OPERAÇÕES DE SELEÇÃO $\sigma$  E PROJEÇÃO $\pi$ - Identificando Tomadores de Decisão**
+* **Cenário:** O marketing quer enviar um e-mail personalizado para o sócio.
+Utilizando SQL DML (Data Manipulation Language) e as operações de Algebra Relacional,  gere um RELATÓRIO contendo as seguintes informações:Projete as colunas `razao_social`, `email` e `nome_socio`, mas apenas para as linhas onde `tem_email` seja 'SIM'.
+
+OBS: 
+
+- pegue apenas 1000 registros para não sentar o servidor;
+- ordene por ordem alfabética o nome das empresas no relatório;
+
+
+```SQL
+
+SELECT 
+    ______________,
+    ______________,
+    ______________
+FROM 
+    public._________
+WHERE 
+    _____________ = ____________  ORDER BY   ______________ limit 1000;
+  
+```
+
+USANDO SQL SALVE AGORA O RELATÓRIO DESTE EXERCÍCIO NO SEU ESQUEMA (DIRETÓRIO NO BANCO DE DADOS)
+
+```SQL
+SELECT 
+    ______________,
+    ______________,
+    ______________
+INTO
+    __________.________________		
+FROM 
+    public._________
+WHERE 
+    _____________ = ____________  ORDER BY   ______________ limit 1000;
+	
+```
+
+
+------------------------------------------------------------------------
+
+## Bloco 3: Qualificação e Canais de Contato
+*Garantir que o lead é contactável e relevante.*
+
+#### ** Exercício 06.   - Alegebra relacional - OPERAÇÕES DE SELEÇÃO $\sigma$  E PROJEÇÃO $\pi$ - Prioridade para WhatsApp (Limpeza de Dados)**
+* **Cenário:** A campanha será 100% via mensagem instantânea.
+Utilizando SQL DML (Data Manipulation Language) e as operações de Algebra Relacional,  gere um RELATÓRIO contendo as seguintes informações:Selecione empresas que tenham o campo `whats1` preenchido e que **não** sejam 'MEI'.
+
+OBS: 
+
+- pegue apenas 1000 registros para não sentar o servidor;
+- ordene por ordem alfabética o nome das empresas no relatório;
+
+
+```SQL
+
+SELECT 
+    ______________,
+    ______________,
+    ______________,
+    ______________,
+    ______________
+FROM 
+    public.______________
+WHERE 
+    _____________ IS NOT NULL  AND 
+	______________ <> ''       AND 
+	______________ = '___'     ORDER BY ______________ limit 1000;
+  
+```
+
+USANDO SQL SALVE AGORA O RELATÓRIO DESTE EXERCÍCIO NO SEU ESQUEMA (DIRETÓRIO NO BANCO DE DADOS)
+
+```SQL
+
+SELECT 
+    ______________,
+    ______________,
+    ______________,
+    ______________,
+    ______________
+INTO
+    __________.________________
+FROM 
+    public.______________
+WHERE 
+    _____________ IS NOT NULL  AND 
+	______________ <> ''       AND 
+	______________ = '___'     ORDER BY ______________ limit 1000;
+
+```
+
+#### ** Exercício 07.   - Alegebra relacional - - OPERAÇÕES DE SELEÇÃO $\sigma$  E PROJEÇÃO $\pi$ - O Alvo "Matriz" (Poder de Compra)**
+* **Cenário:** Queremos falar com a sede, pois filiais geralmente não têm autonomia de compra.
+Utilizando SQL DML (Data Manipulation Language) e as operações de Algebra Relacional,  gere um RELATÓRIO contendo as seguintes informações:Filtre apenas as empresas onde o campo `matriz` indique que ela é a sede principal e o `status` esteja 'ATIVA'.
+
+OBS: 
+
+- pegue apenas 1000 registros para não sentar o servidor;
+- ordene por ordem alfabética o nome das empresas no relatório;
+
+
+```SQL
+
+SELECT 
+    __________,
+    __________,
+    __________,
+    __________,
+    __________
+FROM 
+    public.__________
+WHERE 
+    ___________ = '________' AND 
+	___________ = '________'     ORDER BY ______________ limit 1000;
+  
+```
+
+USANDO SQL SALVE AGORA O RELATÓRIO DESTE EXERCÍCIO NO SEU ESQUEMA (DIRETÓRIO NO BANCO DE DADOS)
+
+```SQL
+
+SELECT 
+    __________,
+    __________,
+    __________,
+    __________,
+    __________
+INTO
+    __________.________________
+FROM 
+    public.__________
+WHERE 
+    ___________ = '________' AND 
+	___________ = '________'     ORDER BY ______________ limit 1000;
+
+
+```
+
+------------------------------------------------------------------------
+
+## Bloco 4: Estratégias Avançadas (Insights B2B)
+*Usando a lógica para inferir saúde financeira e fit cultural.*
+
+#### ** Exercício 08.   - Alegebra relacional - - OPERAÇÕES DE SELEÇÃO $\sigma$  E PROJEÇÃO $\pi$ - Faixa de Capital e Porte**
+* **Cenário:** Um banco quer oferecer crédito para empresas que estão crescendo.
+Utilizando SQL DML (Data Manipulation Language) e as operações de Algebra Relacional,  gere um RELATÓRIO contendo as seguintes informações:Selecione `razao_social` e `faixa_capital` onde o capital social seja superior a um valor X, focando no `porte` de "Empresa de Pequeno Porte (EPP)".
+
+OBS: 
+
+- pegue apenas 1000 registros para não sentar o servidor;
+- ordene por ordem alfabética o nome das empresas no relatório;
+
+
+```SQL
+
+SELECT 
+    __________,
+    __________,
+    __________
+FROM 
+    public._______________
+WHERE 
+    ____________ = '___' AND 
+	____________ = '______________'     ORDER BY ______________ limit 1000;
+
+  
+```
+
+USANDO SQL SALVE AGORA O RELATÓRIO DESTE EXERCÍCIO NO SEU ESQUEMA (DIRETÓRIO NO BANCO DE DADOS)
+
+```SQL
+
+SELECT 
+    __________,
+    __________,
+    __________
+INTO
+    __________.________________
+FROM 
+    public._______________
+WHERE 
+    ____________ = '___' AND 
+	____________ = '______________'     ORDER BY ______________ limit 1000;
+
+```
+
+#### ** Exercício 09.   - Alegebra relacional - AGREGAÇÃO e JUNÇÃO - Recorrência de Sócios (Análise de Grupo Econômico)**
+* **Cenário:** Se o mesmo `nome_socio` aparece em várias empresas, ele é um investidor serial (um lead valioso).
+Utilizando SQL DML (Data Manipulation Language) e as operações de Algebra Relacional,  gere um RELATÓRIO contendo as seguintes informações:(Lógica de Agrupamento) Identifique quais `nome_socio` aparecem mais de uma vez na base de dados (Auto-junção ou Group By).
+
+OBS: 
+
+- pegue apenas 1000 registros para não sentar o servidor;
+- ordene por ordem alfabética o nome das empresas no relatório;
+
+
+```SQL
+SELECT 
+    nome_socio, 
+    COUNT(*) as total_empresas	
+FROM 
+    public.cnpj_brasil
+WHERE 
+    nome_socio IS NOT NULL 
+    AND nome_socio <> ''
+GROUP BY 
+    nome_socio
+HAVING 
+    COUNT(*) > 1
+ORDER BY 
+    total_empresas DESC;
+  
+```
+
+USANDO SQL SALVE AGORA O RELATÓRIO DESTE EXERCÍCIO NO SEU ESQUEMA (DIRETÓRIO NO BANCO DE DADOS)
+
+```SQL
+
+SELECT 
+    nome_socio, 
+    COUNT(*) as total_empresas
+INTO
+    __________.________________
+FROM 
+    public.cnpj_brasil
+WHERE 
+    nome_socio IS NOT NULL 
+    AND nome_socio <> ''
+GROUP BY 
+    nome_socio
+HAVING 
+    COUNT(*) > 1
+ORDER BY 
+    total_empresas DESC;
+
+
+```
+
+#### ** Exercício 10.   - Alegebra relacional - - AGREGAÇÃO e JUNÇÃO - O Lead "Recém-Nascido"**
+* **Cenário:** Empresas abertas há menos de 30 dias precisam de tudo: de contador a móveis de escritório.
+Utilizando SQL DML (Data Manipulation Language) e as operações de Algebra Relacional,  gere um RELATÓRIO contendo as seguintes informações:Calcule a diferença entre a data atual e `data_atividade` para projetar uma lista de "Leads de Boas-Vindas".
+
+OBS: 
+
+- pegue apenas 1000 registros para não sentar o servidor;
+- ordene por ordem alfabética o nome das empresas no relatório;
+
+
+```SQL
+
+SELECT 
+    cnpj, 
+    razao_social, 
+    data_atividade,
+    (CURRENT_DATE - CAST(data_atividade AS DATE)) AS dias_de_vida
+FROM 
+    public.cnpj_brasil
+WHERE 
+    CAST(data_atividade AS DATE) > (CURRENT_DATE - INTERVAL '30 days')
+    AND status = 'ATIVA'
+ORDER BY 
+    data_atividade DESC;
+  
+```
+
+USANDO SQL SALVE AGORA O RELATÓRIO DESTE EXERCÍCIO NO SEU ESQUEMA (DIRETÓRIO NO BANCO DE DADOS)
+
+```SQL
+
+SELECT 
+    cnpj, 
+    razao_social, 
+    data_atividade,
+    (CURRENT_DATE - CAST(data_atividade AS DATE)) AS dias_de_vida
+INTO
+    __________.________________
+FROM 
+    public.cnpj_brasil
+WHERE 
+    CAST(data_atividade AS DATE) > (CURRENT_DATE - INTERVAL '30 days')
+    AND status = 'ATIVA'
+ORDER BY 
+    data_atividade DESC;
+
+
+```
+
+### Respostas
+
+### Reposta Exercício 01
+
+```SQL
+SELECT 
+    cnpj, 
+    razao_social, 
+    nome, 
+    data_atividade, 
+    estado
+FROM 
+    public.cnpj_brasil
+WHERE 
+    estado = 'SP' 
+    AND CAST(data_atividade AS DATE) > '2024-01-01';
+```
+
+### Reposta Exercício 02
+
+```SQL
+SELECT 
+    cnpj, 
+    razao_social, 
+    ddd1, 
+    telefone1
+FROM 
+    public.cnpj_brasil;
+```
+
+### Reposta Exercício 03
+
+```SQL
+SELECT 
+    cnpj, 
+    razao_social, 
+    porte, 
+    capital, 
+    status
+FROM 
+    public.cnpj_brasil
+WHERE 
+    capital = 'SIM' 
+    AND porte = '05' 
+    AND status <> 'BAIXADA';
+```
+
+### Reposta Exercício 04
+
+```SQL
+SELECT 
+    nome, 
+    cidade, 
+    whats1
+FROM 
+    public.cnpj_brasil
+WHERE 
+    desc_ramo LIKE '%RESTAURANTE%';
+```
+
+### Reposta Exercício 05
+
+```SQL
+SELECT 
+    razao_social, 
+    email, 
+    nome_socio
+FROM 
+    public.cnpj_brasil
+WHERE 
+    tem_email = 'SIM';
+```
+
+
+### Reposta Exercício 06
+
+```SQL
+SELECT 
+    cnpj, 
+    razao_social, 
+    nome, 
+    whats1, 
+    mei
+FROM 
+    public.cnpj_brasil
+WHERE 
+    whats1 IS NOT NULL 
+    AND whats1 <> '' 
+    AND mei = 'NÃO';
+```
+
+### Reposta Exercício 07
+
+```SQL
+SELECT 
+    cnpj, 
+    razao_social, 
+    cidade, 
+    estado,
+    status
+FROM 
+    public.cnpj_brasil
+WHERE 
+    matriz = 'MATRIZ' 
+    AND status = 'ATIVA';
+```
+
+### Reposta Exercício 08
+
+```SQL
+SELECT 
+    razao_social, 
+    faixa_capital,
+    porte
+FROM 
+    public.cnpj_brasil
+WHERE 
+    porte = 'EPP' 
+    AND faixa_capital = 'ACIMA DE 500000';
+```
+
+### Reposta Exercício 09
+
+```SQL
+SELECT 
+    nome_socio, 
+    COUNT(*) as total_empresas
+FROM 
+    public.cnpj_brasil
+WHERE 
+    nome_socio IS NOT NULL 
+    AND nome_socio <> ''
+GROUP BY 
+    nome_socio
+HAVING 
+    COUNT(*) > 1
+ORDER BY 
+    total_empresas DESC;
+```
+
+### Reposta Exercício 10
+
+```SQL
+SELECT 
+    cnpj, 
+    razao_social, 
+    data_atividade,
+    (CURRENT_DATE - CAST(data_atividade AS DATE)) AS dias_de_vida
+FROM 
+    public.cnpj_brasil
+WHERE 
+    CAST(data_atividade AS DATE) > (CURRENT_DATE - INTERVAL '30 days')
+    AND status = 'ATIVA'
+ORDER BY 
+    data_atividade DESC;
+```
 
 
 
