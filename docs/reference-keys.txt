@@ -272,6 +272,8 @@ exercícios-2
 banco-de-dados-mysql-mariadb
 banco-de-dados-mysql-mariadb-1
 banco-de-dados-postgres
+prática-sql---postgresql
+usuários-dos-alunos
 banco-de-dados-postgres-1
 banco-de-dados-uma-aplicação-crud-1
 o-que-é-uma-aplicação-crud

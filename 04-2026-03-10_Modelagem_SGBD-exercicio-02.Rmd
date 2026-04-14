@@ -33,14 +33,14 @@ DIAGRAMA ENTIDADE-RELACIONAMENTO (D.E.R.) com as informações levantadas:
 
 entity UNIVERSIDADES {
   nome
-  CNPJ <<KEY>>
+  CNPJ <<key>>
 }
 
 entity CURSOS {
   nome
   duracao
   coordenador
-  codigo_curso <<KEY>>
+  codigo_curso <<key>>
 }
 
 
@@ -52,7 +52,7 @@ entity PROFESSORES {
 
 entity DISCIPLINAS {
   nome
-  codigo_disciplina <<KEY>>
+  codigo_disciplina <<key>>
 }
 
 relationship OFERECE {
