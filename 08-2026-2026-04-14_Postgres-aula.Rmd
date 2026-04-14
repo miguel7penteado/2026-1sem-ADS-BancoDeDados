@@ -142,7 +142,64 @@ victhor_hugo_s_a_de_almeida_f3650i9
 victor_flohr_fagundes_r941je0
 ```
 
+## Diagrama da tabela com a qual vamos trabalhar
 
+
+```{plantuml exemplo08-01-01, plantuml.path="images"}
+@startchen
+left to right direction
+
+entity cnpj_brasil  {
+
+    "cnpj" as cnpj <<key>>
+    "mei" as mei
+    "simples" as simples
+    "matriz" as matriz
+    "status" as status
+    "nome" as nome
+    "data_atividade" as data_atividade
+    "ramo" as ramo
+    "desc_ramo" as desc_ramo
+    "endereco" as endereco
+    "cep" as cep
+    "bairro" as bairro
+    "estado" as estado
+    "ddd1" as ddd1
+    "telefone1" as telefone1
+    "e_celular1" as e_celular1
+    "telefone2" as telefone2
+    "e_celular2" as e_celular2
+    "email" as email
+    "cidade" as cidade
+    "capital" as capital
+    "google" as google
+    "whats1" as whats1
+    "qualificacao" as qualificacao
+    "natureza_juridica" as natureza_juridica
+    "tipo_socio" as tipo_socio
+    "tem_email" as tem_email
+    "data_entrada_socio" as data_entrada_socio
+    "qualificacao_socio" as qualificacao_socio
+    "nome_socio" as nome_socio
+    "cpf_cnpj_socio" as cpf_cnpj_socio
+    "pais_socio" as pais_socio
+    "rep_socio" as rep_socio
+    "cpf_cnpj_rep" as cpf_cnpj_rep
+    "faixa_etaria" as faixa_etaria
+    "porte" as porte
+    "id_cnpj" as id_cnpj
+    "simples_entrada" as simples_entrada
+    "simples_saida" as simples_saida
+    "mei_entrada" as mei_entrada
+    "mei_saida" as mei_saida
+    "razao_social" as razao_social
+    "faixa_capital" as faixa_capital
+
+}
+
+
+@endchen
+```
 
 
 
