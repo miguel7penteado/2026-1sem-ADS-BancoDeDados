@@ -27,7 +27,8 @@ if (so == "Linux")
 }else 
   if (so == "Windows") 
   {
-    plantumlOptions(jar_path = "C:/PROGRA~1/COMMON~1/Oracle/Java/libs/plantuml-1.2025.4.jar")
+    #plantumlOptions(jar_path = "C:/PROGRA~1/COMMON~1/Oracle/Java/libs/plantuml-1.2025.4.jar")
+    plantumlOptions(jar_path = "C:/Users/sp-miguel/java/plantuml-1.2026.2.jar")
   }else
   {
     print(paste("Sistema não reconhecido:", so))
@@ -8061,25 +8062,127 @@ utils::browseURL("docs/temporario.html")
 
 ## O que é uma Aplicação CRUD?
 
-Hoje vamos desenvolver um cadastro web simples e entender o que é o acronimo C.R.U.D.
+Hoje vamos desenvolver um **cadastro web** simples e entender o que é o acronimo C.R.U.D.
+Para faze-lo devemos criar uma interface entre o Sistema de Gerenciamento de 
+Banco de Dados e a página WEB.
 
-## Conceito de CRUD
+### Conceito de CRUD
 
 **CRUD** é um acrônimo para quatro operações fundamentais que um sistema realiza sobre dados em um banco de dados:
 
-![](images/2025-09-01/01-CRUD.jpg)
+![](09-aula09/media/01-CRUD.jpg)
 
 Essas quatro operações compõem a base da maioria das **aplicações web** que manipulam dados persistidos em um **SGBD** (Sistema Gerenciador de Banco de Dados).
 
-------------------------------------------------------------------------
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-6e8n{background-color:#c0c0c0;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-ev4w{background-color:#32cb00;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-qi4s{background-color:#f8ff00;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-6e8n">Operação C.R.U.D.</th>
+    <th class="tg-6e8n">Significado em Português</th>
+    <th class="tg-6e8n">Operação SQL DML</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-ev4w">CREATE</td>
+    <td class="tg-0pky">Criar ⇒</td>
+    <td class="tg-qi4s">INSERT</td>
+  </tr>
+  <tr>
+    <td class="tg-ev4w">READ</td>
+    <td class="tg-0pky">Ler ⇒</td>
+    <td class="tg-qi4s">SELECT</td>
+  </tr>
+  <tr>
+    <td class="tg-ev4w">UPDATE</td>
+    <td class="tg-0pky">Atualizar ⇒</td>
+    <td class="tg-qi4s">UPDATE</td>
+  </tr>
+  <tr>
+    <td class="tg-ev4w">DELETE</td>
+    <td class="tg-0pky">Apagar ⇒</td>
+    <td class="tg-qi4s">DELETE</td>
+  </tr>
+</tbody>
+</table>
 
-## O padrão de Design de Sistemas MVC (Model View Controller)
+------------------------------------------------------------------------
+Esta interface será construida através do modelo cliente-servidores onde:
+
+```{plantuml aula-09-diagrama-cliente-servidor-01, plantuml.path="images"}
+@startuml
+skinparam componentStyle rectangle
+
+package "Denominado Front-end" {
+    [Cliente WEB (HTML + JavaScript) ] as Browser
+}
+
+package "Denominado Back-end" {
+    [Servidor de Aplicação Python] as Server
+}
+
+database "Camada de Dados" {
+    [Servidor de Banco de Dados - SGBD] as DB
+}
+
+Browser <--> Server : ================ Conversa por Protocolo HTTP (transporta Verbos http)
+Server  <--> DB     : ================ Conversa por Protocolo TCP  (transporta SQL DML)
+
+note right of Browser : Desenha a interface\ne executa lógica de cliente
+note right of Server : Processa a chamada lógica de negócio\ne autenticação
+note right of DB : Armazena e gerencia\ndados persistentes
+@enduml
+```
+
+
+
+### O padrão de Design de Sistemas MVC (Model View Controller)
 
 Uma aplicação Cliente-Servidor (modelo 2 camadas) geralmente segue o **padrão MVC** — **Model, View, Controller**:
 
-![](images/2025-09-01/03-MVC.jpg)
 
-## Construindo uma aplicação CRUD para interfacear com a tabela "Pessoa"
+```{plantuml aula-09-diagrama-cliente-servidor-01-mvc, plantuml.path="images"}
+@startuml
+top to bottom direction
+skinparam linetype ortho
+skinparam packageStyle frame
+
+title Cliente, Servidor e Banco de Dados para Arquitetura M.V.C.:
+
+package "\n\nNa lógica VIEW\nentra o CLIENTE\n\n" {
+    [Cliente HTML + JavaScript] as View
+    note bottom of View : Tela de Interfaceamento \n\ncom usuário e\n\nexibição dos dados.
+}
+
+package "\n\nNa lógica CONTROLLER\n entra o SERVIDOR\n\n" {
+    [Servidor de aplicação Python] as Controller
+    note top of Controller : Lógica de controle,\n\nRotas e Intermediação: \n\nExposição da A.P.I.
+}
+
+package "\n\nNa lógica MODEL\n entra o Banco de dados\n\n " {
+    [O seu Banco de Dados Preferido\n PostgreSQL, MySQL, SQLServer] as Model
+    note bottom of Model : Persistência de dados e\n\nregras de negócio da base.
+}
+
+
+View       <----> Controller : => Tela WEB - consultas http
+Controller <--> Model : => Consultas SQL (tradicionalmente)
+
+@enduml
+```
+
+
+
+## MODELAGEM - Construindo uma aplicação CRUD para interfacear com a tabela "Pessoa"
 
 Considere o Diagrama Entidade-Relacionamento abaixo:
 
@@ -8097,7 +8200,6 @@ entity PESSOAS {
 }
 
 @endchen
-
 ```
 
 Vamos Converte-lo para o Modelo Físico-Relacional em linguagem SQL:
@@ -8106,16 +8208,42 @@ Vamos Converte-lo para o Modelo Físico-Relacional em linguagem SQL:
 
 Vamos agora representa-lo em linguagem SQL:
 
-![](images/2025-09-01/02-TabelaPessoas.jpg)
+```{plantuml modelo-fisico-continuação, plantuml.path="images"}
+@startuml
+' Configurações visuais para parecer uma tabela de banco de dados
+hide circle
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
 
-## Criação de uma aplicação CRUD
+title Modelo Físico — Tabela PESSOAS
+
+entity "PESSOAS" as pessoas {
+  * **cpf** : VARCHAR(11) <<PK>>
+  --
+  * nome : VARCHAR(100)
+  endereco : VARCHAR(255)
+  data_nascimento : DATE
+  foto : BLOB
+}
+
+note right of pessoas : O campo 'cpf' é a Chave Primária (PK).\nOs campos com '*' são obrigatórios (NOT NULL).
+@enduml
+```
+
+## MÃO NA MASSA - Construindo uma aplicação CRUD para interfacear com a tabela "Pessoa"
+
+### Usando o MySQL
 
 Vamos criar um **microsas** (micro Software As A Service) , ou seja, um site para inserir informações dentro da tabela acima.
 
 ![](images/2025-09-01/04-Aplicacao.jpg)
 
 | Informações de Projeto | Tecnologias utilizadas no projeto CRUD |
-|----|----|
+|------------------------------------|------------------------------------|
 | Servidor de banco de dados SGBD | MySQL 8 |
 | Usuário de Banco de Dados | **pessoas_user** |
 | De onde pode ser acessado | Apenas Máquina Local (localhost) |
@@ -8128,7 +8256,7 @@ Vamos criar um **microsas** (micro Software As A Service) , ou seja, um site par
 
 : Criando um Esquema de Banco de Dados - CRUD tabela Pessoas
 
-#### Criação de um usuário para Interagir com o Esquema de Banco de Dados
+#### USUÁRIO DO BANCO MySQL - CRIAÇÃO
 
 ![](images/2025-09-01/05-Usuario.jpg)
 
@@ -8145,11 +8273,9 @@ GRANT ALL PRIVILEGES ON pessoasdb.* TO 'pessoas_user'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-#### Criação do Esquema de Banco de Dados no SGBD MySQL
+#### ESQUEMA DO BANCO MySQL - CRIAÇÃO
 
 Agora vamos criar um esquema de Banco de Dados para abrigar nossa futura tabela:
-
-![](images/2025-09-01/06-Esquema.jpg)
 
 ``` sql
 -- 1) CRIAR BANCO (ajuste o nome se quiser)
@@ -8160,17 +8286,11 @@ CREATE DATABASE IF NOT EXISTS pessoasdb
 
 USE pessoasdb;
 ```
+####  Tabela "pessoas": CRIAÇÃO
 
-#### Criação da Tabela "pessoas"
-
-![](images/2025-09-01/07-Tabela_Pessoas.jpg)
+##### SQL específico ao MySQL 
 
 ``` sql
-
--- 3) TABELA 'pessoas' COMPATÍVEL COM O MODELO SQLAlchemy
---    - cpf: chave primária (String(14))
---    - nome, endereco, foto: TEXT
---    - data_nascimento: DATE
 
 CREATE TABLE IF NOT EXISTS pessoas 
 (
@@ -8191,194 +8311,9 @@ CREATE TABLE IF NOT EXISTS pessoas
 CREATE INDEX idx_pessoas_nome_prefix ON pessoas (nome(128));
 ```
 
-#### Uma aplicação Cliente Servidor no formato MVC (Model View Controller)
+#### Servidor de Aplicação Python <==> MySQL: CRIAÇÃO
 
-```{plantuml Aplicacao-MVC-CRUD-Pessoas-01, plantuml.path="images"}
-@startuml
-title Aplicação CRUD (Cliente + Servidor) — Componentes UML com padrão MVC
-
-skinparam backgroundColor #FFFFFF
-skinparam componentStyle rectangle
-skinparam rectangle {
-  RoundCorner 12
-  BorderColor #333
-}
-skinparam database {
-  BorderColor #333
-  BackgroundColor #F9F9F9
-}
-left to right direction
-
-' ==========================
-' CLIENTE (MVC no Navegador)
-' ==========================
-package "Cliente Web (Browser)" <<Client>> {
-  [View\nHTML + CSS] <<View>> as C_VIEW
-  [Controller\nJS (handlers + UI)] <<Controller>> as C_CTRL
-  [Model\nPessoaDTO] <<Model>> as C_MODEL
-  [API Service\nfetch()] <<Service>> as C_API
-
-  C_VIEW -down-> C_CTRL : eventos do usuário (click, submit)
-  C_CTRL --> C_MODEL : cria/atualiza objetos
-  C_CTRL --> C_API : invoca REST (fetch)
-  C_API --> C_MODEL : (de)serializa JSON
-}
-
-' Interface REST exposta pelo servidor
-interface "REST API\n(JSON/HTTP)" as I_REST
-
-C_API -[#1F78B4]-> I_REST : HTTP/1.1\nGET/POST/PUT/DELETE\nContent-Type: application/json
-
-' ==========================
-' SERVIDOR (MVC no Backend)
-' ==========================
-package "Servidor de Aplicação (Python 3 / Flask)" <<Server>> {
-  [View\n(na prática, sem templates)] <<View>> as S_VIEW
-  [Controller\nFlask Routes /pessoas] <<Controller>> as S_CTRL
-  [Service\nValidação + Regra de Negócio] <<Service>> as S_SVC
-  [Repository\nSQLAlchemy Session] <<Repository>> as S_REPO
-  [Model\nPessoa (ORM)] <<Model>> as S_MODEL
-
-  S_CTRL --> S_SVC : delega operações CRUD
-  S_SVC --> S_REPO : transações, queries
-  S_REPO --> S_MODEL : mapeamento ORM
-}
-
-I_REST -[#1F78B4]-> S_CTRL : JSON request/response\nCORS habilitado
-
-' ==========================
-' BANCO DE DADOS
-' ==========================
-database "MySQL 8" as DB {
-  component "Schema: pessoasdb\nTabela: pessoas(cpf PK, nome, endereco, data_nascimento, foto)" as TBL
-}
-
-S_REPO -[#33A02C]-> DB : SQL (TCP 3306)\nuser=pessoas_user\nschema=pessoasdb
-DB -down-> TBL
-
-' ==========================
-' NOTAS E CONSTRAINTS
-' ==========================
-note bottom of C_API
-  Camada de integração REST (fetch):
-  • GET  /pessoas[?q=]
-  • GET  /pessoas/{cpf}
-  • POST /pessoas
-  • PUT  /pessoas/{cpf}
-  • DELETE /pessoas/{cpf}
-end note
-
-note right of S_SVC
-  Regras de negócio / validação:
-  • Campos obrigatórios
-  • Datas ISO (YYYY-MM-DD)
-  • Conflitos (CPF duplicado)
-  • Erros padronizados (422/404/409)
-end note
-
-note right of DB
-  Acesso restrito a localhost.
-  Usuário: pessoas_user
-  Collation: utf8mb4_0900_ai_ci
-end note
-
-legend right
-  <<View>>      Camada de apresentação
-  <<Controller>>Orquestra fluxo e ações
-  <<Model>>     Dados/DTO/ORM
-  <<Service>>   Regras de negócio/integração
-  <<Repository>>Persistência (ORM/SQL)
-end legend
-
-@enduml
-
-```
-
-#### Criação do Servidor de Aplicação em Linguagem Python
-
-Vejamos a representação gráfica de nosso servidor utilizando o diagrama de classes da linguagem UML
-
-```{plantuml Servidor-CRUD-Pessoas-01, plantuml.path="images"}
-
-@startuml
-title Diagrama de Classes — Servidor Flask + SQLAlchemy (MySQL)
-
-skinparam backgroundColor #FFFFFF
-skinparam class {
-  BackgroundColor #FDFDFD
-  BorderColor #333
-  RoundCorner 10
-}
-skinparam package {
-  BackgroundColor #FFFFFF
-  BorderColor #555
-}
-left to right direction
-
-package "API (Flask)" {
-  class App <<FlaskApp>> {
-    +run(debug: bool, port: int)
-  }
-
-  class PessoasController <<Controller>> {
-    +listar() : Response
-    +inserir() : Response
-    +alterar(cpf: str) : Response
-    +remover(cpf: str) : Response
-    +buscar(cpf: str) : Response
-  }
-
-  class Helpers <<Helper>> {
-    +to_dict(p: Pessoa) : dict
-    +parse_date_iso(value: str | date) : date
-  }
-}
-
-package "Persistência (SQLAlchemy)" {
-  class Engine <<SQLAlchemy>> {
-    +url : str
-    +pool_pre_ping : bool
-  }
-
-  class SessionLocal <<SQLAlchemy>> {
-    +__call__() : Session
-  }
-
-  class Session <<SQLAlchemy>>
-
-  abstract class Base <<SQLAlchemy>>
-
-  class Pessoa <<ORMModel>> {
-    +__tablename__ = "pessoas"
-    --
-    +cpf : String(14)      <<PK>>
-    +nome : Text
-    +endereco : Text
-    +data_nascimento : Date
-    +foto : Text
-  }
-}
-
-' ------------------ Relações ------------------
-Pessoa --|> Base
-PessoasController ..> SessionLocal : usa
-PessoasController ..> Pessoa : CRUD
-Helpers ..> Pessoa
-Helpers ..> date
-App ..> PessoasController : registra rotas /pessoas
-Engine o-- SessionLocal
-App ..> Engine
-
-note right of Engine
-  MySQL 8 (localhost)
-  URL:
-  mysql+pymysql://
-  pessoas_user:******@localhost:3306/pessoasdb
-end note
-
-@enduml
-
-```
+##### Baixar os Pacotes de conexão python <==> MySQL
 
 Para utilizar o MySQL como servidor, devemos instalar os drivers de MySQL para a biblioteca SQLAlchemy do Python através da ferramenta de linha de comando PIP do python
 
@@ -8386,10 +8321,11 @@ Para utilizar o MySQL como servidor, devemos instalar os drivers de MySQL para a
 pip install flask flask-cors sqlalchemy "pymysql>=1.1"
 # (ou use mysqlclient: pip install mysqlclient e troque o driver para mysql+mysqlclient)
 ```
+##### Codificar o Servidor
 
 Agora vamos escrever o script python que criará o servidor de aplicação para interfacear nosso Cliente no Navegador e nossa tabela pessoas dentro do SGBD MySQL:
 
-``` python
+```python
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from sqlalchemy import create_engine, Column, String, Date, Text
@@ -8552,15 +8488,9 @@ if __name__ == '__main__':
 
 #### Criação do Cliente de Aplicação em HTML (Parte Gráfica) e Javascript (Programação Executável)
 
-Vamos verificar como é o Diagrama de Classes do Cliente que vai conversar com o servidor que vimos anteriormente:
+Salve esse código em um arquivo chamado **cliente.html**, para poder abrir-lo no navegador, **juntamente com o servidor rodando**:
 
-![](images/2025-09-01/09-cliente.jpg)
-
-Agora vamos verificar o código-fonte.
-
-Salve esse código em um arquivo chamado **cliente.html**, para poder abrir-lo no navegador, juntamente com o servidor rodando:
-
-``` html
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
