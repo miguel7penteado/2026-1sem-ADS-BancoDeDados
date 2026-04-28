@@ -27,7 +27,8 @@ if (so == "Linux")
 }else 
   if (so == "Windows") 
   {
-    plantumlOptions(jar_path = "C:/PROGRA~1/COMMON~1/Oracle/Java/libs/plantuml-1.2025.4.jar")
+    #plantumlOptions(jar_path = "C:/PROGRA~1/COMMON~1/Oracle/Java/libs/plantuml-1.2025.4.jar")
+    plantumlOptions(jar_path = "C:/Users/sp-miguel/java/plantuml-1.2026.2.jar")
   }else
   {
     print(paste("Sistema não reconhecido:", so))
