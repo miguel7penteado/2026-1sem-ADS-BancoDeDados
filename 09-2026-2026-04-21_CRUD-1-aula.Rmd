@@ -10,7 +10,7 @@ Hoje vamos desenvolver um **cadastro web** simples e entender o que é o acronim
 Para faze-lo devemos criar uma interface entre o Sistema de Gerenciamento de 
 Banco de Dados e a página WEB.
 
-## Conceito de CRUD
+### Conceito de CRUD
 
 **CRUD** é um acrônimo para quatro operações fundamentais que um sistema realiza sobre dados em um banco de dados:
 
@@ -58,6 +58,39 @@ Essas quatro operações compõem a base da maioria das **aplicações web** que
   </tr>
 </tbody>
 </table>
+<<<<<<< HEAD
+
+------------------------------------------------------------------------
+Esta interface será construida através do modelo cliente-servidores onde:
+
+```{plantuml aula-09-diagrama-cliente-servidor-01, plantuml.path="images"}
+@startuml
+skinparam componentStyle rectangle
+
+package "Denominado Front-end" {
+    [Cliente WEB (HTML + JavaScript) ] as Browser
+}
+
+package "Denominado Back-end" {
+    [Servidor de Aplicação Python] as Server
+}
+
+database "Camada de Dados" {
+    [Servidor de Banco de Dados - SGBD] as DB
+}
+
+Browser <--> Server : ================ Conversa por Protocolo HTTP (transporta Verbos http)
+Server  <--> DB     : ================ Conversa por Protocolo TCP  (transporta SQL DML)
+
+note right of Browser : Desenha a interface\ne executa lógica de cliente
+note right of Server : Processa a chamada lógica de negócio\ne autenticação
+note right of DB : Armazena e gerencia\ndados persistentes
+@enduml
+```
+
+
+=======
+>>>>>>> e25fcb831f1854273afa49c1717b55c69d583ba6
 
 ------------------------------------------------------------------------
 Esta interface será construida através do modelo cliente-servidores onde:
@@ -89,10 +122,45 @@ note right of DB : Armazena e gerencia\ndados persistentes
 
 
 
-## O padrão de Design de Sistemas MVC (Model View Controller)
+### O padrão de Design de Sistemas MVC (Model View Controller)
 
 Uma aplicação Cliente-Servidor (modelo 2 camadas) geralmente segue o **padrão MVC** — **Model, View, Controller**:
 
+<<<<<<< HEAD
+
+```{plantuml aula-09-diagrama-cliente-servidor-01-mvc, plantuml.path="images"}
+@startuml
+top to bottom direction
+skinparam linetype ortho
+skinparam packageStyle frame
+
+title Cliente, Servidor e Banco de Dados para Arquitetura M.V.C.:
+
+package "\n\nNa lógica VIEW\nentra o CLIENTE\n\n" {
+    [Cliente HTML + JavaScript] as View
+    note bottom of View : Tela de Interfaceamento \n\ncom usuário e\n\nexibição dos dados.
+}
+
+package "\n\nNa lógica CONTROLLER\n entra o SERVIDOR\n\n" {
+    [Servidor de aplicação Python] as Controller
+    note top of Controller : Lógica de controle,\n\nRotas e Intermediação: \n\nExposição da A.P.I.
+}
+
+package "\n\nNa lógica MODEL\n entra o Banco de dados\n\n " {
+    [O seu Banco de Dados Preferido\n PostgreSQL, MySQL, SQLServer] as Model
+    note bottom of Model : Persistência de dados e\n\nregras de negócio da base.
+}
+
+
+View       <----> Controller : => Tela WEB - consultas http
+Controller <--> Model : => Consultas SQL (tradicionalmente)
+
+@enduml
+```
+
+
+=======
+>>>>>>> e25fcb831f1854273afa49c1717b55c69d583ba6
 
 ```{plantuml aula-09-diagrama-cliente-servidor-01-mvc, plantuml.path="images"}
 @startuml
@@ -126,7 +194,7 @@ Controller <--> Model : => Consultas SQL (tradicionalmente)
 
 
 
-## Construindo uma aplicação CRUD para interfacear com a tabela "Pessoa"
+## MODELAGEM - Construindo uma aplicação CRUD para interfacear com a tabela "Pessoa"
 
 Considere o Diagrama Entidade-Relacionamento abaixo:
 
@@ -177,7 +245,14 @@ entity "PESSOAS" as pessoas {
 note right of pessoas : O campo 'cpf' é a Chave Primária (PK).\nOs campos com '*' são obrigatórios (NOT NULL).
 @enduml
 ```
+<<<<<<< HEAD
 ## MySQL - Criação de uma aplicação CRUD 
+=======
+
+## MÃO NA MASSA - Construindo uma aplicação CRUD para interfacear com a tabela "Pessoa"
+
+### Usando o MySQL
+>>>>>>> e25fcb831f1854273afa49c1717b55c69d583ba6
 
 Vamos criar um **microsas** (micro Software As A Service) , ou seja, um site para inserir informações dentro da tabela acima.
 
@@ -197,197 +272,69 @@ Vamos criar um **microsas** (micro Software As A Service) , ou seja, um site par
 
 : Criando um Esquema de Banco de Dados - CRUD tabela Pessoas
 
+<<<<<<< HEAD
 
 
+=======
+#### USUÁRIO DO BANCO MySQL - CRIAÇÃO
 
-#### Uma aplicação Cliente Servidor no formato MVC (Model View Controller)
+![](images/2025-09-01/05-Usuario.jpg)
 
-```{plantuml Aplicacao-MVC-CRUD-Pessoas-01, plantuml.path="images"}
-@startuml
-title Aplicação CRUD (Cliente + Servidor) — Componentes UML com padrão MVC
+``` sql
 
-skinparam backgroundColor #FFFFFF
-skinparam componentStyle rectangle
-skinparam rectangle {
-  RoundCorner 12
-  BorderColor #333
-}
-skinparam database {
-  BorderColor #333
-  BackgroundColor #F9F9F9
-}
-left to right direction
+-- CRIAR USUÁRIO LOCAL E CONCEDER PERMISSÕES
+-- Troque 'MinhaSenhaForte' por uma senha segura
 
-' ==========================
-' CLIENTE (MVC no Navegador)
-' ==========================
-package "Cliente Web (Browser)" <<Client>> {
-  [View\nHTML + CSS] <<View>> as C_VIEW
-  [Controller\nJS (handlers + UI)] <<Controller>> as C_CTRL
-  [Model\nPessoaDTO] <<Model>> as C_MODEL
-  [API Service\nfetch()] <<Service>> as C_API
 
-  C_VIEW -down-> C_CTRL : eventos do usuário (click, submit)
-  C_CTRL --> C_MODEL : cria/atualiza objetos
-  C_CTRL --> C_API : invoca REST (fetch)
-  C_API --> C_MODEL : (de)serializa JSON
-}
+CREATE USER IF NOT EXISTS 'pessoas_user'@'localhost' IDENTIFIED BY 'MinhaSenhaForte';
 
-' Interface REST exposta pelo servidor
-interface "REST API\n(JSON/HTTP)" as I_REST
+GRANT ALL PRIVILEGES ON pessoasdb.* TO 'pessoas_user'@'localhost';
 
-C_API -[#1F78B4]-> I_REST : HTTP/1.1\nGET/POST/PUT/DELETE\nContent-Type: application/json
-
-' ==========================
-' SERVIDOR (MVC no Backend)
-' ==========================
-package "Servidor de Aplicação (Python 3 / Flask)" <<Server>> {
-  [View\n(na prática, sem templates)] <<View>> as S_VIEW
-  [Controller\nFlask Routes /pessoas] <<Controller>> as S_CTRL
-  [Service\nValidação + Regra de Negócio] <<Service>> as S_SVC
-  [Repository\nSQLAlchemy Session] <<Repository>> as S_REPO
-  [Model\nPessoa (ORM)] <<Model>> as S_MODEL
-
-  S_CTRL --> S_SVC : delega operações CRUD
-  S_SVC --> S_REPO : transações, queries
-  S_REPO --> S_MODEL : mapeamento ORM
-}
-
-I_REST -[#1F78B4]-> S_CTRL : JSON request/response\nCORS habilitado
-
-' ==========================
-' BANCO DE DADOS
-' ==========================
-database "MySQL 8" as DB {
-  component "Schema: pessoasdb\nTabela: pessoas(cpf PK, nome, endereco, data_nascimento, foto)" as TBL
-}
-
-S_REPO -[#33A02C]-> DB : SQL (TCP 3306)\nuser=pessoas_user\nschema=pessoasdb
-DB -down-> TBL
-
-' ==========================
-' NOTAS E CONSTRAINTS
-' ==========================
-note bottom of C_API
-  Camada de integração REST (fetch):
-  • GET  /pessoas[?q=]
-  • GET  /pessoas/{cpf}
-  • POST /pessoas
-  • PUT  /pessoas/{cpf}
-  • DELETE /pessoas/{cpf}
-end note
-
-note right of S_SVC
-  Regras de negócio / validação:
-  • Campos obrigatórios
-  • Datas ISO (YYYY-MM-DD)
-  • Conflitos (CPF duplicado)
-  • Erros padronizados (422/404/409)
-end note
-
-note right of DB
-  Acesso restrito a localhost.
-  Usuário: pessoas_user
-  Collation: utf8mb4_0900_ai_ci
-end note
-
-legend right
-  <<View>>      Camada de apresentação
-  <<Controller>>Orquestra fluxo e ações
-  <<Model>>     Dados/DTO/ORM
-  <<Service>>   Regras de negócio/integração
-  <<Repository>>Persistência (ORM/SQL)
-end legend
-
-@enduml
-
+FLUSH PRIVILEGES;
 ```
 
-#### Criação do Servidor de Aplicação em Linguagem Python
+#### ESQUEMA DO BANCO MySQL - CRIAÇÃO
 
-Vejamos a representação gráfica de nosso servidor utilizando o diagrama de classes da linguagem UML
+Agora vamos criar um esquema de Banco de Dados para abrigar nossa futura tabela:
 
-```{plantuml Servidor-CRUD-Pessoas-01, plantuml.path="images"}
+``` sql
+-- 1) CRIAR BANCO (ajuste o nome se quiser)
 
-@startuml
-title Diagrama de Classes — Servidor Flask + SQLAlchemy (MySQL)
+CREATE DATABASE IF NOT EXISTS pessoasdb
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_0900_ai_ci;
 
-skinparam backgroundColor #FFFFFF
-skinparam class {
-  BackgroundColor #FDFDFD
-  BorderColor #333
-  RoundCorner 10
-}
-skinparam package {
-  BackgroundColor #FFFFFF
-  BorderColor #555
-}
-left to right direction
-
-package "API (Flask)" {
-  class App <<FlaskApp>> {
-    +run(debug: bool, port: int)
-  }
-
-  class PessoasController <<Controller>> {
-    +listar() : Response
-    +inserir() : Response
-    +alterar(cpf: str) : Response
-    +remover(cpf: str) : Response
-    +buscar(cpf: str) : Response
-  }
-
-  class Helpers <<Helper>> {
-    +to_dict(p: Pessoa) : dict
-    +parse_date_iso(value: str | date) : date
-  }
-}
-
-package "Persistência (SQLAlchemy)" {
-  class Engine <<SQLAlchemy>> {
-    +url : str
-    +pool_pre_ping : bool
-  }
-
-  class SessionLocal <<SQLAlchemy>> {
-    +__call__() : Session
-  }
-
-  class Session <<SQLAlchemy>>
-
-  abstract class Base <<SQLAlchemy>>
-
-  class Pessoa <<ORMModel>> {
-    +__tablename__ = "pessoas"
-    --
-    +cpf : String(14)      <<PK>>
-    +nome : Text
-    +endereco : Text
-    +data_nascimento : Date
-    +foto : Text
-  }
-}
-
-' ------------------ Relações ------------------
-Pessoa --|> Base
-PessoasController ..> SessionLocal : usa
-PessoasController ..> Pessoa : CRUD
-Helpers ..> Pessoa
-Helpers ..> date
-App ..> PessoasController : registra rotas /pessoas
-Engine o-- SessionLocal
-App ..> Engine
-
-note right of Engine
-  MySQL 8 (localhost)
-  URL:
-  mysql+pymysql://
-  pessoas_user:******@localhost:3306/pessoasdb
-end note
-
-@enduml
-
+USE pessoasdb;
 ```
+####  Tabela "pessoas": CRIAÇÃO
+
+##### SQL específico ao MySQL 
+
+``` sql
+
+CREATE TABLE IF NOT EXISTS pessoas 
+(
+  cpf             VARCHAR(14)  NOT NULL,
+  nome            TEXT         NOT NULL,
+  endereco        TEXT         NOT NULL,
+  data_nascimento DATE         NOT NULL,
+  foto            TEXT         NULL,
+  PRIMARY KEY (cpf)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- 4) (OPCIONAL) ÍNDICES PARA BUSCA
+-- Seu endpoint usa LIKE/ILIKE em nome e cpf; cpf já é PK.
+-- Para acelerar buscas por nome com LIKE, crie um índice por prefixo.
+-- OBS: índices em TEXT precisam de comprimento; 128 costuma ser um bom compromisso.
+
+CREATE INDEX idx_pessoas_nome_prefix ON pessoas (nome(128));
+```
+>>>>>>> e25fcb831f1854273afa49c1717b55c69d583ba6
+
+#### Servidor de Aplicação Python <==> MySQL: CRIAÇÃO
+
+##### Baixar os Pacotes de conexão python <==> MySQL
 
 Para utilizar o MySQL como servidor, devemos instalar os drivers de MySQL para a biblioteca SQLAlchemy do Python através da ferramenta de linha de comando PIP do python
 
@@ -395,10 +342,11 @@ Para utilizar o MySQL como servidor, devemos instalar os drivers de MySQL para a
 pip install flask flask-cors sqlalchemy "pymysql>=1.1"
 # (ou use mysqlclient: pip install mysqlclient e troque o driver para mysql+mysqlclient)
 ```
+##### Codificar o Servidor
 
 Agora vamos escrever o script python que criará o servidor de aplicação para interfacear nosso Cliente no Navegador e nossa tabela pessoas dentro do SGBD MySQL:
 
-``` python
+```python
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from sqlalchemy import create_engine, Column, String, Date, Text
@@ -561,15 +509,9 @@ if __name__ == '__main__':
 
 #### Criação do Cliente de Aplicação em HTML (Parte Gráfica) e Javascript (Programação Executável)
 
-Vamos verificar como é o Diagrama de Classes do Cliente que vai conversar com o servidor que vimos anteriormente:
+Salve esse código em um arquivo chamado **cliente.html**, para poder abrir-lo no navegador, **juntamente com o servidor rodando**:
 
-![](images/2025-09-01/09-cliente.jpg)
-
-Agora vamos verificar o código-fonte.
-
-Salve esse código em um arquivo chamado **cliente.html**, para poder abrir-lo no navegador, juntamente com o servidor rodando:
-
-``` html
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

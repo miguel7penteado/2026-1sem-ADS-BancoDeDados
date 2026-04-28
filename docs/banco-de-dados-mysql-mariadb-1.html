@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Slide 9 Banco de Dados: MySQL (MariaDB) | ADS - Banco de dados e No-SQL - 2026 - Anotações de aula</title>
   <meta name="description" content="Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas." />
-  <meta name="generator" content="bookdown 0.46.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Slide 9 Banco de Dados: MySQL (MariaDB) | ADS - Banco de dados e No-SQL - 2026 - Anotações de aula" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,11 @@
 <meta name="author" content="Professor Miguél Suares" />
 
 
+<<<<<<< HEAD
 <meta name="date" content="2026-04-28" />
+=======
+<meta name="date" content="2026-04-14" />
+>>>>>>> e25fcb831f1854273afa49c1717b55c69d583ba6
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +35,7 @@
   
   
 <link rel="prev" href="banco-de-dados-mysql-mariadb.html"/>
-<link rel="next" href="banco-de-dados-postgres.html"/>
+<link rel="next" href="prática-sql---postgresql.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -315,23 +319,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="banco-de-dados-mysql-mariadb.html"><a href="banco-de-dados-mysql-mariadb.html"><i class="fa fa-check"></i><b>8</b> Banco de Dados: MySQL (MariaDB)</a></li>
 <li class="chapter" data-level="9" data-path="banco-de-dados-mysql-mariadb-1.html"><a href="banco-de-dados-mysql-mariadb-1.html"><i class="fa fa-check"></i><b>9</b> Banco de Dados: MySQL (MariaDB)</a></li>
-<li class="chapter" data-level="10" data-path="banco-de-dados-postgres.html"><a href="banco-de-dados-postgres.html"><i class="fa fa-check"></i><b>10</b> Banco de Dados: Postgres</a></li>
-<li class="chapter" data-level="11" data-path="banco-de-dados-postgres-1.html"><a href="banco-de-dados-postgres-1.html"><i class="fa fa-check"></i><b>11</b> Banco de Dados: Postgres</a></li>
-<li class="chapter" data-level="12" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html"><i class="fa fa-check"></i><b>12</b> Banco de Dados: Uma Aplicação CRUD</a>
+<li class="chapter" data-level="10" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html"><i class="fa fa-check"></i><b>10</b> Prática SQL - PostgreSQL</a>
 <ul>
+<<<<<<< HEAD
 <li class="chapter" data-level="12.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#o-que-%C3%A9-uma-aplica%C3%A7%C3%A3o-crud"><i class="fa fa-check"></i><b>12.1</b> O que é uma Aplicação CRUD?</a></li>
 <li class="chapter" data-level="12.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#conceito-de-crud"><i class="fa fa-check"></i><b>12.2</b> Conceito de CRUD</a>
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#conceder-permiss%C3%A3o-ao-usu%C3%A1rio-unip-para-acessar-o-banco-de-dados-bancounip"><i class="fa fa-check"></i><b>12.2.1</b> Conceder permissão ao usuário “unip” para acessar o banco de dados “bancounip”</a></li>
+=======
+<li class="chapter" data-level="10.1" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#usu%C3%A1rios-dos-alunos"><i class="fa fa-check"></i><b>10.1</b> Usuários dos alunos</a></li>
+<li class="chapter" data-level="10.2" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#diagrama-da-tabela-com-a-qual-vamos-trabalhar"><i class="fa fa-check"></i><b>10.2</b> Diagrama da tabela com a qual vamos trabalhar</a></li>
+<li class="chapter" data-level="10.3" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#exerc%C3%ADcios-de-prospec%C3%A7%C3%A3o-de-leads-com-dados"><i class="fa fa-check"></i><b>10.3</b> Exercícios de Prospecção de LEADS com dados:</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#parte-1---aquecimento-e-filtros-geogr%C3%A1ficos"><i class="fa fa-check"></i><b>10.3.1</b> Parte 1 - Aquecimento e Filtros Geográficos</a></li>
+<li class="chapter" data-level="10.3.2" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#parte-2---segmenta%C3%A7%C3%A3o-por-ramo-e-nicho"><i class="fa fa-check"></i><b>10.3.2</b> Parte 2 - Segmentação por Ramo e Nicho</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#bloco-3-qualifica%C3%A7%C3%A3o-e-canais-de-contato"><i class="fa fa-check"></i><b>10.4</b> Bloco 3: Qualificação e Canais de Contato</a></li>
+<li class="chapter" data-level="10.5" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#bloco-4-estrat%C3%A9gias-avan%C3%A7adas-insights-b2b"><i class="fa fa-check"></i><b>10.5</b> Bloco 4: Estratégias Avançadas (Insights B2B)</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#respostas"><i class="fa fa-check"></i><b>10.5.1</b> Respostas</a></li>
+<li class="chapter" data-level="10.5.2" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#reposta-exerc%C3%ADcio-01"><i class="fa fa-check"></i><b>10.5.2</b> Reposta Exercício 01</a></li>
+<li class="chapter" data-level="10.5.3" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#reposta-exerc%C3%ADcio-02"><i class="fa fa-check"></i><b>10.5.3</b> Reposta Exercício 02</a></li>
+<li class="chapter" data-level="10.5.4" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#reposta-exerc%C3%ADcio-03"><i class="fa fa-check"></i><b>10.5.4</b> Reposta Exercício 03</a></li>
+<li class="chapter" data-level="10.5.5" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#reposta-exerc%C3%ADcio-04"><i class="fa fa-check"></i><b>10.5.5</b> Reposta Exercício 04</a></li>
+<li class="chapter" data-level="10.5.6" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#reposta-exerc%C3%ADcio-05"><i class="fa fa-check"></i><b>10.5.6</b> Reposta Exercício 05</a></li>
+<li class="chapter" data-level="10.5.7" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#reposta-exerc%C3%ADcio-06"><i class="fa fa-check"></i><b>10.5.7</b> Reposta Exercício 06</a></li>
+<li class="chapter" data-level="10.5.8" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#reposta-exerc%C3%ADcio-07"><i class="fa fa-check"></i><b>10.5.8</b> Reposta Exercício 07</a></li>
+<li class="chapter" data-level="10.5.9" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#reposta-exerc%C3%ADcio-08"><i class="fa fa-check"></i><b>10.5.9</b> Reposta Exercício 08</a></li>
+<li class="chapter" data-level="10.5.10" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#reposta-exerc%C3%ADcio-09"><i class="fa fa-check"></i><b>10.5.10</b> Reposta Exercício 09</a></li>
+<li class="chapter" data-level="10.5.11" data-path="prática-sql---postgresql.html"><a href="prática-sql---postgresql.html#reposta-exerc%C3%ADcio-10"><i class="fa fa-check"></i><b>10.5.11</b> Reposta Exercício 10</a></li>
+>>>>>>> e25fcb831f1854273afa49c1717b55c69d583ba6
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="banco-de-dados-estatístico---cliente-rstudio.html"><a href="banco-de-dados-estatístico---cliente-rstudio.html"><i class="fa fa-check"></i><b>13</b> Banco de Dados Estatístico - Cliente Rstudio</a></li>
-<li class="chapter" data-level="14" data-path="banco-de-dados-estatístico---cliente-rstudio-1.html"><a href="banco-de-dados-estatístico---cliente-rstudio-1.html"><i class="fa fa-check"></i><b>14</b> Banco de Dados Estatístico - Cliente Rstudio</a></li>
-<li class="chapter" data-level="15" data-path="banco-de-dados---análise-de-dados-parte-01.html"><a href="banco-de-dados---análise-de-dados-parte-01.html"><i class="fa fa-check"></i><b>15</b> Banco de Dados - Análise de Dados Parte 01</a></li>
-<li class="chapter" data-level="16" data-path="banco-de-dados---análise-de-dados-parte-01-1.html"><a href="banco-de-dados---análise-de-dados-parte-01-1.html"><i class="fa fa-check"></i><b>16</b> Banco de Dados - Análise de Dados Parte 01</a></li>
-<li class="chapter" data-level="17" data-path="banco-de-dados---análise-de-dados-parte-02.html"><a href="banco-de-dados---análise-de-dados-parte-02.html"><i class="fa fa-check"></i><b>17</b> Banco de Dados - Análise de Dados Parte 02</a></li>
-<li class="chapter" data-level="18" data-path="banco-de-dados---análise-de-dados-parte-02-1.html"><a href="banco-de-dados---análise-de-dados-parte-02-1.html"><i class="fa fa-check"></i><b>18</b> Banco de Dados - Análise de Dados Parte 02</a></li>
-<li class="chapter" data-level="19" data-path="banco-de-dados---análise-de-dados-parte-03.html"><a href="banco-de-dados---análise-de-dados-parte-03.html"><i class="fa fa-check"></i><b>19</b> Banco de Dados - Análise de Dados Parte 03</a></li>
+<li class="chapter" data-level="11" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html"><i class="fa fa-check"></i><b>11</b> Banco de Dados: Uma Aplicação CRUD</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#o-que-%C3%A9-uma-aplica%C3%A7%C3%A3o-crud"><i class="fa fa-check"></i><b>11.1</b> O que é uma Aplicação CRUD?</a></li>
+<li class="chapter" data-level="11.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#conceito-de-crud"><i class="fa fa-check"></i><b>11.2</b> Conceito de CRUD</a></li>
+<li class="chapter" data-level="11.3" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#o-padr%C3%A3o-de-design-de-sistemas-mvc-model-view-controller"><i class="fa fa-check"></i><b>11.3</b> O padrão de Design de Sistemas MVC (Model View Controller)</a></li>
+<li class="chapter" data-level="11.4" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#construindo-uma-aplica%C3%A7%C3%A3o-crud-para-interfacear-com-a-tabela-pessoa"><i class="fa fa-check"></i><b>11.4</b> Construindo uma aplicação CRUD para interfacear com a tabela “Pessoa”</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#representa%C3%A7%C3%A3o-gr%C3%A1fica-no-modelo-f%C3%ADsico-relacional"><i class="fa fa-check"></i><b>11.4.1</b> Representação gráfica no modelo Físico-Relacional</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#cria%C3%A7%C3%A3o-de-uma-aplica%C3%A7%C3%A3o-crud"><i class="fa fa-check"></i><b>11.5</b> Criação de uma aplicação CRUD</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#resultado-final"><i class="fa fa-check"></i><b>11.5.1</b> Resultado final:</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#feito-2"><i class="fa fa-check"></i><b>11.6</b> Feito</a></li>
+<li class="chapter" data-level="11.7" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exerc%C3%ADcios-3"><i class="fa fa-check"></i><b>11.7</b> Exercícios</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#banco-de-dados-utilizado-nos-exemplos-de-aplica%C3%A7%C3%B5es-abaixo"><i class="fa fa-check"></i><b>11.7.1</b> Banco de Dados utilizado nos exemplos de aplicações abaixo</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-01"><i class="fa fa-check"></i><b>11.8</b> Exemplo 01</a></li>
+<li class="chapter" data-level="11.9" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-02---servidor-de-aplica%C3%A7%C3%A3o-python"><i class="fa fa-check"></i><b>11.9</b> Exemplo 02 - SERVIDOR DE APLICAÇÃO PYTHON</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#servidor-python"><i class="fa fa-check"></i><b>11.9.1</b> Servidor python</a></li>
+<li class="chapter" data-level="11.9.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#cliente-html-conex%C3%A3o-restful"><i class="fa fa-check"></i><b>11.9.2</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.10" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-03---servidor-de-aplica%C3%A7%C3%A3o-perl"><i class="fa fa-check"></i><b>11.10</b> Exemplo 03 - SERVIDOR DE APLICAÇÃO PERL</a>
+<ul>
+<li class="chapter" data-level="11.10.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#servidor-perl"><i class="fa fa-check"></i><b>11.10.1</b> Servidor Perl</a></li>
+<li class="chapter" data-level="11.10.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#cliente-html-conex%C3%A3o-restful-1"><i class="fa fa-check"></i><b>11.10.2</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.11" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-04---servidor-de-aplica%C3%A7%C3%A3o-java"><i class="fa fa-check"></i><b>11.11</b> Exemplo 04 - SERVIDOR DE APLICAÇÃO JAVA</a></li>
+<li class="chapter" data-level="11.12" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#exemplo-05---servidor-de-aplica%C3%A7%C3%A3o-c"><i class="fa fa-check"></i><b>11.12</b> Exemplo 05 - SERVIDOR DE APLICAÇÃO C++</a>
+<ul>
+<li class="chapter" data-level="11.12.1" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#criando-o-arquivo-c-do-servidor"><i class="fa fa-check"></i><b>11.12.1</b> Criando o arquivo C++ do servidor</a></li>
+<li class="chapter" data-level="11.12.2" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#ferramenta-de-compila%C3%A7%C3%A3o-cmake"><i class="fa fa-check"></i><b>11.12.2</b> Ferramenta de compilação CMAKE</a></li>
+<li class="chapter" data-level="11.12.3" data-path="banco-de-dados-uma-aplicação-crud-1.html"><a href="banco-de-dados-uma-aplicação-crud-1.html#cliente-html-conex%C3%A3o-restful-2"><i class="fa fa-check"></i><b>11.12.3</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="banco-de-dados-estatístico---cliente-rstudio.html"><a href="banco-de-dados-estatístico---cliente-rstudio.html"><i class="fa fa-check"></i><b>12</b> Banco de Dados Estatístico - Cliente Rstudio</a></li>
+<li class="chapter" data-level="13" data-path="banco-de-dados-estatístico---cliente-rstudio-1.html"><a href="banco-de-dados-estatístico---cliente-rstudio-1.html"><i class="fa fa-check"></i><b>13</b> Banco de Dados Estatístico - Cliente Rstudio</a></li>
+<li class="chapter" data-level="14" data-path="banco-de-dados---análise-de-dados-parte-01.html"><a href="banco-de-dados---análise-de-dados-parte-01.html"><i class="fa fa-check"></i><b>14</b> Banco de Dados - Análise de Dados Parte 01</a></li>
+<li class="chapter" data-level="15" data-path="banco-de-dados---análise-de-dados-parte-01-1.html"><a href="banco-de-dados---análise-de-dados-parte-01-1.html"><i class="fa fa-check"></i><b>15</b> Banco de Dados - Análise de Dados Parte 01</a></li>
+<li class="chapter" data-level="16" data-path="banco-de-dados---análise-de-dados-parte-02.html"><a href="banco-de-dados---análise-de-dados-parte-02.html"><i class="fa fa-check"></i><b>16</b> Banco de Dados - Análise de Dados Parte 02</a></li>
+<li class="chapter" data-level="17" data-path="banco-de-dados---análise-de-dados-parte-02-1.html"><a href="banco-de-dados---análise-de-dados-parte-02-1.html"><i class="fa fa-check"></i><b>17</b> Banco de Dados - Análise de Dados Parte 02</a></li>
+<li class="chapter" data-level="18" data-path="banco-de-dados---análise-de-dados-parte-03.html"><a href="banco-de-dados---análise-de-dados-parte-03.html"><i class="fa fa-check"></i><b>18</b> Banco de Dados - Análise de Dados Parte 03</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com Biblioteca R bookdown</a></li>
 
@@ -368,7 +431,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="banco-de-dados-mysql-mariadb.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="banco-de-dados-postgres.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prática-sql---postgresql.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,225 @@
+DO $$
+DECLARE
+    usuario text;
+    banco_atual text := current_database();
+    usuarios text[] := ARRAY[
+        -- TURMA 1
+        'anderson_raulino_da_silva_f3620j8',
+        'anderson_xavier_de_lima_h74heb9',
+        'barbara_costa_nascimento_h603064',
+        'bruna_medeiros_de_aguiar_r815544',
+        'camily_de_sousa_oliveira_rocha_r8620h4',
+        'carlos_eduardo_silva_santana_f362ef1',
+        'caua_henrique_r_dos_santos_r434fi4',
+        'cauan_nunes_lopes_h6771g9',
+        'cleyton_alves_da_costa_g77aia8',
+        'danilo_salgado_peralta_ribeiro_r868gi1',
+        'david_gabriel_silva_de_jesus_f361dg6',
+        'douglas_vinicius_m_dos_santos_h6094i1',
+        'eder_rodrigues_de_almeida_r8459c7',
+        'fredson_silva_dos_santos_r427fb0',
+        'gabriel_goncalves_zago_h75gha1',
+        'gabriel_roque_dos_santos_r6607g5',
+        'guilherme_sousa_dos_santos_h520495',
+        'hector_fabro_pellegrino_r660ij4',
+        'igor_zabay_dos_santos_silva_h75bej1',
+        'isabelle_georgia_m_de_souza_r8378i6',
+        'joao_pedro_silva_carvalho_n001ae7',
+        'joao_vitor_freitas_de_oliveira_h755hh9',
+        'karen_de_sousa_faria_r8522d0',
+        'leonardo_araujo_freires_r659ei9',
+        'lincoln_g_s_a_barcellos_h7501d3',
+        'lorrany_silva_amorim_g71cji0',
+        'lucas_souza_santana_r5837h9',
+        'maria_eduarda_rodrigues_romão_r512ed7',
+        'matheus_briganti_de_oliveira_h74fgi8',
+        'maysa_pont_lopes_t160gf8',
+        'mikael_macedo_da_silva_h671ce9',
+        'nicolas_teixeira_de_aguiar_r849244',
+        'raquel_barbosa_de_souza_h70gib0',
+        'samuel_goncalves_silva_g9960j0',
+        'thaisla_luiza_silva_oliveira_r194655',
+
+        -- TURMA 2
+        'breno_brito_almeida_h768594',
+        'bruno_alves_de_souza_r8662a7',
+        'eduardo_de_sousa_pereira_h759ch8',
+        'guilherme_veloso_dos_santos_r861dh7',
+        'henrique_alexandre_damaceno_h75jac6',
+        'henrique_oliveira_gomes_r8607d0',
+        'isaac_lima_martins_r860922',
+        'luisa_dos_santos_fialho_r8708b6',
+        'mariane_carneiro_santos_r852ig6',
+        'matheus_da_silva_brito_r839da4',
+        'matheus_ferreira_pinheiro_r807053',
+        'michel_farias_da_silva_r6607c2',
+        'miguel_dos_santos_m_siroma_r540ea6',
+        'nicolas_zemella_de_matos_r582639',
+        'pedro_eduardo_paiva_meireles_r8699h4',
+        'ramon_brian_g_dos_santos_r852369',
+        'raphael_caique_da_s_negreiros_r850765',
+        'richard_rodrigues_medeiros_h755565',
+        'taynara_nogueira_dos_santos_r8439j1',
+        'thamyres_bandeira_santos_h6882f0',
+        'thiago_ferreira_dias_r218bc1',
+        'vitor_alexandre_de_j_amorim_h66eih4',
+        'vitor_luiz_luta_fernandes_r465993',
+        'vitoria_de_oliveira_vitor_r503ie5',
+        'yeda_gomes_dos_santos_custodio_r872696',
+
+        -- TURMA 3
+        'antonio_fabio_ribeiro_sampaio_h57hed2',
+        'bruna_silva_dos_santos_h662893',
+        'gabriel_pimenta_de_jesus_h638879',
+        'gabriel_rezende_de_barros_h64cjj4',
+        'guilherme_augusto_g_de_melo_h624hj8',
+        'gustavo_rodrigues_de_barros_r693627',
+        'hendrew_dos_santos_braz_h76fbe0',
+        'henrique_bastos_laet_r671ig1',
+        'jerfferson_de_souza_nascimento_h471273',
+        'joao_victor_rodrigues_silva_r832384',
+        'luana_gonçalves_blasio_r6331j9',
+        'lucas_gabriel_monteiro_silva_r865118',
+        'luis_fernando_andrade_santos_h712742',
+        'luiza_nascimento_da_conceicao_h660467',
+        'manuel_douglas_silva_alves_h675ae0',
+        'matheus_cavalcante_de_almeida_r8506e5',
+        'matheus_renato_b_estevo_r864cb0',
+        'matheus_santos_ribeiro_g73ibg5',
+        'pedro_henrique_de_p_medeiros_r8514d9',
+        'pedro_henrique_f_de_souza_r826511',
+        'pedro_lima_de_almeida_souza_r802698',
+        'ramon_santos_silva_h751616',
+        'rhauan_silva_araujo_r830110',
+
+        -- TURMA 4
+        'bruno_silva_de_souza_f3661b5',
+        'caio_alves_dos_santos_r933eb6',
+        'david_pereira_mendes_h78iif9',
+        'diego_duarte_de_andrade_h78iib6',
+        'ericklis_v_s_evangelista_h948746',
+        'gabriel_nonato_emerenciano_h783216',
+        'gabriel_rocha_santos_t274427',
+        'giovanni_lucas_florência_viana_r9580i0',
+        'iran_alves_dos_santos_h7635d7',
+        'jessica_borges_oliveira_r9520a6',
+        'joao_gabriel_de_oliveira_filie_r958825',
+        'joao_pedro_de_oliveira_t232341',
+        'joao_pedro_salem_marques_silva_h7891i8',
+        'jordan_silverio_de_sousa_t277973',
+        'jose_oziel_silva_do_nascimento_h77cbf4',
+        'kaue_ferreira_da_silva_h779286',
+        'luan_de_jesus_silva_r922dc5',
+        'luan_oliveira_russo_t307fd5',
+        'lucas_neubauer_lappas_linhares_h789ga6',
+        'paulo_felix_da_silva_araujo_h779669',
+        'pedro_henrique_m_da_silva_r952da5',
+        'rayane_dos_santos_falcao_h790ac7',
+        'thaina_rodrigues_paiva_f363ic2',
+        'thiago_santos_do_carmo_h75fff1',
+        'victhor_hugo_s_a_de_almeida_f3650i9',
+        'victor_flohr_fagundes_r941je0'
+    ];
+BEGIN
+    FOREACH usuario IN ARRAY usuarios
+    LOOP
+        -- 1) Se o schema existir, apaga antes
+        EXECUTE format('DROP SCHEMA IF EXISTS %I CASCADE', usuario);
+
+        -- 2) Se o role existir, limpa dependências e apaga
+        IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = usuario) THEN
+            EXECUTE format('DROP OWNED BY %I', usuario);
+            EXECUTE format('DROP ROLE %I', usuario);
+        END IF;
+
+        -- 3) Cria o usuário
+        EXECUTE format(
+            'CREATE ROLE %I LOGIN PASSWORD %L',
+            usuario,
+            'unip'
+        );
+
+        -- 4) Cria o schema do usuário
+        EXECUTE format(
+            'CREATE SCHEMA %I AUTHORIZATION %I',
+            usuario,
+            usuario
+        );
+
+        -- 5) Permite conectar no banco atual
+        EXECUTE format(
+            'GRANT CONNECT ON DATABASE %I TO %I',
+            banco_atual,
+            usuario
+        );
+
+        -- 6) Permite usar o schema public
+        EXECUTE format(
+            'GRANT USAGE ON SCHEMA public TO %I',
+            usuario
+        );
+
+        -- 7) Permissão de leitura nas tabelas já existentes em public
+        EXECUTE format(
+            'GRANT SELECT ON ALL TABLES IN SCHEMA public TO %I',
+            usuario
+        );
+
+        -- 8) Permissão de leitura nas futuras tabelas criadas em public
+        --    por quem estiver executando este script
+        EXECUTE format(
+            'ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO %I',
+            usuario
+        );
+
+        -- 9) Controle total no próprio schema
+        EXECUTE format(
+            'GRANT ALL ON SCHEMA %I TO %I',
+            usuario,
+            usuario
+        );
+
+        EXECUTE format(
+            'GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA %I TO %I',
+            usuario,
+            usuario
+        );
+
+        EXECUTE format(
+            'GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA %I TO %I',
+            usuario,
+            usuario
+        );
+
+        EXECUTE format(
+            'GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA %I TO %I',
+            usuario,
+            usuario
+        );
+
+        -- 10) Default privileges para objetos futuros criados pelo próprio aluno no schema dele
+        EXECUTE format(
+            'ALTER DEFAULT PRIVILEGES FOR ROLE %I IN SCHEMA %I
+             GRANT ALL ON TABLES TO %I',
+            usuario,
+            usuario,
+            usuario
+        );
+
+        EXECUTE format(
+            'ALTER DEFAULT PRIVILEGES FOR ROLE %I IN SCHEMA %I
+             GRANT ALL ON SEQUENCES TO %I',
+            usuario,
+            usuario,
+            usuario
+        );
+
+        EXECUTE format(
+            'ALTER DEFAULT PRIVILEGES FOR ROLE %I IN SCHEMA %I
+             GRANT ALL ON FUNCTIONS TO %I',
+            usuario,
+            usuario,
+            usuario
+        );
+    END LOOP;
+END $$;
