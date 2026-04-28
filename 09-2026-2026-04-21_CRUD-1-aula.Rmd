@@ -6,23 +6,125 @@
 
 ## O que é uma Aplicação CRUD?
 
-Hoje vamos desenvolver um cadastro web simples e entender o que é o acronimo C.R.U.D.
+Hoje vamos desenvolver um **cadastro web** simples e entender o que é o acronimo C.R.U.D.
+Para faze-lo devemos criar uma interface entre o Sistema de Gerenciamento de 
+Banco de Dados e a página WEB.
 
 ## Conceito de CRUD
 
 **CRUD** é um acrônimo para quatro operações fundamentais que um sistema realiza sobre dados em um banco de dados:
 
-![](images/2025-09-01/01-CRUD.jpg)
+![](09-aula09/media/01-CRUD.jpg)
 
 Essas quatro operações compõem a base da maioria das **aplicações web** que manipulam dados persistidos em um **SGBD** (Sistema Gerenciador de Banco de Dados).
 
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-6e8n{background-color:#c0c0c0;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-ev4w{background-color:#32cb00;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-qi4s{background-color:#f8ff00;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-6e8n">Operação C.R.U.D.</th>
+    <th class="tg-6e8n">Significado em Português</th>
+    <th class="tg-6e8n">Operação SQL DML</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-ev4w">CREATE</td>
+    <td class="tg-0pky">Criar ⇒</td>
+    <td class="tg-qi4s">INSERT</td>
+  </tr>
+  <tr>
+    <td class="tg-ev4w">READ</td>
+    <td class="tg-0pky">Ler ⇒</td>
+    <td class="tg-qi4s">SELECT</td>
+  </tr>
+  <tr>
+    <td class="tg-ev4w">UPDATE</td>
+    <td class="tg-0pky">Atualizar ⇒</td>
+    <td class="tg-qi4s">UPDATE</td>
+  </tr>
+  <tr>
+    <td class="tg-ev4w">DELETE</td>
+    <td class="tg-0pky">Apagar ⇒</td>
+    <td class="tg-qi4s">DELETE</td>
+  </tr>
+</tbody>
+</table>
+
 ------------------------------------------------------------------------
+Esta interface será construida através do modelo cliente-servidores onde:
+
+```{plantuml aula-09-diagrama-cliente-servidor-01, plantuml.path="images"}
+@startuml
+skinparam componentStyle rectangle
+
+package "Denominado Front-end" {
+    [Cliente WEB (HTML + JavaScript) ] as Browser
+}
+
+package "Denominado Back-end" {
+    [Servidor de Aplicação Python] as Server
+}
+
+database "Camada de Dados" {
+    [Servidor de Banco de Dados - SGBD] as DB
+}
+
+Browser <--> Server : ================ Conversa por Protocolo HTTP (transporta Verbos http)
+Server  <--> DB     : ================ Conversa por Protocolo TCP  (transporta SQL DML)
+
+note right of Browser : Desenha a interface\ne executa lógica de cliente
+note right of Server : Processa a chamada lógica de negócio\ne autenticação
+note right of DB : Armazena e gerencia\ndados persistentes
+@enduml
+```
+
+
 
 ## O padrão de Design de Sistemas MVC (Model View Controller)
 
 Uma aplicação Cliente-Servidor (modelo 2 camadas) geralmente segue o **padrão MVC** — **Model, View, Controller**:
 
-![](images/2025-09-01/03-MVC.jpg)
+
+```{plantuml aula-09-diagrama-cliente-servidor-01-mvc, plantuml.path="images"}
+@startuml
+top to bottom direction
+skinparam linetype ortho
+skinparam packageStyle frame
+
+title Cliente, Servidor e Banco de Dados para Arquitetura M.V.C.:
+
+package "\n\nNa lógica VIEW\nentra o CLIENTE\n\n" {
+    [Cliente HTML + JavaScript] as View
+    note bottom of View : Tela de Interfaceamento \n\ncom usuário e\n\nexibição dos dados.
+}
+
+package "\n\nNa lógica CONTROLLER\n entra o SERVIDOR\n\n" {
+    [Servidor de aplicação Python] as Controller
+    note top of Controller : Lógica de controle,\n\nRotas e Intermediação: \n\nExposição da A.P.I.
+}
+
+package "\n\nNa lógica MODEL\n entra o Banco de dados\n\n " {
+    [O seu Banco de Dados Preferido\n PostgreSQL, MySQL, SQLServer] as Model
+    note bottom of Model : Persistência de dados e\n\nregras de negócio da base.
+}
+
+
+View       <----> Controller : => Tela WEB - consultas http
+Controller <--> Model : => Consultas SQL (tradicionalmente)
+
+@enduml
+```
+
+
 
 ## Construindo uma aplicação CRUD para interfacear com a tabela "Pessoa"
 
@@ -42,7 +144,6 @@ entity PESSOAS {
 }
 
 @endchen
-
 ```
 
 Vamos Converte-lo para o Modelo Físico-Relacional em linguagem SQL:
@@ -51,16 +152,39 @@ Vamos Converte-lo para o Modelo Físico-Relacional em linguagem SQL:
 
 Vamos agora representa-lo em linguagem SQL:
 
-![](images/2025-09-01/02-TabelaPessoas.jpg)
+```{plantuml modelo-fisico-continuação, plantuml.path="images"}
+@startuml
+' Configurações visuais para parecer uma tabela de banco de dados
+hide circle
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
 
-## Criação de uma aplicação CRUD
+title Modelo Físico — Tabela PESSOAS
+
+entity "PESSOAS" as pessoas {
+  * **cpf** : VARCHAR(11) <<PK>>
+  --
+  * nome : VARCHAR(100)
+  endereco : VARCHAR(255)
+  data_nascimento : DATE
+  foto : BLOB
+}
+
+note right of pessoas : O campo 'cpf' é a Chave Primária (PK).\nOs campos com '*' são obrigatórios (NOT NULL).
+@enduml
+```
+## MySQL - Criação de uma aplicação CRUD 
 
 Vamos criar um **microsas** (micro Software As A Service) , ou seja, um site para inserir informações dentro da tabela acima.
 
 ![](images/2025-09-01/04-Aplicacao.jpg)
 
 | Informações de Projeto | Tecnologias utilizadas no projeto CRUD |
-|----|----|
+|------------------------------------|------------------------------------|
 | Servidor de banco de dados SGBD | MySQL 8 |
 | Usuário de Banco de Dados | **pessoas_user** |
 | De onde pode ser acessado | Apenas Máquina Local (localhost) |
@@ -73,68 +197,8 @@ Vamos criar um **microsas** (micro Software As A Service) , ou seja, um site par
 
 : Criando um Esquema de Banco de Dados - CRUD tabela Pessoas
 
-#### Criação de um usuário para Interagir com o Esquema de Banco de Dados
-
-![](images/2025-09-01/05-Usuario.jpg)
-
-``` sql
-
--- CRIAR USUÁRIO LOCAL E CONCEDER PERMISSÕES
--- Troque 'MinhaSenhaForte' por uma senha segura
 
 
-CREATE USER IF NOT EXISTS 'pessoas_user'@'localhost' IDENTIFIED BY 'MinhaSenhaForte';
-
-GRANT ALL PRIVILEGES ON pessoasdb.* TO 'pessoas_user'@'localhost';
-
-FLUSH PRIVILEGES;
-```
-
-#### Criação do Esquema de Banco de Dados no SGBD MySQL
-
-Agora vamos criar um esquema de Banco de Dados para abrigar nossa futura tabela:
-
-![](images/2025-09-01/06-Esquema.jpg)
-
-``` sql
--- 1) CRIAR BANCO (ajuste o nome se quiser)
-
-CREATE DATABASE IF NOT EXISTS pessoasdb
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_0900_ai_ci;
-
-USE pessoasdb;
-```
-
-#### Criação da Tabela "pessoas"
-
-![](images/2025-09-01/07-Tabela_Pessoas.jpg)
-
-``` sql
-
--- 3) TABELA 'pessoas' COMPATÍVEL COM O MODELO SQLAlchemy
---    - cpf: chave primária (String(14))
---    - nome, endereco, foto: TEXT
---    - data_nascimento: DATE
-
-CREATE TABLE IF NOT EXISTS pessoas 
-(
-  cpf             VARCHAR(14)  NOT NULL,
-  nome            TEXT         NOT NULL,
-  endereco        TEXT         NOT NULL,
-  data_nascimento DATE         NOT NULL,
-  foto            TEXT         NULL,
-  PRIMARY KEY (cpf)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
--- 4) (OPCIONAL) ÍNDICES PARA BUSCA
--- Seu endpoint usa LIKE/ILIKE em nome e cpf; cpf já é PK.
--- Para acelerar buscas por nome com LIKE, crie um índice por prefixo.
--- OBS: índices em TEXT precisam de comprimento; 128 costuma ser um bom compromisso.
-
-CREATE INDEX idx_pessoas_nome_prefix ON pessoas (nome(128));
-```
 
 #### Uma aplicação Cliente Servidor no formato MVC (Model View Controller)
 
