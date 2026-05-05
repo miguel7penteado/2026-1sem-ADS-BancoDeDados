@@ -244,23 +244,27 @@ table{
   box-shadow: var(--shadow-sm);
   border-radius: var(--radius);
   overflow: hidden;
+  background: #FFFFFF; 
+  color: #000000;
+  border: 1px solid #DDD
 }
 
 th, td{
   padding: .75rem .9rem;
   border-bottom: 1px solid var(--border);
-  vertical-align: top;
+  vertical-align: top;  
 }
+
 
 th{
   text-align: left;
-  background: rgba(148,163,184,0.10);
-  font-weight: 800;
-  color: #e5e7eb;
+  background: rgba(9,6,75,0.8);
+  font-weight: 1000;
+  color: #FFFFFF;
 }
 
-tr:nth-child(even) td{ background: rgba(148,163,184,0.04); }
-tr:hover td{ background: rgba(34,211,238,0.06); }
+tr:nth-child(even) td{ background: rgba(22,75,150,0.3); }
+tr:hover td{ background: rgba(224,208,15,1); }
 
 /* Code ---------------------------------------------------------------- */
 pre, code{ font-family: var(--font-mono); }
@@ -273,19 +277,32 @@ pre, code{ font-family: var(--font-mono); }
   border: 1px solid var(--border);
 }
 
-pre, pre code, .sourceCode, .sourceCode pre{
-  background: var(--code-bg);
-  color: var(--code-text);
+pre, pre code, .sourceCode, .sourceCode pre {
+  background: #d8e5f480; /* Cinza escuro profundo do Gemini */
+  color: #000000;    /* Texto esbranquiçado suave */
+  font-size: 1.8rem;
+  line-height: 1.6;
   border-radius: var(--radius);
-  border: 1px solid rgba(34,211,238,0.14);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borda mais sutil */
 }
 
-pre, .sourceCode pre{
+pre, .sourceCode pre {
   padding: 1rem 1.1rem;
-  overflow: auto;
+  overflow: auto; /* Mantém o scroll funcional */
   box-shadow: var(--shadow-sm);
   position: relative;
+  
+  /* Esconde a barra de rolagem no Chrome, Safari e Opera */
+  -ms-overflow-style: none;  /* IE e Edge */
+  scrollbar-width: none;     /* Firefox */
 }
+
+pre::-webkit-scrollbar, 
+.sourceCode pre::-webkit-scrollbar {
+  display: none;
+}
+
+
 pre::before, .sourceCode pre::before{
   content: "";
   position: absolute;
@@ -308,13 +325,13 @@ pre.numberSource code > span{
 }
 
 /* Pandoc syntax tokens (balanced for dark code bg) */
-code span.kw{ color: #93c5fd; font-weight: 700; }   /* keywords */
-code span.st{ color: #fbbf24; font-weight: 700; }   /* strings */
-code span.dv, code span.bn, code span.fl{ color: #fca5a5; font-weight: 700; } /* numbers */
+code span.kw{ color: #080ebe; font-style: bold; font-weight: 700; }   /* keywords */
+code span.st{ color: #5a1809cc; font-style: italic; font-weight: 700; }   /* strings */
+code span.dv, code span.bn, code span.fl{ color: #0b5333; font-weight: 700; } /* numbers */
 code span.ch, code span.sc{ color: #fbcfe8; }
 code span.cf{ color: #c4b5fd; font-weight: 600; }   /* control flow */
-code span.fu{ color: #86efac; }                     /* functions */
-code span.op{ color: #fda4af; font-weight: 700; }   /* operators */
+code span.fu{ color: #d73f3f; font-style: italic; }                     /* functions */
+code span.op{ color: #e0007b; font-style: bold; font-weight: 700; }   /* operators */
 
 /* Blockquotes & callouts -------------------------------------------- */
 blockquote{

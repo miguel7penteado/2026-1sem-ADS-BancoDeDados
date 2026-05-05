@@ -1,0 +1,17 @@
+# Administração e Gerenciamento de Bancos de Dados
+
+#### 25/08/2025 {.unnumbered}
+
+#### Professor Miguél Suares {.unnumbered}
+
+## Administração e Gerenciamento de Banco de Dados:
+
+## Feito
+
+```{r 05-Administracao_E_Gerenciamento-01-aula-html, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+
+rmarkdown::render("05-2026-03-17_Administracao_Gerenciamento-aula-01.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; 
+
+utils::browseURL("docs/temporario.html")
+
+```
