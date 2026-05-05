@@ -223,6 +223,25 @@ armazenados.
 
 ![](08-aula08/media/10-MongoDB-Cliente_Texto.jpg)
 
+Instalação finalizada.
+
+------------------------------------------------------------------------
+
+## SGBDs NoSQL Orientado a Documentos: MongoDB
+
+Vamos agora mapear a base de dados declarada abaixo no SGBD PostgreSQL
+utilizando a linguagem SQL para o SGBD NoSQL orientado a documentos
+MongoDB através da linguagem JavaScript
+
+### Novo Paradigma, Nova Nomenclatura, Velhos Conhecidos:
+
+![](08-aula08/media/06-MongoDB-Paradigma.jpg)
+
+### Tipos de dados suportados nos campos (colunas)
+
+![](08-aula08/media/07-MongoDB-Tipos_de_Dados.jpg)
+
+
 ### Criação de Estruturas de Armazenamento de Dados no MongoDB (equivalência SQL DDL)
 
 A tabela abaixo apresenta um mapeamento de funcionalidades para criar o
@@ -280,21 +299,11 @@ MongoDB.
 | DISTINCT | SELECT DISTINCT cidade FROM pessoas; | db.pessoas.distinct("cidade") |
 | JOIN (simples) | SELECT p.\*, c.nome FROM pessoas p JOIN cidades c ON p.cid_id = c.id; | db.pessoas.aggregate([{ \$lookup: { from: "cidades", localField: "cid_id", foreignField: "id", as: "cidades" } }]) |
 
-## SGBDs NoSQL Orientado a Documentos: MongoDB
+------------------------------------------------------------------------
 
-Vamos agora mapear a base de dados declarada abaixo no SGBD PostgreSQL
-utilizando a linguagem SQL para o SGBD NoSQL orientado a documentos
-MongoDB através da linguagem JavaScript
+## Exemplode Aplicação com o MongoDB
 
-### Novo Paradigma, Nova Nomenclatura, Velhos Conhecidos:
-
-![](08-aula08/media/06-MongoDB-Paradigma.jpg)
-
-### Tipos de dados suportados nos campos (colunas)
-
-![](08-aula08/media/07-MongoDB-Tipos_de_Dados.jpg)
-
-##### Origem: PostgreSQL - Linguagem SQL DCL
+##### Origem: PostgreSQL - Linguagem SQL DDL (Data Definition Language)
 
 ``` sql
 CREATE DATABASE IF NOT EXISTS pessoasdb

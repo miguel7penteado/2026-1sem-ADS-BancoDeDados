@@ -272,12 +272,13 @@ convertendo-uma-tabela-sql-para-o-modelo-de-grafos-utilizando-a-linguagem-cypher
 tabela-pessoas-declarada-em-sql
 nó-pessoas-declarado-em-cypher
 mongodb---instalando-e-acessando-o-servidor
-criação-de-estruturas-de-armazenamento-de-dados-no-mongodb-equivalência-sql-ddl
-manipulandodados-no-mongodb-equivalência-sql-dml
 sgbds-nosql-orientado-a-documentos-mongodb
 novo-paradigma-nova-nomenclatura-velhos-conhecidos
 tipos-de-dados-suportados-nos-campos-colunas
-origem-postgresql---linguagem-sql-dcl
+criação-de-estruturas-de-armazenamento-de-dados-no-mongodb-equivalência-sql-ddl
+manipulandodados-no-mongodb-equivalência-sql-dml
+exemplode-aplicação-com-o-mongodb
+origem-postgresql---linguagem-sql-ddl-data-definition-language
 destino-mongodb---linguagem-javascript
 para-testar-a-base-de-dados-em-um-crud
 criando-a-base-de-dados-pessoas-no-sgbd-mongodb
