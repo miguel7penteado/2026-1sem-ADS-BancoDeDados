@@ -1,4 +1,4 @@
-# Banco de Dados: MySQL (MariaDB)
+## Exercícios - Administração e Gerenciamento de Banco de Dados - Parte 2
 #### 08/09/2025 {.unnumbered}
 #### Professor Miguél Suares {.unnumbered}
 

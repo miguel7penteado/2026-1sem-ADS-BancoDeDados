@@ -1,0 +1,11 @@
+## Exercícios - Bancos de Dados NoSQL 
+
+
+
+```{r 08-PostGreSQL-01-exercicio-html, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+
+rmarkdown::render("08-2026-2026-04-14_Postgres-exercicio.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; 
+
+utils::browseURL("docs/temporario.html")
+
+```

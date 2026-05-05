@@ -1,6 +1,6 @@
+# Banco de Dados - Análise de Dados Parte 03
 
-
-```{r 13-Análise-03-aula-html, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+```{r 13-2026-2026-05-26_Analise_03-aula-html, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 
 rmarkdown::render("13-2026-2026-05-26_Analise_03-aula.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; 
 
@@ -9,12 +9,12 @@ utils::browseURL("docs/temporario.html")
 ```
 
 
-```{r 13-Análise-03-aula-doc , eval=FALSE, include=FALSE}
+```{r 13-2026-2026-05-26_Analise_03-aula-doc , eval=FALSE, include=FALSE}
 rmarkdown::render("13-2026-2026-05-26_Analise_03-aula.Rmd", output_dir="docs", output_file ="temporario.docx" , output_format = "word_document") ; utils::browseURL("docs/temporario.docx")
 ```
 
 
-```{r 13-Análise-03-aula-pdf , eval=FALSE, include=FALSE}
+```{r 13-2026-2026-05-26_Analise_03-aula-pdf , eval=FALSE, include=FALSE}
 rmarkdown::render("13-2026-2026-05-26_Analise_03-aula.Rmd", output_dir="docs", output_file ="temporario.pdf" , output_format = rmarkdown::pdf_document( toc = TRUE, number_sections = TRUE, latex_engine = "xelatex" )) ; utils::browseURL("docs/temporario.pdf")
 ```
 

@@ -1,4 +1,5 @@
-## Exercícios de Prospecção de LEADS com dados:
+## Exercícios - SQL DML - Manipulação de Dados
+
 
 Leads são clientes potenciais que demonstraram interesse em um produto ou serviço e forneceram informações de contato (como nome e e-mail) em troca de valor, como materiais educativos ou ofertas. Eles são essenciais para o marketing digital, pois representam oportunidades de negócio que podem ser nutridas até a compra.
 
@@ -634,9 +635,10 @@ ORDER BY
     data_atividade DESC;
 ```
 
-```{r 08-PostGreSQL-01-exercicio-html, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 
-rmarkdown::render("08-2026-2026-04-14_Postgres-exercicio.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; 
+```{r 05-Administracao_E_Gerenciamento-01-exercicios-html, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+
+rmarkdown::render("05-2026-03-17_Administracao_Gerenciamento-exercicio-01.Rmd", output_dir="docs", output_file ="temporario.html" , output_format = "html_document") ; 
 
 utils::browseURL("docs/temporario.html")
 

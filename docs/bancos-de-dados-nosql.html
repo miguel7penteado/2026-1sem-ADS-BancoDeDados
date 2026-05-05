@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Slide 8 Bancos de Dados NoSQL | ADS - Banco de dados e No-SQL - 2026 - Anotações de aula</title>
+  <meta name="description" content="Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas." />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Slide 8 Bancos de Dados NoSQL | ADS - Banco de dados e No-SQL - 2026 - Anotações de aula" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="your book url like https://bookdown.org/yihui/bookdown/images/cover.jpg" />
+  <meta property="og:description" content="Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas." />
+  <meta name="github-repo" content="miguel7penteado/2026-1sem-ADS-BancoDeDados" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Slide 8 Bancos de Dados NoSQL | ADS - Banco de dados e No-SQL - 2026 - Anotações de aula" />
+  
+  <meta name="twitter:description" content="Este livreto reúne anotações, reflexões e conteúdos desenvolvidos ao longo das aulas da disciplina Banco de Dados, ministrada pelo Professor Miguél Suares. Elaborado com base em experiências práticas, referências acadêmicas e diretrizes atualizadas sobre o tema, o material busca fornecer uma visão crítica e aplicada sobre análise de dados nas organizações contemporâneas." />
+  <meta name="twitter:image" content="your book url like https://bookdown.org/yihui/bookdown/images/cover.jpg" />
+
+<meta name="author" content="Professor Miguél Suares" />
+
+
+<meta name="date" content="2026-05-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="administração-e-gerênciamento-de-banco-de-dados---parte-02.html"/>
+<link rel="next" href="banco-de-dados-uma-aplicação-crud---parte-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">2026-ADS- Disciplina de Banco de Dados - Anotações de Aula</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sobre estas anotações</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#acesso-ao-gitbook-celular"><i class="fa fa-check"></i><b>0.1</b> ACESSO AO GITBOOK CELULAR</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#leitores-de-formato-de-arquivo-epub-para-smartphone"><i class="fa fa-check"></i><b>0.2</b> Leitores de formato de arquivo EPUB para SmartPhone</a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#android"><i class="fa fa-check"></i><b>0.2.1</b> ANDROID</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#livros-texto-da-disciplina"><i class="fa fa-check"></i><b>0.3</b> Livros Texto da Disciplina</a>
+<ul>
+<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#fundamentos-matem%C3%A1ticos-para-a-ci%C3%AAncia-da-computa%C3%A7%C3%A3o-matem%C3%A1tica-discreta-e-suas-aplica%C3%A7%C3%B5es-da-autora-judith-l.-gersting"><i class="fa fa-check"></i><b>0.3.1</b> “Fundamentos matemáticos para a ciência da computação Matemática Discreta e Suas Aplicações” da autora “<strong>Judith L. Gersting</strong>”</a></li>
+<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#introdu%C3%A7%C3%A3o-a-sistemas-de-bancos-de-dados-do-autor-christopher-john-date"><i class="fa fa-check"></i><b>0.3.2</b> “Introdução a sistemas de bancos de dados” do autor “<strong>Christopher John Date</strong>”</a></li>
+<li class="chapter" data-level="0.3.3" data-path="index.html"><a href="index.html#projeto-de-bancos-de-dados-do-autor-carlos-alberto-heuser"><i class="fa fa-check"></i><b>0.3.3</b> “<strong>Projeto de bancos de dados</strong>” do autor “Carlos Alberto HEUSER”</a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#calend%C3%A1rio-das-aulas"><i class="fa fa-check"></i><b>0.4</b> Calendário das aulas</a>
+<ul>
+<li class="chapter" data-level="0.4.1" data-path="index.html"><a href="index.html#fevereiro-de-2026"><i class="fa fa-check"></i><b>0.4.1</b> Fevereiro de 2026</a></li>
+<li class="chapter" data-level="0.4.2" data-path="index.html"><a href="index.html#mar%C3%A7o-de-2026"><i class="fa fa-check"></i><b>0.4.2</b> Março de 2026</a></li>
+<li class="chapter" data-level="0.4.3" data-path="index.html"><a href="index.html#abril-de-2026"><i class="fa fa-check"></i><b>0.4.3</b> Abril de 2026</a></li>
+<li class="chapter" data-level="0.4.4" data-path="index.html"><a href="index.html#maio-de-2026"><i class="fa fa-check"></i><b>0.4.4</b> Maio de 2026</a></li>
+<li class="chapter" data-level="0.4.5" data-path="index.html"><a href="index.html#junho-de-2026"><i class="fa fa-check"></i><b>0.4.5</b> Junho de 2026</a></li>
+</ul></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#alunos-2026---1o-semestre"><i class="fa fa-check"></i><b>0.5</b> Alunos 2026 - 1o Semestre</a>
+<ul>
+<li class="chapter" data-level="0.5.1" data-path="index.html"><a href="index.html#campus-ch%C3%A1cara-santo-ant%C3%B4nio"><i class="fa fa-check"></i><b>0.5.1</b> Campus Chácara Santo Antônio</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="postgres-zip-version-windows-starting-guide.html"><a href="postgres-zip-version-windows-starting-guide.html"><i class="fa fa-check"></i>Postgres (Zip Version) Windows Starting Guide</a></li>
+<li class="chapter" data-level="1" data-path="aula-inaugural.html"><a href="aula-inaugural.html"><i class="fa fa-check"></i><b>1</b> <strong>Aula Inaugural</strong></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="aula-inaugural.html"><a href="aula-inaugural.html#disciplina-banco-de-dados"><i class="fa fa-check"></i><b>1.1</b> Disciplina: <strong>Banco de Dados</strong></a></li>
+<li class="chapter" data-level="1.2" data-path="aula-inaugural.html"><a href="aula-inaugural.html#sobre-o-professor"><i class="fa fa-check"></i><b>1.2</b> 👨‍🏫 Sobre o Professor</a></li>
+<li class="chapter" data-level="1.3" data-path="aula-inaugural.html"><a href="aula-inaugural.html#objetivos-da-disciplina"><i class="fa fa-check"></i><b>1.3</b> 🎯 Objetivos da Disciplina</a></li>
+<li class="chapter" data-level="1.4" data-path="aula-inaugural.html"><a href="aula-inaugural.html#calend%C3%A1rio-da-disciplina"><i class="fa fa-check"></i><b>1.4</b> 📅 Calendário da Disciplina</a></li>
+<li class="chapter" data-level="1.5" data-path="aula-inaugural.html"><a href="aula-inaugural.html#ementa-resumida"><i class="fa fa-check"></i><b>1.5</b> 📚 Ementa Resumida</a></li>
+<li class="chapter" data-level="1.6" data-path="aula-inaugural.html"><a href="aula-inaugural.html#avalia%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>1.6</b> 📝 Avaliação</a></li>
+<li class="chapter" data-level="1.7" data-path="aula-inaugural.html"><a href="aula-inaugural.html#ferramentas-da-disciplina"><i class="fa fa-check"></i><b>1.7</b> 🛠️ Ferramentas da Disciplina</a></li>
+<li class="chapter" data-level="1.8" data-path="aula-inaugural.html"><a href="aula-inaugural.html#expectativas-e-regras"><i class="fa fa-check"></i><b>1.8</b> 📌 Expectativas e Regras</a></li>
+<li class="chapter" data-level="1.9" data-path="aula-inaugural.html"><a href="aula-inaugural.html#dicas-para-mandar-bem"><i class="fa fa-check"></i><b>1.9</b> 💡 Dicas para Mandar Bem</a></li>
+<li class="chapter" data-level="1.10" data-path="aula-inaugural.html"><a href="aula-inaugural.html#encerramento"><i class="fa fa-check"></i><b>1.10</b> 🙌 Encerramento</a></li>
+<li class="chapter" data-level="1.11" data-path="aula-inaugural.html"><a href="aula-inaugural.html#estamos-prontos"><i class="fa fa-check"></i><b>1.11</b> Estamos prontos?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html"><i class="fa fa-check"></i><b>2</b> Fundamentos de Sistemas de Bancos de Dados</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#parte-i-linha-do-tempo-dos-sgbds"><i class="fa fa-check"></i><b>2.1</b> Parte I — Linha do Tempo dos SGBDs</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#o-in%C3%ADcio-do-modelo-relacional"><i class="fa fa-check"></i><b>2.1.1</b> O Início do Modelo Relacional</a></li>
+<li class="chapter" data-level="2.1.2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#edgar-f.-codd-19232003"><i class="fa fa-check"></i><b>2.1.2</b> Edgar F. Codd (1923–2003)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#system-r-e-sql"><i class="fa fa-check"></i><b>2.1.3</b> System R e SQL</a></li>
+<li class="chapter" data-level="2.1.4" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#modelo-entidade-relacionamento"><i class="fa fa-check"></i><b>2.1.4</b> Modelo Entidade-Relacionamento</a></li>
+<li class="chapter" data-level="2.1.5" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#prof-peter-chen"><i class="fa fa-check"></i><b>2.1.5</b> Prof Peter Chen</a></li>
+<li class="chapter" data-level="2.1.6" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#escola-de-berkeley"><i class="fa fa-check"></i><b>2.1.6</b> Escola de Berkeley</a></li>
+<li class="chapter" data-level="2.1.7" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#prof-michael-stonebraker"><i class="fa fa-check"></i><b>2.1.7</b> Prof Michael Stonebraker</a></li>
+<li class="chapter" data-level="2.1.8" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#d%C3%A9cadas-de-consolida%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>2.1.8</b> Décadas de Consolidação</a></li>
+<li class="chapter" data-level="2.1.9" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#anos-2000-big-data-e-nosql"><i class="fa fa-check"></i><b>2.1.9</b> Anos 2000 — Big Data e NoSQL</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#parte-ii-fundamentos-matem%C3%A1ticos-do-modelo-relacional"><i class="fa fa-check"></i><b>2.2</b> Parte II — Fundamentos Matemáticos do Modelo Relacional</a></li>
+<li class="chapter" data-level="2.3" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#conceito-de-rela%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>2.3</b> 1. Conceito de Relação</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#a-solu%C3%A7%C3%A3o-vem-da-matem%C3%A1tica-fun%C3%A7%C3%B5es-como-relacionamentos"><i class="fa fa-check"></i><b>2.3.1</b> A Solução vem da Matemática: FUNÇÕES como RELACIONAMENTOS:</a></li>
+<li class="chapter" data-level="2.3.2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#rela%C3%A7%C3%A3o-em-banco-de-dados"><i class="fa fa-check"></i><b>2.3.2</b> Relação em Banco de Dados</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#opera%C3%A7%C3%B5es-relacionais"><i class="fa fa-check"></i><b>2.4</b> 2. Operações Relacionais</a></li>
+<li class="chapter" data-level="2.5" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#propriedades-de-rela%C3%A7%C3%B5es"><i class="fa fa-check"></i><b>2.5</b> 3. Propriedades de Relações</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#reflexiva"><i class="fa fa-check"></i><b>2.5.1</b> 3.1 Reflexiva</a></li>
+<li class="chapter" data-level="2.5.2" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#sim%C3%A9trica"><i class="fa fa-check"></i><b>2.5.2</b> 3.2 Simétrica</a></li>
+<li class="chapter" data-level="2.5.3" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#transitiva"><i class="fa fa-check"></i><b>2.5.3</b> 3.3 Transitiva</a></li>
+<li class="chapter" data-level="2.5.4" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#antissim%C3%A9trica"><i class="fa fa-check"></i><b>2.5.4</b> 3.4 Antissimétrica</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#rela%C3%A7%C3%A3o-de-equival%C3%AAncia"><i class="fa fa-check"></i><b>2.6</b> 4. Relação de Equivalência</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#classes-de-equival%C3%AAncia"><i class="fa fa-check"></i><b>2.6.1</b> Classes de Equivalência</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#depend%C3%AAncias-funcionais"><i class="fa fa-check"></i><b>2.7</b> 5. Dependências Funcionais</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#resolu%C3%A7%C3%A3o-1"><i class="fa fa-check"></i><b>2.7.1</b> Resolução</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#conceito-de-fecho"><i class="fa fa-check"></i><b>2.8</b> 6. Conceito de Fecho</a></li>
+<li class="chapter" data-level="2.9" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#conex%C3%A3o-final-a-base-matem%C3%A1tica-do-sgbd"><i class="fa fa-check"></i><b>2.9</b> Conexão Final — A Base Matemática do SGBD</a></li>
+<li class="chapter" data-level="2.10" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#refer%C3%AAncias"><i class="fa fa-check"></i><b>2.10</b> Referências:</a></li>
+<li class="chapter" data-level="2.11" data-path="fundamentos-de-sistemas-de-bancos-de-dados.html"><a href="fundamentos-de-sistemas-de-bancos-de-dados.html#exerc%C3%ADcios---aula-02"><i class="fa fa-check"></i><b>2.11</b> Exercícios - Aula 02</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html"><i class="fa fa-check"></i><b>3</b> Modelagem de Bancos de Dados parte 01</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#introdu%C3%A7%C3%A3o-visitando-a-teoria-de-bancos-de-dados"><i class="fa fa-check"></i><b>3.1</b> Introdução: Visitando a teoria de Bancos de Dados</a></li>
+<li class="chapter" data-level="3.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#modelo-matem%C3%A1tico-de-um-banco-de-dados"><i class="fa fa-check"></i><b>3.2</b> Modelo Matemático de um Banco de Dados</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#podemos-representa-lo-matem%C3%A1ticamente-utilizando-a-teoria-dos-conjuntos"><i class="fa fa-check"></i><b>3.2.1</b> Podemos representa-lo matemáticamente utilizando a teoria dos conjuntos</a></li>
+<li class="chapter" data-level="3.2.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#ent%C3%A3o-para-podemos-relacionar-estes-dois-conjuntos-funcion%C3%A1rios-e-departamentos-utilizando-a-teoria-das-fun%C3%A7%C3%B5es"><i class="fa fa-check"></i><b>3.2.2</b> Então para podemos relacionar estes dois conjuntos (Funcionários e Departamentos) utilizando a Teoria das Funções</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#modelo-l%C3%B3gico-de-banco-de-dados"><i class="fa fa-check"></i><b>3.3</b> Modelo Lógico de Banco de Dados</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#modelo-conceitual-entidade-relacionamento-de-banco-de-dados"><i class="fa fa-check"></i><b>3.3.1</b> Modelo Conceitual “Entidade Relacionamento” de Banco de Dados</a></li>
+<li class="chapter" data-level="3.3.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#composi%C3%A7%C3%A3o-e-significado-do-diagrama-entidade-relacionamento-der"><i class="fa fa-check"></i><b>3.3.2</b> Composição e Significado do Diagrama Entidade Relacionamento (DER)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#modelo-f%C3%ADsico-de-banco-de-dados"><i class="fa fa-check"></i><b>3.4</b> Modelo Físico de Banco de Dados</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#gera%C3%A7%C3%A3o-do-modelo-f%C3%ADsico-para-aplica-lo-ao-sgbd-sistema-de-gerenciamento-de-banco-de-dados"><i class="fa fa-check"></i><b>3.4.1</b> Geração do modelo Físico para aplica-lo ao SGBD (Sistema de Gerenciamento de Banco de Dados):</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#interagindo-com-o-modelo-f%C3%ADsico---a-linguagem-sql-structured-query-language"><i class="fa fa-check"></i><b>3.4.2</b> Interagindo com o Modelo Físico - A linguagem SQL (Structured Query Language)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#exemplo-revenda-de-ve%C3%ADculos-multi-marcas"><i class="fa fa-check"></i><b>3.5</b> EXEMPLO: REVENDA DE VEÍCULOS MULTI-MARCAS</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#passo-1---visualizando-matem%C3%A1ticamente-os-dados"><i class="fa fa-check"></i><b>3.5.1</b> Passo 1 - Visualizando matemáticamente os dados:</a></li>
+<li class="chapter" data-level="3.5.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#modelo-l%C3%B3gico-modelo-entidade-relacionamento"><i class="fa fa-check"></i><b>3.5.2</b> Modelo Lógico: Modelo Entidade Relacionamento</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#verbos-relacionamentos-e-cardinalidade"><i class="fa fa-check"></i><b>3.6</b> VERBOS: Relacionamentos e Cardinalidade</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#tipos-principais-de-cardinalidade"><i class="fa fa-check"></i><b>3.6.1</b> 🔹 Tipos principais de cardinalidade</a></li>
+<li class="chapter" data-level="3.6.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#relacionamento-11-um-para-um"><i class="fa fa-check"></i><b>3.6.2</b> 1. Relacionamento <strong>1:1 (Um para Um)</strong></a></li>
+<li class="chapter" data-level="3.6.3" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#relacionamento-1n-um-para-muitos"><i class="fa fa-check"></i><b>3.6.3</b> Relacionamento <strong>1:N (Um para Muitos)</strong></a></li>
+<li class="chapter" data-level="3.6.4" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#relacionamento-nm-muitos-para-muitos"><i class="fa fa-check"></i><b>3.6.4</b> Relacionamento N:M (Muitos para Muitos)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#entidade-dominante-e-entidade-subordinada"><i class="fa fa-check"></i><b>3.7</b> Entidade Dominante e Entidade Subordinada</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#defini%C3%A7%C3%B5es"><i class="fa fa-check"></i><b>3.7.1</b> Definições:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#cardinalidade-do-modelo-l%C3%B3gico-e-a-cria%C3%A7%C3%A3o-de-chaves-estrangeiras-no-modelo-f%C3%ADsico-relacional"><i class="fa fa-check"></i><b>3.8</b> CARDINALIDADE DO MODELO LÓGICO E A CRIAÇÃO DE CHAVES ESTRANGEIRAS NO MODELO FÍSICO-RELACIONAL</a></li>
+<li class="chapter" data-level="3.9" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#refer%C3%AAncias-1"><i class="fa fa-check"></i><b>3.9</b> Referências</a></li>
+<li class="chapter" data-level="3.10" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcios-resolvidos"><i class="fa fa-check"></i><b>3.10</b> Exercícios RESOLVIDOS</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#exerc%C3%ADcios"><i class="fa fa-check"></i><b>3.10.1</b> Exercícios</a></li>
+<li class="chapter" data-level="3.10.2" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#lista-de-exerc%C3%ADcios-modelo-entidade-relacionamento-mer"><i class="fa fa-check"></i><b>3.10.2</b> 📝 Lista de Exercícios – Modelo Entidade-Relacionamento (MER)</a></li>
+<li class="chapter" data-level="3.10.3" data-path="modelagem-de-bancos-de-dados-parte-01.html"><a href="modelagem-de-bancos-de-dados-parte-01.html#respostas-dos-exerc%C3%ADcios"><i class="fa fa-check"></i><b>3.10.3</b> Respostas dos Exercícios:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html"><i class="fa fa-check"></i><b>4</b> Modelagem de Bancos de Dados parte 02</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#linguagem-s.q.l."><i class="fa fa-check"></i><b>4.1</b> Linguagem S.Q.L.</a></li>
+<li class="chapter" data-level="4.2" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#sql-e-modelagem"><i class="fa fa-check"></i><b>4.2</b> SQL e MODELAGEM</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#sql---ddl-data-definion-language---construindo-estruturas-no-banco-de-dados"><i class="fa fa-check"></i><b>4.2.1</b> SQL - DDL (DATA DEFINION LANGUAGE) - Construindo estruturas no Banco de Dados</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#sql-e-tratamento-de-dados"><i class="fa fa-check"></i><b>4.3</b> SQL e TRATAMENTO DE DADOS</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#sql---dml-data-manipulation-language---inserindo-dados-nas-estruturas-do-banco-de-dados"><i class="fa fa-check"></i><b>4.3.1</b> SQL - DML (DATA MANIPULATION LANGUAGE) - Inserindo dados nas estruturas do Banco de Dados</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#algebra-relacional"><i class="fa fa-check"></i><b>4.4</b> Algebra Relacional</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#opera%C3%A7%C3%A3o-sele%C3%A7%C3%A3o-letra-sigma-%CF%83"><i class="fa fa-check"></i><b>4.4.1</b> Operação <code>SELEÇÃO</code> ( letra sigma σ )</a></li>
+<li class="chapter" data-level="4.4.2" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#opera%C3%A7%C3%A3o-proje%C3%A7%C3%A3o-letra-pi-%CF%80"><i class="fa fa-check"></i><b>4.4.2</b> Operação <code>PROJEÇÃO</code> ( letra PI π )</a></li>
+<li class="chapter" data-level="4.4.3" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#opera%C3%A7%C3%A3o-uni%C3%A3o"><i class="fa fa-check"></i><b>4.4.3</b> Operação <code>UNIÃO</code> ( ∪ )</a></li>
+<li class="chapter" data-level="4.4.4" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#opera%C3%A7%C3%A3o-diferen%C3%A7a--"><i class="fa fa-check"></i><b>4.4.4</b> Operação <code>DIFERENÇA</code> ( - )</a></li>
+<li class="chapter" data-level="4.4.5" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#opera%C3%A7%C3%A3o-intersec%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>4.4.5</b> Operação <code>INTERSECÇÃO</code> ( ∩ )</a></li>
+<li class="chapter" data-level="4.4.6" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#opera%C3%A7%C3%A3o-produto-cartesiano"><i class="fa fa-check"></i><b>4.4.6</b> Operação <code>PRODUTO CARTESIANO</code> ( × )</a></li>
+<li class="chapter" data-level="4.4.7" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#opera%C3%A7%C3%A3o-jun%C3%A7%C3%A3o-natural"><i class="fa fa-check"></i><b>4.4.7</b> Operação <code>JUNÇÃO NATURAL</code> ( ⋈ )</a></li>
+<li class="chapter" data-level="4.4.8" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#opera%C3%A7%C3%A3o-renomea%C3%A7%C3%A3o-letra-r%C3%B4-%CF%81"><i class="fa fa-check"></i><b>4.4.8</b> Operação <code>RENOMEAÇÃO</code> (letra rô ρ)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#sql---uso-avan%C3%A7ado-de-manipula%C3%A7%C3%A3o-de-dados"><i class="fa fa-check"></i><b>4.5</b> SQL - USO AVANÇADO DE MANIPULAÇÃO DE DADOS:</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#opera%C3%A7%C3%A3o-de-jun%C3%A7%C3%A3o-join"><i class="fa fa-check"></i><b>4.5.1</b> Operação de Junção JOIN</a></li>
+<li class="chapter" data-level="4.5.2" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#opera%C3%A7%C3%A3o-de-agrupamento-de-dados-group-by"><i class="fa fa-check"></i><b>4.5.2</b> Operação de AGRUPAMENTO de dados GROUP BY</a></li>
+<li class="chapter" data-level="4.5.3" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#opera%C3%A7%C3%A3o-de-filtragem-de-grupos-de-dados-having"><i class="fa fa-check"></i><b>4.5.3</b> Operação de filtragem de grupos de dados HAVING</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#refr%C3%AAncias"><i class="fa fa-check"></i><b>4.6</b> REFRÊNCIAS:</a></li>
+<li class="chapter" data-level="4.7" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#exerc%C3%ADcios-resolvidos-1"><i class="fa fa-check"></i><b>4.7</b> Exercícios RESOLVIDOS</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#exerc%C3%ADcios-1"><i class="fa fa-check"></i><b>4.7.1</b> Exercícios</a></li>
+<li class="chapter" data-level="4.7.2" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#lista-de-exerc%C3%ADcios-modelo-entidade-relacionamento-mer-1"><i class="fa fa-check"></i><b>4.7.2</b> 📝 Lista de Exercícios – Modelo Entidade-Relacionamento (MER)</a></li>
+<li class="chapter" data-level="4.7.3" data-path="modelagem-de-bancos-de-dados-parte-02.html"><a href="modelagem-de-bancos-de-dados-parte-02.html#respostas-dos-exerc%C3%ADcios-1"><i class="fa fa-check"></i><b>4.7.3</b> Respostas dos Exercícios:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html"><i class="fa fa-check"></i><b>5</b> SQL DML - Manipulação de Dados</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#feito"><i class="fa fa-check"></i><b>5.1</b> Feito</a></li>
+<li class="chapter" data-level="5.2" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#exerc%C3%ADcios---sql-dml---manipula%C3%A7%C3%A3o-de-dados"><i class="fa fa-check"></i><b>5.2</b> Exercícios - SQL DML - Manipulação de Dados</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#parte-1---aquecimento-e-filtros-geogr%C3%A1ficos"><i class="fa fa-check"></i><b>5.2.1</b> Parte 1 - Aquecimento e Filtros Geográficos</a></li>
+<li class="chapter" data-level="5.2.2" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#parte-2---segmenta%C3%A7%C3%A3o-por-ramo-e-nicho"><i class="fa fa-check"></i><b>5.2.2</b> Parte 2 - Segmentação por Ramo e Nicho</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#bloco-3-qualifica%C3%A7%C3%A3o-e-canais-de-contato"><i class="fa fa-check"></i><b>5.3</b> Bloco 3: Qualificação e Canais de Contato</a></li>
+<li class="chapter" data-level="5.4" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#bloco-4-estrat%C3%A9gias-avan%C3%A7adas-insights-b2b"><i class="fa fa-check"></i><b>5.4</b> Bloco 4: Estratégias Avançadas (Insights B2B)</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#respostas"><i class="fa fa-check"></i><b>5.4.1</b> Respostas</a></li>
+<li class="chapter" data-level="5.4.2" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#reposta-exerc%C3%ADcio-01"><i class="fa fa-check"></i><b>5.4.2</b> Reposta Exercício 01</a></li>
+<li class="chapter" data-level="5.4.3" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#reposta-exerc%C3%ADcio-02"><i class="fa fa-check"></i><b>5.4.3</b> Reposta Exercício 02</a></li>
+<li class="chapter" data-level="5.4.4" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#reposta-exerc%C3%ADcio-03"><i class="fa fa-check"></i><b>5.4.4</b> Reposta Exercício 03</a></li>
+<li class="chapter" data-level="5.4.5" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#reposta-exerc%C3%ADcio-04"><i class="fa fa-check"></i><b>5.4.5</b> Reposta Exercício 04</a></li>
+<li class="chapter" data-level="5.4.6" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#reposta-exerc%C3%ADcio-05"><i class="fa fa-check"></i><b>5.4.6</b> Reposta Exercício 05</a></li>
+<li class="chapter" data-level="5.4.7" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#reposta-exerc%C3%ADcio-06"><i class="fa fa-check"></i><b>5.4.7</b> Reposta Exercício 06</a></li>
+<li class="chapter" data-level="5.4.8" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#reposta-exerc%C3%ADcio-07"><i class="fa fa-check"></i><b>5.4.8</b> Reposta Exercício 07</a></li>
+<li class="chapter" data-level="5.4.9" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#reposta-exerc%C3%ADcio-08"><i class="fa fa-check"></i><b>5.4.9</b> Reposta Exercício 08</a></li>
+<li class="chapter" data-level="5.4.10" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#reposta-exerc%C3%ADcio-09"><i class="fa fa-check"></i><b>5.4.10</b> Reposta Exercício 09</a></li>
+<li class="chapter" data-level="5.4.11" data-path="sql-dml---manipulação-de-dados.html"><a href="sql-dml---manipulação-de-dados.html#reposta-exerc%C3%ADcio-10"><i class="fa fa-check"></i><b>5.4.11</b> Reposta Exercício 10</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="administração-e-gerênciamento-de-banco-de-dados---parte-01.html"><a href="administração-e-gerênciamento-de-banco-de-dados---parte-01.html"><i class="fa fa-check"></i><b>6</b> Administração e Gerênciamento de Banco de Dados - Parte 01</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="administração-e-gerênciamento-de-banco-de-dados---parte-01.html"><a href="administração-e-gerênciamento-de-banco-de-dados---parte-01.html#feito-1"><i class="fa fa-check"></i><b>6.1</b> Feito</a></li>
+<li class="chapter" data-level="6.2" data-path="administração-e-gerênciamento-de-banco-de-dados---parte-01.html"><a href="administração-e-gerênciamento-de-banco-de-dados---parte-01.html#exerc%C3%ADcios---administra%C3%A7%C3%A3o-e-ger%C3%AAnciamento-de-banco-de-dados---parte-01"><i class="fa fa-check"></i><b>6.2</b> Exercícios - Administração e Gerênciamento de Banco de Dados - Parte 01</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="administração-e-gerênciamento-de-banco-de-dados---parte-02.html"><a href="administração-e-gerênciamento-de-banco-de-dados---parte-02.html"><i class="fa fa-check"></i><b>7</b> Administração e Gerênciamento de Banco de Dados - Parte 02</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="administração-e-gerênciamento-de-banco-de-dados---parte-02.html"><a href="administração-e-gerênciamento-de-banco-de-dados---parte-02.html#exerc%C3%ADcios---administra%C3%A7%C3%A3o-e-gerenciamento-de-banco-de-dados---parte-2"><i class="fa fa-check"></i><b>7.1</b> Exercícios - Administração e Gerenciamento de Banco de Dados - Parte 2</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html"><i class="fa fa-check"></i><b>8</b> Bancos de Dados NoSQL</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#o-que-s%C3%A3o-banco-de-dados-nosql"><i class="fa fa-check"></i><b>8.1</b> O que São Banco de Dados NoSQL ?</a></li>
+<li class="chapter" data-level="8.2" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#vantagens-do-uso-dos-sgbds-nosql"><i class="fa fa-check"></i><b>8.2</b> Vantagens do uso dos SGBDs NoSQL</a></li>
+<li class="chapter" data-level="8.3" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#tipos-de-sgbds-nosql"><i class="fa fa-check"></i><b>8.3</b> Tipos de SGBDs NoSQL</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#sgbds-nosql-tipo-chave-valor-kvp"><i class="fa fa-check"></i><b>8.3.1</b> SGBDs NoSQL tipo Chave-Valor (KVP)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#sgbds-nosql-tipo-colunares-colunas-ordenadas"><i class="fa fa-check"></i><b>8.3.2</b> SGBDs NoSQL tipo Colunares (Colunas Ordenadas)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#sgbds-nosql-tipo-suporte-a-documentos-json"><i class="fa fa-check"></i><b>8.3.3</b> SGBDs NoSQL tipo suporte a Documentos (JSON)</a></li>
+<li class="chapter" data-level="8.3.4" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#sgbds-nosql-tipo-grafos"><i class="fa fa-check"></i><b>8.3.4</b> SGBDs NoSQL tipo GRAFOs:</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#mongodb---instalando-e-acessando-o-servidor"><i class="fa fa-check"></i><b>8.4</b> MongoDB - INSTALANDO E ACESSANDO O SERVIDOR</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#cria%C3%A7%C3%A3o-de-estruturas-de-armazenamento-de-dados-no-mongodb-equival%C3%AAncia-sql-ddl"><i class="fa fa-check"></i><b>8.4.1</b> Criação de Estruturas de Armazenamento de Dados no MongoDB (equivalência SQL DDL)</a></li>
+<li class="chapter" data-level="8.4.2" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#manipulandodados-no-mongodb-equival%C3%AAncia-sql-dml"><i class="fa fa-check"></i><b>8.4.2</b> ManipulandoDados no MongoDB (equivalência SQL DML)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#sgbds-nosql-orientado-a-documentos-mongodb"><i class="fa fa-check"></i><b>8.5</b> SGBDs NoSQL Orientado a Documentos: MongoDB</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#novo-paradigma-nova-nomenclatura-velhos-conhecidos"><i class="fa fa-check"></i><b>8.5.1</b> Novo Paradigma, Nova Nomenclatura, Velhos Conhecidos:</a></li>
+<li class="chapter" data-level="8.5.2" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#tipos-de-dados-suportados-nos-campos-colunas"><i class="fa fa-check"></i><b>8.5.2</b> Tipos de dados suportados nos campos (colunas)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#para-testar-a-base-de-dados-em-um-crud"><i class="fa fa-check"></i><b>8.6</b> Para testar a base de dados em um CRUD</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#criando-a-base-de-dados-pessoas-no-sgbd-mongodb"><i class="fa fa-check"></i><b>8.6.1</b> Criando a base de dados “Pessoas” no SGBD MongoDB</a></li>
+<li class="chapter" data-level="8.6.2" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#trocando-a-conex%C3%A3o-do-sgbd-relacional-postgresql-para-sgbd-nosql-mongodb"><i class="fa fa-check"></i><b>8.6.2</b> Trocando a conexão do SGBD Relacional PostgreSQL para SGBD NoSQL MongoDB</a></li>
+<li class="chapter" data-level="8.6.3" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#anexo-do-exemplo-o-c%C3%B3digo-do-cliente-web-html-javascript"><i class="fa fa-check"></i><b>8.6.3</b> Anexo do exemplo: O código do cliente WEB (html + javascript)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="bancos-de-dados-nosql.html"><a href="bancos-de-dados-nosql.html#exerc%C3%ADcios---bancos-de-dados-nosql"><i class="fa fa-check"></i><b>8.7</b> Exercícios - Bancos de Dados NoSQL</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html"><i class="fa fa-check"></i><b>9</b> Banco de Dados: Uma Aplicação CRUD - parte 1</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#o-que-%C3%A9-uma-aplica%C3%A7%C3%A3o-crud"><i class="fa fa-check"></i><b>9.1</b> O que é uma Aplicação CRUD?</a></li>
+<li class="chapter" data-level="9.2" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#conceito-de-crud"><i class="fa fa-check"></i><b>9.2</b> Conceito de CRUD</a></li>
+<li class="chapter" data-level="9.3" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#o-padr%C3%A3o-de-design-de-sistemas-mvc-model-view-controller"><i class="fa fa-check"></i><b>9.3</b> O padrão de Design de Sistemas MVC (Model View Controller)</a></li>
+<li class="chapter" data-level="9.4" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#construindo-uma-aplica%C3%A7%C3%A3o-crud-para-interfacear-com-a-tabela-pessoa"><i class="fa fa-check"></i><b>9.4</b> Construindo uma aplicação CRUD para interfacear com a tabela “Pessoa”</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#representa%C3%A7%C3%A3o-gr%C3%A1fica-no-modelo-f%C3%ADsico-relacional"><i class="fa fa-check"></i><b>9.4.1</b> Representação gráfica no modelo Físico-Relacional</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#cria%C3%A7%C3%A3o-de-uma-aplica%C3%A7%C3%A3o-crud"><i class="fa fa-check"></i><b>9.5</b> Criação de uma aplicação CRUD</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#resultado-final"><i class="fa fa-check"></i><b>9.5.1</b> Resultado final:</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#feito-2"><i class="fa fa-check"></i><b>9.6</b> Feito</a></li>
+<li class="chapter" data-level="9.7" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#exerc%C3%ADcios---banco-de-dados-uma-aplica%C3%A7%C3%A3o-crud---parte-1"><i class="fa fa-check"></i><b>9.7</b> Exercícios - Banco de Dados: Uma Aplicação CRUD - parte 1</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#banco-de-dados-utilizado-nos-exemplos-de-aplica%C3%A7%C3%B5es-abaixo"><i class="fa fa-check"></i><b>9.7.1</b> Banco de Dados utilizado nos exemplos de aplicações abaixo</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#exemplo-01"><i class="fa fa-check"></i><b>9.8</b> Exemplo 01</a></li>
+<li class="chapter" data-level="9.9" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#exemplo-02---servidor-de-aplica%C3%A7%C3%A3o-python"><i class="fa fa-check"></i><b>9.9</b> Exemplo 02 - SERVIDOR DE APLICAÇÃO PYTHON</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#servidor-python"><i class="fa fa-check"></i><b>9.9.1</b> Servidor python</a></li>
+<li class="chapter" data-level="9.9.2" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#cliente-html-conex%C3%A3o-restful"><i class="fa fa-check"></i><b>9.9.2</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#exemplo-03---servidor-de-aplica%C3%A7%C3%A3o-perl"><i class="fa fa-check"></i><b>9.10</b> Exemplo 03 - SERVIDOR DE APLICAÇÃO PERL</a>
+<ul>
+<li class="chapter" data-level="9.10.1" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#servidor-perl"><i class="fa fa-check"></i><b>9.10.1</b> Servidor Perl</a></li>
+<li class="chapter" data-level="9.10.2" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#cliente-html-conex%C3%A3o-restful-1"><i class="fa fa-check"></i><b>9.10.2</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.11" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#exemplo-04---servidor-de-aplica%C3%A7%C3%A3o-java"><i class="fa fa-check"></i><b>9.11</b> Exemplo 04 - SERVIDOR DE APLICAÇÃO JAVA</a></li>
+<li class="chapter" data-level="9.12" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#exemplo-05---servidor-de-aplica%C3%A7%C3%A3o-c"><i class="fa fa-check"></i><b>9.12</b> Exemplo 05 - SERVIDOR DE APLICAÇÃO C++</a>
+<ul>
+<li class="chapter" data-level="9.12.1" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#criando-o-arquivo-c-do-servidor"><i class="fa fa-check"></i><b>9.12.1</b> Criando o arquivo C++ do servidor</a></li>
+<li class="chapter" data-level="9.12.2" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#ferramenta-de-compila%C3%A7%C3%A3o-cmake"><i class="fa fa-check"></i><b>9.12.2</b> Ferramenta de compilação CMAKE</a></li>
+<li class="chapter" data-level="9.12.3" data-path="banco-de-dados-uma-aplicação-crud---parte-1.html"><a href="banco-de-dados-uma-aplicação-crud---parte-1.html#cliente-html-conex%C3%A3o-restful-2"><i class="fa fa-check"></i><b>9.12.3</b> Cliente HTML (conexão Restful)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="banco-de-dados-uma-aplicação-crud---parte-2.html"><a href="banco-de-dados-uma-aplicação-crud---parte-2.html"><i class="fa fa-check"></i><b>10</b> Banco de Dados: Uma Aplicação CRUD - parte 2</a></li>
+<li class="chapter" data-level="11" data-path="banco-de-dados-estatístico---cliente-rstudio.html"><a href="banco-de-dados-estatístico---cliente-rstudio.html"><i class="fa fa-check"></i><b>11</b> Banco de Dados Estatístico - Cliente Rstudio</a></li>
+<li class="chapter" data-level="12" data-path="banco-de-dados---análise-de-dados-parte-01.html"><a href="banco-de-dados---análise-de-dados-parte-01.html"><i class="fa fa-check"></i><b>12</b> Banco de Dados - Análise de Dados Parte 01</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="banco-de-dados---análise-de-dados-parte-01.html"><a href="banco-de-dados---análise-de-dados-parte-01.html#exerc%C3%ADcios---banco-de-dados---an%C3%A1lise-de-dados-parte-01"><i class="fa fa-check"></i><b>12.1</b> exercícios - Banco de Dados - Análise de Dados Parte 01</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="banco-de-dados---análise-de-dados-parte-02.html"><a href="banco-de-dados---análise-de-dados-parte-02.html"><i class="fa fa-check"></i><b>13</b> Banco de Dados - Análise de Dados Parte 02</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="banco-de-dados---análise-de-dados-parte-02.html"><a href="banco-de-dados---análise-de-dados-parte-02.html#exerc%C3%ADcios---banco-de-dados---an%C3%A1lise-de-dados-parte-02"><i class="fa fa-check"></i><b>13.1</b> Exercícios - Banco de Dados - Análise de Dados Parte 02</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="banco-de-dados---análise-de-dados-parte-03.html"><a href="banco-de-dados---análise-de-dados-parte-03.html"><i class="fa fa-check"></i><b>14</b> Banco de Dados - Análise de Dados Parte 03</a></li>
+<li class="chapter" data-level="15" data-path="banco-de-dados---análise-de-dados-parte-03-1.html"><a href="banco-de-dados---análise-de-dados-parte-03-1.html"><i class="fa fa-check"></i><b>15</b> Banco de Dados - Análise de Dados Parte 03</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com Biblioteca R bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ADS - Banco de dados e No-SQL - 2026 - Anotações de aula</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="bancos-de-dados-nosql" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Slide 8</span> Bancos de Dados NoSQL<a href="bancos-de-dados-nosql.html#bancos-de-dados-nosql" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="section-8" class="section level4 unnumbered hasAnchor">
+<h4>14/04/2026<a href="bancos-de-dados-nosql.html#section-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="professor-miguél-suares-8" class="section level4 unnumbered hasAnchor">
+<h4>Professor Miguél Suares<a href="bancos-de-dados-nosql.html#professor-migu%C3%A9l-suares-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="o-que-são-banco-de-dados-nosql" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> O que São Banco de Dados NoSQL ?<a href="bancos-de-dados-nosql.html#o-que-s%C3%A3o-banco-de-dados-nosql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>São Sistemas de Gerenciamento de Banco de Dados (SGBDs) que tem suas
+Restrições do modelo Relacional FLEXIBILIZADAS.</p>
+<ul>
+<li>DESNORMALIZADOS;</li>
+<li>SEM RESTRIÇÃO DE INTEGRIDADE;</li>
+<li>MODELO TRANSACIONAL MAIS FLEXÍVEL</li>
+</ul>
+</div>
+<div id="vantagens-do-uso-dos-sgbds-nosql" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Vantagens do uso dos SGBDs NoSQL<a href="bancos-de-dados-nosql.html#vantagens-do-uso-dos-sgbds-nosql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Surgiram para resolver problemas encontrados nos SGBDs Relacionais:</p>
+<ul>
+<li>Processamento;</li>
+<li>Paralelismo;</li>
+<li>Custo;</li>
+</ul>
+</div>
+<div id="tipos-de-sgbds-nosql" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Tipos de SGBDs NoSQL<a href="bancos-de-dados-nosql.html#tipos-de-sgbds-nosql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Chave-Valor (KVP);</li>
+<li>Colunas Ordenadas;</li>
+<li>Orientados a Documentos;</li>
+<li>Orientados a GRAFOS;</li>
+</ul>
+<div id="sgbds-nosql-tipo-chave-valor-kvp" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> SGBDs NoSQL tipo Chave-Valor (KVP)<a href="bancos-de-dados-nosql.html#sgbds-nosql-tipo-chave-valor-kvp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="float">
+<img src="08-aula08/media/01-Redis.jpg" alt="Banco de Dados NoSQL REDIS" />
+<div class="figcaption">Banco de Dados NoSQL REDIS</div>
+</div>
+<p>São utilizados em aplicações WEB para armazenahr sessões de usuário,
+fazer cache de dados temporários e Filas de Mensagens. Exemplo: REDIS</p>
+<ul>
+<li><p>Altíssimo Desempenho: Acesso direto por chave (lookup O(1)); Roda na
+RAM; REDIS</p></li>
+<li><p>Escalabilidade Horizontal: Fácil de adicionar nós (clusterização).</p></li>
+<li><p>Simplicidade de Modelagem: O Código-Valor ; Não exige JOINS ou
+relacionamentos;</p></li>
+<li><p>Felxibilidade de Dados: STRING, JSON, Listas e HASHs</p></li>
+</ul>
+</div>
+<div id="sgbds-nosql-tipo-colunares-colunas-ordenadas" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> SGBDs NoSQL tipo Colunares (Colunas Ordenadas)<a href="bancos-de-dados-nosql.html#sgbds-nosql-tipo-colunares-colunas-ordenadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="08-aula08/media/02-HBase.jpg" /></p>
+<p><img src="08-aula08/media/03-Cassandra.jpg" /></p>
+<p>Utilizados em aplicações de grande volume de dados não estruturados como
+IoT, Redes Sociais e Log de Eventos. Exemplos: Cassandra, BIG Table
+(Google) e Apache HBASE (plugin Postgres).</p>
+<ul>
+<li><p>Alta Performance Seletiva: Permitem ler apenas as colunas
+necessárias, ao invés da linha inteira;</p></li>
+<li><p>Escalabilidade Horizontal: Projetados para rodar em clusters
+distribuídos;</p></li>
+<li><p>Tolerância a Falhas: Replicação automática dos dados;</p></li>
+<li><p>Felxibilidade de Esquemas: Não exigem estrutura fixa;</p></li>
+<li><p>Otimizados para dados não-estruturados (BIG DATA): Suportam
+Petabytes de dados; Suportam milhões de operações por segundo;</p></li>
+</ul>
+</div>
+<div id="sgbds-nosql-tipo-suporte-a-documentos-json" class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> SGBDs NoSQL tipo suporte a Documentos (JSON)<a href="bancos-de-dados-nosql.html#sgbds-nosql-tipo-suporte-a-documentos-json" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="08-aula08/media/04-MongoDB.jpg" /></p>
+<p>Os bancos NoSQL orientados a documentos — como o <strong>MongoDB</strong> — armazenam
+dados em formato JSON/BSON, o que traz vantagens importantes em relação
+aos SGBDs relacionais, dependendo do cenário. Aplicações Web e APIs;
+e-commerce. Exemplo Clássico: <strong>MongoDB</strong></p>
+<ul>
+<li><p>No caso do MongoDB, o mesmo utiliza <strong>JavaScript</strong> no lugar do
+<strong>SQL</strong>;</p></li>
+<li><p>Flexibilidade de esquema (schema-less): Não exige estrutura rígida
+de tabelas Cada documento pode ter campos diferentes;</p></li>
+<li><p>Estrutura próxima do mundo real: (JSON) Dados organizados em
+documentos hierárquicos Evita várias tabelas e JOINs;</p></li>
+<li><p>Melhor desempenho em leituras complexas: Dados relacionados ficam no
+mesmo documento; Reduz necessidade de JOINs (que são custosos no
+relacional)</p></li>
+</ul>
+</div>
+<div id="sgbds-nosql-tipo-grafos" class="section level3 hasAnchor" number="8.3.4">
+<h3><span class="header-section-number">8.3.4</span> SGBDs NoSQL tipo GRAFOs:<a href="bancos-de-dados-nosql.html#sgbds-nosql-tipo-grafos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="08-aula08/media/05-Neo4J.jpg" /></p>
+<p>São muito úteis por natureza em Redes sociais, Sistemas de Recomendação,
+Detecção de Fraude, Logística e rotas e Interação de dados entre
+<strong>LLM</strong>s. Exemplo: <strong>Neo4J</strong>.</p>
+<ul>
+<li><p>Modelagem natural de relacionamentos: Relações são primeiros
+cidadãos (arestas) Não precisam de tabelas intermediárias (tabelas
+de junção);</p></li>
+<li><p>Alta performance em consultas de relacionamento: Traversal
+(percorrer o grafo) é muito rápido; Evita múltiplos JOINs (custosos
+no relacional).</p></li>
+<li><p>Consultas mais expressivas: Linguagens como <strong>Cypher</strong> (do
+<strong>Neo4j</strong>); Permite escrever consultas complexas de forma simples.</p></li>
+<li><p>Muito Usado em I.A. pois se dá muito bem com <strong>LLM</strong>s.</p></li>
+</ul>
+<hr />
+<div id="convertendo-uma-tabela-sql-para-o-modelo-de-grafos-utilizando-a-linguagem-cypher" class="section level4 hasAnchor" number="8.3.4.1">
+<h4><span class="header-section-number">8.3.4.1</span> Convertendo uma tabela SQL para o modelo de Grafos utilizando a linguagem Cypher<a href="bancos-de-dados-nosql.html#convertendo-uma-tabela-sql-para-o-modelo-de-grafos-utilizando-a-linguagem-cypher" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre class="TEXT cypher"><code>| SQL         | Neo4j (Cypher)            |
+| ----------- | ------------------------- |
+| DATABASE    | Database (multi-db Neo4j) |
+| TABLE       | Label (rótulo de nó)      |
+| ROW         | Node                      |
+| COLUMN      | Property                  |
+| PRIMARY KEY | Constraint UNIQUE         |
+| INDEX       | Index                     |</code></pre>
+</div>
+<div id="tabela-pessoas-declarada-em-sql" class="section level4 hasAnchor" number="8.3.4.2">
+<h4><span class="header-section-number">8.3.4.2</span> Tabela Pessoas declarada em SQL<a href="bancos-de-dados-nosql.html#tabela-pessoas-declarada-em-sql" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb93"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb93-1"><a href="bancos-de-dados-nosql.html#cb93-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> pessoasdb</span>
+<span id="cb93-2"><a href="bancos-de-dados-nosql.html#cb93-2" tabindex="-1"></a>  <span class="dt">CHARACTER</span> <span class="kw">SET</span> utf8mb4</span>
+<span id="cb93-3"><a href="bancos-de-dados-nosql.html#cb93-3" tabindex="-1"></a>  COLLATE utf8mb4_0900_ai_ci;</span>
+<span id="cb93-4"><a href="bancos-de-dados-nosql.html#cb93-4" tabindex="-1"></a></span>
+<span id="cb93-5"><a href="bancos-de-dados-nosql.html#cb93-5" tabindex="-1"></a><span class="kw">USE</span> pessoasdb;</span>
+<span id="cb93-6"><a href="bancos-de-dados-nosql.html#cb93-6" tabindex="-1"></a></span>
+<span id="cb93-7"><a href="bancos-de-dados-nosql.html#cb93-7" tabindex="-1"></a><span class="co">-- 2) (OPCIONAL) CRIAR USUÁRIO LOCAL E CONCEDER PERMISSÕES</span></span>
+<span id="cb93-8"><a href="bancos-de-dados-nosql.html#cb93-8" tabindex="-1"></a><span class="co">--    Troque &#39;MinhaSenhaForte&#39; por uma senha segura</span></span>
+<span id="cb93-9"><a href="bancos-de-dados-nosql.html#cb93-9" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> <span class="st">&#39;pessoas_user&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;MinhaSenhaForte&#39;</span>;</span>
+<span id="cb93-10"><a href="bancos-de-dados-nosql.html#cb93-10" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> pessoasdb.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;pessoas_user&#39;</span>@<span class="st">&#39;localhost&#39;</span>;</span>
+<span id="cb93-11"><a href="bancos-de-dados-nosql.html#cb93-11" tabindex="-1"></a><span class="kw">FLUSH</span> <span class="kw">PRIVILEGES</span>;</span>
+<span id="cb93-12"><a href="bancos-de-dados-nosql.html#cb93-12" tabindex="-1"></a></span>
+<span id="cb93-13"><a href="bancos-de-dados-nosql.html#cb93-13" tabindex="-1"></a><span class="co">-- 3) TABELA &#39;pessoas&#39; COMPATÍVEL COM O MODELO SQLAlchemy</span></span>
+<span id="cb93-14"><a href="bancos-de-dados-nosql.html#cb93-14" tabindex="-1"></a><span class="co">--    - cpf: chave primária (String(14))</span></span>
+<span id="cb93-15"><a href="bancos-de-dados-nosql.html#cb93-15" tabindex="-1"></a><span class="co">--    - nome, endereco, foto: TEXT</span></span>
+<span id="cb93-16"><a href="bancos-de-dados-nosql.html#cb93-16" tabindex="-1"></a><span class="co">--    - data_nascimento: DATE</span></span>
+<span id="cb93-17"><a href="bancos-de-dados-nosql.html#cb93-17" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> pessoas (</span>
+<span id="cb93-18"><a href="bancos-de-dados-nosql.html#cb93-18" tabindex="-1"></a>  cpf             <span class="dt">VARCHAR</span>(<span class="dv">14</span>)  <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb93-19"><a href="bancos-de-dados-nosql.html#cb93-19" tabindex="-1"></a>  nome            TEXT         <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb93-20"><a href="bancos-de-dados-nosql.html#cb93-20" tabindex="-1"></a>  endereco        TEXT         <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb93-21"><a href="bancos-de-dados-nosql.html#cb93-21" tabindex="-1"></a>  data_nascimento <span class="dt">DATE</span>         <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb93-22"><a href="bancos-de-dados-nosql.html#cb93-22" tabindex="-1"></a>  foto            TEXT         <span class="kw">NULL</span>,</span>
+<span id="cb93-23"><a href="bancos-de-dados-nosql.html#cb93-23" tabindex="-1"></a>  <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (cpf)</span>
+<span id="cb93-24"><a href="bancos-de-dados-nosql.html#cb93-24" tabindex="-1"></a>) ENGINE<span class="op">=</span>InnoDB <span class="kw">DEFAULT</span> CHARSET<span class="op">=</span>utf8mb4 COLLATE<span class="op">=</span>utf8mb4_0900_ai_ci;</span>
+<span id="cb93-25"><a href="bancos-de-dados-nosql.html#cb93-25" tabindex="-1"></a></span>
+<span id="cb93-26"><a href="bancos-de-dados-nosql.html#cb93-26" tabindex="-1"></a><span class="co">-- 4) (OPCIONAL) ÍNDICES PARA BUSCA</span></span>
+<span id="cb93-27"><a href="bancos-de-dados-nosql.html#cb93-27" tabindex="-1"></a><span class="co">-- Seu endpoint usa LIKE/ILIKE em nome e cpf; cpf já é PK.</span></span>
+<span id="cb93-28"><a href="bancos-de-dados-nosql.html#cb93-28" tabindex="-1"></a><span class="co">-- Para acelerar buscas por nome com LIKE, crie um índice por prefixo.</span></span>
+<span id="cb93-29"><a href="bancos-de-dados-nosql.html#cb93-29" tabindex="-1"></a><span class="co">-- OBS: índices em TEXT precisam de comprimento; 128 costuma ser um bom compromisso.</span></span>
+<span id="cb93-30"><a href="bancos-de-dados-nosql.html#cb93-30" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">INDEX</span> idx_pessoas_nome_prefix <span class="kw">ON</span> pessoas (nome(<span class="dv">128</span>));</span></code></pre></div>
+</div>
+<div id="nó-pessoas-declarado-em-cypher" class="section level4 hasAnchor" number="8.3.4.3">
+<h4><span class="header-section-number">8.3.4.3</span> Nó Pessoas declarado em Cypher<a href="bancos-de-dados-nosql.html#n%C3%B3-pessoas-declarado-em-cypher" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre class="cypher"><code>// Criamos a base de dados pessoadb
+CREATE DATABASE pessoasdb;
+
+:USE pessoasdb
+
+CREATE USER pessoas_user SET PASSWORD &#39;MinhaSenhaForte&#39; CHANGE NOT REQUIRED;
+
+GRANT ALL ON DATABASE pessoasdb TO pessoas_user;
+
+// não criamos tabela explicitamente.
+// Criamos o Label Pessoa
+
+CREATE CONSTRAINT pessoa_cpf_unique IF NOT EXISTS
+FOR (p:Pessoa)
+REQUIRE p.cpf IS UNIQUE;
+
+
+CREATE INDEX pessoa_nome_index IF NOT EXISTS
+FOR (p:Pessoa)
+ON (p.nome);
+
+CREATE (p:Pessoa {
+  cpf: &quot;123.456.789-00&quot;,
+  nome: &quot;João Silva&quot;,
+  endereco: &quot;São Paulo&quot;,
+  data_nascimento: date(&quot;1990-01-01&quot;),
+  foto: null
+});</code></pre>
+<hr />
+</div>
+</div>
+</div>
+<div id="mongodb---instalando-e-acessando-o-servidor" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> MongoDB - INSTALANDO E ACESSANDO O SERVIDOR<a href="bancos-de-dados-nosql.html#mongodb---instalando-e-acessando-o-servidor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O SGBD é aberto e pode ser <a href="https://www.mongodb.com/try/download/community">baixando e instalado para Windows 10 e 11 no
+site do MongoDB.</a></p>
+<p><img src="08-aula08/media/08-MongoDB-Tipos_de_Dados.jpg" /></p>
+<p>Após instala-lo devemos inicializa-lo pela primeira vez entrando no
+diretório de arquivos binários executáveis do pacote instalado.</p>
+<p>Realizamos a primeira execução com o comando <strong>mongo.exe</strong></p>
+<p><img src="08-aula08/media/09-MongoDB-Inicializa%C3%A7%C3%A3o.jpg" /></p>
+<p>A tela então irá nos apresentar o cliente texto , onde podemos executar
+os comandos JavaScript que irão imitar as funcionalidades SQL de criar
+estruturas de armazenamento de dados e manipulação dos dados
+armazenados.</p>
+<p><img src="08-aula08/media/10-MongoDB-Cliente_Texto.jpg" /></p>
+<div id="criação-de-estruturas-de-armazenamento-de-dados-no-mongodb-equivalência-sql-ddl" class="section level3 hasAnchor" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> Criação de Estruturas de Armazenamento de Dados no MongoDB (equivalência SQL DDL)<a href="bancos-de-dados-nosql.html#cria%C3%A7%C3%A3o-de-estruturas-de-armazenamento-de-dados-no-mongodb-equival%C3%AAncia-sql-ddl" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A tabela abaixo apresenta um mapeamento de funcionalidades para criar o
+equivalente entre esquemas, tabelas, e colunas no MongoDB.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="21%" />
+<col width="36%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operação / Conceito</th>
+<th>SQL (PostgreSQL / MySQL)</th>
+<th>MongoDB (mongosh)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Criar banco de dados</td>
+<td>CREATE DATABASE pessoasdb;</td>
+<td>use pessoasdb <em>(cria implicitamente ao inserir dados)</em></td>
+</tr>
+<tr class="even">
+<td>Selecionar banco</td>
+<td>USE pessoasdb;</td>
+<td>use pessoasdb</td>
+</tr>
+<tr class="odd">
+<td>Excluir banco</td>
+<td>DROP DATABASE pessoasdb;</td>
+<td>db.dropDatabase()</td>
+</tr>
+<tr class="even">
+<td>Criar tabela</td>
+<td>CREATE TABLE pessoas (…);</td>
+<td>db.createCollection(“pessoas”)</td>
+</tr>
+<tr class="odd">
+<td>Excluir tabela</td>
+<td>DROP TABLE pessoas;</td>
+<td>db.pessoas.drop()</td>
+</tr>
+<tr class="even">
+<td>Alterar tabela</td>
+<td>ALTER TABLE pessoas ADD coluna …;</td>
+<td>db.runCommand({ collMod: “pessoas”, … }) <em>(limitado)</em></td>
+</tr>
+<tr class="odd">
+<td>Adicionar coluna</td>
+<td>ALTER TABLE pessoas ADD endereco TEXT;</td>
+<td>Não necessário (schema flexível)</td>
+</tr>
+<tr class="even">
+<td>Remover coluna</td>
+<td>ALTER TABLE pessoas DROP COLUMN endereco;</td>
+<td>Não necessário (usar $unset nos documentos)</td>
+</tr>
+<tr class="odd">
+<td>Modificar coluna</td>
+<td>ALTER TABLE pessoas MODIFY nome VARCHAR(100);</td>
+<td>Não necessário (schema flexível)</td>
+</tr>
+<tr class="even">
+<td>Criar índice</td>
+<td>CREATE INDEX idx_nome ON pessoas(nome);</td>
+<td>db.pessoas.createIndex({ nome: 1 })</td>
+</tr>
+<tr class="odd">
+<td>Criar índice único</td>
+<td>CREATE UNIQUE INDEX idx_cpf ON pessoas(cpf);</td>
+<td>db.pessoas.createIndex({ cpf: 1 }, { unique: true })</td>
+</tr>
+<tr class="even">
+<td>Remover índice</td>
+<td>DROP INDEX idx_nome ON pessoas;</td>
+<td>db.pessoas.dropIndex(“nome_1”)</td>
+</tr>
+<tr class="odd">
+<td>Chave primária</td>
+<td>PRIMARY KEY (cpf)</td>
+<td>Índice único: db.pessoas.createIndex({ cpf: 1 }, { unique: true })</td>
+</tr>
+<tr class="even">
+<td>Chave estrangeira</td>
+<td>FOREIGN KEY (id) REFERENCES outra_tabela(id)</td>
+<td>Não suportado nativamente (referência via aplicação)</td>
+</tr>
+<tr class="odd">
+<td>Constraints (NOT NULL)</td>
+<td>nome TEXT NOT NULL</td>
+<td>Não obrigatório (validar via schema validator opcional)</td>
+</tr>
+<tr class="even">
+<td>Constraints (CHECK)</td>
+<td>CHECK (idade &gt; 0)</td>
+<td>db.createCollection(“pessoas”, { validator: { idade: { $gt: 0 } } })</td>
+</tr>
+<tr class="odd">
+<td>Charset / Collation</td>
+<td>CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci</td>
+<td>Definido no nível de coleção: collation opcional</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="manipulandodados-no-mongodb-equivalência-sql-dml" class="section level3 hasAnchor" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> ManipulandoDados no MongoDB (equivalência SQL DML)<a href="bancos-de-dados-nosql.html#manipulandodados-no-mongodb-equival%C3%AAncia-sql-dml" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A tabela abaixo apresenta um mapeamento de funcionalidades para
+manipular dados no equivalente entre esquemas, tabelas, e colunas no
+MongoDB.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="21%" />
+<col width="36%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operação / Conceito</th>
+<th>SQL (PostgreSQL / MySQL)</th>
+<th>MongoDB (mongosh)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Inserir registro</td>
+<td>INSERT INTO pessoas (cpf, nome) VALUES (‘1’,‘Ana’);</td>
+<td>db.pessoas.insertOne({ cpf: “1”, nome: “Ana” })</td>
+</tr>
+<tr class="even">
+<td>Inserir múltiplos</td>
+<td>INSERT INTO pessoas (…) VALUES (…), (…);</td>
+<td>db.pessoas.insertMany([{…}, {…}])</td>
+</tr>
+<tr class="odd">
+<td>Consultar todos</td>
+<td>SELECT * FROM pessoas;</td>
+<td>db.pessoas.find()</td>
+</tr>
+<tr class="even">
+<td>Consultar com filtro</td>
+<td>SELECT * FROM pessoas WHERE cpf=‘1’;</td>
+<td>db.pessoas.find({ cpf: “1” })</td>
+</tr>
+<tr class="odd">
+<td>Buscar um registro</td>
+<td>SELECT * FROM pessoas WHERE cpf=‘1’ LIMIT 1;</td>
+<td>db.pessoas.findOne({ cpf: “1” })</td>
+</tr>
+<tr class="even">
+<td>Projeção de colunas</td>
+<td>SELECT nome, cpf FROM pessoas;</td>
+<td>db.pessoas.find({}, { nome: 1, cpf: 1, _id: 0 })</td>
+</tr>
+<tr class="odd">
+<td>Atualizar registro</td>
+<td>UPDATE pessoas SET nome=‘Ana B’ WHERE cpf=‘1’;</td>
+<td>db.pessoas.updateOne({ cpf: “1” }, { $set: { nome: “Ana B” } })</td>
+</tr>
+<tr class="even">
+<td>Atualizar múltiplos</td>
+<td>UPDATE pessoas SET ativo=true WHERE cidade=‘SP’;</td>
+<td>db.pessoas.updateMany({ cidade: “SP” }, { $set: { ativo: true } })</td>
+</tr>
+<tr class="odd">
+<td>Remover registro</td>
+<td>DELETE FROM pessoas WHERE cpf=‘1’;</td>
+<td>db.pessoas.deleteOne({ cpf: “1” })</td>
+</tr>
+<tr class="even">
+<td>Remover múltiplos</td>
+<td>DELETE FROM pessoas WHERE cidade=‘SP’;</td>
+<td>db.pessoas.deleteMany({ cidade: “SP” })</td>
+</tr>
+<tr class="odd">
+<td>Ordenar resultados</td>
+<td>SELECT * FROM pessoas ORDER BY nome ASC;</td>
+<td>db.pessoas.find().sort({ nome: 1 })</td>
+</tr>
+<tr class="even">
+<td>Ordenar desc</td>
+<td>SELECT * FROM pessoas ORDER BY nome DESC;</td>
+<td>db.pessoas.find().sort({ nome: -1 })</td>
+</tr>
+<tr class="odd">
+<td>Limitar resultados</td>
+<td>SELECT * FROM pessoas LIMIT 5;</td>
+<td>db.pessoas.find().limit(5)</td>
+</tr>
+<tr class="even">
+<td>Paginação (offset)</td>
+<td>SELECT * FROM pessoas LIMIT 5 OFFSET 10;</td>
+<td>db.pessoas.find().skip(10).limit(5)</td>
+</tr>
+<tr class="odd">
+<td>Contar registros</td>
+<td>SELECT COUNT(*) FROM pessoas;</td>
+<td>db.pessoas.countDocuments()</td>
+</tr>
+<tr class="even">
+<td>Contar com filtro</td>
+<td>SELECT COUNT(*) FROM pessoas WHERE cidade=‘SP’;</td>
+<td>db.pessoas.countDocuments({ cidade: “SP” })</td>
+</tr>
+<tr class="odd">
+<td>LIKE (busca textual)</td>
+<td>SELECT * FROM pessoas WHERE nome LIKE ‘%ana%’;</td>
+<td>db.pessoas.find({ nome: { $regex: “ana”, $options: “i” } })</td>
+</tr>
+<tr class="even">
+<td>IN</td>
+<td>SELECT * FROM pessoas WHERE cpf IN (‘1’,‘2’);</td>
+<td>db.pessoas.find({ cpf: { $in: [“1”, “2”] } })</td>
+</tr>
+<tr class="odd">
+<td>AND</td>
+<td>SELECT * FROM pessoas WHERE cidade=‘SP’ AND ativo=1;</td>
+<td>db.pessoas.find({ cidade: “SP”, ativo: true })</td>
+</tr>
+<tr class="even">
+<td>OR</td>
+<td>SELECT * FROM pessoas WHERE cidade=‘SP’ OR cidade=‘RJ’;</td>
+<td>db.pessoas.find({ $or: [{ cidade: “SP” }, { cidade: “RJ” }] })</td>
+</tr>
+<tr class="odd">
+<td>BETWEEN</td>
+<td>SELECT * FROM pessoas WHERE idade BETWEEN 18 AND 30;</td>
+<td>db.pessoas.find({ idade: { $gte: 18, $lte: 30 } })</td>
+</tr>
+<tr class="even">
+<td>DISTINCT</td>
+<td>SELECT DISTINCT cidade FROM pessoas;</td>
+<td>db.pessoas.distinct(“cidade”)</td>
+</tr>
+<tr class="odd">
+<td>JOIN (simples)</td>
+<td>SELECT p.*, c.nome FROM pessoas p JOIN cidades c ON p.cid_id = c.id;</td>
+<td>db.pessoas.aggregate([{ $lookup: { from: “cidades”, localField: “cid_id”, foreignField: “id”, as: “cidades” } }])</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="sgbds-nosql-orientado-a-documentos-mongodb" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> SGBDs NoSQL Orientado a Documentos: MongoDB<a href="bancos-de-dados-nosql.html#sgbds-nosql-orientado-a-documentos-mongodb" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vamos agora mapear a base de dados declarada abaixo no SGBD PostgreSQL
+utilizando a linguagem SQL para o SGBD NoSQL orientado a documentos
+MongoDB através da linguagem JavaScript</p>
+<div id="novo-paradigma-nova-nomenclatura-velhos-conhecidos" class="section level3 hasAnchor" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Novo Paradigma, Nova Nomenclatura, Velhos Conhecidos:<a href="bancos-de-dados-nosql.html#novo-paradigma-nova-nomenclatura-velhos-conhecidos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="08-aula08/media/06-MongoDB-Paradigma.jpg" /></p>
+</div>
+<div id="tipos-de-dados-suportados-nos-campos-colunas" class="section level3 hasAnchor" number="8.5.2">
+<h3><span class="header-section-number">8.5.2</span> Tipos de dados suportados nos campos (colunas)<a href="bancos-de-dados-nosql.html#tipos-de-dados-suportados-nos-campos-colunas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="08-aula08/media/07-MongoDB-Tipos_de_Dados.jpg" /></p>
+<div id="origem-postgresql---linguagem-sql-dcl" class="section level5 hasAnchor" number="8.5.2.0.1">
+<h5><span class="header-section-number">8.5.2.0.1</span> Origem: PostgreSQL - Linguagem SQL DCL<a href="bancos-de-dados-nosql.html#origem-postgresql---linguagem-sql-dcl" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb95"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb95-1"><a href="bancos-de-dados-nosql.html#cb95-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> pessoasdb</span>
+<span id="cb95-2"><a href="bancos-de-dados-nosql.html#cb95-2" tabindex="-1"></a>  <span class="dt">CHARACTER</span> <span class="kw">SET</span> utf8mb4</span>
+<span id="cb95-3"><a href="bancos-de-dados-nosql.html#cb95-3" tabindex="-1"></a>  COLLATE utf8mb4_0900_ai_ci;</span>
+<span id="cb95-4"><a href="bancos-de-dados-nosql.html#cb95-4" tabindex="-1"></a></span>
+<span id="cb95-5"><a href="bancos-de-dados-nosql.html#cb95-5" tabindex="-1"></a><span class="kw">USE</span> pessoasdb;</span>
+<span id="cb95-6"><a href="bancos-de-dados-nosql.html#cb95-6" tabindex="-1"></a></span>
+<span id="cb95-7"><a href="bancos-de-dados-nosql.html#cb95-7" tabindex="-1"></a><span class="co">-- 2) (OPCIONAL) CRIAR USUÁRIO LOCAL E CONCEDER PERMISSÕES</span></span>
+<span id="cb95-8"><a href="bancos-de-dados-nosql.html#cb95-8" tabindex="-1"></a><span class="co">--    Troque &#39;MinhaSenhaForte&#39; por uma senha segura</span></span>
+<span id="cb95-9"><a href="bancos-de-dados-nosql.html#cb95-9" tabindex="-1"></a><span class="kw">CREATE</span> <span class="fu">USER</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> <span class="st">&#39;pessoas_user&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;MinhaSenhaForte&#39;</span>;</span>
+<span id="cb95-10"><a href="bancos-de-dados-nosql.html#cb95-10" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">PRIVILEGES</span> <span class="kw">ON</span> pessoasdb.<span class="op">*</span> <span class="kw">TO</span> <span class="st">&#39;pessoas_user&#39;</span>@<span class="st">&#39;localhost&#39;</span>;</span>
+<span id="cb95-11"><a href="bancos-de-dados-nosql.html#cb95-11" tabindex="-1"></a><span class="kw">FLUSH</span> <span class="kw">PRIVILEGES</span>;</span>
+<span id="cb95-12"><a href="bancos-de-dados-nosql.html#cb95-12" tabindex="-1"></a></span>
+<span id="cb95-13"><a href="bancos-de-dados-nosql.html#cb95-13" tabindex="-1"></a><span class="co">-- 3) TABELA &#39;pessoas&#39; COMPATÍVEL COM O MODELO SQLAlchemy</span></span>
+<span id="cb95-14"><a href="bancos-de-dados-nosql.html#cb95-14" tabindex="-1"></a><span class="co">--    - cpf: chave primária (String(14))</span></span>
+<span id="cb95-15"><a href="bancos-de-dados-nosql.html#cb95-15" tabindex="-1"></a><span class="co">--    - nome, endereco, foto: TEXT</span></span>
+<span id="cb95-16"><a href="bancos-de-dados-nosql.html#cb95-16" tabindex="-1"></a><span class="co">--    - data_nascimento: DATE</span></span>
+<span id="cb95-17"><a href="bancos-de-dados-nosql.html#cb95-17" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> pessoas (</span>
+<span id="cb95-18"><a href="bancos-de-dados-nosql.html#cb95-18" tabindex="-1"></a>  cpf             <span class="dt">VARCHAR</span>(<span class="dv">14</span>)  <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb95-19"><a href="bancos-de-dados-nosql.html#cb95-19" tabindex="-1"></a>  nome            TEXT         <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb95-20"><a href="bancos-de-dados-nosql.html#cb95-20" tabindex="-1"></a>  endereco        TEXT         <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb95-21"><a href="bancos-de-dados-nosql.html#cb95-21" tabindex="-1"></a>  data_nascimento <span class="dt">DATE</span>         <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb95-22"><a href="bancos-de-dados-nosql.html#cb95-22" tabindex="-1"></a>  foto            TEXT         <span class="kw">NULL</span>,</span>
+<span id="cb95-23"><a href="bancos-de-dados-nosql.html#cb95-23" tabindex="-1"></a>  <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (cpf)</span>
+<span id="cb95-24"><a href="bancos-de-dados-nosql.html#cb95-24" tabindex="-1"></a>) ENGINE<span class="op">=</span>InnoDB <span class="kw">DEFAULT</span> CHARSET<span class="op">=</span>utf8mb4 COLLATE<span class="op">=</span>utf8mb4_0900_ai_ci;</span>
+<span id="cb95-25"><a href="bancos-de-dados-nosql.html#cb95-25" tabindex="-1"></a></span>
+<span id="cb95-26"><a href="bancos-de-dados-nosql.html#cb95-26" tabindex="-1"></a><span class="co">-- 4) (OPCIONAL) ÍNDICES PARA BUSCA</span></span>
+<span id="cb95-27"><a href="bancos-de-dados-nosql.html#cb95-27" tabindex="-1"></a><span class="co">-- Seu endpoint usa LIKE/ILIKE em nome e cpf; cpf já é PK.</span></span>
+<span id="cb95-28"><a href="bancos-de-dados-nosql.html#cb95-28" tabindex="-1"></a><span class="co">-- Para acelerar buscas por nome com LIKE, crie um índice por prefixo.</span></span>
+<span id="cb95-29"><a href="bancos-de-dados-nosql.html#cb95-29" tabindex="-1"></a><span class="co">-- OBS: índices em TEXT precisam de comprimento; 128 costuma ser um bom compromisso.</span></span>
+<span id="cb95-30"><a href="bancos-de-dados-nosql.html#cb95-30" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">INDEX</span> idx_pessoas_nome_prefix <span class="kw">ON</span> pessoas (nome(<span class="dv">128</span>));</span></code></pre></div>
+</div>
+<div id="destino-mongodb---linguagem-javascript" class="section level5 hasAnchor" number="8.5.2.0.2">
+<h5><span class="header-section-number">8.5.2.0.2</span> Destino: MongoDB - Linguagem JAVASCRIPT<a href="bancos-de-dados-nosql.html#destino-mongodb---linguagem-javascript" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb96"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb96-1"><a href="bancos-de-dados-nosql.html#cb96-1" tabindex="-1"></a><span class="co">// 1) Criar/usar o banco de dados</span></span>
+<span id="cb96-2"><a href="bancos-de-dados-nosql.html#cb96-2" tabindex="-1"></a>use pessoasdb</span>
+<span id="cb96-3"><a href="bancos-de-dados-nosql.html#cb96-3" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="bancos-de-dados-nosql.html#cb96-4" tabindex="-1"></a><span class="co">// 2) Criar usuário local e conceder permissões</span></span>
+<span id="cb96-5"><a href="bancos-de-dados-nosql.html#cb96-5" tabindex="-1"></a>db<span class="op">.</span><span class="fu">createUser</span>({</span>
+<span id="cb96-6"><a href="bancos-de-dados-nosql.html#cb96-6" tabindex="-1"></a>  <span class="dt">user</span><span class="op">:</span> <span class="st">&quot;pessoas_user&quot;</span><span class="op">,</span></span>
+<span id="cb96-7"><a href="bancos-de-dados-nosql.html#cb96-7" tabindex="-1"></a>  <span class="dt">pwd</span><span class="op">:</span> <span class="st">&quot;MinhaSenhaForte&quot;</span><span class="op">,</span></span>
+<span id="cb96-8"><a href="bancos-de-dados-nosql.html#cb96-8" tabindex="-1"></a>  <span class="dt">roles</span><span class="op">:</span> [</span>
+<span id="cb96-9"><a href="bancos-de-dados-nosql.html#cb96-9" tabindex="-1"></a>    {</span>
+<span id="cb96-10"><a href="bancos-de-dados-nosql.html#cb96-10" tabindex="-1"></a>      <span class="dt">role</span><span class="op">:</span> <span class="st">&quot;readWrite&quot;</span><span class="op">,</span></span>
+<span id="cb96-11"><a href="bancos-de-dados-nosql.html#cb96-11" tabindex="-1"></a>      <span class="dt">db</span><span class="op">:</span> <span class="st">&quot;pessoasdb&quot;</span></span>
+<span id="cb96-12"><a href="bancos-de-dados-nosql.html#cb96-12" tabindex="-1"></a>    }</span>
+<span id="cb96-13"><a href="bancos-de-dados-nosql.html#cb96-13" tabindex="-1"></a>  ]</span>
+<span id="cb96-14"><a href="bancos-de-dados-nosql.html#cb96-14" tabindex="-1"></a>})</span>
+<span id="cb96-15"><a href="bancos-de-dados-nosql.html#cb96-15" tabindex="-1"></a></span>
+<span id="cb96-16"><a href="bancos-de-dados-nosql.html#cb96-16" tabindex="-1"></a><span class="co">// 3) Criar coleção equivalente à tabela pessoas</span></span>
+<span id="cb96-17"><a href="bancos-de-dados-nosql.html#cb96-17" tabindex="-1"></a>db<span class="op">.</span><span class="fu">createCollection</span>(<span class="st">&quot;pessoas&quot;</span>)</span>
+<span id="cb96-18"><a href="bancos-de-dados-nosql.html#cb96-18" tabindex="-1"></a></span>
+<span id="cb96-19"><a href="bancos-de-dados-nosql.html#cb96-19" tabindex="-1"></a><span class="co">// 4) Criar índice único para cpf</span></span>
+<span id="cb96-20"><a href="bancos-de-dados-nosql.html#cb96-20" tabindex="-1"></a><span class="co">// Equivalente à PRIMARY KEY do SQL</span></span>
+<span id="cb96-21"><a href="bancos-de-dados-nosql.html#cb96-21" tabindex="-1"></a>db<span class="op">.</span><span class="at">pessoas</span><span class="op">.</span><span class="fu">createIndex</span>(</span>
+<span id="cb96-22"><a href="bancos-de-dados-nosql.html#cb96-22" tabindex="-1"></a>  { <span class="dt">cpf</span><span class="op">:</span> <span class="dv">1</span> }<span class="op">,</span></span>
+<span id="cb96-23"><a href="bancos-de-dados-nosql.html#cb96-23" tabindex="-1"></a>  { <span class="dt">unique</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;idx_pessoas_cpf_unique&quot;</span> }</span>
+<span id="cb96-24"><a href="bancos-de-dados-nosql.html#cb96-24" tabindex="-1"></a>)</span>
+<span id="cb96-25"><a href="bancos-de-dados-nosql.html#cb96-25" tabindex="-1"></a></span>
+<span id="cb96-26"><a href="bancos-de-dados-nosql.html#cb96-26" tabindex="-1"></a><span class="co">// 5) Criar índice para busca por nome</span></span>
+<span id="cb96-27"><a href="bancos-de-dados-nosql.html#cb96-27" tabindex="-1"></a>db<span class="op">.</span><span class="at">pessoas</span><span class="op">.</span><span class="fu">createIndex</span>(</span>
+<span id="cb96-28"><a href="bancos-de-dados-nosql.html#cb96-28" tabindex="-1"></a>  { <span class="dt">nome</span><span class="op">:</span> <span class="dv">1</span> }<span class="op">,</span></span>
+<span id="cb96-29"><a href="bancos-de-dados-nosql.html#cb96-29" tabindex="-1"></a>  { <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;idx_pessoas_nome&quot;</span> }</span>
+<span id="cb96-30"><a href="bancos-de-dados-nosql.html#cb96-30" tabindex="-1"></a>)</span></code></pre></div>
+<hr />
+</div>
+</div>
+</div>
+<div id="para-testar-a-base-de-dados-em-um-crud" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Para testar a base de dados em um CRUD<a href="bancos-de-dados-nosql.html#para-testar-a-base-de-dados-em-um-crud" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Considere que você tenha um CRUD (cadastro) implantado através de
+conexão RESTFul entre cliente e servidor de aplicação. O cliente WEB é
+construído em (HTML + Javascript). O Servidor de Aplicação Python se
+conectava a um servidor de Banco de Dados PostgreSQL.</p>
+<div id="criando-a-base-de-dados-pessoas-no-sgbd-mongodb" class="section level3 hasAnchor" number="8.6.1">
+<h3><span class="header-section-number">8.6.1</span> Criando a base de dados “Pessoas” no SGBD MongoDB<a href="bancos-de-dados-nosql.html#criando-a-base-de-dados-pessoas-no-sgbd-mongodb" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="trocando-a-conexão-do-sgbd-relacional-postgresql-para-sgbd-nosql-mongodb" class="section level3 hasAnchor" number="8.6.2">
+<h3><span class="header-section-number">8.6.2</span> Trocando a conexão do SGBD Relacional PostgreSQL para SGBD NoSQL MongoDB<a href="bancos-de-dados-nosql.html#trocando-a-conex%C3%A3o-do-sgbd-relacional-postgresql-para-sgbd-nosql-mongodb" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para mudar a SGBD anterior, basta trocar os pacotes de conexão
+PostgreSQL do servidor de aplicação anetrior para os pacotes de conexão
+MongoDB do python.</p>
+<pre><code>PostgreSQL        -&gt; MongoDB
+================================================
+psycopg2-binary   -&gt; pymongo
+SQLAlchemy        -&gt; geralmente não é necessário
+================================================
+Tabela            -&gt; Collection
+Linha             -&gt; Document
+Coluna            -&gt; Field</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode cmd"><code class="sourceCode dosbat"><span id="cb98-1"><a href="bancos-de-dados-nosql.html#cb98-1" tabindex="-1"></a>python <span class="at">-m</span> pip install -<span class="at">-user</span> -<span class="at">-upgrade</span> flask flask<span class="at">-cors</span> pymongo pydantic</span></code></pre></div>
+<p>Em seguida, é só mapear as portas de conexão do servidor python:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb99-1"><a href="bancos-de-dados-nosql.html#cb99-1" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, request, jsonify</span>
+<span id="cb99-2"><a href="bancos-de-dados-nosql.html#cb99-2" tabindex="-1"></a><span class="im">from</span> flask_cors <span class="im">import</span> CORS</span>
+<span id="cb99-3"><a href="bancos-de-dados-nosql.html#cb99-3" tabindex="-1"></a><span class="im">from</span> pymongo <span class="im">import</span> MongoClient, ASCENDING</span>
+<span id="cb99-4"><a href="bancos-de-dados-nosql.html#cb99-4" tabindex="-1"></a><span class="im">from</span> pymongo.errors <span class="im">import</span> DuplicateKeyError</span>
+<span id="cb99-5"><a href="bancos-de-dados-nosql.html#cb99-5" tabindex="-1"></a></span>
+<span id="cb99-6"><a href="bancos-de-dados-nosql.html#cb99-6" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb99-7"><a href="bancos-de-dados-nosql.html#cb99-7" tabindex="-1"></a><span class="co"># Configuração do Flask e CORS</span></span>
+<span id="cb99-8"><a href="bancos-de-dados-nosql.html#cb99-8" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb99-9"><a href="bancos-de-dados-nosql.html#cb99-9" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb99-10"><a href="bancos-de-dados-nosql.html#cb99-10" tabindex="-1"></a>CORS(app)</span>
+<span id="cb99-11"><a href="bancos-de-dados-nosql.html#cb99-11" tabindex="-1"></a></span>
+<span id="cb99-12"><a href="bancos-de-dados-nosql.html#cb99-12" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb99-13"><a href="bancos-de-dados-nosql.html#cb99-13" tabindex="-1"></a><span class="co"># Configuração do MongoDB</span></span>
+<span id="cb99-14"><a href="bancos-de-dados-nosql.html#cb99-14" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb99-15"><a href="bancos-de-dados-nosql.html#cb99-15" tabindex="-1"></a>MONGO_URL <span class="op">=</span> <span class="st">&quot;mongodb://localhost:27017/&quot;</span></span>
+<span id="cb99-16"><a href="bancos-de-dados-nosql.html#cb99-16" tabindex="-1"></a></span>
+<span id="cb99-17"><a href="bancos-de-dados-nosql.html#cb99-17" tabindex="-1"></a>cliente <span class="op">=</span> MongoClient(MONGO_URL)</span>
+<span id="cb99-18"><a href="bancos-de-dados-nosql.html#cb99-18" tabindex="-1"></a></span>
+<span id="cb99-19"><a href="bancos-de-dados-nosql.html#cb99-19" tabindex="-1"></a>db <span class="op">=</span> cliente[<span class="st">&quot;pessoasdb&quot;</span>]</span>
+<span id="cb99-20"><a href="bancos-de-dados-nosql.html#cb99-20" tabindex="-1"></a>pessoas <span class="op">=</span> db[<span class="st">&quot;pessoas&quot;</span>]</span>
+<span id="cb99-21"><a href="bancos-de-dados-nosql.html#cb99-21" tabindex="-1"></a></span>
+<span id="cb99-22"><a href="bancos-de-dados-nosql.html#cb99-22" tabindex="-1"></a><span class="co"># Índices</span></span>
+<span id="cb99-23"><a href="bancos-de-dados-nosql.html#cb99-23" tabindex="-1"></a>pessoas.create_index([(<span class="st">&quot;cpf&quot;</span>, ASCENDING)], unique<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb99-24"><a href="bancos-de-dados-nosql.html#cb99-24" tabindex="-1"></a>pessoas.create_index([(<span class="st">&quot;nome&quot;</span>, ASCENDING)])</span>
+<span id="cb99-25"><a href="bancos-de-dados-nosql.html#cb99-25" tabindex="-1"></a></span>
+<span id="cb99-26"><a href="bancos-de-dados-nosql.html#cb99-26" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb99-27"><a href="bancos-de-dados-nosql.html#cb99-27" tabindex="-1"></a><span class="co"># Função auxiliar</span></span>
+<span id="cb99-28"><a href="bancos-de-dados-nosql.html#cb99-28" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb99-29"><a href="bancos-de-dados-nosql.html#cb99-29" tabindex="-1"></a><span class="kw">def</span> pessoa_para_json(pessoa):</span>
+<span id="cb99-30"><a href="bancos-de-dados-nosql.html#cb99-30" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb99-31"><a href="bancos-de-dados-nosql.html#cb99-31" tabindex="-1"></a>        <span class="st">&quot;cpf&quot;</span>: pessoa.get(<span class="st">&quot;cpf&quot;</span>),</span>
+<span id="cb99-32"><a href="bancos-de-dados-nosql.html#cb99-32" tabindex="-1"></a>        <span class="st">&quot;nome&quot;</span>: pessoa.get(<span class="st">&quot;nome&quot;</span>),</span>
+<span id="cb99-33"><a href="bancos-de-dados-nosql.html#cb99-33" tabindex="-1"></a>        <span class="st">&quot;endereco&quot;</span>: pessoa.get(<span class="st">&quot;endereco&quot;</span>),</span>
+<span id="cb99-34"><a href="bancos-de-dados-nosql.html#cb99-34" tabindex="-1"></a>        <span class="st">&quot;data_nascimento&quot;</span>: pessoa.get(<span class="st">&quot;data_nascimento&quot;</span>),</span>
+<span id="cb99-35"><a href="bancos-de-dados-nosql.html#cb99-35" tabindex="-1"></a>        <span class="st">&quot;foto&quot;</span>: pessoa.get(<span class="st">&quot;foto&quot;</span>)</span>
+<span id="cb99-36"><a href="bancos-de-dados-nosql.html#cb99-36" tabindex="-1"></a>    }</span>
+<span id="cb99-37"><a href="bancos-de-dados-nosql.html#cb99-37" tabindex="-1"></a></span>
+<span id="cb99-38"><a href="bancos-de-dados-nosql.html#cb99-38" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb99-39"><a href="bancos-de-dados-nosql.html#cb99-39" tabindex="-1"></a><span class="co"># CRUD</span></span>
+<span id="cb99-40"><a href="bancos-de-dados-nosql.html#cb99-40" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb99-41"><a href="bancos-de-dados-nosql.html#cb99-41" tabindex="-1"></a></span>
+<span id="cb99-42"><a href="bancos-de-dados-nosql.html#cb99-42" tabindex="-1"></a><span class="co"># Listar todas as pessoas ou pesquisar por termo</span></span>
+<span id="cb99-43"><a href="bancos-de-dados-nosql.html#cb99-43" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/pessoas&#39;</span>, methods<span class="op">=</span>[<span class="st">&#39;GET&#39;</span>])</span>
+<span id="cb99-44"><a href="bancos-de-dados-nosql.html#cb99-44" tabindex="-1"></a><span class="kw">def</span> listar():</span>
+<span id="cb99-45"><a href="bancos-de-dados-nosql.html#cb99-45" tabindex="-1"></a>    termo <span class="op">=</span> request.args.get(<span class="st">&#39;q&#39;</span>, <span class="st">&#39;&#39;</span>)</span>
+<span id="cb99-46"><a href="bancos-de-dados-nosql.html#cb99-46" tabindex="-1"></a></span>
+<span id="cb99-47"><a href="bancos-de-dados-nosql.html#cb99-47" tabindex="-1"></a>    <span class="cf">if</span> termo:</span>
+<span id="cb99-48"><a href="bancos-de-dados-nosql.html#cb99-48" tabindex="-1"></a>        filtro <span class="op">=</span> {</span>
+<span id="cb99-49"><a href="bancos-de-dados-nosql.html#cb99-49" tabindex="-1"></a>            <span class="st">&quot;$or&quot;</span>: [</span>
+<span id="cb99-50"><a href="bancos-de-dados-nosql.html#cb99-50" tabindex="-1"></a>                {<span class="st">&quot;nome&quot;</span>: {<span class="st">&quot;$regex&quot;</span>: termo, <span class="st">&quot;$options&quot;</span>: <span class="st">&quot;i&quot;</span>}},</span>
+<span id="cb99-51"><a href="bancos-de-dados-nosql.html#cb99-51" tabindex="-1"></a>                {<span class="st">&quot;cpf&quot;</span>: {<span class="st">&quot;$regex&quot;</span>: termo, <span class="st">&quot;$options&quot;</span>: <span class="st">&quot;i&quot;</span>}}</span>
+<span id="cb99-52"><a href="bancos-de-dados-nosql.html#cb99-52" tabindex="-1"></a>            ]</span>
+<span id="cb99-53"><a href="bancos-de-dados-nosql.html#cb99-53" tabindex="-1"></a>        }</span>
+<span id="cb99-54"><a href="bancos-de-dados-nosql.html#cb99-54" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb99-55"><a href="bancos-de-dados-nosql.html#cb99-55" tabindex="-1"></a>        filtro <span class="op">=</span> {}</span>
+<span id="cb99-56"><a href="bancos-de-dados-nosql.html#cb99-56" tabindex="-1"></a></span>
+<span id="cb99-57"><a href="bancos-de-dados-nosql.html#cb99-57" tabindex="-1"></a>    resultado <span class="op">=</span> pessoas.find(filtro, {<span class="st">&quot;_id&quot;</span>: <span class="dv">0</span>})</span>
+<span id="cb99-58"><a href="bancos-de-dados-nosql.html#cb99-58" tabindex="-1"></a></span>
+<span id="cb99-59"><a href="bancos-de-dados-nosql.html#cb99-59" tabindex="-1"></a>    <span class="cf">return</span> jsonify([pessoa_para_json(p) <span class="cf">for</span> p <span class="kw">in</span> resultado])</span>
+<span id="cb99-60"><a href="bancos-de-dados-nosql.html#cb99-60" tabindex="-1"></a></span>
+<span id="cb99-61"><a href="bancos-de-dados-nosql.html#cb99-61" tabindex="-1"></a></span>
+<span id="cb99-62"><a href="bancos-de-dados-nosql.html#cb99-62" tabindex="-1"></a><span class="co"># Inserir nova pessoa</span></span>
+<span id="cb99-63"><a href="bancos-de-dados-nosql.html#cb99-63" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/pessoas&#39;</span>, methods<span class="op">=</span>[<span class="st">&#39;POST&#39;</span>])</span>
+<span id="cb99-64"><a href="bancos-de-dados-nosql.html#cb99-64" tabindex="-1"></a><span class="kw">def</span> inserir():</span>
+<span id="cb99-65"><a href="bancos-de-dados-nosql.html#cb99-65" tabindex="-1"></a>    dados <span class="op">=</span> request.get_json()</span>
+<span id="cb99-66"><a href="bancos-de-dados-nosql.html#cb99-66" tabindex="-1"></a></span>
+<span id="cb99-67"><a href="bancos-de-dados-nosql.html#cb99-67" tabindex="-1"></a>    nova_pessoa <span class="op">=</span> {</span>
+<span id="cb99-68"><a href="bancos-de-dados-nosql.html#cb99-68" tabindex="-1"></a>        <span class="st">&quot;cpf&quot;</span>: dados[<span class="st">&quot;cpf&quot;</span>],</span>
+<span id="cb99-69"><a href="bancos-de-dados-nosql.html#cb99-69" tabindex="-1"></a>        <span class="st">&quot;nome&quot;</span>: dados[<span class="st">&quot;nome&quot;</span>],</span>
+<span id="cb99-70"><a href="bancos-de-dados-nosql.html#cb99-70" tabindex="-1"></a>        <span class="st">&quot;endereco&quot;</span>: dados[<span class="st">&quot;endereco&quot;</span>],</span>
+<span id="cb99-71"><a href="bancos-de-dados-nosql.html#cb99-71" tabindex="-1"></a>        <span class="st">&quot;data_nascimento&quot;</span>: dados[<span class="st">&quot;data_nascimento&quot;</span>],</span>
+<span id="cb99-72"><a href="bancos-de-dados-nosql.html#cb99-72" tabindex="-1"></a>        <span class="st">&quot;foto&quot;</span>: dados.get(<span class="st">&quot;foto&quot;</span>)</span>
+<span id="cb99-73"><a href="bancos-de-dados-nosql.html#cb99-73" tabindex="-1"></a>    }</span>
+<span id="cb99-74"><a href="bancos-de-dados-nosql.html#cb99-74" tabindex="-1"></a></span>
+<span id="cb99-75"><a href="bancos-de-dados-nosql.html#cb99-75" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb99-76"><a href="bancos-de-dados-nosql.html#cb99-76" tabindex="-1"></a>        pessoas.insert_one(nova_pessoa)</span>
+<span id="cb99-77"><a href="bancos-de-dados-nosql.html#cb99-77" tabindex="-1"></a>        <span class="cf">return</span> jsonify({<span class="st">&quot;message&quot;</span>: <span class="st">&quot;Inserido com sucesso&quot;</span>}), <span class="dv">201</span></span>
+<span id="cb99-78"><a href="bancos-de-dados-nosql.html#cb99-78" tabindex="-1"></a></span>
+<span id="cb99-79"><a href="bancos-de-dados-nosql.html#cb99-79" tabindex="-1"></a>    <span class="cf">except</span> DuplicateKeyError:</span>
+<span id="cb99-80"><a href="bancos-de-dados-nosql.html#cb99-80" tabindex="-1"></a>        <span class="cf">return</span> jsonify({<span class="st">&quot;error&quot;</span>: <span class="st">&quot;CPF já cadastrado&quot;</span>}), <span class="dv">400</span></span>
+<span id="cb99-81"><a href="bancos-de-dados-nosql.html#cb99-81" tabindex="-1"></a></span>
+<span id="cb99-82"><a href="bancos-de-dados-nosql.html#cb99-82" tabindex="-1"></a></span>
+<span id="cb99-83"><a href="bancos-de-dados-nosql.html#cb99-83" tabindex="-1"></a><span class="co"># Alterar pessoa</span></span>
+<span id="cb99-84"><a href="bancos-de-dados-nosql.html#cb99-84" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/pessoas/&lt;cpf&gt;&#39;</span>, methods<span class="op">=</span>[<span class="st">&#39;PUT&#39;</span>])</span>
+<span id="cb99-85"><a href="bancos-de-dados-nosql.html#cb99-85" tabindex="-1"></a><span class="kw">def</span> alterar(cpf):</span>
+<span id="cb99-86"><a href="bancos-de-dados-nosql.html#cb99-86" tabindex="-1"></a>    dados <span class="op">=</span> request.get_json()</span>
+<span id="cb99-87"><a href="bancos-de-dados-nosql.html#cb99-87" tabindex="-1"></a></span>
+<span id="cb99-88"><a href="bancos-de-dados-nosql.html#cb99-88" tabindex="-1"></a>    atualizacao <span class="op">=</span> {}</span>
+<span id="cb99-89"><a href="bancos-de-dados-nosql.html#cb99-89" tabindex="-1"></a></span>
+<span id="cb99-90"><a href="bancos-de-dados-nosql.html#cb99-90" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">&quot;nome&quot;</span> <span class="kw">in</span> dados:</span>
+<span id="cb99-91"><a href="bancos-de-dados-nosql.html#cb99-91" tabindex="-1"></a>        atualizacao[<span class="st">&quot;nome&quot;</span>] <span class="op">=</span> dados[<span class="st">&quot;nome&quot;</span>]</span>
+<span id="cb99-92"><a href="bancos-de-dados-nosql.html#cb99-92" tabindex="-1"></a></span>
+<span id="cb99-93"><a href="bancos-de-dados-nosql.html#cb99-93" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">&quot;endereco&quot;</span> <span class="kw">in</span> dados:</span>
+<span id="cb99-94"><a href="bancos-de-dados-nosql.html#cb99-94" tabindex="-1"></a>        atualizacao[<span class="st">&quot;endereco&quot;</span>] <span class="op">=</span> dados[<span class="st">&quot;endereco&quot;</span>]</span>
+<span id="cb99-95"><a href="bancos-de-dados-nosql.html#cb99-95" tabindex="-1"></a></span>
+<span id="cb99-96"><a href="bancos-de-dados-nosql.html#cb99-96" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">&quot;data_nascimento&quot;</span> <span class="kw">in</span> dados:</span>
+<span id="cb99-97"><a href="bancos-de-dados-nosql.html#cb99-97" tabindex="-1"></a>        atualizacao[<span class="st">&quot;data_nascimento&quot;</span>] <span class="op">=</span> dados[<span class="st">&quot;data_nascimento&quot;</span>]</span>
+<span id="cb99-98"><a href="bancos-de-dados-nosql.html#cb99-98" tabindex="-1"></a></span>
+<span id="cb99-99"><a href="bancos-de-dados-nosql.html#cb99-99" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">&quot;foto&quot;</span> <span class="kw">in</span> dados:</span>
+<span id="cb99-100"><a href="bancos-de-dados-nosql.html#cb99-100" tabindex="-1"></a>        atualizacao[<span class="st">&quot;foto&quot;</span>] <span class="op">=</span> dados[<span class="st">&quot;foto&quot;</span>]</span>
+<span id="cb99-101"><a href="bancos-de-dados-nosql.html#cb99-101" tabindex="-1"></a></span>
+<span id="cb99-102"><a href="bancos-de-dados-nosql.html#cb99-102" tabindex="-1"></a>    resultado <span class="op">=</span> pessoas.update_one(</span>
+<span id="cb99-103"><a href="bancos-de-dados-nosql.html#cb99-103" tabindex="-1"></a>        {<span class="st">&quot;cpf&quot;</span>: cpf},</span>
+<span id="cb99-104"><a href="bancos-de-dados-nosql.html#cb99-104" tabindex="-1"></a>        {<span class="st">&quot;$set&quot;</span>: atualizacao}</span>
+<span id="cb99-105"><a href="bancos-de-dados-nosql.html#cb99-105" tabindex="-1"></a>    )</span>
+<span id="cb99-106"><a href="bancos-de-dados-nosql.html#cb99-106" tabindex="-1"></a></span>
+<span id="cb99-107"><a href="bancos-de-dados-nosql.html#cb99-107" tabindex="-1"></a>    <span class="cf">if</span> resultado.matched_count <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb99-108"><a href="bancos-de-dados-nosql.html#cb99-108" tabindex="-1"></a>        <span class="cf">return</span> jsonify({<span class="st">&quot;error&quot;</span>: <span class="st">&quot;CPF não encontrado&quot;</span>}), <span class="dv">404</span></span>
+<span id="cb99-109"><a href="bancos-de-dados-nosql.html#cb99-109" tabindex="-1"></a></span>
+<span id="cb99-110"><a href="bancos-de-dados-nosql.html#cb99-110" tabindex="-1"></a>    <span class="cf">return</span> jsonify({<span class="st">&quot;message&quot;</span>: <span class="st">&quot;Alterado com sucesso&quot;</span>})</span>
+<span id="cb99-111"><a href="bancos-de-dados-nosql.html#cb99-111" tabindex="-1"></a></span>
+<span id="cb99-112"><a href="bancos-de-dados-nosql.html#cb99-112" tabindex="-1"></a></span>
+<span id="cb99-113"><a href="bancos-de-dados-nosql.html#cb99-113" tabindex="-1"></a><span class="co"># Remover pessoa</span></span>
+<span id="cb99-114"><a href="bancos-de-dados-nosql.html#cb99-114" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/pessoas/&lt;cpf&gt;&#39;</span>, methods<span class="op">=</span>[<span class="st">&#39;DELETE&#39;</span>])</span>
+<span id="cb99-115"><a href="bancos-de-dados-nosql.html#cb99-115" tabindex="-1"></a><span class="kw">def</span> remover(cpf):</span>
+<span id="cb99-116"><a href="bancos-de-dados-nosql.html#cb99-116" tabindex="-1"></a>    resultado <span class="op">=</span> pessoas.delete_one({<span class="st">&quot;cpf&quot;</span>: cpf})</span>
+<span id="cb99-117"><a href="bancos-de-dados-nosql.html#cb99-117" tabindex="-1"></a></span>
+<span id="cb99-118"><a href="bancos-de-dados-nosql.html#cb99-118" tabindex="-1"></a>    <span class="cf">if</span> resultado.deleted_count <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb99-119"><a href="bancos-de-dados-nosql.html#cb99-119" tabindex="-1"></a>        <span class="cf">return</span> jsonify({<span class="st">&quot;error&quot;</span>: <span class="st">&quot;CPF não encontrado&quot;</span>}), <span class="dv">404</span></span>
+<span id="cb99-120"><a href="bancos-de-dados-nosql.html#cb99-120" tabindex="-1"></a></span>
+<span id="cb99-121"><a href="bancos-de-dados-nosql.html#cb99-121" tabindex="-1"></a>    <span class="cf">return</span> jsonify({<span class="st">&quot;message&quot;</span>: <span class="st">&quot;Removido com sucesso&quot;</span>})</span>
+<span id="cb99-122"><a href="bancos-de-dados-nosql.html#cb99-122" tabindex="-1"></a></span>
+<span id="cb99-123"><a href="bancos-de-dados-nosql.html#cb99-123" tabindex="-1"></a></span>
+<span id="cb99-124"><a href="bancos-de-dados-nosql.html#cb99-124" tabindex="-1"></a><span class="co"># Buscar pessoa por CPF</span></span>
+<span id="cb99-125"><a href="bancos-de-dados-nosql.html#cb99-125" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/pessoas/&lt;cpf&gt;&#39;</span>, methods<span class="op">=</span>[<span class="st">&#39;GET&#39;</span>])</span>
+<span id="cb99-126"><a href="bancos-de-dados-nosql.html#cb99-126" tabindex="-1"></a><span class="kw">def</span> buscar(cpf):</span>
+<span id="cb99-127"><a href="bancos-de-dados-nosql.html#cb99-127" tabindex="-1"></a>    pessoa <span class="op">=</span> pessoas.find_one({<span class="st">&quot;cpf&quot;</span>: cpf}, {<span class="st">&quot;_id&quot;</span>: <span class="dv">0</span>})</span>
+<span id="cb99-128"><a href="bancos-de-dados-nosql.html#cb99-128" tabindex="-1"></a></span>
+<span id="cb99-129"><a href="bancos-de-dados-nosql.html#cb99-129" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> pessoa:</span>
+<span id="cb99-130"><a href="bancos-de-dados-nosql.html#cb99-130" tabindex="-1"></a>        <span class="cf">return</span> jsonify({<span class="st">&quot;error&quot;</span>: <span class="st">&quot;CPF não encontrado&quot;</span>}), <span class="dv">404</span></span>
+<span id="cb99-131"><a href="bancos-de-dados-nosql.html#cb99-131" tabindex="-1"></a></span>
+<span id="cb99-132"><a href="bancos-de-dados-nosql.html#cb99-132" tabindex="-1"></a>    <span class="cf">return</span> jsonify(pessoa_para_json(pessoa))</span>
+<span id="cb99-133"><a href="bancos-de-dados-nosql.html#cb99-133" tabindex="-1"></a></span>
+<span id="cb99-134"><a href="bancos-de-dados-nosql.html#cb99-134" tabindex="-1"></a></span>
+<span id="cb99-135"><a href="bancos-de-dados-nosql.html#cb99-135" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb99-136"><a href="bancos-de-dados-nosql.html#cb99-136" tabindex="-1"></a><span class="co"># Inicia o servidor</span></span>
+<span id="cb99-137"><a href="bancos-de-dados-nosql.html#cb99-137" tabindex="-1"></a><span class="co"># ------------------------------</span></span>
+<span id="cb99-138"><a href="bancos-de-dados-nosql.html#cb99-138" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb99-139"><a href="bancos-de-dados-nosql.html#cb99-139" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>, port<span class="op">=</span><span class="dv">5000</span>)</span></code></pre></div>
+<p>Salve o código acima como <strong>servidor.py</strong> e, em seguida, mande rodar com
+o código abaixo:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode cmd"><code class="sourceCode dosbat"><span id="cb100-1"><a href="bancos-de-dados-nosql.html#cb100-1" tabindex="-1"></a>python servidor.py</span></code></pre></div>
+<div id="obs-alterações-no-código-do-servidor.py" class="section level4 hasAnchor" number="8.6.2.1">
+<h4><span class="header-section-number">8.6.2.1</span> OBS: Alterações no código do Servidor.py<a href="bancos-de-dados-nosql.html#obs-altera%C3%A7%C3%B5es-no-c%C3%B3digo-do-servidor.py" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>As seguintes alterações foram aplicadas no servidor python. Basicamente,
+no local onde havia código SQL foi feita a troca por uma função da
+biblioteca do MongoDB.</p>
+<p>Segue a relação de trocas ocorridas no código python original.</p>
+<pre class="text"><code>Tabela pessoas                    -&gt;  Coleção pessoas
+Linha                             -&gt;  Documento
+Coluna                            -&gt;  Campo
+PRIMARY KEY cpf                   -&gt;  Índice único em cpf
+SELECT                            -&gt;  find()
+INSERT                            -&gt;  insert_one()
+UPDATE                            -&gt;  update_one()
+DELETE                            -&gt;  delete_one()</code></pre>
+</div>
+</div>
+<div id="anexo-do-exemplo-o-código-do-cliente-web-html-javascript" class="section level3 hasAnchor" number="8.6.3">
+<h3><span class="header-section-number">8.6.3</span> Anexo do exemplo: O código do cliente WEB (html + javascript)<a href="bancos-de-dados-nosql.html#anexo-do-exemplo-o-c%C3%B3digo-do-cliente-web-html-javascript" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Salve o código abaixo como <strong>cliente.html</strong> e abra no seu navegador:</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb102-1"><a href="bancos-de-dados-nosql.html#cb102-1" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb102-2"><a href="bancos-de-dados-nosql.html#cb102-2" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;pt-BR&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb102-3"><a href="bancos-de-dados-nosql.html#cb102-3" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb102-4"><a href="bancos-de-dados-nosql.html#cb102-4" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb102-5"><a href="bancos-de-dados-nosql.html#cb102-5" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Cadastro de Pessoas - Flask/MySQL<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb102-6"><a href="bancos-de-dados-nosql.html#cb102-6" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb102-7"><a href="bancos-de-dados-nosql.html#cb102-7" tabindex="-1"></a>  body { <span class="kw">font-family</span><span class="ch">:</span> <span class="dv">system-ui</span><span class="op">,</span> <span class="dv">-apple-system</span><span class="op">,</span> <span class="dv">Segoe UI</span><span class="op">,</span> <span class="dv">Roboto</span><span class="op">,</span> <span class="dv">Arial</span><span class="op">;</span> <span class="kw">max-width</span><span class="ch">:</span> <span class="dv">980</span><span class="dt">px</span><span class="op">;</span> <span class="kw">margin</span><span class="ch">:</span> <span class="dv">24</span><span class="dt">px</span> <span class="bu">auto</span><span class="op">;</span> }</span>
+<span id="cb102-8"><a href="bancos-de-dados-nosql.html#cb102-8" tabindex="-1"></a>  label { <span class="kw">display</span><span class="ch">:</span> <span class="dv">block</span><span class="op">;</span> <span class="kw">margin-top</span><span class="ch">:</span> <span class="dv">10</span><span class="dt">px</span><span class="op">;</span> }</span>
+<span id="cb102-9"><a href="bancos-de-dados-nosql.html#cb102-9" tabindex="-1"></a>  button { <span class="kw">margin-top</span><span class="ch">:</span> <span class="dv">10</span><span class="dt">px</span><span class="op">;</span> <span class="kw">margin-right</span><span class="ch">:</span> <span class="dv">6</span><span class="dt">px</span><span class="op">;</span> <span class="kw">padding</span><span class="ch">:</span> <span class="dv">8</span><span class="dt">px</span> <span class="dv">12</span><span class="dt">px</span><span class="op">;</span> }</span>
+<span id="cb102-10"><a href="bancos-de-dados-nosql.html#cb102-10" tabindex="-1"></a>  table { <span class="kw">border-collapse</span><span class="ch">:</span> <span class="dv">collapse</span><span class="op">;</span> <span class="kw">width</span><span class="ch">:</span><span class="dv">100</span><span class="dt">%</span><span class="op">;</span> <span class="kw">margin-top</span><span class="ch">:</span><span class="dv">20</span><span class="dt">px</span><span class="op">;</span> }</span>
+<span id="cb102-11"><a href="bancos-de-dados-nosql.html#cb102-11" tabindex="-1"></a>  th<span class="op">,</span> td { <span class="kw">border</span><span class="ch">:</span><span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#ddd</span><span class="op">;</span> <span class="kw">padding</span><span class="ch">:</span><span class="dv">8</span><span class="dt">px</span><span class="op">;</span> <span class="kw">text-align</span><span class="ch">:</span><span class="dv">left</span><span class="op">;</span> }</span>
+<span id="cb102-12"><a href="bancos-de-dados-nosql.html#cb102-12" tabindex="-1"></a>  img<span class="fu">.thumb</span> { <span class="kw">width</span><span class="ch">:</span><span class="dv">60</span><span class="dt">px</span><span class="op">;</span> <span class="kw">height</span><span class="ch">:</span><span class="dv">60</span><span class="dt">px</span><span class="op">;</span> <span class="kw">object-fit</span><span class="ch">:</span><span class="dv">cover</span><span class="op">;</span> <span class="kw">border-radius</span><span class="ch">:</span><span class="dv">4</span><span class="dt">px</span><span class="op">;</span> }</span>
+<span id="cb102-13"><a href="bancos-de-dados-nosql.html#cb102-13" tabindex="-1"></a>  <span class="fu">.row</span> { <span class="kw">display</span><span class="ch">:</span><span class="dv">flex</span><span class="op">;</span> <span class="kw">gap</span><span class="ch">:</span><span class="dv">8</span><span class="dt">px</span><span class="op">;</span> <span class="kw">align-items</span><span class="ch">:</span><span class="dv">center</span><span class="op">;</span> <span class="kw">flex-wrap</span><span class="ch">:</span><span class="dv">wrap</span><span class="op">;</span> }</span>
+<span id="cb102-14"><a href="bancos-de-dados-nosql.html#cb102-14" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb102-15"><a href="bancos-de-dados-nosql.html#cb102-15" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb102-16"><a href="bancos-de-dados-nosql.html#cb102-16" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb102-17"><a href="bancos-de-dados-nosql.html#cb102-17" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Cadastro de Pessoas (Flask/MySQL)<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb102-18"><a href="bancos-de-dados-nosql.html#cb102-18" tabindex="-1"></a></span>
+<span id="cb102-19"><a href="bancos-de-dados-nosql.html#cb102-19" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;formPessoa&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb102-20"><a href="bancos-de-dados-nosql.html#cb102-20" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span>CPF (chave primária): <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;cpf&quot;</span><span class="ot"> required</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb102-21"><a href="bancos-de-dados-nosql.html#cb102-21" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span>Nome: <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nome&quot;</span><span class="ot"> required</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb102-22"><a href="bancos-de-dados-nosql.html#cb102-22" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span>Endereço: <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;endereco&quot;</span><span class="ot"> required</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb102-23"><a href="bancos-de-dados-nosql.html#cb102-23" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span>Data Nasc.: <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;date&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;data_nascimento&quot;</span><span class="ot"> required</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb102-24"><a href="bancos-de-dados-nosql.html#cb102-24" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">label</span><span class="dt">&gt;</span>Foto: <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;file&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;foto&quot;</span><span class="ot"> accept</span><span class="op">=</span><span class="st">&quot;image/*&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb102-25"><a href="bancos-de-dados-nosql.html#cb102-25" tabindex="-1"></a></span>
+<span id="cb102-26"><a href="bancos-de-dados-nosql.html#cb102-26" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;row&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb102-27"><a href="bancos-de-dados-nosql.html#cb102-27" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;btnInserir&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;inserir()&quot;</span><span class="dt">&gt;</span>Inserir<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb102-28"><a href="bancos-de-dados-nosql.html#cb102-28" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;btnAlterar&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;alterar()&quot;</span><span class="dt">&gt;</span>Alterar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb102-29"><a href="bancos-de-dados-nosql.html#cb102-29" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;btnRemover&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;remover()&quot;</span><span class="dt">&gt;</span>Remover<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb102-30"><a href="bancos-de-dados-nosql.html#cb102-30" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb102-31"><a href="bancos-de-dados-nosql.html#cb102-31" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb102-32"><a href="bancos-de-dados-nosql.html#cb102-32" tabindex="-1"></a></span>
+<span id="cb102-33"><a href="bancos-de-dados-nosql.html#cb102-33" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>Pesquisar<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb102-34"><a href="bancos-de-dados-nosql.html#cb102-34" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;row&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb102-35"><a href="bancos-de-dados-nosql.html#cb102-35" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;pesquisa&quot;</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">&quot;Digite nome ou CPF&quot;</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;flex:1&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb102-36"><a href="bancos-de-dados-nosql.html#cb102-36" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;btnPesquisar&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;pesquisar()&quot;</span><span class="dt">&gt;</span>Pesquisar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb102-37"><a href="bancos-de-dados-nosql.html#cb102-37" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;listar()&quot;</span><span class="dt">&gt;</span>Listar tudo<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb102-38"><a href="bancos-de-dados-nosql.html#cb102-38" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb102-39"><a href="bancos-de-dados-nosql.html#cb102-39" tabindex="-1"></a></span>
+<span id="cb102-40"><a href="bancos-de-dados-nosql.html#cb102-40" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb102-41"><a href="bancos-de-dados-nosql.html#cb102-41" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">thead</span><span class="dt">&gt;</span></span>
+<span id="cb102-42"><a href="bancos-de-dados-nosql.html#cb102-42" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb102-43"><a href="bancos-de-dados-nosql.html#cb102-43" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>CPF<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Foto<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Nome<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb102-44"><a href="bancos-de-dados-nosql.html#cb102-44" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Endereço<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Nascimento<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb102-45"><a href="bancos-de-dados-nosql.html#cb102-45" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb102-46"><a href="bancos-de-dados-nosql.html#cb102-46" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">thead</span><span class="dt">&gt;</span></span>
+<span id="cb102-47"><a href="bancos-de-dados-nosql.html#cb102-47" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tbody</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;tabela&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">tbody</span><span class="dt">&gt;</span></span>
+<span id="cb102-48"><a href="bancos-de-dados-nosql.html#cb102-48" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb102-49"><a href="bancos-de-dados-nosql.html#cb102-49" tabindex="-1"></a></span>
+<span id="cb102-50"><a href="bancos-de-dados-nosql.html#cb102-50" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb102-51"><a href="bancos-de-dados-nosql.html#cb102-51" tabindex="-1"></a><span class="kw">const</span> API <span class="op">=</span> <span class="st">&#39;http://localhost:5000/pessoas&#39;</span><span class="op">;</span></span>
+<span id="cb102-52"><a href="bancos-de-dados-nosql.html#cb102-52" tabindex="-1"></a></span>
+<span id="cb102-53"><a href="bancos-de-dados-nosql.html#cb102-53" tabindex="-1"></a><span class="co">/* ---------- Helpers ---------- */</span></span>
+<span id="cb102-54"><a href="bancos-de-dados-nosql.html#cb102-54" tabindex="-1"></a><span class="kw">function</span> <span class="fu">setBusy</span>(busy) {</span>
+<span id="cb102-55"><a href="bancos-de-dados-nosql.html#cb102-55" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> id <span class="kw">of</span> [<span class="st">&#39;btnInserir&#39;</span><span class="op">,</span><span class="st">&#39;btnAlterar&#39;</span><span class="op">,</span><span class="st">&#39;btnRemover&#39;</span><span class="op">,</span><span class="st">&#39;btnPesquisar&#39;</span>]) {</span>
+<span id="cb102-56"><a href="bancos-de-dados-nosql.html#cb102-56" tabindex="-1"></a>    <span class="kw">const</span> el <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(id)<span class="op">;</span></span>
+<span id="cb102-57"><a href="bancos-de-dados-nosql.html#cb102-57" tabindex="-1"></a>    <span class="cf">if</span> (el) el<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> busy<span class="op">;</span></span>
+<span id="cb102-58"><a href="bancos-de-dados-nosql.html#cb102-58" tabindex="-1"></a>  }</span>
+<span id="cb102-59"><a href="bancos-de-dados-nosql.html#cb102-59" tabindex="-1"></a>}</span>
+<span id="cb102-60"><a href="bancos-de-dados-nosql.html#cb102-60" tabindex="-1"></a></span>
+<span id="cb102-61"><a href="bancos-de-dados-nosql.html#cb102-61" tabindex="-1"></a><span class="kw">function</span> <span class="fu">validaCampos</span>() {</span>
+<span id="cb102-62"><a href="bancos-de-dados-nosql.html#cb102-62" tabindex="-1"></a>  <span class="kw">const</span> campos <span class="op">=</span> [<span class="st">&#39;cpf&#39;</span><span class="op">,</span><span class="st">&#39;nome&#39;</span><span class="op">,</span><span class="st">&#39;endereco&#39;</span><span class="op">,</span><span class="st">&#39;data_nascimento&#39;</span>]<span class="op">;</span></span>
+<span id="cb102-63"><a href="bancos-de-dados-nosql.html#cb102-63" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> id <span class="kw">of</span> campos) {</span>
+<span id="cb102-64"><a href="bancos-de-dados-nosql.html#cb102-64" tabindex="-1"></a>    <span class="kw">const</span> valor <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(id)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb102-65"><a href="bancos-de-dados-nosql.html#cb102-65" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>valor) {</span>
+<span id="cb102-66"><a href="bancos-de-dados-nosql.html#cb102-66" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="vs">`O campo &quot;</span><span class="sc">${</span>id<span class="sc">}</span><span class="vs">&quot; não pode ficar em branco.`</span>)<span class="op">;</span></span>
+<span id="cb102-67"><a href="bancos-de-dados-nosql.html#cb102-67" tabindex="-1"></a>      <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb102-68"><a href="bancos-de-dados-nosql.html#cb102-68" tabindex="-1"></a>    }</span>
+<span id="cb102-69"><a href="bancos-de-dados-nosql.html#cb102-69" tabindex="-1"></a>  }</span>
+<span id="cb102-70"><a href="bancos-de-dados-nosql.html#cb102-70" tabindex="-1"></a>  <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb102-71"><a href="bancos-de-dados-nosql.html#cb102-71" tabindex="-1"></a>}</span>
+<span id="cb102-72"><a href="bancos-de-dados-nosql.html#cb102-72" tabindex="-1"></a></span>
+<span id="cb102-73"><a href="bancos-de-dados-nosql.html#cb102-73" tabindex="-1"></a><span class="kw">function</span> <span class="fu">getFotoBase64</span>() {</span>
+<span id="cb102-74"><a href="bancos-de-dados-nosql.html#cb102-74" tabindex="-1"></a>  <span class="kw">const</span> file <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;foto&#39;</span>)<span class="op">.</span><span class="at">files</span>[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb102-75"><a href="bancos-de-dados-nosql.html#cb102-75" tabindex="-1"></a>  <span class="cf">if</span>(<span class="op">!</span>file) <span class="cf">return</span> <span class="bu">Promise</span><span class="op">.</span><span class="fu">resolve</span>(<span class="st">&#39;&#39;</span>)<span class="op">;</span></span>
+<span id="cb102-76"><a href="bancos-de-dados-nosql.html#cb102-76" tabindex="-1"></a>  <span class="cf">return</span> <span class="kw">new</span> <span class="bu">Promise</span>((resolve<span class="op">,</span>reject)<span class="kw">=&gt;</span>{</span>
+<span id="cb102-77"><a href="bancos-de-dados-nosql.html#cb102-77" tabindex="-1"></a>    <span class="kw">const</span> reader <span class="op">=</span> <span class="kw">new</span> <span class="bu">FileReader</span>()<span class="op">;</span></span>
+<span id="cb102-78"><a href="bancos-de-dados-nosql.html#cb102-78" tabindex="-1"></a>    reader<span class="op">.</span><span class="at">onload</span> <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="fu">resolve</span>(reader<span class="op">.</span><span class="at">result</span>)<span class="op">;</span></span>
+<span id="cb102-79"><a href="bancos-de-dados-nosql.html#cb102-79" tabindex="-1"></a>    reader<span class="op">.</span><span class="at">onerror</span> <span class="op">=</span> reject<span class="op">;</span></span>
+<span id="cb102-80"><a href="bancos-de-dados-nosql.html#cb102-80" tabindex="-1"></a>    reader<span class="op">.</span><span class="fu">readAsDataURL</span>(file)<span class="op">;</span></span>
+<span id="cb102-81"><a href="bancos-de-dados-nosql.html#cb102-81" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb102-82"><a href="bancos-de-dados-nosql.html#cb102-82" tabindex="-1"></a>}</span>
+<span id="cb102-83"><a href="bancos-de-dados-nosql.html#cb102-83" tabindex="-1"></a></span>
+<span id="cb102-84"><a href="bancos-de-dados-nosql.html#cb102-84" tabindex="-1"></a><span class="kw">function</span> <span class="fu">coletaDados</span>(base64Foto){</span>
+<span id="cb102-85"><a href="bancos-de-dados-nosql.html#cb102-85" tabindex="-1"></a>  <span class="cf">return</span> {</span>
+<span id="cb102-86"><a href="bancos-de-dados-nosql.html#cb102-86" tabindex="-1"></a>    <span class="dt">cpf</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;cpf&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">,</span></span>
+<span id="cb102-87"><a href="bancos-de-dados-nosql.html#cb102-87" tabindex="-1"></a>    <span class="dt">nome</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;nome&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">,</span></span>
+<span id="cb102-88"><a href="bancos-de-dados-nosql.html#cb102-88" tabindex="-1"></a>    <span class="dt">endereco</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;endereco&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">,</span></span>
+<span id="cb102-89"><a href="bancos-de-dados-nosql.html#cb102-89" tabindex="-1"></a>    <span class="dt">data_nascimento</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;data_nascimento&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">,</span> <span class="co">// YYYY-MM-DD</span></span>
+<span id="cb102-90"><a href="bancos-de-dados-nosql.html#cb102-90" tabindex="-1"></a>    <span class="dt">foto</span><span class="op">:</span> base64Foto <span class="op">||</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb102-91"><a href="bancos-de-dados-nosql.html#cb102-91" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb102-92"><a href="bancos-de-dados-nosql.html#cb102-92" tabindex="-1"></a>}</span>
+<span id="cb102-93"><a href="bancos-de-dados-nosql.html#cb102-93" tabindex="-1"></a></span>
+<span id="cb102-94"><a href="bancos-de-dados-nosql.html#cb102-94" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">readJsonSafe</span>(res) {</span>
+<span id="cb102-95"><a href="bancos-de-dados-nosql.html#cb102-95" tabindex="-1"></a>  <span class="kw">const</span> ct <span class="op">=</span> res<span class="op">.</span><span class="at">headers</span><span class="op">.</span><span class="fu">get</span>(<span class="st">&#39;content-type&#39;</span>) <span class="op">||</span> <span class="st">&#39;&#39;</span><span class="op">;</span></span>
+<span id="cb102-96"><a href="bancos-de-dados-nosql.html#cb102-96" tabindex="-1"></a>  <span class="cf">if</span> (ct<span class="op">.</span><span class="fu">includes</span>(<span class="st">&#39;application/json&#39;</span>)) {</span>
+<span id="cb102-97"><a href="bancos-de-dados-nosql.html#cb102-97" tabindex="-1"></a>    <span class="cf">try</span> { <span class="cf">return</span> <span class="cf">await</span> res<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span> } <span class="cf">catch</span> { <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span> }</span>
+<span id="cb102-98"><a href="bancos-de-dados-nosql.html#cb102-98" tabindex="-1"></a>  }</span>
+<span id="cb102-99"><a href="bancos-de-dados-nosql.html#cb102-99" tabindex="-1"></a>  <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb102-100"><a href="bancos-de-dados-nosql.html#cb102-100" tabindex="-1"></a>}</span>
+<span id="cb102-101"><a href="bancos-de-dados-nosql.html#cb102-101" tabindex="-1"></a></span>
+<span id="cb102-102"><a href="bancos-de-dados-nosql.html#cb102-102" tabindex="-1"></a><span class="co">/* ---------- CRUD ---------- */</span></span>
+<span id="cb102-103"><a href="bancos-de-dados-nosql.html#cb102-103" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">inserir</span>() {</span>
+<span id="cb102-104"><a href="bancos-de-dados-nosql.html#cb102-104" tabindex="-1"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="fu">validaCampos</span>()) <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb102-105"><a href="bancos-de-dados-nosql.html#cb102-105" tabindex="-1"></a>  <span class="fu">setBusy</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb102-106"><a href="bancos-de-dados-nosql.html#cb102-106" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb102-107"><a href="bancos-de-dados-nosql.html#cb102-107" tabindex="-1"></a>    <span class="kw">const</span> base64 <span class="op">=</span> <span class="cf">await</span> <span class="fu">getFotoBase64</span>()<span class="op">;</span></span>
+<span id="cb102-108"><a href="bancos-de-dados-nosql.html#cb102-108" tabindex="-1"></a>    <span class="kw">const</span> pessoa <span class="op">=</span> <span class="fu">coletaDados</span>(base64)<span class="op">;</span></span>
+<span id="cb102-109"><a href="bancos-de-dados-nosql.html#cb102-109" tabindex="-1"></a></span>
+<span id="cb102-110"><a href="bancos-de-dados-nosql.html#cb102-110" tabindex="-1"></a>    <span class="kw">const</span> res <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(API<span class="op">,</span> {</span>
+<span id="cb102-111"><a href="bancos-de-dados-nosql.html#cb102-111" tabindex="-1"></a>      <span class="dt">method</span><span class="op">:</span> <span class="st">&#39;POST&#39;</span><span class="op">,</span></span>
+<span id="cb102-112"><a href="bancos-de-dados-nosql.html#cb102-112" tabindex="-1"></a>      <span class="dt">headers</span><span class="op">:</span> {<span class="st">&#39;Content-Type&#39;</span><span class="op">:</span> <span class="st">&#39;application/json&#39;</span>}<span class="op">,</span></span>
+<span id="cb102-113"><a href="bancos-de-dados-nosql.html#cb102-113" tabindex="-1"></a>      <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(pessoa)</span>
+<span id="cb102-114"><a href="bancos-de-dados-nosql.html#cb102-114" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb102-115"><a href="bancos-de-dados-nosql.html#cb102-115" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="fu">readJsonSafe</span>(res)<span class="op">;</span></span>
+<span id="cb102-116"><a href="bancos-de-dados-nosql.html#cb102-116" tabindex="-1"></a>    <span class="cf">if</span>(res<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb102-117"><a href="bancos-de-dados-nosql.html#cb102-117" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Inserido com sucesso!&#39;</span>)<span class="op">;</span></span>
+<span id="cb102-118"><a href="bancos-de-dados-nosql.html#cb102-118" tabindex="-1"></a>      <span class="fu">listar</span>()<span class="op">;</span></span>
+<span id="cb102-119"><a href="bancos-de-dados-nosql.html#cb102-119" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;formPessoa&#39;</span>)<span class="op">.</span><span class="fu">reset</span>()<span class="op">;</span></span>
+<span id="cb102-120"><a href="bancos-de-dados-nosql.html#cb102-120" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb102-121"><a href="bancos-de-dados-nosql.html#cb102-121" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Erro: &#39;</span> <span class="op">+</span> (data<span class="op">?.</span><span class="at">error</span> <span class="op">||</span> res<span class="op">.</span><span class="at">statusText</span>))<span class="op">;</span></span>
+<span id="cb102-122"><a href="bancos-de-dados-nosql.html#cb102-122" tabindex="-1"></a>    }</span>
+<span id="cb102-123"><a href="bancos-de-dados-nosql.html#cb102-123" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb102-124"><a href="bancos-de-dados-nosql.html#cb102-124" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&#39;Falha ao inserir: &#39;</span> <span class="op">+</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span>
+<span id="cb102-125"><a href="bancos-de-dados-nosql.html#cb102-125" tabindex="-1"></a>  } <span class="cf">finally</span> {</span>
+<span id="cb102-126"><a href="bancos-de-dados-nosql.html#cb102-126" tabindex="-1"></a>    <span class="fu">setBusy</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb102-127"><a href="bancos-de-dados-nosql.html#cb102-127" tabindex="-1"></a>  }</span>
+<span id="cb102-128"><a href="bancos-de-dados-nosql.html#cb102-128" tabindex="-1"></a>}</span>
+<span id="cb102-129"><a href="bancos-de-dados-nosql.html#cb102-129" tabindex="-1"></a></span>
+<span id="cb102-130"><a href="bancos-de-dados-nosql.html#cb102-130" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">alterar</span>() {</span>
+<span id="cb102-131"><a href="bancos-de-dados-nosql.html#cb102-131" tabindex="-1"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="fu">validaCampos</span>()) <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb102-132"><a href="bancos-de-dados-nosql.html#cb102-132" tabindex="-1"></a>  <span class="kw">const</span> cpf <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;cpf&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb102-133"><a href="bancos-de-dados-nosql.html#cb102-133" tabindex="-1"></a>  <span class="fu">setBusy</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb102-134"><a href="bancos-de-dados-nosql.html#cb102-134" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb102-135"><a href="bancos-de-dados-nosql.html#cb102-135" tabindex="-1"></a>    <span class="kw">const</span> base64 <span class="op">=</span> <span class="cf">await</span> <span class="fu">getFotoBase64</span>()<span class="op">;</span></span>
+<span id="cb102-136"><a href="bancos-de-dados-nosql.html#cb102-136" tabindex="-1"></a>    <span class="kw">const</span> novosDados <span class="op">=</span> <span class="fu">coletaDados</span>()<span class="op">;</span></span>
+<span id="cb102-137"><a href="bancos-de-dados-nosql.html#cb102-137" tabindex="-1"></a>    <span class="cf">if</span> (base64) novosDados<span class="op">.</span><span class="at">foto</span> <span class="op">=</span> base64<span class="op">;</span></span>
+<span id="cb102-138"><a href="bancos-de-dados-nosql.html#cb102-138" tabindex="-1"></a></span>
+<span id="cb102-139"><a href="bancos-de-dados-nosql.html#cb102-139" tabindex="-1"></a>    <span class="kw">const</span> res <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="vs">`</span><span class="sc">${</span>API<span class="sc">}</span><span class="vs">/</span><span class="sc">${</span><span class="pp">encodeURIComponent</span>(cpf)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> {</span>
+<span id="cb102-140"><a href="bancos-de-dados-nosql.html#cb102-140" tabindex="-1"></a>      <span class="dt">method</span><span class="op">:</span> <span class="st">&#39;PUT&#39;</span><span class="op">,</span></span>
+<span id="cb102-141"><a href="bancos-de-dados-nosql.html#cb102-141" tabindex="-1"></a>      <span class="dt">headers</span><span class="op">:</span> {<span class="st">&#39;Content-Type&#39;</span><span class="op">:</span> <span class="st">&#39;application/json&#39;</span>}<span class="op">,</span></span>
+<span id="cb102-142"><a href="bancos-de-dados-nosql.html#cb102-142" tabindex="-1"></a>      <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(novosDados)</span>
+<span id="cb102-143"><a href="bancos-de-dados-nosql.html#cb102-143" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb102-144"><a href="bancos-de-dados-nosql.html#cb102-144" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="fu">readJsonSafe</span>(res)<span class="op">;</span></span>
+<span id="cb102-145"><a href="bancos-de-dados-nosql.html#cb102-145" tabindex="-1"></a>    <span class="cf">if</span>(res<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb102-146"><a href="bancos-de-dados-nosql.html#cb102-146" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Alterado com sucesso!&#39;</span>)<span class="op">;</span></span>
+<span id="cb102-147"><a href="bancos-de-dados-nosql.html#cb102-147" tabindex="-1"></a>      <span class="fu">listar</span>()<span class="op">;</span></span>
+<span id="cb102-148"><a href="bancos-de-dados-nosql.html#cb102-148" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb102-149"><a href="bancos-de-dados-nosql.html#cb102-149" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Erro: &#39;</span> <span class="op">+</span> (data<span class="op">?.</span><span class="at">error</span> <span class="op">||</span> res<span class="op">.</span><span class="at">statusText</span>))<span class="op">;</span></span>
+<span id="cb102-150"><a href="bancos-de-dados-nosql.html#cb102-150" tabindex="-1"></a>    }</span>
+<span id="cb102-151"><a href="bancos-de-dados-nosql.html#cb102-151" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb102-152"><a href="bancos-de-dados-nosql.html#cb102-152" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&#39;Falha ao alterar: &#39;</span> <span class="op">+</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span>
+<span id="cb102-153"><a href="bancos-de-dados-nosql.html#cb102-153" tabindex="-1"></a>  } <span class="cf">finally</span> {</span>
+<span id="cb102-154"><a href="bancos-de-dados-nosql.html#cb102-154" tabindex="-1"></a>    <span class="fu">setBusy</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb102-155"><a href="bancos-de-dados-nosql.html#cb102-155" tabindex="-1"></a>  }</span>
+<span id="cb102-156"><a href="bancos-de-dados-nosql.html#cb102-156" tabindex="-1"></a>}</span>
+<span id="cb102-157"><a href="bancos-de-dados-nosql.html#cb102-157" tabindex="-1"></a></span>
+<span id="cb102-158"><a href="bancos-de-dados-nosql.html#cb102-158" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">remover</span>() {</span>
+<span id="cb102-159"><a href="bancos-de-dados-nosql.html#cb102-159" tabindex="-1"></a>  <span class="kw">const</span> cpf <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;cpf&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb102-160"><a href="bancos-de-dados-nosql.html#cb102-160" tabindex="-1"></a>  <span class="cf">if</span>(<span class="op">!</span>cpf) <span class="cf">return</span> <span class="fu">alert</span>(<span class="st">&#39;Informe o CPF para remover.&#39;</span>)<span class="op">;</span></span>
+<span id="cb102-161"><a href="bancos-de-dados-nosql.html#cb102-161" tabindex="-1"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="fu">confirm</span>(<span class="st">&#39;Confirma a exclusão?&#39;</span>)) <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb102-162"><a href="bancos-de-dados-nosql.html#cb102-162" tabindex="-1"></a></span>
+<span id="cb102-163"><a href="bancos-de-dados-nosql.html#cb102-163" tabindex="-1"></a>  <span class="fu">setBusy</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb102-164"><a href="bancos-de-dados-nosql.html#cb102-164" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb102-165"><a href="bancos-de-dados-nosql.html#cb102-165" tabindex="-1"></a>    <span class="kw">const</span> res <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="vs">`</span><span class="sc">${</span>API<span class="sc">}</span><span class="vs">/</span><span class="sc">${</span><span class="pp">encodeURIComponent</span>(cpf)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> {<span class="dt">method</span><span class="op">:</span><span class="st">&#39;DELETE&#39;</span>})<span class="op">;</span></span>
+<span id="cb102-166"><a href="bancos-de-dados-nosql.html#cb102-166" tabindex="-1"></a>    <span class="co">// 204 =&gt; sem corpo; não tente parsear JSON aqui</span></span>
+<span id="cb102-167"><a href="bancos-de-dados-nosql.html#cb102-167" tabindex="-1"></a>    <span class="cf">if</span>(res<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="dv">204</span>) {</span>
+<span id="cb102-168"><a href="bancos-de-dados-nosql.html#cb102-168" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Removido com sucesso!&#39;</span>)<span class="op">;</span></span>
+<span id="cb102-169"><a href="bancos-de-dados-nosql.html#cb102-169" tabindex="-1"></a>      <span class="fu">listar</span>()<span class="op">;</span></span>
+<span id="cb102-170"><a href="bancos-de-dados-nosql.html#cb102-170" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb102-171"><a href="bancos-de-dados-nosql.html#cb102-171" tabindex="-1"></a>    }</span>
+<span id="cb102-172"><a href="bancos-de-dados-nosql.html#cb102-172" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="fu">readJsonSafe</span>(res)<span class="op">;</span></span>
+<span id="cb102-173"><a href="bancos-de-dados-nosql.html#cb102-173" tabindex="-1"></a>    <span class="cf">if</span>(res<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb102-174"><a href="bancos-de-dados-nosql.html#cb102-174" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Removido com sucesso!&#39;</span>)<span class="op">;</span></span>
+<span id="cb102-175"><a href="bancos-de-dados-nosql.html#cb102-175" tabindex="-1"></a>      <span class="fu">listar</span>()<span class="op">;</span></span>
+<span id="cb102-176"><a href="bancos-de-dados-nosql.html#cb102-176" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb102-177"><a href="bancos-de-dados-nosql.html#cb102-177" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&#39;Erro: &#39;</span> <span class="op">+</span> (data<span class="op">?.</span><span class="at">error</span> <span class="op">||</span> res<span class="op">.</span><span class="at">statusText</span>))<span class="op">;</span></span>
+<span id="cb102-178"><a href="bancos-de-dados-nosql.html#cb102-178" tabindex="-1"></a>    }</span>
+<span id="cb102-179"><a href="bancos-de-dados-nosql.html#cb102-179" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb102-180"><a href="bancos-de-dados-nosql.html#cb102-180" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&#39;Falha ao remover: &#39;</span> <span class="op">+</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span>
+<span id="cb102-181"><a href="bancos-de-dados-nosql.html#cb102-181" tabindex="-1"></a>  } <span class="cf">finally</span> {</span>
+<span id="cb102-182"><a href="bancos-de-dados-nosql.html#cb102-182" tabindex="-1"></a>    <span class="fu">setBusy</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb102-183"><a href="bancos-de-dados-nosql.html#cb102-183" tabindex="-1"></a>  }</span>
+<span id="cb102-184"><a href="bancos-de-dados-nosql.html#cb102-184" tabindex="-1"></a>}</span>
+<span id="cb102-185"><a href="bancos-de-dados-nosql.html#cb102-185" tabindex="-1"></a></span>
+<span id="cb102-186"><a href="bancos-de-dados-nosql.html#cb102-186" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">pesquisar</span>() {</span>
+<span id="cb102-187"><a href="bancos-de-dados-nosql.html#cb102-187" tabindex="-1"></a>  <span class="kw">const</span> termo <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;pesquisa&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb102-188"><a href="bancos-de-dados-nosql.html#cb102-188" tabindex="-1"></a>  <span class="fu">setBusy</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb102-189"><a href="bancos-de-dados-nosql.html#cb102-189" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb102-190"><a href="bancos-de-dados-nosql.html#cb102-190" tabindex="-1"></a>    <span class="kw">const</span> url <span class="op">=</span> termo <span class="op">?</span> <span class="vs">`</span><span class="sc">${</span>API<span class="sc">}</span><span class="vs">?q=</span><span class="sc">${</span><span class="pp">encodeURIComponent</span>(termo)<span class="sc">}</span><span class="vs">`</span> <span class="op">:</span> API<span class="op">;</span></span>
+<span id="cb102-191"><a href="bancos-de-dados-nosql.html#cb102-191" tabindex="-1"></a>    <span class="kw">const</span> res <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
+<span id="cb102-192"><a href="bancos-de-dados-nosql.html#cb102-192" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="fu">readJsonSafe</span>(res)<span class="op">;</span></span>
+<span id="cb102-193"><a href="bancos-de-dados-nosql.html#cb102-193" tabindex="-1"></a>    <span class="cf">if</span>(<span class="op">!</span>res<span class="op">.</span><span class="at">ok</span>) <span class="cf">return</span> <span class="fu">alert</span>(<span class="st">&#39;Falha na pesquisa: &#39;</span> <span class="op">+</span> (data<span class="op">?.</span><span class="at">error</span> <span class="op">||</span> res<span class="op">.</span><span class="at">statusText</span>))<span class="op">;</span></span>
+<span id="cb102-194"><a href="bancos-de-dados-nosql.html#cb102-194" tabindex="-1"></a>    <span class="fu">preencheTabela</span>(<span class="bu">Array</span><span class="op">.</span><span class="fu">isArray</span>(data) <span class="op">?</span> data <span class="op">:</span> (data<span class="op">?.</span><span class="at">items</span> <span class="op">??</span> []))<span class="op">;</span></span>
+<span id="cb102-195"><a href="bancos-de-dados-nosql.html#cb102-195" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb102-196"><a href="bancos-de-dados-nosql.html#cb102-196" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&#39;Falha na pesquisa: &#39;</span> <span class="op">+</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span>
+<span id="cb102-197"><a href="bancos-de-dados-nosql.html#cb102-197" tabindex="-1"></a>  } <span class="cf">finally</span> {</span>
+<span id="cb102-198"><a href="bancos-de-dados-nosql.html#cb102-198" tabindex="-1"></a>    <span class="fu">setBusy</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb102-199"><a href="bancos-de-dados-nosql.html#cb102-199" tabindex="-1"></a>  }</span>
+<span id="cb102-200"><a href="bancos-de-dados-nosql.html#cb102-200" tabindex="-1"></a>}</span>
+<span id="cb102-201"><a href="bancos-de-dados-nosql.html#cb102-201" tabindex="-1"></a></span>
+<span id="cb102-202"><a href="bancos-de-dados-nosql.html#cb102-202" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">listar</span>() {</span>
+<span id="cb102-203"><a href="bancos-de-dados-nosql.html#cb102-203" tabindex="-1"></a>  <span class="fu">setBusy</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb102-204"><a href="bancos-de-dados-nosql.html#cb102-204" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb102-205"><a href="bancos-de-dados-nosql.html#cb102-205" tabindex="-1"></a>    <span class="kw">const</span> res <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(API)<span class="op">;</span></span>
+<span id="cb102-206"><a href="bancos-de-dados-nosql.html#cb102-206" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="fu">readJsonSafe</span>(res)<span class="op">;</span></span>
+<span id="cb102-207"><a href="bancos-de-dados-nosql.html#cb102-207" tabindex="-1"></a>    <span class="cf">if</span>(<span class="op">!</span>res<span class="op">.</span><span class="at">ok</span>) <span class="cf">return</span> <span class="fu">alert</span>(<span class="st">&#39;Falha ao listar: &#39;</span> <span class="op">+</span> (data<span class="op">?.</span><span class="at">error</span> <span class="op">||</span> res<span class="op">.</span><span class="at">statusText</span>))<span class="op">;</span></span>
+<span id="cb102-208"><a href="bancos-de-dados-nosql.html#cb102-208" tabindex="-1"></a>    <span class="fu">preencheTabela</span>(<span class="bu">Array</span><span class="op">.</span><span class="fu">isArray</span>(data) <span class="op">?</span> data <span class="op">:</span> (data<span class="op">?.</span><span class="at">items</span> <span class="op">??</span> []))<span class="op">;</span></span>
+<span id="cb102-209"><a href="bancos-de-dados-nosql.html#cb102-209" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb102-210"><a href="bancos-de-dados-nosql.html#cb102-210" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&#39;Falha ao listar: &#39;</span> <span class="op">+</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span>
+<span id="cb102-211"><a href="bancos-de-dados-nosql.html#cb102-211" tabindex="-1"></a>  } <span class="cf">finally</span> {</span>
+<span id="cb102-212"><a href="bancos-de-dados-nosql.html#cb102-212" tabindex="-1"></a>    <span class="fu">setBusy</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb102-213"><a href="bancos-de-dados-nosql.html#cb102-213" tabindex="-1"></a>  }</span>
+<span id="cb102-214"><a href="bancos-de-dados-nosql.html#cb102-214" tabindex="-1"></a>}</span>
+<span id="cb102-215"><a href="bancos-de-dados-nosql.html#cb102-215" tabindex="-1"></a></span>
+<span id="cb102-216"><a href="bancos-de-dados-nosql.html#cb102-216" tabindex="-1"></a><span class="co">/* ---------- UI ---------- */</span></span>
+<span id="cb102-217"><a href="bancos-de-dados-nosql.html#cb102-217" tabindex="-1"></a><span class="kw">function</span> <span class="fu">preencheTabela</span>(lista){</span>
+<span id="cb102-218"><a href="bancos-de-dados-nosql.html#cb102-218" tabindex="-1"></a>  <span class="kw">const</span> tbody <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;tabela&#39;</span>)<span class="op">;</span></span>
+<span id="cb102-219"><a href="bancos-de-dados-nosql.html#cb102-219" tabindex="-1"></a>  tbody<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&#39;&#39;</span><span class="op">;</span></span>
+<span id="cb102-220"><a href="bancos-de-dados-nosql.html#cb102-220" tabindex="-1"></a>  (lista <span class="op">||</span> [])<span class="op">.</span><span class="fu">forEach</span>(p<span class="kw">=&gt;</span>{</span>
+<span id="cb102-221"><a href="bancos-de-dados-nosql.html#cb102-221" tabindex="-1"></a>    <span class="kw">const</span> tr <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;tr&#39;</span>)<span class="op">;</span></span>
+<span id="cb102-222"><a href="bancos-de-dados-nosql.html#cb102-222" tabindex="-1"></a>    tr<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="vs">`</span></span>
+<span id="cb102-223"><a href="bancos-de-dados-nosql.html#cb102-223" tabindex="-1"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">cpf</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb102-224"><a href="bancos-de-dados-nosql.html#cb102-224" tabindex="-1"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">foto</span> <span class="op">?</span> <span class="vs">`&lt;img class=&quot;thumb&quot; src=&quot;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">foto</span><span class="sc">}</span><span class="vs">&quot; alt=&quot;foto&quot;&gt;`</span> <span class="op">:</span> <span class="st">&#39;&#39;</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb102-225"><a href="bancos-de-dados-nosql.html#cb102-225" tabindex="-1"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">nome</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb102-226"><a href="bancos-de-dados-nosql.html#cb102-226" tabindex="-1"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">endereco</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb102-227"><a href="bancos-de-dados-nosql.html#cb102-227" tabindex="-1"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>p<span class="op">.</span><span class="at">data_nascimento</span><span class="sc">}</span><span class="vs">&lt;/td&gt;`</span><span class="op">;</span></span>
+<span id="cb102-228"><a href="bancos-de-dados-nosql.html#cb102-228" tabindex="-1"></a>    tr<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb102-229"><a href="bancos-de-dados-nosql.html#cb102-229" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;cpf&#39;</span>)<span class="op">.</span><span class="at">value</span> <span class="op">=</span> p<span class="op">.</span><span class="at">cpf</span><span class="op">;</span></span>
+<span id="cb102-230"><a href="bancos-de-dados-nosql.html#cb102-230" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;nome&#39;</span>)<span class="op">.</span><span class="at">value</span> <span class="op">=</span> p<span class="op">.</span><span class="at">nome</span><span class="op">;</span></span>
+<span id="cb102-231"><a href="bancos-de-dados-nosql.html#cb102-231" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;endereco&#39;</span>)<span class="op">.</span><span class="at">value</span> <span class="op">=</span> p<span class="op">.</span><span class="at">endereco</span><span class="op">;</span></span>
+<span id="cb102-232"><a href="bancos-de-dados-nosql.html#cb102-232" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;data_nascimento&#39;</span>)<span class="op">.</span><span class="at">value</span> <span class="op">=</span> p<span class="op">.</span><span class="at">data_nascimento</span><span class="op">;</span></span>
+<span id="cb102-233"><a href="bancos-de-dados-nosql.html#cb102-233" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb102-234"><a href="bancos-de-dados-nosql.html#cb102-234" tabindex="-1"></a>    tbody<span class="op">.</span><span class="fu">appendChild</span>(tr)<span class="op">;</span></span>
+<span id="cb102-235"><a href="bancos-de-dados-nosql.html#cb102-235" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb102-236"><a href="bancos-de-dados-nosql.html#cb102-236" tabindex="-1"></a>}</span>
+<span id="cb102-237"><a href="bancos-de-dados-nosql.html#cb102-237" tabindex="-1"></a></span>
+<span id="cb102-238"><a href="bancos-de-dados-nosql.html#cb102-238" tabindex="-1"></a><span class="fu">listar</span>()<span class="op">;</span></span>
+<span id="cb102-239"><a href="bancos-de-dados-nosql.html#cb102-239" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb102-240"><a href="bancos-de-dados-nosql.html#cb102-240" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb102-241"><a href="bancos-de-dados-nosql.html#cb102-241" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>Preencha os campos do cadastro e verifique os documentos do SGBD
+MongoDB.</p>
+
+</div>
+</div>
+<div id="exercícios---bancos-de-dados-nosql" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Exercícios - Bancos de Dados NoSQL<a href="bancos-de-dados-nosql.html#exerc%C3%ADcios---bancos-de-dados-nosql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="administração-e-gerênciamento-de-banco-de-dados---parte-02.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="banco-de-dados-uma-aplicação-crud---parte-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/miguel7penteado/2025-2sem-GTI-BancoDeDados/edit/main/08-2026-2026-04-14_NoSQL-aula.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["2026-ADS-1sem-BancoDeDados.pdf", "2026-ADS-1sem-BancoDeDados.epub", "2026-ADS-1sem-BancoDeDados.word", "2026-ADS-1sem-BancoDeDados.html"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
